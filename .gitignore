@@ -1,0 +1,10 @@
+node_modules
+.next
+out
+next-env.d.ts
+*.tsbuildinfo
+.vercel
+.playwright-mcp
+Fotos
+/ac7f6765-bbc6-4a9f-aebd-53e7ba1136e2.png
+.impeccable/hook.cache.json

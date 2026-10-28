@@ -1,0 +1,582 @@
+// English content (UK spelling). Mirrors the structure of pt.ts.
+
+import type { Dict } from "./pt";
+
+export const en: Dict = {
+  locale: "en",
+  htmlLang: "en",
+  common: {
+    skip: "Skip to content",
+    bookAssessment: "Book an assessment",
+    whatsappCta: "Book an assessment on WhatsApp",
+    whatsapp: "WhatsApp",
+    call: "Call",
+    phoneNote: "(call to a Portuguese mobile network)",
+    phoneDisplay: "+351 924 098 545",
+    seeTreatments: "See treatments",
+    allServices: "See all services",
+    learnMore: "Learn more",
+    comingSoon: "Coming soon",
+    notifyMe: "Let me know when it opens",
+    yearsExperience: "years of experience",
+    googleReviews: "Google reviews",
+    seeAllReviews: "See all reviews on Google",
+    newWindow: "(opens in a new window)",
+    home: "Home",
+    menu: "Menu",
+    closeMenu: "Close menu",
+    openMenu: "Open menu",
+    language: "Mudar para português",
+    languageShort: "PT",
+    scroll: "Scroll down",
+    floatingWhatsapp: "Chat with us on WhatsApp",
+    directions: "Get directions",
+    sendMessage: "Send a message",
+    close: "Close",
+    previous: "Previous",
+    next: "Next",
+    photo: "Photo",
+    video: "Video",
+    watchVideo: "Watch video",
+  },
+  nav: { home: "Home", services: "Services", about: "About", contact: "Contact", comingSoon: "Coming soon" },
+  wa: {
+    general: "Hello, I'd like to book an assessment at Fisio4you.",
+    service: "Hello, I'd like to book a {s} assessment.",
+    problem: "Hello, I have {p} and I'd like to book an assessment.",
+    notify: "Hello, I'd like to be notified when {s} becomes available.",
+  },
+  hours: {
+    weekdays: "Monday to Friday",
+    weekdaysShort: "Mon–Fri",
+    saturday: "Saturday",
+    sunday: "Sunday",
+    closed: "Closed",
+    title: "Opening hours",
+  },
+  meta: {
+    home: {
+      title: "Fisio4you · Physiotherapy in Portimão | Rehabilitation Centre",
+      description:
+        "Physiotherapy in Portimão with ultrasound assessment, a 100 m² rehabilitation gym, ice bath and sauna. Book your assessment on WhatsApp or by phone.",
+    },
+    services: {
+      title: "Physiotherapy Services in Portimão | Fisio4you",
+      description:
+        "Musculoskeletal and dermatofunctional physiotherapy, ultrasound, ultrasound-guided techniques, rehabilitation gym, ice bath and sauna in Portimão.",
+    },
+    comingSoon: {
+      title: "Coming soon: Physical Medicine, Osteopathy, Clinical Pilates and Psychology | Fisio4you",
+      description: "New specialities coming to Fisio4you in Portimão. Ask to be notified on WhatsApp.",
+    },
+    about: {
+      title: "About Fisio4you · Rehabilitation Centre in Portimão",
+      description: "Meet Fisio4you, our team and facilities: ultrasound, a 100 m² rehabilitation gym, ice bath and sauna in Portimão.",
+    },
+    contact: {
+      title: "Contact & Opening Hours | Fisio4you Portimão",
+      description: "Book your assessment at Fisio4you in Portimão on WhatsApp or by phone (+351 924 098 545). Address, hours and directions.",
+    },
+    privacy: { title: "Privacy Policy | Fisio4you", description: "How Fisio4you, Lda processes your personal data." },
+    terms: { title: "Terms of Use | Fisio4you", description: "Terms of use of the fisio4you.pt website." },
+    cookies: { title: "Cookie Policy | Fisio4you", description: "Which cookies fisio4you.pt uses and how to manage consent." },
+  },
+
+  home: {
+    hero: {
+      eyebrow: "Rehabilitation Centre · Portimão",
+      lines: ["We see the injury.", "We train your comeback."],
+      sub: "Physiotherapy with ultrasound assessment, a 100 m² rehabilitation gym and recovery with ice bath and sauna — all under one roof in Portimão.",
+      facts: ["Ultrasound in assessment", "100 m² gym", "Ice bath and sauna"],    },
+    stack: {
+      title: "Everything you need, in one place",
+      more: "See details",
+    },
+    advantages: {
+      title: "What makes the difference in your recovery",
+      items: [
+        { title: "Ultrasound assessment", text: "We see muscles, tendons and ligaments in real time, so we treat the cause and not just the symptom." },
+        { title: "Everything under one roof", text: "Physiotherapy, a 100 m² rehabilitation gym, ice bath and sauna, with no running between places." },
+        { title: "Active rehab, all the way back", text: "Supervised, progressive exercise with clear criteria for returning to training and competition." },
+        { title: "16 years of experience", text: "Mário has 16 years of experience treating injuries and guiding recoveries." },
+      ],
+    },
+    hub: {
+      title: "Everything your recovery needs, under one roof",
+      text: "From ultrasound assessment to getting back to training: physiotherapy, a rehabilitation gym and recovery, with no running between places.",
+      cta: "See all services",
+      items: { eco: "Ultrasound", gym: "Rehabilitation gym", ice: "Ice bath and sauna", postnatal: "Postnatal and diastasis" },
+    },
+    booking: {
+      title: "Book your assessment",
+      text: "We reply during clinic hours.",
+      hoursLabel: "Hours",
+    },
+    bodyMap: {
+      title: "Where do you feel pain or stiffness?",
+      intro: "Choose an area of the body to see what we usually treat there and message us about your case.",
+      listLabel: "Body areas",
+      commonLabel: "Common conditions",
+      talk: "Describe my case on WhatsApp",
+      see: "See the treatment",
+      regions: [
+        {
+          id: "cervical", x: 100, y: 72, label: "Neck",
+          title: "Neck",
+          text: "Neck pain, stiffness and tension headaches, often linked to posture and desk work.",
+          common: ["Neck pain", "Wry neck", "Pain radiating into the arm"],
+          service: "msk", waTopic: "neck pain",
+        },
+        {
+          id: "ombro", x: 59, y: 104, label: "Shoulder",
+          title: "Shoulder",
+          text: "Pain when lifting your arm, loss of strength or instability. Ultrasound helps us check the state of the tendons.",
+          common: ["Rotator cuff tendinopathy", "Frozen shoulder", "After surgery"],
+          service: "msk", anchor: "ecografia", waTopic: "shoulder pain",
+        },
+        {
+          id: "coluna", x: 100, y: 140, label: "Back",
+          title: "Back and spine",
+          text: "Low or mid back pain, recent or lingering for months. We treat the pain and build strength so it doesn't come back.",
+          common: ["Low back pain", "Disc herniation", "Sciatica"],
+          service: "msk", anchor: "ginasio", waTopic: "back pain",
+        },
+        {
+          id: "abdomen", x: 100, y: 184, label: "Abdomen",
+          title: "Abdomen and postnatal",
+          text: "Restoring the abdominal wall and pelvic floor after pregnancy, with close and discreet support.",
+          common: ["Diastasis recti", "Postnatal recovery", "C-section scar"],
+          service: "dermato", waTopic: "a postnatal / diastasis recti concern",
+        },
+        {
+          id: "anca", x: 77, y: 208, label: "Hip",
+          title: "Hip",
+          text: "Hip or groin pain when walking, running or climbing stairs, and rehab after hip replacement.",
+          common: ["Gluteal tendinopathy", "Groin pain", "Hip replacement"],
+          service: "msk", anchor: "ginasio", waTopic: "hip pain",
+        },
+        {
+          id: "joelho", x: 82, y: 318, label: "Knee",
+          title: "Knee",
+          text: "Sports injuries, pain when running or squatting, and recovery after surgery — until you're training with confidence again.",
+          common: ["ACL", "Meniscus", "Patellar tendinopathy"],
+          service: "msk", anchor: "ginasio", waTopic: "knee pain",
+        },
+        {
+          id: "tornozelo", x: 82, y: 396, label: "Ankle",
+          title: "Ankle and foot",
+          text: "Sprains that never quite settled, Achilles pain or pain under the foot.",
+          common: ["Ankle sprain", "Achilles tendinopathy", "Plantar fasciitis"],
+          service: "msk", waTopic: "ankle/foot pain",
+        },
+      ],
+      recovery: {
+        title: "No injury, just want to recover better?",
+        text: "Ice bath and sauna for anyone who trains regularly.",
+        link: "Explore recovery",
+      },
+    },
+    featured: {
+      title: "Two services, the same level of care",
+      intro: "We treat injuries and pain methodically, and support postnatal recovery with the same attention.",
+      includesLabel: "Includes",
+    },
+    videos: {
+      title: "Fisio4you, in their own words",
+      intro: "Meet the people who run the clinic and hear from those who train and recover here. Videos in Portuguese.",
+      items: ["video-mario", "video-angela", "video-pedro", "video-circuito"],
+    },
+    visit: {
+      title: "Inside the clinic",
+      intro: "From assessment to your last exercise, everything happens in one place.",
+      stops: [
+        { media: "brand-room", title: "Reception", text: "Arrive, check in and meet the physiotherapist who will look after you." },
+        { media: "service-eco", title: "Assessment room", text: "Where we hear your story and, when indicated, use ultrasound." },
+        { media: "service-msk", title: "Treatment room", text: "Manual therapy and ultrasound-guided techniques, in private." },
+        { media: "service-gym", title: "100 m² gym", text: "Supervised exercise, from your first steps to your return to sport." },
+        { media: "service-recovery", title: "Ice bath", text: "Cold-water immersion to recover after training and competition." },
+        { media: "recovery-sauna", title: "Sauna", text: "Heat to relax your muscles." },
+      ],
+    },
+    eco: {
+      eyebrow: "Technology",
+      title: "We don't treat blind.",
+      text: "With ultrasound, we assess muscles, tendons and ligaments in real time. That helps us understand what's going on, track your progress and apply ultrasound-guided techniques with greater precision.",
+      points: [
+        { icon: "target", title: "More precise assessment", text: "See the injured structure, not just the symptoms." },
+        { icon: "scan", title: "Targeted treatment", text: "Ultrasound-guided techniques applied exactly where needed." },
+        { icon: "eye", title: "Visible progress", text: "Compare images throughout your treatment." },
+      ],
+      cta: "More about ultrasound",
+      caption: "Musculoskeletal ultrasound: muscles, tendons and ligaments seen in real time.",
+    },
+    journey: {
+      eyebrow: "Your journey",
+      title: "From first contact to getting back to what you love",
+      steps: [
+        { title: "Assessment", text: "We listen to your story, assess how you move and, when indicated, use ultrasound." },
+        { title: "Tailored plan", text: "Clear goals and a plan built around you, your routine and your sport." },
+        { title: "Treatment + exercise", text: "Hands-on therapy and active work in the rehabilitation gym." },
+        { title: "Return & prevention", text: "Back to training, work or life without pain — and fewer relapses." },
+      ],
+    },
+    why: {
+      eyebrow: "Why Fisio4you",
+      title: "Why Fisio4you",
+      items: [
+        { icon: "clock", title: "Experience", text: "Mário has 16 years of experience treating injuries and guiding recoveries." },
+        { icon: "scan", title: "Technology", text: "Ultrasound and ultrasound-guided techniques at the service of treatment." },
+        { icon: "building", title: "All in one place", text: "Physiotherapy, gym and recovery — no running between places." },
+      ],
+    },
+    founder: {
+      eyebrow: "CEO and physiotherapist",
+      name: "Mário Barroso",
+      lead: "A physiotherapist with 16 years of experience treating injuries and guiding recoveries, from day one to getting back to what you love.",
+      bio: ["[[Mário's text, 3–4 sentences: background, specialisations and why he founded Fisio4you.]]"],
+      timeline: [
+        { value: "[[year]]", label: "Started clinical practice" },
+        { value: "[[year]]", label: "Founded Fisio4you" },
+        { value: "[[no.]]", label: "Specialities" },
+      ],
+      cta: "Meet the team",
+    },
+    team: {
+      eyebrow: "Team",
+      title: "A team that works side by side",
+    },
+    reviews: {
+      title: "What our patients say",
+      intro: "Real reviews, copied exactly as they were written on Google.",
+      photoCaption: "Mário Barroso with Fisio4you clients.",
+      source: "Google review",
+      all: "See all reviews on Google",
+      placeholder: "[Google review to be added]",
+      pendingRating: "Verified reviews on Google",
+    },
+    coming: {
+      eyebrow: "Coming soon",
+      title: "Coming soon",
+      text: "We will also offer",
+    },
+    insurance: "Agreements with insurers and health schemes coming soon. Get in touch to find out more.",
+  },
+
+  ctaFinal: {
+    title: "Your recovery starts with a message.",
+    sub: "Tell us how you feel and we'll book your first assessment.",
+    whatsapp: { title: "WhatsApp", text: "The quickest way to book.", cta: "Send a message" },
+    phone: { title: "Phone", text: "Prefer to talk?", cta: "Call" },
+    directions: { title: "Getting here", text: "Parking and landmark details to be confirmed.", cta: "Open in Google Maps" },
+  },
+
+  map: {
+    title: "Map",
+    consentText: "The map is provided by Google and may set cookies. Only load it if you agree.",
+    load: "Show map",
+    open: "Open in Google Maps",
+  },
+
+  team: [
+    {
+      media: "team-mario",
+      name: "Mário Barroso",
+      role: "CEO and physiotherapist",
+      focus: "Musculoskeletal injuries, rehabilitation and sports performance. 16 years of experience treating injuries and guiding recoveries.",
+      video: "video-mario-mensagem",
+    },
+    {
+      media: "team-angela",
+      name: "Angela Brazona",
+      role: "CEO and physiotherapist",
+      focus: "Dermatofunctional physiotherapy and women's health, before and after childbirth, from both a physiological and an aesthetic point of view.",
+      video: "video-angela",
+    },
+  ],
+
+  servicesPage: {
+    eyebrow: "Services",
+    title: "Services",
+    sub: "From ultrasound assessment to your return to sport: everything you need to recover, under one roof in Portimão.",
+    available: "Available now",
+  },
+
+  servicePage: {
+    forWho: "Who it's for",
+    includes: "What's included",
+    how: "How it works",
+    distinct: "What sets us apart",
+    duration: "Duration and frequency",
+    faq: "Frequently asked questions",
+    faqShort: "FAQ",
+    onThisPage: "On this page",
+    related: "Also available",
+  },
+
+  services: {
+    msk: {
+      name: "Musculoskeletal Physiotherapy",
+      short: "Sports injuries, pain and post-surgical rehab, with ultrasound, a rehabilitation gym, ice bath and sauna.",
+      mediaId: "service-msk",
+      meta: {
+        title: "Musculoskeletal & Sports Physiotherapy in Portimão | Fisio4you",
+        description:
+          "Sports injuries, low back and neck pain, tendinopathies and post-surgical rehab in Portimão, with ultrasound, a 100 m² gym, ice bath and sauna.",
+      },
+      heroTitle: "Musculoskeletal Physiotherapy",
+      heroSub: "Find the source of your pain or injury and treat it methodically — with ultrasound, a rehabilitation gym and recovery facilities under one roof.",
+      forWho: {
+        title: "Conditions we treat",
+        intro: "For athletes, active people and anyone who wants to move without pain again.",
+        items: [
+          { icon: "activity", title: "Sprains and ligament injuries", text: "Ankle, knee, wrist." },
+          { icon: "flame", title: "Muscle tears and strains", text: "Hamstrings, calves, quadriceps and more." },
+          { icon: "repeat", title: "Tendinopathies", text: "Shoulder, elbow, knee, Achilles." },
+          { icon: "bone", title: "Low back and neck pain", text: "Including disc herniations and radiating pain." },
+          { icon: "stethoscope", title: "Post-surgical rehab", text: "ACL, meniscus, shoulder, joint replacement." },
+          { icon: "clock", title: "Chronic pain", text: "An active approach to regain function and confidence." },
+        ],
+      },
+      includes: {
+        title: "Everything your recovery needs, in one place",
+        intro: "Musculoskeletal physiotherapy at Fisio4you brings together three resources that make a difference.",
+      },
+      modules: [
+        {
+          id: "ecografia",
+          nav: "Ultrasound",
+          summary: "See the injury and guide treatment",
+          eyebrow: "Assessment",
+          title: "Ultrasound & ultrasound-guided techniques",
+          text: "We assess muscles, tendons and ligaments in real time, with you watching the screen. Ultrasound is painless, uses no radiation and lets us apply ultrasound-guided techniques with greater precision.",
+          mediaId: "service-eco",
+          points: [
+            { icon: "eye", title: "See the injury", text: "Look at the structure at rest and in motion." },
+            { icon: "target", title: "Targeted treatment", text: "Techniques applied precisely to the target structure." },
+            { icon: "trending", title: "Visible progress", text: "Compare images throughout treatment." },
+          ],
+          itemsTitle: "Ultrasound-guided techniques",
+          items: [
+            { title: "[[Technique 1]]", text: "[[2–3 lines in plain language.]]" },
+            { title: "[[Technique 2]]", text: "[[2–3 lines in plain language.]]" },
+            { title: "[[Technique 3]]", text: "[[2–3 lines in plain language.]]" },
+          ],
+          note: "In physiotherapy, ultrasound is used for functional assessment and to guide treatment; it does not replace medical diagnostic imaging.",
+        },
+        {
+          id: "ginasio",
+          nav: "Gym",
+          summary: "Supervised exercise all the way back to sport",
+          eyebrow: "Active rehab",
+          title: "100 m² rehabilitation gym",
+          text: "From the treatment table to exercise without leaving the clinic: therapeutic exercise supervised by physiotherapists, matched to your stage of recovery.",
+          mediaId: "service-gym",
+          points: [
+            { icon: "dumbbell", title: "Therapeutic exercise", text: "Supervised and progressive." },
+            { icon: "footprints", title: "Reconditioning", text: "Rebuild capacity and load tolerance." },
+            { icon: "activity", title: "Return to sport", text: "Clear criteria to get back to training and competing." },
+            { icon: "shield", title: "Injury prevention", text: "Work on weak spots before they become injuries." },
+          ],
+        },
+        {
+          id: "recuperacao",
+          nav: "Ice and sauna",
+          summary: "Recover between training and competition",
+          eyebrow: "Recovery",
+          title: "Ice bath & sauna",
+          text: "For anyone who trains regularly and wants to recover better between sessions and competitions, always with guidance from our team.",
+          mediaId: "service-recovery",
+          points: [
+            { icon: "snowflake", title: "Ice bath", text: "Cold-water immersion with controlled timing." },
+            { icon: "flame", title: "Sauna", text: "Heat for muscle relaxation." },
+            { icon: "repeat", title: "Part of your plan", text: "Built into your treatment. [[confirm single sessions]]" },
+          ],
+          itemsTitle: "Before you start",
+          items: [
+            { title: "General contraindications", text: "Cardiovascular conditions, uncontrolled blood pressure, pregnancy, altered sensation or circulation, among others." },
+            { title: "Talk to our team", text: "Before your first session, we'll check it's right for you." },
+          ],
+          video: "video-circuito",
+        },
+      ],
+      how: {
+        title: "How it works",
+        steps: [
+          { title: "Assessment", text: "Clinical history, movement testing and, when indicated, ultrasound." },
+          { title: "Plan", text: "Concrete goals and realistic timelines, tailored to your activity." },
+          { title: "Treatment + gym", text: "Manual therapy, ultrasound-guided techniques when indicated, and supervised exercise." },
+          { title: "Discharge & prevention", text: "An exercise plan to keep your results and prevent relapses." },
+        ],
+      },
+      distinct: {
+        title: "More than treating pain",
+        text: "We combine the precision of ultrasound with active work in the gym and dedicated recovery, so treatment turns into strength and confidence.",
+        points: ["Ultrasound in assessment and follow-up", "100 m² rehabilitation gym", "Ice bath and sauna for recovery"],
+      },
+      duration: {
+        title: "Duration and frequency",
+        text: "Session length and number of sessions depend on your initial assessment. Get in touch to find out more.",
+      },
+      faq: [
+        { q: "Do I need a doctor's referral?", a: "[[confirm with Mário]] Message or call us and we'll advise on your situation." },
+        { q: "How many sessions will I need?", a: "It depends on the injury, how long you've had it and your goals. We set a plan and an estimate at the first assessment and adjust it as you progress." },
+        { q: "Does ultrasound hurt or use radiation?", a: "No. It's painless — we apply a gel and glide the probe over your skin — and it uses sound waves, with no radiation." },
+        { q: "Can I keep training during treatment?", a: "Often yes, with adjustments. We adapt your training load to your stage of recovery so you can stay active safely." },
+        { q: "Can I use the gym, ice bath or sauna without physiotherapy?", a: "[[confirm with Mário]] Get in touch to find out what's available." },
+        { q: "What should I bring to my first appointment?", a: "Comfortable clothing that allows us to assess the affected area and, if you have them, any scans or medical reports." },
+      ],
+      related: ["dermato"],
+    },
+    dermato: {
+      name: "Dermatofunctional Physiotherapy",
+      short: "Diastasis recti, postnatal recovery and care for skin and tissues after surgery.",
+      mediaId: "service-dermato",
+      meta: {
+        title: "Diastasis Recti & Postnatal Physiotherapy in Portimão | Fisio4you",
+        description:
+          "Dermatofunctional physiotherapy in Portimão: postnatal recovery, diastasis recti, scars and adhesions, with close and discreet support.",
+      },
+      heroTitle: "Dermatofunctional Physiotherapy",
+      heroSub: "Close, discreet support to restore your core, pelvic floor and tissues after childbirth or surgery.",
+      forWho: {
+        title: "What we help with",
+        intro: "A space you can trust, at your own pace and with full respect for your privacy.",
+        items: [
+          { icon: "baby", title: "Postnatal recovery", text: "Core, posture and a gradual return to activity." },
+          { icon: "target", title: "Diastasis recti", text: "Assessment and a specific exercise plan." },
+          { icon: "sparkles", title: "Scars and adhesions", text: "Including C-section scars." },
+          { icon: "stethoscope", title: "After plastic/cosmetic surgery", text: "[[to confirm]]" },
+          { icon: "flower", title: "Swelling and lymphatic drainage", text: "[[to confirm]]" },
+        ],
+      },
+      how: {
+        title: "How it works",
+        steps: [
+          { title: "Conversation & assessment", text: "We listen to your story and assess carefully, with ultrasound when indicated." },
+          { title: "Plan", text: "Realistic goals, adapted to your stage and routine." },
+          { title: "Sessions", text: "Manual techniques and guided exercise, with every step explained." },
+          { title: "Independence", text: "Home exercises and follow-up until you feel confident." },
+        ],
+      },
+      distinct: {
+        title: "Specialised support",
+        text: "Ultrasound lets us monitor the abdominal wall objectively, and the rehabilitation gym helps you rebuild strength and confidence safely.",
+        points: ["Welcoming, discreet environment", "Ultrasound to track progress", "Guided exercise in the gym"],
+      },
+      duration: {
+        title: "Duration and frequency",
+        text: "Set after your initial assessment, according to your stage and goals.",
+      },
+      faq: [
+        { q: "How soon after giving birth can I start?", a: "It depends on the type of birth, how your recovery has gone and your doctor's advice. Get in touch and we'll help you work out the right time." },
+        { q: "Can diastasis recti be treated without surgery?", a: "Many cases improve with physiotherapy and specific exercise, but every case is different. An assessment shows where you're starting from and what's realistic." },
+        { q: "What is the first assessment like?", a: "We start with a conversation about your history and goals, followed by a careful assessment explained step by step, with full respect for your privacy." },
+      ],
+      related: ["msk"],
+      video: "video-angela",
+    },
+  },
+
+  // Especialidades futuras: retiradas do site por agora (ver PRODUCT.md). Texto guardado para reativar quando abrirem.
+  comingSoon: {
+    eyebrow: "Coming soon",
+    title: "New specialities",
+    sub: "We're growing to look after you even more completely. Ask to be notified when they open.",
+    items: [
+      { icon: "stethoscope", name: "Physical Medicine & Rehabilitation", text: "Medical consultation for diagnosis and guidance of your rehabilitation plan." },
+      { icon: "bone", name: "Osteopathy", text: "A hands-on approach focused on joint and tissue mobility." },
+      { icon: "flower", name: "Clinical Pilates", text: "Exercise led by health professionals for control, strength and posture." },
+      { icon: "brain", name: "Psychology", text: "Psychological support, including pain management and returning to sport after injury." },
+    ],
+  },
+
+  about: {
+    eyebrow: "About us",
+    title: "Fisio4you — Rehabilitation Centre",
+    sub: "Physiotherapy, rehabilitation gym and recovery under one roof in Portimão.",
+    storyTitle: "Our story",
+    story: ["[[Ask Mário for the clinic's story.]]"],
+    missionTitle: "Mission",
+    mission: "To help every person recover, get stronger and return to the activities they love, with rigour and close follow-up.",
+    valuesTitle: "Values",
+    values: [
+      { icon: "target", title: "Rigour", text: "Assess well to treat better." },
+      { icon: "users", title: "Closeness", text: "Know the person, not just the injury." },
+      { icon: "trending", title: "Progress", text: "Clear goals and measurable progress." },
+    ],
+    founderTitle: "The people behind it",
+    founderLong: ["[[Long version of Mário's background: training, specialisations, experience with athletes.]]"],
+    teamTitle: "The team",
+    galleryTitle: "Our facilities",
+  },
+
+  contact: {
+    eyebrow: "Contact",
+    title: "Get in touch",
+    sub: "Book your assessment on WhatsApp or by phone. We reply during clinic hours.",
+    email: "Email",
+    address: "Address",
+    phone: "Phone",
+    findUs: "How to find us",
+    accessTitle: "Accessibility and parking",
+    access: "[[confirm accessibility and parking]]",
+  },
+
+  footer: {
+    tagline: "Rehabilitation centre in Portimão.",
+    services: "Services",
+    clinic: "Clinic",
+    contacts: "Contact",
+    team: "Team",
+    legal: "Fisio4you, Lda",
+    nif: "VAT no.",
+    ers: "ERS registration no.",
+    license: "Licence no.",
+    complaints: "Electronic Complaints Book",
+    privacy: "Privacy Policy",
+    terms: "Terms",
+    cookies: "Cookie Policy",
+    cookieSettings: "Cookie preferences",
+    rights: "All rights reserved.",
+    builtBy: "Built by",
+  },
+
+  cookieBanner: {
+    text: "We use essential cookies to make the site work and, with your consent, analytics cookies and Google Maps.",
+    accept: "Accept",
+    reject: "Decline",
+    more: "Learn more",
+  },
+
+  legal: {
+    updated: "Last updated: October 2026",
+    privacy: {
+      title: "Privacy Policy",
+      sections: [
+        { h: "Data controller", p: ["Fisio4you, Lda, VAT no. 514 628 847, Rua Francisco Alvo, loja 11, 8500-759 Portimão, Portugal. Contact: fisio4youportimao@gmail.com."] },
+        { h: "What data we process", p: ["This website has no forms. Data you send us via WhatsApp, phone or email (name, contact details and the reason for your appointment) is used only to reply and book your appointment.", "With your consent, we may collect anonymous or pseudonymised browsing data to measure how the site is used."] },
+        { h: "Legal basis and retention", p: ["We process data to take steps at your request before entering into a contract, to comply with legal obligations and on the basis of your consent. We keep data only for as long as needed for these purposes or as required by law."] },
+        { h: "Data sharing", p: ["WhatsApp messages are processed by WhatsApp/Meta under their own policies. We do not sell or share your data with third parties for commercial purposes."] },
+        { h: "Your rights", p: ["You may request access, rectification, erasure, restriction, portability or object to processing by writing to fisio4youportimao@gmail.com. You also have the right to lodge a complaint with the Portuguese Data Protection Authority (www.cnpd.pt)."] },
+      ],
+    },
+    terms: {
+      title: "Terms of Use",
+      sections: [
+        { h: "Purpose", p: ["This website presents Fisio4you, Lda and its services. The information is general and does not replace an individual clinical assessment."] },
+        { h: "Intellectual property", p: ["Texts, images, logo and other content belong to Fisio4you, Lda or are used with permission, and may not be reproduced without consent."] },
+        { h: "Liability", p: ["We aim to keep information accurate and up to date but cannot guarantee it is error-free. Treatment outcomes depend on each person and their clinical situation."] },
+        { h: "External links", p: ["The site links to third-party services (WhatsApp, Google Maps, social networks), whose policies are the responsibility of their operators."] },
+        { h: "Governing law", p: ["Portuguese law applies. Consumers may use the Electronic Complaints Book or an alternative dispute resolution body."] },
+      ],
+    },
+    cookies: {
+      title: "Cookie Policy",
+      sections: [
+        { h: "What cookies are", p: ["Cookies are small files stored on your device when you visit a website."] },
+        { h: "Cookies we use", p: ["Essential: store your consent choice (browser local storage).", "Analytics (only with consent): Google Tag Manager / Google Analytics, to understand how the site is used.", "Third-party (only with consent): the Google Maps embed may set its own cookies."] },
+        { h: "Managing consent", p: ["You can change your choice at any time via the “Cookie preferences” link in the footer, or delete cookies in your browser settings."] },
+      ],
+    },
+  },
+};

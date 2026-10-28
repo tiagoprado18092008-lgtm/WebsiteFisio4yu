@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+/* Tokens da marca — cores amostradas do logótipo (public/brand/logo.png) */
+:root {
+  --f4y-ink: #20282b; /* texto principal: grafite frio */
+  --f4y-grey: #4e5053; /* cinzento do "fisio you" */
+  --f4y-muted: #6a7377; /* texto terciário (AA sobre branco) */
+  --f4y-line: #d7e2e5; /* filetes */
+  --f4y-mist: #f4f8f9; /* fundo alternado, muito subtil */
+  --f4y-ice: #e4f1f3; /* "água": tinta clínica para zonas de destaque */
+  --f4y-white: #ffffff;
+
+  --f4y-teal: #118193; /* o "4" — acento */
+  --f4y-teal-strong: #0d6b7a; /* botões e links (AA com branco) */
+  --f4y-teal-dark: #0e4c57; /* "Centro de Reabilitação" */
+  --f4y-cyan: #1fb5ca; /* brilho do "4" — só em pontos do mapa do corpo */
+
+  --f4y-whatsapp: #25d366;
+  --f4y-frame: #a9ced5; /* moldura da página (teal do logótipo, suavizado) */
+  --f4y-panel: #1d5a64; /* painéis escuros */
+}
+
+@theme inline {
+  --color-ink: var(--f4y-ink);
+  --color-grey: var(--f4y-grey);
+  --color-muted: var(--f4y-muted);
+  --color-line: var(--f4y-line);
+  --color-mist: var(--f4y-mist);
+  --color-ice: var(--f4y-ice);
+  --color-teal: var(--f4y-teal);
+  --color-teal-strong: var(--f4y-teal-strong);
+  --color-teal-dark: var(--f4y-teal-dark);
+  --color-cyan: var(--f4y-cyan);
+  --color-whatsapp: var(--f4y-whatsapp);
+  --font-display: var(--font-bricolage), system-ui, sans-serif;
+  --font-sans: var(--font-public-sans), system-ui, sans-serif;
+  --color-frame: var(--f4y-frame);
+  --color-panel: var(--f4y-panel);
+  --radius-img: 24px;
+  --radius-btn: 999px;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  background: var(--f4y-frame);
+  color: var(--f4y-ink);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.6;
+  overflow-x: clip;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+/* Lenis (components/SmoothScroll.tsx): o scroll suave nativo tem de estar desligado enquanto o Lenis anima */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: clip; }
+
+:focus-visible {
+  outline: 2px solid var(--f4y-teal-strong);
+  outline-offset: 3px;
+}
+/* Superfícies escuras (hero, painéis): anel branco para manter ≥3:1 */
+.on-dark :focus-visible { outline-color: #fff; }
+
+::selection { background: var(--f4y-ice); color: var(--f4y-teal-dark); }
+html { scrollbar-color: var(--f4y-frame) var(--f4y-mist); accent-color: var(--f4y-teal-strong); }
+p, li, dd, blockquote { text-wrap: pretty; }
+
+@layer components {
+  /* Escala tipográfica (≈ razão 1.333, quarta perfeita) */
+  .t-hero {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.6rem, 1.5rem + 4.4vw, 5.25rem);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+  .t-h1 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.2rem, 1.5rem + 2.8vw, 3.75rem);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+  .t-h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.85rem, 1.35rem + 1.9vw, 2.8rem);
+    line-height: 1.06;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+  .t-h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.32rem;
+    line-height: 1.2;
+    letter-spacing: -0.012em;
+  }
+  .t-lead {
+    font-size: clamp(1.1rem, 1rem + 0.35vw, 1.28rem);
+    line-height: 1.55;
+    color: var(--f4y-grey);
+  }
+  .container-x {
+    width: 100%;
+    max-width: 1480px;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 768px) {
+    .container-x { padding-inline: 2rem; }
+  }
+  @media (min-width: 1280px) {
+    .container-x { padding-inline: 3rem; }
+  }
+  .link {
+    color: var(--f4y-teal-strong);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    text-decoration-color: color-mix(in srgb, var(--f4y-teal) 40%, transparent);
+    transition: text-decoration-color 0.2s;
+  }
+  .link:hover { text-decoration-color: currentColor; }
+}
+
+/* Entrada única e orquestrada do hero */
+/* Menu mobile: o painel desce do header e o fundo escurece */
+.menu-sheet { animation: menu-in 0.32s cubic-bezier(0.22, 1, 0.36, 1) both; transform-origin: top center; }
+.menu-backdrop { animation: fade-in 0.25s ease-out both; }
+@keyframes menu-in {
+  from { opacity: 0; transform: translateY(-10px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+.hero-in > * { animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.hero-in > *:nth-child(2) { animation-delay: 0.08s; }
+.hero-in > *:nth-child(3) { animation-delay: 0.16s; }
+.hero-in > *:nth-child(4) { animation-delay: 0.24s; }
+.hero-in > *:nth-child(5) { animation-delay: 0.32s; }
+
+/* Pulso dos pontos do mapa do corpo */
+@keyframes ping {
+  0% { transform: scale(1); opacity: 0.55; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+.pulse { transform-box: fill-box; transform-origin: center; animation: ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite; }
+
+/* Troca de zona no mapa do corpo */
+@keyframes swap-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+.bm-swap { animation: swap-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-in > *, .pulse, .bm-swap, .menu-sheet, .menu-backdrop { animation: none; }
+}
+
+details > summary { list-style: none; }
+details > summary::-webkit-details-marker { display: none; }
