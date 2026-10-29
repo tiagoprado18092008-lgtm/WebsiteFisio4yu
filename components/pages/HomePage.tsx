@@ -30,6 +30,7 @@ export function HomePage({ locale }: { locale: Locale }) {
   const reviewsUrl = googleUrl ?? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Fisio4you ${site.address.city}`)}`;
   const team = t.team.slice(0, 4);
   const homeVideos = h.videos.items.map((id) => videoFor(id, locale));
+  const clientVideo = videoFor("video-pedro", locale);
   const videoLabels = { play: t.common.watchVideo, close: t.common.close };
   const msk = t.services.msk;
   const dermato = t.services.dermato;
@@ -177,36 +178,46 @@ export function HomePage({ locale }: { locale: Locale }) {
         </div>
       </Section>
 
-      {/* Vídeos: entrevistas do Mário e da Angela e testemunhos de clientes. Tocam com som, só quando se carrega. */}
+      {/* Vídeos: entrevistas do Mário e da Angela e o circuito de recuperação (o testemunho do Pedro está junto das
+          avaliações). Tocam com som, só quando se carrega. */}
       <Section tone="mist" labelledBy="videos-title">
         <SectionTitle title={h.videos.title} intro={h.videos.intro} id="videos-title" />
-        <ul className="-mx-4 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 md:mx-0 md:grid md:grid-cols-4 md:gap-5 md:overflow-visible md:px-0 md:pb-0">
+        <ul className="-mx-4 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 md:mx-0 md:grid md:grid-cols-3 md:gap-5 md:overflow-visible md:px-0 md:pb-0">
           {homeVideos.map((v) => (
             <li key={v.id} className="w-[72%] shrink-0 snap-start sm:w-[42%] md:w-auto">
-              <VideoCard video={v} labels={videoLabels} sizes="(min-width: 768px) 25vw, 72vw" />
+              <VideoCard video={v} labels={videoLabels} sizes="(min-width: 768px) 33vw, 72vw" />
             </li>
           ))}
         </ul>
       </Section>
 
-      {/* Avaliações Google (só 5 estrelas) no azul da marca: foto do Mário com clientes à esquerda (fixa enquanto
-          se lê, em desktop) e as avaliações todas à vista à direita. Em telemóvel: título, foto, avaliações. */}
+      {/* Avaliações Google (só 5 estrelas) no azul da marca: foto do Mário com clientes e vídeo do Pedro Senra (cliente)
+          lado a lado à esquerda (fixos enquanto se lê, em desktop) e as avaliações todas à vista à direita.
+          Em telemóvel: título, foto e vídeo, avaliações. */}
       {realReviews.length > 0 && (
         <section aria-labelledby="reviews-title" className="px-2 md:px-4">
           <div className="on-dark rounded-[28px] bg-[linear-gradient(160deg,#118193_0%,#0d6b7a_50%,#0c6372_100%)] text-white md:rounded-[34px]">
-            <div className="container-x grid gap-10 py-20 md:py-28 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-x-16 lg:gap-y-12 xl:gap-x-24">
+            <div className="container-x grid gap-10 py-20 md:py-28 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-12 xl:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] xl:gap-x-24">
               <div className="lg:col-start-2">
                 <h2 id="reviews-title" className="t-h1 max-w-xl">
                   {h.reviews.title}
                 </h2>
                 <p className="mt-5 max-w-lg text-lg leading-relaxed">{h.reviews.intro}</p>
               </div>
-              <figure className="lg:sticky lg:top-28 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:self-start">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-[24px] shadow-[0_24px_50px_-28px_rgba(6,40,46,.6)] md:aspect-[3/2] lg:aspect-[3/4]">
-                  <Media id="athletes" locale={locale} cover sizes="(min-width: 1024px) 40vw, 100vw" />
-                </div>
-                <figcaption className="mt-3 text-sm">{h.reviews.photoCaption}</figcaption>
-              </figure>
+              <div className="grid grid-cols-2 items-start gap-3 sm:gap-4 lg:sticky lg:top-28 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:self-start">
+                <figure>
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-[22px] shadow-[0_24px_50px_-28px_rgba(6,40,46,.6)]">
+                    <Media id="athletes" locale={locale} cover sizes="(min-width: 1280px) 18vw, (min-width: 1024px) 22vw, 48vw" />
+                  </div>
+                  <figcaption className="mt-3 text-sm">{h.reviews.photoCaption}</figcaption>
+                </figure>
+                <VideoCard
+                  video={clientVideo}
+                  labels={videoLabels}
+                  sizes="(min-width: 1280px) 18vw, (min-width: 1024px) 22vw, 48vw"
+                  className="mt-10 shadow-[0_24px_50px_-28px_rgba(6,40,46,.6)] sm:mt-16"
+                />
+              </div>
               <div className="lg:col-start-2">
                 <Testimonials
                   reviews={realReviews}

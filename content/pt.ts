@@ -290,8 +290,8 @@ export const pt = {
     },
     videos: {
       title: "A Fisio4you na primeira pessoa",
-      intro: "Conheça quem está à frente da clínica e ouça quem já cá treina e recupera.",
-      items: ["video-mario", "video-angela", "video-pedro", "video-circuito"],
+      intro: "Conheça quem está à frente da clínica e veja como se treina e recupera cá dentro.",
+      items: ["video-mario", "video-angela", "video-circuito"],
     },
     visit: {
       title: "Por dentro da clínica",

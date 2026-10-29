@@ -202,8 +202,8 @@ export const en: Dict = {
     },
     videos: {
       title: "Fisio4you, in their own words",
-      intro: "Meet the people who run the clinic and hear from those who train and recover here. Videos in Portuguese.",
-      items: ["video-mario", "video-angela", "video-pedro", "video-circuito"],
+      intro: "Meet the people who run the clinic and see how training and recovery work here. Videos in Portuguese.",
+      items: ["video-mario", "video-angela", "video-circuito"],
     },
     visit: {
       title: "Inside the clinic",
