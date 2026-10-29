@@ -29,11 +29,14 @@ Tudo o que no site aparece como `[[ ]]` (ou tem um comentário `[[ ]]` no códig
 | 16 | **"O mesmo fisioterapeuta do início ao fim"** — é verdade? | `home.why.items[3]` |
 | 17 | **Precisa de prescrição médica?** (FAQ Musculoesquelética) | `services.msk.faq[0]` |
 | 18 | **Pós-parto:** validar resposta "Quando posso começar?" | `services.dermato.faq[0]` |
-| 19 | **Ginásio:** pode ser usado sem fisioterapia? | `services.msk.faq[4]` |
-| 20 | **Crioterapia/sauna:** sessões avulsas? Só uma das duas? Duração e preços | `services.msk.modules[2]`, `duration`, `faq[4]` |
+| 19 | **Ginásio:** pode ser usado sem fisioterapia? | `services.msk.faq[6]` |
+| 20 | **Crioterapia/sauna:** sessões avulsas? Só uma das duas? Duração e preços | `services.msk.modules[2]`, `duration`, `faq[6]` |
 | 21 | **Duração das sessões e preços** (mostrar ou não) | `duration.text` de cada serviço |
 | 22 | **Estacionamento, referência de localização e acessibilidade** | `ctaFinal.directions.text`, `contact.access` |
 | 23 | **Seguros/subsistemas:** remover ou atualizar a linha quando houver acordos | `home.insurance` |
+| 29 | **Dermatofuncional, textos novos (já publicados, a validar com a Angela):** esquema "O que é a diástase abdominal" (3 fases), "Como avaliamos", lista "Reconhece-se em alguma destas situações?", detalhe de cada passo de "Como funciona" e as perguntas novas (como saber se tenho diástase, parto há anos, cicatriz de cesariana) | `services.dermato.explainer`, `signs`, `how.steps[].details`, `faq[1]`, `faq[3]`, `faq[4]` |
+| 30 | **Fisioterapeuta de cada serviço:** a página da Musculoesquelética mostra o Mário e a da Dermatofuncional a Angela (com o vídeo de cada um). Confirmar que é assim que dividem as áreas | `services.*.specialist` |
+| 31 | **Musculoesquelética, textos novos (a validar com o Mário):** detalhe de cada passo de "Como funciona" e as perguntas "Tenho esta dor há meses" e "ecografia vs. ressonância" | `services.msk.how.steps[].details`, `faq[2]`, `faq[4]` |
 
 ## 🟢 Técnico
 

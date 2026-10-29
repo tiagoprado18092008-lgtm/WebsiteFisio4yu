@@ -6,7 +6,6 @@ export const en: Dict = {
   locale: "en",
   htmlLang: "en",
   common: {
-    skip: "Skip to content",
     bookAssessment: "Book an assessment",
     whatsappCta: "Book an assessment on WhatsApp",
     whatsapp: "WhatsApp",
@@ -95,10 +94,30 @@ export const en: Dict = {
     advantages: {
       title: "What makes the difference in your recovery",
       items: [
-        { title: "Ultrasound assessment", text: "We see muscles, tendons and ligaments in real time, so we treat the cause and not just the symptom." },
-        { title: "Everything under one roof", text: "Physiotherapy, a 100 m² rehabilitation gym, ice bath and sauna, with no running between places." },
-        { title: "Active rehab, all the way back", text: "Supervised, progressive exercise with clear criteria for returning to training and competition." },
-        { title: "16 years of experience", text: "Mário has 16 years of experience treating injuries and guiding recoveries." },
+        {
+          title: "Ultrasound assessment",
+          text: "We see muscles, tendons and ligaments in real time, so we treat the cause and not just the symptom.",
+          media: "service-eco",
+          link: { label: "How we use ultrasound", page: "service:msk", hash: "ecografia" },
+        },
+        {
+          title: "Everything under one roof",
+          text: "Physiotherapy, a 100 m² rehabilitation gym, ice bath and sauna, with no running between places.",
+          media: "brand-room",
+          link: { label: "See the facilities", page: "about", hash: "galeria" },
+        },
+        {
+          title: "Active rehab, all the way back",
+          text: "Supervised, progressive exercise with clear criteria for returning to training and competition.",
+          media: "service-gym",
+          link: { label: "Explore the gym", page: "service:msk", hash: "ginasio" },
+        },
+        {
+          title: "16 years of experience",
+          text: "Mário has 16 years of experience treating injuries and guiding recoveries.",
+          media: "advantages-therapy",
+          link: { label: "Meet the team", page: "about", hash: "equipa" },
+        },
       ],
     },
     hub: {
@@ -311,6 +330,8 @@ export const en: Dict = {
     faqShort: "FAQ",
     onThisPage: "On this page",
     related: "Also available",
+    where: "Where it hurts",
+    inStep: "At this stage",
   },
 
   services: {
@@ -325,6 +346,14 @@ export const en: Dict = {
       },
       heroTitle: "Musculoskeletal Physiotherapy",
       heroSub: "Find the source of your pain or injury and treat it methodically — with ultrasound, a rehabilitation gym and recovery facilities under one roof.",
+      facts: [
+        { icon: "scan", text: "Ultrasound in assessment" },
+        { icon: "dumbbell", text: "100 m² rehabilitation gym" },
+        { icon: "snowflake", text: "Ice bath and sauna" },
+        { icon: "clock", text: "Mário Barroso, 16 years' experience" },
+      ],
+      specialist: "team-mario",
+      bodyMap: true,
       forWho: {
         title: "Conditions we treat",
         intro: "For athletes, active people and anyone who wants to move without pain again.",
@@ -401,11 +430,31 @@ export const en: Dict = {
       ],
       how: {
         title: "How it works",
+        intro: "Four steps, from your first assessment to discharge. At each one, you'll know what we're doing and why.",
         steps: [
-          { title: "Assessment", text: "Clinical history, movement testing and, when indicated, ultrasound." },
-          { title: "Plan", text: "Concrete goals and realistic timelines, tailored to your activity." },
-          { title: "Treatment + gym", text: "Manual therapy, ultrasound-guided techniques when indicated, and supervised exercise." },
-          { title: "Discharge & prevention", text: "An exercise plan to keep your results and prevent relapses." },
+          {
+            title: "Assessment",
+            text: "Clinical history, movement testing and, when indicated, ultrasound.",
+            details: ["A conversation about your injury, your routine and your goals", "Movement, strength and mobility tests", "Ultrasound, when it helps us understand the injury"],
+            uses: ["ecografia"],
+          },
+          {
+            title: "Plan",
+            text: "Concrete goals and realistic timelines, tailored to your activity.",
+            details: ["Goals for each stage of your recovery", "An estimate of the number of sessions, reviewed as you progress"],
+          },
+          {
+            title: "Treatment + gym",
+            text: "Manual therapy, ultrasound-guided techniques when indicated, and supervised exercise.",
+            details: ["Manual therapy and ultrasound-guided techniques, when indicated", "Supervised exercise with progressive load", "Regular reassessment to adjust the plan"],
+            uses: ["ecografia", "ginasio"],
+          },
+          {
+            title: "Discharge & prevention",
+            text: "An exercise plan to keep your results and prevent relapses.",
+            details: ["Clear criteria to get back to training and competing", "Exercises to keep your results, at home or in training"],
+            uses: ["ginasio", "recuperacao"],
+          },
         ],
       },
       distinct: {
@@ -420,7 +469,9 @@ export const en: Dict = {
       faq: [
         { q: "Do I need a doctor's referral?", a: "[[confirm with Mário]] Message or call us and we'll advise on your situation." },
         { q: "How many sessions will I need?", a: "It depends on the injury, how long you've had it and your goals. We set a plan and an estimate at the first assessment and adjust it as you progress." },
+        { q: "I've had this pain for months. Is it still worth coming?", a: "Yes. Many people come to us with pain that has dragged on for months. The assessment helps us understand what's keeping the problem going and set a realistic plan." },
         { q: "Does ultrasound hurt or use radiation?", a: "No. It's painless — we apply a gel and glide the probe over your skin — and it uses sound waves, with no radiation." },
+        { q: "How is ultrasound different from an MRI?", a: "Ultrasound shows muscles, tendons and ligaments in real time, at rest and in motion, and can be repeated throughout treatment. An MRI is a diagnostic scan requested by a doctor. In physiotherapy we use ultrasound to assess and monitor, not to replace medical imaging." },
         { q: "Can I keep training during treatment?", a: "Often yes, with adjustments. We adapt your training load to your stage of recovery so you can stay active safely." },
         { q: "Can I use the gym, ice bath or sauna without physiotherapy?", a: "[[confirm with Mário]] Get in touch to find out what's available." },
         { q: "What should I bring to my first appointment?", a: "Comfortable clothing that allows us to assess the affected area and, if you have them, any scans or medical reports." },
@@ -438,6 +489,63 @@ export const en: Dict = {
       },
       heroTitle: "Dermatofunctional Physiotherapy",
       heroSub: "Close, discreet support to restore your core, pelvic floor and tissues after childbirth or surgery.",
+      facts: [
+        { icon: "baby", text: "Postnatal care and diastasis recti" },
+        { icon: "sparkles", text: "Scars and adhesions" },
+        { icon: "scan", text: "Ultrasound to track progress" },
+        { icon: "heart", text: "Angela Brazona, physiotherapist" },
+      ],
+      specialist: "team-angela",
+      explainer: {
+        nav: "Diastasis",
+        title: "What is diastasis recti?",
+        intro: "It's a separation of the two rectus abdominis muscles along the middle of your tummy. Choose a stage to see what happens.",
+        stagesLabel: "Stages",
+        legend: { muscle: "Rectus abdominis muscles", linea: "Linea alba", gap: "Gap between the muscles" },
+        stages: [
+          {
+            label: "Before pregnancy",
+            title: "Side by side",
+            text: "The two rectus abdominis muscles sit side by side, joined in the middle by the linea alba, a firm band of tissue that gives your tummy stability.",
+          },
+          {
+            label: "During pregnancy",
+            title: "Making room for the baby",
+            text: "As your bump grows, the linea alba stretches and widens and the muscles move apart. This is a normal adaptation of the body.",
+          },
+          {
+            label: "After birth",
+            title: "When the gap stays",
+            text: "For many women the gap narrows in the months after birth. When it doesn't, and the tummy still lacks firmness, we call it diastasis recti.",
+          },
+        ],
+        assessTitle: "How we assess it",
+        assess: [
+          "We measure the width and depth of the gap, with our fingers and, when indicated, with ultrasound.",
+          "We look at how the abdominal wall responds when you breathe, push and move.",
+          "We repeat the assessment during your care, so progress can be tracked objectively.",
+        ],
+      },
+      signs: {
+        nav: "Signs",
+        title: "Does any of this sound like you?",
+        intro: "Select whatever applies. Your selection is written into the WhatsApp message, so we can prepare your assessment.",
+        items: [
+          "A bulge or dip along the middle of your tummy when you sit up or strain",
+          "A tummy that still feels weak, even months after birth",
+          "Back pain or pain around the pelvis",
+          "Leaking urine when you cough, laugh or jump",
+          "A C-section scar that pulls, feels stuck or has altered sensation",
+          "I want to get back to training or running safely",
+        ],
+        countOne: "1 item selected",
+        countMany: "{n} items selected",
+        none: "Nothing selected yet",
+        noneHint: "You can still send us a message.",
+        messageIntro: "These apply to me:",
+        send: "Send my selection on WhatsApp",
+        note: "This isn't a diagnosis. It just tells us about your case before the assessment.",
+      },
       forWho: {
         title: "What we help with",
         intro: "A space you can trust, at your own pace and with full respect for your privacy.",
@@ -451,11 +559,28 @@ export const en: Dict = {
       },
       how: {
         title: "How it works",
+        intro: "At your own pace, with every step explained, from the first conversation until you feel confident.",
         steps: [
-          { title: "Conversation & assessment", text: "We listen to your story and assess carefully, with ultrasound when indicated." },
-          { title: "Plan", text: "Realistic goals, adapted to your stage and routine." },
-          { title: "Sessions", text: "Manual techniques and guided exercise, with every step explained." },
-          { title: "Independence", text: "Home exercises and follow-up until you feel confident." },
+          {
+            title: "Conversation & assessment",
+            text: "We listen to your story and assess carefully, with ultrasound when indicated.",
+            details: ["Your pregnancy, birth, any previous surgery and how you feel today", "Assessment of your abdominal wall, posture and breathing"],
+          },
+          {
+            title: "Plan",
+            text: "Realistic goals, adapted to your stage and routine.",
+            details: ["Weeks, months or years after birth: the plan starts from where you are", "Exercises that fit into your day"],
+          },
+          {
+            title: "Sessions",
+            text: "Manual techniques and guided exercise, with every step explained.",
+            details: ["Breathing, posture and connecting with your deep core and pelvic floor", "Progressive strengthening of the abdominal wall", "Manual techniques, including for scars and adhesions"],
+          },
+          {
+            title: "Independence",
+            text: "Home exercises and follow-up until you feel confident.",
+            details: ["Home exercises, explained and reviewed in your sessions", "A gradual return to exercise, running or sport"],
+          },
         ],
       },
       distinct: {
@@ -469,11 +594,13 @@ export const en: Dict = {
       },
       faq: [
         { q: "How soon after giving birth can I start?", a: "It depends on the type of birth, how your recovery has gone and your doctor's advice. Get in touch and we'll help you work out the right time." },
+        { q: "How do I know if I have diastasis recti?", a: "Common signs include a bulge or dip along the middle of your tummy when you sit up or strain, and a feeling that your tummy is weak. Only an assessment can confirm it, by touch and, when indicated, with ultrasound." },
         { q: "Can diastasis recti be treated without surgery?", a: "Many cases improve with physiotherapy and specific exercise, but every case is different. An assessment shows where you're starting from and what's realistic." },
+        { q: "I gave birth years ago. Is it still worth it?", a: "Yes. Diastasis recti, abdominal weakness and scars can be assessed and worked on long after giving birth. The assessment shows where you're starting from and what's realistic." },
+        { q: "Can a C-section scar be treated?", a: "Once the scar has closed and healed, physiotherapy works on the mobility of the skin and surrounding tissue. It can help when the scar pulls, feels stuck or has altered sensation." },
         { q: "What is the first assessment like?", a: "We start with a conversation about your history and goals, followed by a careful assessment explained step by step, with full respect for your privacy." },
       ],
       related: ["msk"],
-      video: "video-angela",
     },
   },
 

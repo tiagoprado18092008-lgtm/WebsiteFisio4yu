@@ -88,14 +88,14 @@ const items: MediaItem[] = [
     brief: "Instalações: salas, ginásio, equipamento.",
   })),
   {
-    // Coluna alta da colagem da secção de vantagens (home). O ginásio passou para o hero.
+    // Foto do ponto "16 anos de experiência" na secção de vantagens (home), recortada quase quadrada: foco no rosto.
     id: "advantages-therapy",
     type: "image",
     src: photo.manualTherapy,
     ratio: "9/16",
     alt: { pt: "Mário Barroso, fisioterapeuta, a fazer terapia manual na coxa de um utente", en: "Mário Barroso, physiotherapist, giving manual therapy to a patient's thigh" },
-    brief: "Terapia manual (coluna alta da colagem, home).",
-    position: "55% 50%",
+    brief: "Terapia manual (foto do ponto \"16 anos de experiência\", home).",
+    position: "55% 18%",
   },
   {
     id: "brand-room",

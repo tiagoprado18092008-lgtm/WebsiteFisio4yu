@@ -101,27 +101,18 @@ export function HomePage({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      {/* Vantagens: lista em acordeão + colagem de fotos reais do espaço */}
+      {/* Vantagens: acordeão em que cada ponto mostra a sua foto real e leva à secção onde se vê mais */}
       <Section tone="light" labelledBy="vantagens-title">
-        <h2 id="vantagens-title" className="t-h2 mx-auto max-w-2xl text-center">
-          {h.advantages.title}
-        </h2>
-        <div className="mt-14 grid items-start gap-12 md:mt-20 md:grid-cols-[1fr_1.1fr] md:gap-16 lg:gap-24">
-          <Advantages items={h.advantages.items} />
-          <div className="grid grid-cols-2 gap-3 sm:gap-4">
-            <div className="grid gap-3 sm:gap-4">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[22px]">
-                <Media id="brand-room" locale={locale} cover sizes="(min-width: 768px) 25vw, 50vw" />
-              </div>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[22px]">
-                <Media id="jerseys" locale={locale} cover sizes="(min-width: 768px) 25vw, 50vw" />
-              </div>
-            </div>
-            <div className="relative overflow-hidden rounded-[22px]">
-              <Media id="advantages-therapy" locale={locale} cover sizes="(min-width: 768px) 25vw, 50vw" />
-            </div>
-          </div>
-        </div>
+        <Advantages
+          title={h.advantages.title}
+          titleId="vantagens-title"
+          items={h.advantages.items.map((it) => ({
+            title: it.title,
+            text: it.text,
+            media: <Media id={it.media} locale={locale} cover sizes="(min-width: 768px) 50vw, 100vw" />,
+            link: { label: it.link.label, href: href(locale, it.link.page, it.link.hash) },
+          }))}
+        />
       </Section>
 
       {/* Tudo num só espaço: os quatro recursos da clínica, cada um com ligação direta */}

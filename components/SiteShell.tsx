@@ -15,9 +15,6 @@ export function SiteShell({ locale, page, waMessage, children }: { locale: Local
   const other = otherLocale(locale);
   return (
     <ConsentProvider banner={{ ...t.cookieBanner, href: href(locale, "cookies") }}>
-        <a href="#conteudo" className="sr-only z-[80] rounded bg-white px-4 py-2 text-ink focus:not-sr-only focus:fixed focus:left-4 focus:top-4">
-          {t.common.skip}
-        </a>
         <div className="p-2 md:p-2.5 xl:p-3">
         <div className="mx-auto max-w-[2200px] overflow-clip rounded-[22px] bg-white md:rounded-[34px]">
         <Header

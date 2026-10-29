@@ -1,7 +1,7 @@
 // Conteúdo em português europeu. Nenhum componente deve ter texto fora de content/.
 // {s} = nome do serviço · {p} = zona/problema · {n} = número
 
-import type { Locale, ServiceKey } from "@/lib/routes";
+import type { Locale, PageKey, ServiceKey } from "@/lib/routes";
 
 export type IconName =
   | "activity" | "bone" | "heart" | "snowflake" | "flame" | "dumbbell" | "scan" | "baby"
@@ -9,6 +9,8 @@ export type IconName =
   | "footprints" | "clipboard" | "stethoscope" | "brain" | "flower" | "clock" | "mappin";
 
 type Item = { icon: IconName; title: string; text: string };
+/** Vantagem da home: a foto (id em content/media.ts) troca com o ponto aberto; o link leva a quem quer ver mais. */
+type Advantage = { title: string; text: string; media: string; link: { label: string; page: PageKey; hash?: string } };
 type Faq = { q: string; a: string };
 type LegalSection = { h: string; p: string[] };
 
@@ -29,6 +31,40 @@ export type ServiceModule = {
   video?: string;
 };
 
+/** Passo do percurso. `uses`: ids dos recursos (`modules`) usados nesse passo, mostrados como links. */
+type Step = { title: string; text: string; details?: string[]; uses?: string[] };
+
+/**
+ * Esquema interativo da diástase abdominal (components/DiastasisExplorer.tsx).
+ * `stages` tem sempre 3 fases, por esta ordem: antes da gravidez, na gravidez, depois do parto (o desenho segue a ordem).
+ */
+export type ServiceExplainer = {
+  nav: string;
+  title: string;
+  intro: string;
+  stagesLabel: string;
+  legend: { muscle: string; linea: string; gap: string };
+  stages: { label: string; title: string; text: string }[];
+  assessTitle: string;
+  assess: string[];
+};
+
+/** Lista de situações para selecionar; a seleção segue escrita na mensagem de WhatsApp (components/SignsChecklist.tsx). */
+export type ServiceSigns = {
+  nav: string;
+  title: string;
+  intro: string;
+  items: string[];
+  /** {n} = número de situações selecionadas */
+  countOne: string;
+  countMany: string;
+  none: string;
+  noneHint: string;
+  messageIntro: string;
+  send: string;
+  note: string;
+};
+
 export type ServiceContent = {
   name: string;
   short: string;
@@ -36,23 +72,28 @@ export type ServiceContent = {
   meta: { title: string; description: string };
   heroTitle: string;
   heroSub: string;
+  /** Factos curtos no fundo do hero. */
+  facts: { icon: IconName; text: string }[];
+  /** Fisioterapeuta à frente do serviço: `media` de uma pessoa em `team`. */
+  specialist?: string;
+  /** Mostra o mapa do corpo (texto em `home.bodyMap`). */
+  bodyMap?: boolean;
+  explainer?: ServiceExplainer;
+  signs?: ServiceSigns;
   forWho: { title: string; intro: string; items: Item[] };
-  how: { title: string; steps: { title: string; text: string }[] };
+  how: { title: string; intro?: string; steps: Step[] };
   distinct: { title: string; text: string; points: string[] };
   includes?: { title: string; intro: string };
   modules?: ServiceModule[];
   duration: { title: string; text: string };
   faq: Faq[];
   related: ServiceKey[];
-  /** Vídeo (id em content/media.ts) na secção "O que nos distingue". */
-  video?: string;
 };
 
 export const pt = {
   locale: "pt" as Locale,
   htmlLang: "pt-PT",
   common: {
-    skip: "Saltar para o conteúdo",
     bookAssessment: "Marcar avaliação",
     whatsappCta: "Marcar avaliação no WhatsApp",
     whatsapp: "WhatsApp",
@@ -141,11 +182,31 @@ export const pt = {
     advantages: {
       title: "O que faz a diferença na sua recuperação",
       items: [
-        { title: "Avaliação com ecografia", text: "Vemos músculos, tendões e ligamentos em tempo real, para tratar a causa e não só o sintoma." },
-        { title: "Tudo no mesmo espaço", text: "Fisioterapia, ginásio de reabilitação de 100 m², banheira de gelo e sauna, sem andar de um sítio para o outro." },
-        { title: "Reabilitação ativa até ao regresso", text: "Exercício supervisionado e progressivo, com critérios claros para voltar a treinar e competir." },
-        { title: "16 anos de experiência", text: "O Mário tem 16 anos de experiência a tratar lesões e a acompanhar recuperações." },
-      ],
+        {
+          title: "Avaliação com ecografia",
+          text: "Vemos músculos, tendões e ligamentos em tempo real, para tratar a causa e não só o sintoma.",
+          media: "service-eco",
+          link: { label: "Como usamos a ecografia", page: "service:msk", hash: "ecografia" },
+        },
+        {
+          title: "Tudo no mesmo espaço",
+          text: "Fisioterapia, ginásio de reabilitação de 100 m², banheira de gelo e sauna, sem andar de um sítio para o outro.",
+          media: "brand-room",
+          link: { label: "Ver as instalações", page: "about", hash: "galeria" },
+        },
+        {
+          title: "Reabilitação ativa até ao regresso",
+          text: "Exercício supervisionado e progressivo, com critérios claros para voltar a treinar e competir.",
+          media: "service-gym",
+          link: { label: "Conhecer o ginásio", page: "service:msk", hash: "ginasio" },
+        },
+        {
+          title: "16 anos de experiência",
+          text: "O Mário tem 16 anos de experiência a tratar lesões e a acompanhar recuperações.",
+          media: "advantages-therapy",
+          link: { label: "Conhecer a equipa", page: "about", hash: "equipa" },
+        },
+      ] as Advantage[],
     },
     hub: {
       title: "Tudo o que a sua recuperação precisa, num só espaço",
@@ -360,6 +421,8 @@ export const pt = {
     faqShort: "Perguntas",
     onThisPage: "Nesta página",
     related: "Também disponível",
+    where: "Onde dói",
+    inStep: "Nesta fase",
   },
 
   services: <Record<ServiceKey, ServiceContent>>{
@@ -374,6 +437,14 @@ export const pt = {
       },
       heroTitle: "Fisioterapia Musculoesquelética",
       heroSub: "Perceber a origem da dor ou da lesão e tratá-la com método — com ecografia, ginásio de reabilitação e recuperação no mesmo espaço.",
+      facts: [
+        { icon: "scan", text: "Ecografia na avaliação" },
+        { icon: "dumbbell", text: "Ginásio de reabilitação com 100 m²" },
+        { icon: "snowflake", text: "Banheira de gelo e sauna" },
+        { icon: "clock", text: "Mário Barroso, 16 anos de experiência" },
+      ],
+      specialist: "team-mario",
+      bodyMap: true,
       forWho: {
         title: "Situações que acompanhamos",
         intro: "Para desportistas, pessoas ativas e para quem quer voltar a mexer-se sem dor.",
@@ -450,11 +521,31 @@ export const pt = {
       ],
       how: {
         title: "Como funciona",
+        intro: "Quatro passos, da primeira avaliação à alta. Em cada um, sabe o que estamos a fazer e porquê.",
         steps: [
-          { title: "Avaliação", text: "História clínica, testes de movimento e, quando indicado, ecografia." },
-          { title: "Plano", text: "Objetivos concretos e prazos realistas, ajustados à sua atividade." },
-          { title: "Tratamento + ginásio", text: "Terapia manual, técnicas ecoguiadas quando indicadas e exercício supervisionado." },
-          { title: "Alta e prevenção", text: "Plano de exercícios para manter os resultados e evitar recaídas." },
+          {
+            title: "Avaliação",
+            text: "História clínica, testes de movimento e, quando indicado, ecografia.",
+            details: ["Conversa sobre a lesão, a sua rotina e os seus objetivos", "Testes de movimento, força e mobilidade", "Ecografia, quando ajuda a perceber a lesão"],
+            uses: ["ecografia"],
+          },
+          {
+            title: "Plano",
+            text: "Objetivos concretos e prazos realistas, ajustados à sua atividade.",
+            details: ["Objetivos para cada fase da recuperação", "Uma estimativa do número de sessões, revista ao longo do tratamento"],
+          },
+          {
+            title: "Tratamento + ginásio",
+            text: "Terapia manual, técnicas ecoguiadas quando indicadas e exercício supervisionado.",
+            details: ["Terapia manual e técnicas ecoguiadas, quando indicadas", "Exercício supervisionado, com carga progressiva", "Reavaliação regular para ajustar o plano"],
+            uses: ["ecografia", "ginasio"],
+          },
+          {
+            title: "Alta e prevenção",
+            text: "Plano de exercícios para manter os resultados e evitar recaídas.",
+            details: ["Critérios claros para voltar a treinar e competir", "Exercícios para manter os resultados em casa ou no treino"],
+            uses: ["ginasio", "recuperacao"],
+          },
         ],
       },
       distinct: {
@@ -469,7 +560,9 @@ export const pt = {
       faq: [
         { q: "Preciso de prescrição médica?", a: "[[confirmar com o Mário]] Fale connosco por WhatsApp ou telefone e esclarecemos a sua situação." },
         { q: "Quantas sessões vou precisar?", a: "Depende da lesão, do tempo de evolução e dos seus objetivos. Na avaliação inicial definimos um plano e uma estimativa, que vamos ajustando ao longo do tratamento." },
+        { q: "Tenho esta dor há meses. Ainda vale a pena?", a: "Sim. Muitas pessoas chegam com dores que se arrastam há meses. A avaliação serve para perceber o que está a manter o problema e definir um plano realista." },
         { q: "A ecografia dói ou usa radiação?", a: "Não. É indolor — apenas se coloca um gel e se desliza a sonda sobre a pele — e utiliza ultrassons, sem radiação." },
+        { q: "Qual a diferença entre a ecografia e uma ressonância magnética?", a: "A ecografia mostra músculos, tendões e ligamentos em tempo real, em repouso e em movimento, e pode repetir-se ao longo do tratamento. A ressonância magnética é um exame de diagnóstico pedido pelo médico. Na fisioterapia usamos a ecografia para avaliar e acompanhar, sem substituir os exames médicos." },
         { q: "Posso continuar a treinar durante o tratamento?", a: "Muitas vezes sim, com adaptações. Ajustamos a carga de treino à fase da recuperação para que se mantenha ativo com segurança." },
         { q: "Posso usar o ginásio, a banheira de gelo ou a sauna sem fazer fisioterapia?", a: "[[confirmar com o Mário]] Fale connosco para saber as opções disponíveis." },
         { q: "O que devo levar para a primeira consulta?", a: "Roupa confortável que permita avaliar a zona afetada e, se tiver, exames e relatórios médicos." },
@@ -487,6 +580,64 @@ export const pt = {
       },
       heroTitle: "Fisioterapia Dermatofuncional",
       heroSub: "Acompanhamento próximo e discreto para recuperar o abdómen, o pavimento pélvico e os tecidos após o parto ou a cirurgia.",
+      facts: [
+        { icon: "baby", text: "Pós-parto e diástase abdominal" },
+        { icon: "sparkles", text: "Cicatrizes e aderências" },
+        { icon: "scan", text: "Ecografia para acompanhar a evolução" },
+        { icon: "heart", text: "Angela Brazona, fisioterapeuta" },
+      ],
+      specialist: "team-angela",
+      // [[validar com a Angela: texto do esquema da diástase, "Como avaliamos" e lista de sinais]]
+      explainer: {
+        nav: "A diástase",
+        title: "O que é a diástase abdominal",
+        intro: "É a separação dos dois músculos retos do abdómen, ao longo do meio da barriga. Escolha uma fase para ver o que acontece.",
+        stagesLabel: "Fases",
+        legend: { muscle: "Músculos retos do abdómen", linea: "Linha alba", gap: "Distância entre os retos" },
+        stages: [
+          {
+            label: "Antes da gravidez",
+            title: "Lado a lado",
+            text: "Os dois músculos retos do abdómen ficam lado a lado, unidos ao centro pela linha alba, um tecido firme que dá estabilidade à barriga.",
+          },
+          {
+            label: "Na gravidez",
+            title: "Espaço para o bebé",
+            text: "Com o crescimento da barriga, a linha alba estica e alarga e os músculos afastam-se. É uma adaptação normal do corpo.",
+          },
+          {
+            label: "Depois do parto",
+            title: "Quando a separação fica",
+            text: "Em muitas mulheres, a separação diminui nos meses a seguir ao parto. Quando se mantém e a barriga continua sem firmeza, falamos de diástase abdominal.",
+          },
+        ],
+        assessTitle: "Como avaliamos",
+        assess: [
+          "Medimos a largura e a profundidade da separação, com os dedos e, quando indicado, com ecografia.",
+          "Vemos como a parede abdominal responde ao respirar, ao fazer força e ao mexer-se.",
+          "Repetimos a avaliação ao longo do acompanhamento, para ver a evolução de forma objetiva.",
+        ],
+      },
+      signs: {
+        nav: "Sinais",
+        title: "Reconhece-se em alguma destas situações?",
+        intro: "Selecione o que se aplica a si. A sua seleção segue escrita na mensagem de WhatsApp, para prepararmos a avaliação.",
+        items: [
+          "Uma saliência ou um afundamento ao longo do meio da barriga quando se levanta ou faz força",
+          "Barriga sem firmeza, mesmo meses depois do parto",
+          "Dor nas costas ou na zona da bacia",
+          "Perdas de urina ao tossir, rir ou saltar",
+          "Cicatriz de cesariana que repuxa, parece presa ou tem a sensibilidade alterada",
+          "Quero voltar a treinar ou a correr em segurança",
+        ],
+        countOne: "1 situação selecionada",
+        countMany: "{n} situações selecionadas",
+        none: "Nenhuma situação selecionada",
+        noneHint: "Pode enviar mensagem na mesma.",
+        messageIntro: "Reconheço-me nestas situações:",
+        send: "Enviar a minha seleção no WhatsApp",
+        note: "Não é um diagnóstico. Serve só para nos contar o seu caso antes da avaliação.",
+      },
       forWho: {
         title: "Situações que acompanhamos",
         intro: "Um espaço de confiança, ao seu ritmo e com todo o respeito pela sua privacidade.",
@@ -500,11 +651,29 @@ export const pt = {
       },
       how: {
         title: "Como funciona",
+        intro: "Ao seu ritmo e com cada passo explicado, da primeira conversa até se sentir segura.",
+        // [[validar com a Angela: detalhe de cada passo]]
         steps: [
-          { title: "Conversa e avaliação", text: "Ouvimos a sua história e avaliamos com cuidado, quando indicado com ecografia." },
-          { title: "Plano", text: "Objetivos realistas, adaptados à sua fase e à sua rotina." },
-          { title: "Sessões", text: "Técnicas manuais e exercício orientado, sempre com explicação de cada passo." },
-          { title: "Autonomia", text: "Exercícios para casa e acompanhamento até se sentir segura." },
+          {
+            title: "Conversa e avaliação",
+            text: "Ouvimos a sua história e avaliamos com cuidado, quando indicado com ecografia.",
+            details: ["A gravidez, o parto, cirurgias anteriores e o que sente hoje", "Avaliação da parede abdominal, da postura e da respiração"],
+          },
+          {
+            title: "Plano",
+            text: "Objetivos realistas, adaptados à sua fase e à sua rotina.",
+            details: ["Semanas, meses ou anos depois do parto: o plano parte do seu ponto de partida", "Exercícios que cabem no seu dia a dia"],
+          },
+          {
+            title: "Sessões",
+            text: "Técnicas manuais e exercício orientado, sempre com explicação de cada passo.",
+            details: ["Respiração, postura e ligação ao abdómen profundo e ao pavimento pélvico", "Fortalecimento progressivo da parede abdominal", "Técnicas manuais, também para cicatrizes e aderências"],
+          },
+          {
+            title: "Autonomia",
+            text: "Exercícios para casa e acompanhamento até se sentir segura.",
+            details: ["Exercícios para casa, explicados e revistos nas sessões", "Regresso gradual ao exercício, à corrida ou ao desporto"],
+          },
         ],
       },
       distinct: {
@@ -518,11 +687,13 @@ export const pt = {
       },
       faq: [
         { q: "Quando posso começar depois do parto?", a: "Depende do tipo de parto, de como correu a recuperação e da indicação do seu médico. Fale connosco e ajudamos a perceber qual o melhor momento. [[validar com o Mário]]" },
+        { q: "Como sei se tenho diástase abdominal?", a: "Alguns sinais comuns são uma saliência ou um afundamento ao longo do meio da barriga quando se levanta da cama ou faz força, e a sensação de barriga fraca. Só a avaliação confirma, com palpação e, quando indicado, ecografia." },
         { q: "A diástase tem tratamento sem cirurgia?", a: "Muitas situações melhoram com fisioterapia e exercício específico, mas cada caso é diferente. A avaliação permite perceber o seu ponto de partida e o que é realista esperar." },
+        { q: "O parto já foi há anos. Ainda faz sentido?", a: "Sim. A diástase, a fraqueza abdominal e as cicatrizes podem ser avaliadas e trabalhadas muito depois do parto. A avaliação mostra de onde parte e o que é realista esperar." },
+        { q: "A cicatriz de cesariana pode ser trabalhada?", a: "Depois de a cicatriz estar fechada e sarada, a fisioterapia trabalha a mobilidade da pele e dos tecidos à volta. Pode ajudar quando a cicatriz repuxa, parece presa ou tem a sensibilidade alterada." }, // [[validar com a Angela]]
         { q: "Como é a primeira avaliação?", a: "Começamos por uma conversa sobre a sua história e objetivos, seguida de uma avaliação cuidada e explicada passo a passo, com total respeito pela sua privacidade." },
       ],
       related: ["msk"],
-      video: "video-angela",
     },
   },
 

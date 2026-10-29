@@ -171,8 +171,13 @@ p, li, dd, blockquote { text-wrap: pretty; }
 }
 .bm-swap { animation: swap-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both; }
 
+/* Esquema da diástase: os músculos e a linha alba deslizam entre fases */
+.dx-move { transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), fill 0.6s ease; }
+.dx-fade { transition: opacity 0.5s ease; }
+
 @media (prefers-reduced-motion: reduce) {
   .hero-in > *, .pulse, .bm-swap, .menu-sheet, .menu-backdrop { animation: none; }
+  .dx-move, .dx-fade { transition: none; }
 }
 
 details > summary { list-style: none; }
