@@ -84,9 +84,9 @@ export const en: Dict = {
   home: {
     hero: {
       eyebrow: "Rehabilitation Centre · Portimão",
-      lines: ["We see the injury.", "We train your comeback."],
-      sub: "Physiotherapy with ultrasound assessment, a 100 m² rehabilitation gym and recovery with ice bath and sauna — all under one roof in Portimão.",
-      facts: ["Ultrasound in assessment", "100 m² gym", "Ice bath and sauna"],    },
+      lines: ["Physiotherapy", "in Portimão."],
+      sub: "Ultrasound assessment, a rehabilitation gym and recovery, all under one roof.",
+    },
     stack: {
       title: "Everything you need, in one place",
       more: "See details",

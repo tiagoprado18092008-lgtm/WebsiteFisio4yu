@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChevronRight, Clock, Dumbbell, ScanLine, Snowflake, Star } from "lucide-react";
+import { ChevronRight, Star } from "lucide-react";
 import { getDict } from "@/content";
 import { site, isPending } from "@/content/site";
 import { reviews } from "@/content/reviews";
@@ -36,37 +36,30 @@ export function HomePage({ locale }: { locale: Locale }) {
   const videoLabels = { play: t.common.watchVideo, close: t.common.close };
   const msk = t.services.msk;
   const dermato = t.services.dermato;
-  const hours = `${t.hours.weekdaysShort}, ${site.hours[0].opens.replace(":", "h")}–${site.hours[0].closes.replace(":", "h")}`;
   const hubItems: { icon: PictogramName; label: string; href: string }[] = [
     { icon: "eco", label: h.hub.items.eco, href: href(locale, "service:msk", "ecografia") },
     { icon: "gym", label: h.hub.items.gym, href: href(locale, "service:msk", "ginasio") },
     { icon: "ice", label: h.hub.items.ice, href: href(locale, "service:msk", "recuperacao") },
     { icon: "postnatal", label: h.hub.items.postnatal, href: href(locale, "service:dermato") },
   ];
-  const heroFacts = [
-    { Ico: Clock, text: hours },
-    { Ico: ScanLine, text: h.hero.facts[0] },
-    { Ico: Dumbbell, text: h.hero.facts[1] },
-    { Ico: Snowflake, text: h.hero.facts[2] },
-  ];
-
   return (
     <>
-      {/* Hero com a foto do ginásio (sem vídeo, a pedido do cliente). A foto é vertical:
-          até 1024 px fica inteira em cima, a fundir-se com o painel, e o texto por baixo (as luzes não ficam atrás do título);
-          a partir de 1024 px ocupa a metade direita e funde-se com o painel teal onde está o texto. */}
+      {/* Hero com a foto do Mário a tratar um utente (sem vídeo, a pedido do cliente) e pouco texto: título, uma frase
+          e os dois contactos. A foto é vertical: até 1024 px fica em cima, a fundir-se com o painel, e o texto por baixo;
+          a partir de 1024 px ocupa a parte direita e o degradê teal cobre o mural do lado esquerdo da foto. */}
       <section className="px-2 pb-6 pt-2 md:px-4 md:pt-3">
         <div className="on-dark relative overflow-hidden rounded-[28px] bg-panel text-white md:rounded-[34px]">
-          <div className="relative aspect-[4/3] md:aspect-[16/10] lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:w-1/2">
-            <Media id="hero" locale={locale} cover priority sizes="(min-width: 1024px) 50vw, 100vw" placeholder="corner" />
-            <div aria-hidden className="absolute inset-0 bg-[linear-gradient(0deg,var(--f4y-panel)_0%,rgba(29,90,100,0)_45%)] lg:hidden" />
+          {/* Até 1024 px, o recorte quadrado mantém o rosto e as mãos e deixa de fora o topo do mural; o título assenta nas pernas do utente. */}
+          <div className="relative aspect-square [--media-pos:50%_66%] lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:w-[52%] lg:[--media-pos:50%_45%]">
+            <Media id="hero" locale={locale} cover priority sizes="(min-width: 1024px) 52vw, 100vw" placeholder="corner" />
+            <div aria-hidden className="absolute inset-0 bg-[linear-gradient(0deg,var(--f4y-panel)_0%,var(--f4y-panel)_10%,rgba(29,90,100,0)_36%)] lg:hidden" />
           </div>
           <div
             aria-hidden
-            className="absolute inset-0 hidden lg:block lg:bg-[linear-gradient(0deg,rgba(16,24,27,.65)_0%,rgba(16,24,27,0)_34%),linear-gradient(90deg,var(--f4y-panel)_50%,rgba(29,90,100,.6)_58%,rgba(29,90,100,0)_70%)]"
+            className="absolute inset-0 hidden lg:block lg:bg-[linear-gradient(90deg,var(--f4y-panel)_49%,rgba(29,90,100,.8)_56%,rgba(29,90,100,0)_68%)]"
           />
-          <div className="relative flex flex-col justify-end px-5 pb-7 pt-1 md:px-12 md:pb-10 lg:min-h-[calc(100svh-8rem)] lg:pt-24">
-            <div className="hero-in max-w-4xl lg:max-w-[50%]">
+          <div className="relative -mt-8 flex flex-col px-5 pb-8 sm:-mt-28 md:px-12 md:pb-12 lg:mt-0 lg:min-h-[calc(100svh-8rem)] lg:justify-center lg:py-16">
+            <div className="hero-in lg:max-w-[48%]">
               <h1 className="t-hero">
                 {h.hero.lines.map((l) => (
                   <span key={l} className="block">
@@ -74,21 +67,13 @@ export function HomePage({ locale }: { locale: Locale }) {
                   </span>
                 ))}
               </h1>
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/90 md:text-xl">{h.hero.sub}</p>
-              <div className="mt-9 flex flex-wrap gap-3">
+              <p className="mt-5 max-w-md text-lg leading-relaxed text-white/90 md:text-xl">{h.hero.sub}</p>
+              <div className="mt-8 flex flex-wrap gap-3">
                 <WhatsAppButton message={wa.general()} location="hero" label={t.common.whatsappCta} />
                 <CallButton location="hero" label={t.common.phoneDisplay} note={t.common.phoneNote} variant="onDark" />
               </div>
-            </div>
-            <ul className="mt-10 grid grid-cols-2 gap-x-4 gap-y-3 border-t border-white/25 pt-5 text-sm text-white/90 sm:flex sm:flex-wrap sm:gap-x-8 sm:text-[15px] md:mt-12">
-              {heroFacts.map(({ Ico, text }) => (
-                <li key={text} className="flex items-start gap-2.5 sm:items-center">
-                  <Ico className="mt-0.5 size-4 shrink-0 text-ice sm:mt-0" aria-hidden />
-                  {text}
-                </li>
-              ))}
               {hasRating && (
-                <li className="flex items-center gap-2.5">
+                <p className="mt-6 flex items-center gap-2.5 text-[15px] text-white/90">
                   <Star className="size-4 fill-[#f2b632] text-[#f2b632]" aria-hidden />
                   {googleUrl ? (
                     <a href={googleUrl} target="_blank" rel="noopener noreferrer" className="underline decoration-white/40 underline-offset-4">
@@ -97,9 +82,9 @@ export function HomePage({ locale }: { locale: Locale }) {
                   ) : (
                     ratingText
                   )}
-                </li>
+                </p>
               )}
-            </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -208,20 +193,21 @@ export function HomePage({ locale }: { locale: Locale }) {
         />
       </Section>
 
-      {/* Avaliações Google (só 5 estrelas) no azul da marca: foto do Mário com clientes e vídeo do Pedro Senra (cliente)
-          lado a lado à esquerda (fixos enquanto se lê, em desktop) e as avaliações todas à vista à direita.
-          Em telemóvel: título, foto e vídeo, avaliações. */}
+      {/* Avaliações Google (só 5 estrelas) no azul da marca, com a foto do Mário com clientes e o vídeo do Pedro Senra
+          (cliente) lado a lado. A partir de 1280 px: título e introdução numa linha e, por baixo, foto e vídeo à esquerda
+          e as avaliações à direita, à mesma altura. Entre 1024 e 1279 px: título ao lado da foto e do vídeo, avaliações
+          por baixo a toda a largura. Em telemóvel e tablet: título, foto e vídeo, avaliações. */}
       {realReviews.length > 0 && (
         <section aria-labelledby="reviews-title" className="px-2 md:px-4">
           <div className="on-dark rounded-[28px] bg-[linear-gradient(160deg,#118193_0%,#0d6b7a_50%,#0c6372_100%)] text-white md:rounded-[34px]">
-            <div className="container-x grid gap-10 py-20 md:py-28 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-12 xl:gap-x-20">
-              <div className="lg:col-start-2">
-                <h2 id="reviews-title" className="t-h1 max-w-xl">
+            <div className="container-x grid gap-8 py-16 md:gap-10 md:py-20 lg:grid-cols-2 lg:gap-x-16 xl:gap-x-20 xl:gap-y-12">
+              <div className="grid gap-5 lg:self-center xl:col-span-2 xl:grid-cols-2 xl:items-end xl:gap-x-20">
+                <h2 id="reviews-title" className="t-h2 max-w-xl">
                   {h.reviews.title}
                 </h2>
-                <p className="mt-5 max-w-lg text-lg leading-relaxed">{h.reviews.intro}</p>
+                <p className="max-w-lg text-lg leading-relaxed">{h.reviews.intro}</p>
               </div>
-              <div className="grid grid-cols-2 items-start gap-3 sm:gap-4 lg:sticky lg:top-28 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:self-start">
+              <div className="grid w-full max-w-2xl grid-cols-2 items-start gap-3 sm:gap-4 lg:max-w-none">
                 <figure>
                   <div className="relative aspect-[4/5] overflow-hidden rounded-[22px] shadow-[0_24px_50px_-28px_rgba(6,40,46,.6)]">
                     <Media id="athletes" locale={locale} cover sizes="(min-width: 1024px) 22vw, 48vw" />
@@ -235,7 +221,7 @@ export function HomePage({ locale }: { locale: Locale }) {
                   className="mt-10 shadow-[0_24px_50px_-28px_rgba(6,40,46,.6)] sm:mt-16"
                 />
               </div>
-              <div className="lg:col-start-2">
+              <div className="lg:col-span-2 xl:col-span-1">
                 <Testimonials
                   reviews={realReviews}
                   sourceLabel={h.reviews.source}

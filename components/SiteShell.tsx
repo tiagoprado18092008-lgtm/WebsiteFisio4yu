@@ -39,7 +39,7 @@ export function SiteShell({ locale, page, waMessage, children }: { locale: Local
             label: t.common.language,
             hrefLang: other === "en" ? "en" : "pt-PT",
           }}
-          labels={{ book: t.common.bookAssessment, open: t.common.openMenu, close: t.common.closeMenu, phoneNote: t.common.phoneNote, phone: t.common.phoneDisplay, homeAria: `Fisio4you — ${t.common.home}`, nav: t.common.menu }}
+          labels={{ book: t.common.bookAssessment, open: t.common.openMenu, close: t.common.closeMenu, phoneNote: t.common.phoneNote, phone: t.common.phoneDisplay, homeAria: `Fisio4you — ${t.common.home}`, nav: t.common.menu, newWindow: t.common.newWindow }}
           waMessage={waMessage}
         />
         <main id="conteudo">{children}</main>

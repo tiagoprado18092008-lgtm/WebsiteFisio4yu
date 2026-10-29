@@ -16,7 +16,7 @@ import { CallButton, WhatsAppButton } from "../Buttons";
 import { IconList, ServiceRow, TeamMember } from "../Cards";
 import { JsonLd } from "../JsonLd";
 import { SectionNav } from "../SectionNav";
-import { VideoButton } from "../VideoCard";
+import { VideoButton, VideoCard } from "../VideoCard";
 import { BodyMap } from "../BodyMap";
 import { DiastasisExplorer } from "../DiastasisExplorer";
 import { SignsChecklist } from "../SignsChecklist";
@@ -56,7 +56,6 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
   const specialist = t.team.find((m) => m.media === s.specialist);
   const specialistVideo = specialist?.video ? videoFor(specialist.video, locale) : null;
   const moduleNav = Object.fromEntries(modules.map((m) => [m.id, m.nav]));
-  const dark = heroTone[service] === "panel";
   // Fundos alternados ao longo da página
   let n = 0;
   const tone = () => (n++ % 2 === 0 ? "light" : "mist") as "light" | "mist";
@@ -79,10 +78,17 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
         actions={
           <>
             <WhatsAppButton message={wa} location={`servico-${service}`} label={t.common.whatsappCta} />
-            <CallButton location={`servico-${service}`} label={t.common.phoneDisplay} note={t.common.phoneNote} variant={dark ? "onDark" : "outline"} />
+            <CallButton location={`servico-${service}`} label={t.common.phoneDisplay} note={t.common.phoneNote} />
           </>
         }
-        media={<Media id={s.mediaId} locale={locale} cover priority sizes="(min-width: 1024px) 45vw, 100vw" />}
+        media={<Media id={s.mediaId} locale={locale} cover priority sizes="(min-width: 1024px) 500px, 100vw" />}
+        specialist={
+          specialist && {
+            name: specialist.name,
+            role: specialist.role,
+            avatar: <Media id={specialist.media} locale={locale} cover sizes="44px" />,
+          }
+        }
       />
 
       {/* Navegação interna fixa, com a secção visível marcada */}
@@ -163,14 +169,18 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
           <Section key={m.id} id={m.id} tone={tone()} labelledBy={`${m.id}-title`}>
             <div className="grid items-start gap-12 md:grid-cols-2 md:gap-16 lg:gap-24">
               <div className={cn("overflow-hidden rounded-[var(--radius-img)] md:sticky md:top-40", i % 2 === 1 && "md:order-last")}>
-                <Media id={m.mediaId} locale={locale} sizes="(min-width: 768px) 45vw, 100vw" />
+                {/* Recurso com vídeo: no lugar da foto fica só a capa do vídeo, com o play ao centro */}
+                {mv ? (
+                  <VideoCard video={mv} labels={videoLabels} sizes="(min-width: 768px) 45vw, 100vw" bare />
+                ) : (
+                  <Media id={m.mediaId} locale={locale} sizes="(min-width: 768px) 45vw, 100vw" />
+                )}
               </div>
               <div>
                 <h2 id={`${m.id}-title`} className="t-h1">
                   {m.title}
                 </h2>
                 <p className="t-lead mt-6">{m.text}</p>
-                {mv && <VideoButton video={mv} label={mv.name} labels={videoLabels} className="mt-8" />}
                 <div className="mt-10">
                   <IconList items={m.points} />
                 </div>

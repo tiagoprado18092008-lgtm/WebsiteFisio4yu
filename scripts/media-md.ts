@@ -15,6 +15,8 @@ Tudo o que aparece no site está registado em \`content/media.ts\`. Os originais
 
 **Hero:** foto (sem vídeo, a pedido do cliente). É vertical: até 1024 px ocupa o hero todo; a partir daí fica na metade direita e funde-se com o painel teal.
 
+**Faixa de fotos (home):** 8 fotos boas e pouco vistas no resto do site, a alternar pessoas e espaço, deslizam devagar para a direita entre os serviços e o Instagram. A lista e a ordem estão em \`photoStrip\` (\`content/media.ts\`); as fotos devem ser verticais 3:4, como os cartões.
+
 **Como substituir uma foto:** exportar para \`/public/media/...\` em WebP (lado maior ≥ 1600 px) e mudar o \`src\` em \`content/media.ts\`. O \`position\` define o ponto de foco quando a foto é recortada. Com \`src: null\` o item não pode aparecer no site: o \`npm run build\` falha se algum placeholder chegar a uma página.
 
 **Vídeos:** MP4 H.264 + AAC, 720×1280, 30 fps, com as legendas já gravadas na imagem; só tocam quando a pessoa carrega no play (com som), num diálogo com controlos. Poster 4:5 tirado do próprio vídeo, acima das legendas e da marca de água. Para converter um novo vídeo: \`ffmpeg -i entrada.mov -vf "scale=720:1280,fps=30" -c:v libx264 -preset slow -crf 25 -maxrate 1800k -bufsize 3600k -pix_fmt yuv420p -c:a aac -b:a 96k -movflags +faststart saida.mp4\`.

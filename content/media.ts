@@ -31,8 +31,10 @@ export type VideoItem = {
 };
 
 // Sessão fotográfica de outubro de 2026 (alta resolução). Ficaram de fora as fotos com o mural de jogadores
-// famosos em destaque atrás do tratamento (IMG_7603, IMG_7589): direitos de imagem.
+// famosos em destaque atrás do tratamento (IMG_7589): direitos de imagem. A IMG_7603 entrou no hero a pedido do
+// cliente (29/10/2026); no desktop o mural fica sob o degradê teal.
 const photo = {
+  heroTreatment: "/media/tratamentos/mario-tratamento.webp", // Mário a tratar um utente na marquesa (IMG_7603)
   manualTherapy: "/media/tratamentos/terapia-manual.webp", // terapia manual na coxa, mural teal (IMG_7612)
   treatmentRoom: "/media/tratamentos/tratamento-sala.webp", // Mário a tratar um utente, mural teal (IMG_7622)
   angelaDermato: "/media/tratamentos/angela-dermatofuncional.webp", // Angela com instrumentos em madeira (IMG_7641)
@@ -58,15 +60,24 @@ const space = {
 
 const items: MediaItem[] = [
   {
-    // Hero da home (sem vídeo, a pedido do cliente): ginásio com a iluminação hexagonal (exportado a 2400 px).
-    // Foto vertical: a toda a largura até 1024 px, com as luzes no topo e o texto sobre o chão escuro;
-    // daí para cima ocupa a metade direita do hero e funde-se com o painel teal.
+    // Hero da home (sem vídeo, a pedido do cliente): Mário em terapia manual (exportado a 2400 px).
+    // Foto vertical: em cima, a toda a largura, até 1024 px; daí para cima ocupa a parte direita do hero e
+    // funde-se com o painel teal. Nunca é cortada na largura, só na altura: o foco mantém o rosto e as mãos.
     id: "hero",
     type: "image",
+    src: photo.heroTreatment,
+    ratio: "3/4",
+    alt: { pt: "Mário Barroso, fisioterapeuta, a fazer terapia manual a um utente deitado na marquesa", en: "Mário Barroso, physiotherapist, giving manual therapy to a patient lying on the couch" },
+    brief: "Mário a tratar um utente (escolhida pelo cliente).",
+    position: "50% 45%",
+  },
+  {
+    id: "gym",
+    type: "image",
     src: space.gym,
-    ratio: "4/5",
+    ratio: "3/4",
     alt: { pt: "Ginásio de reabilitação da Fisio4you, com máquinas de força e iluminação hexagonal", en: "The Fisio4you rehabilitation gym, with strength machines and hexagonal lighting" },
-    brief: "Ginásio de reabilitação (escolhido pelo cliente).",
+    brief: "Ginásio de reabilitação com a iluminação hexagonal (faixa de fotos da home).",
     position: "58% 38%",
   },
   // Galeria "As instalações" (página Sobre), no rácio original de cada foto
@@ -196,6 +207,22 @@ const items: MediaItem[] = [
     brief: "Retrato da Angela.",
     position: "50% 25%",
   },
+  // Faixa de fotos da home: fotos boas que não aparecem em mais nenhum sítio do site (verticais, recortadas a 3:4)
+  ...[
+    { id: "strip-pressotherapy", src: "/media/clientes/pressoterapia.webp", pt: "Utente a descansar na marquesa com as botas de pressoterapia", en: "Patient resting on a couch in compression therapy boots" }, // IMG_7596
+    { id: "strip-rack", src: "/media/espaco/rack.webp", pt: "Rack de força com discos de peso no ginásio de reabilitação", en: "Strength rack with weight plates in the rehabilitation gym" }, // 1180×2096
+    { id: "strip-duo-gym", src: "/media/equipa/mario-e-angela-ginasio.webp", pt: "Mário Barroso e Angela Brazona no ginásio da Fisio4you, sob a iluminação hexagonal", en: "Mário Barroso and Angela Brazona in the Fisio4you gym, under the hexagonal lighting" },
+    { id: "strip-angela", src: "/media/tratamentos/angela-instrumentos.webp", pt: "Angela Brazona a mostrar instrumentos de massagem em madeira", en: "Angela Brazona showing wooden massage tools" }, // IMG_7654
+    { id: "strip-cards", src: "/media/espaco/cartoes.webp", pt: "Cartões de visita da Fisio4you ao lado de um difusor de aroma", en: "Fisio4you business cards next to a reed diffuser" }, // IMG_6881
+    { id: "strip-gym", src: "/media/espaco/ginasio-kettlebells.webp", pt: "Ginásio de reabilitação com kettlebells, máquinas de força e iluminação hexagonal", en: "Rehabilitation gym with kettlebells, strength machines and hexagonal lighting" }, // 1180×2096
+  ].map<MediaItem>((p) => ({
+    id: p.id,
+    type: "image",
+    src: p.src,
+    ratio: "3/4",
+    alt: { pt: p.pt, en: p.en },
+    brief: "Faixa de fotos da home.",
+  })),
   // Ainda em falta (não aparecem no site enquanto `src` for null)
   {
     id: "eco-photo",
@@ -272,18 +299,17 @@ export function videoFor(id: string, locale: Locale): VideoData {
   return { ...v, name: v.name[locale], caption: v.caption[locale] };
 }
 
-/** Faixa de fotos em movimento (home): as melhores da sessão, a alternar pessoas e espaço. Todas verticais 3:4, como os cartões. */
+/** Faixa de fotos em movimento (home): fotos boas e pouco vistas no resto do site, a alternar pessoas e espaço.
+ *  Todas verticais 3:4, como os cartões. A sala do mural só está na galeria da página Sobre e a banheira de gelo numa lista de recuperação. */
 export const photoStrip = [
-  "advantages-therapy", // Mário em terapia manual
-  "brand-room", // sala com o logótipo
-  "athletes", // Mário com atletas
-  "hero", // ginásio com a iluminação hexagonal
-  "service-dermato", // Angela com os instrumentos em madeira
-  "jerseys", // parede de camisolas
-  "service-recovery", // banheira de gelo
+  "strip-pressotherapy", // utente com as botas de pressoterapia
+  "strip-rack", // rack de força
+  "strip-duo-gym", // Mário e Angela no ginásio
   "clinic-08", // sala com o mural azul e dourado
-  "about-hero", // Mário e Angela
-  "clinic-05", // sala de avaliação
+  "strip-angela", // Angela com os instrumentos em madeira
+  "strip-cards", // cartões e difusor
+  "service-recovery", // banheira de gelo
+  "strip-gym", // ginásio com kettlebells e iluminação hexagonal
 ];
 
 /** Post do Instagram na secção "A clínica no Instagram" (home). A capa é /media/instagram/<code>.webp. */

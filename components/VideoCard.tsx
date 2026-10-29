@@ -78,8 +78,8 @@ function VideoDialog({ video, labels, onClose }: { video: VideoData; labels: Lab
   );
 }
 
-/** Cartão 4:5 com o poster do vídeo, nome e duração; abre o vídeo com som. */
-export function VideoCard({ video, labels, sizes, className }: { video: VideoData; labels: Labels; sizes: string; className?: string }) {
+/** Cartão 4:5 com o poster do vídeo, nome e duração; abre o vídeo com som. Com `bare` fica só a capa e o botão de play ao centro. */
+export function VideoCard({ video, labels, sizes, className, bare }: { video: VideoData; labels: Labels; sizes: string; className?: string; bare?: boolean }) {
   const d = useVideoDialog(video);
   return (
     <>
@@ -91,19 +91,29 @@ export function VideoCard({ video, labels, sizes, className }: { video: VideoDat
         className={cn("group relative block aspect-[4/5] w-full overflow-hidden rounded-[22px] bg-panel text-left", className)}
       >
         <Image src={video.poster} alt="" fill sizes={sizes} className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
-        <span aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,rgba(16,24,27,0)_40%,rgba(16,24,27,.85)_100%)]" />
-        <span aria-hidden className="absolute right-3 top-3 rounded-full bg-black/55 px-2.5 py-1 text-xs font-semibold tabular-nums text-white">
-          {video.duration}
-        </span>
-        <span aria-hidden className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4 text-white sm:p-5">
-          <span className="min-w-0">
-            <span className="block font-display text-lg font-medium leading-tight">{video.name}</span>
-            <span className="mt-1 block text-sm leading-snug text-white/85">{video.caption}</span>
+        {bare ? (
+          <span aria-hidden className="absolute inset-0 flex items-center justify-center bg-black/10">
+            <span className="flex size-16 items-center justify-center rounded-full bg-white text-teal-dark shadow-[0_14px_30px_-10px_rgba(6,40,46,.6)] transition-transform duration-300 group-hover:scale-110 md:size-20">
+              <Play className="ml-1 size-7 fill-current md:size-8" />
+            </span>
           </span>
-          <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-white text-teal-dark transition-transform duration-300 group-hover:scale-110">
-            <Play className="ml-0.5 size-5 fill-current" />
-          </span>
-        </span>
+        ) : (
+          <>
+            <span aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,rgba(16,24,27,0)_40%,rgba(16,24,27,.85)_100%)]" />
+            <span aria-hidden className="absolute right-3 top-3 rounded-full bg-black/55 px-2.5 py-1 text-xs font-semibold tabular-nums text-white">
+              {video.duration}
+            </span>
+            <span aria-hidden className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4 text-white sm:p-5">
+              <span className="min-w-0">
+                <span className="block font-display text-lg font-medium leading-tight">{video.name}</span>
+                <span className="mt-1 block text-sm leading-snug text-white/85">{video.caption}</span>
+              </span>
+              <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-white text-teal-dark transition-transform duration-300 group-hover:scale-110">
+                <Play className="ml-0.5 size-5 fill-current" />
+              </span>
+            </span>
+          </>
+        )}
       </button>
       {d.open && <VideoDialog video={video} labels={labels} onClose={d.hide} />}
     </>

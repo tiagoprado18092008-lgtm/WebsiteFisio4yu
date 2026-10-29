@@ -33,7 +33,8 @@ export function Media({ id, locale, className, cover, sizes = "(min-width: 1024p
   } else if (item.type === "video") {
     inner = <VideoPlayer src={item.src} poster={item.poster} alt={alt} className="absolute inset-0 size-full object-cover" />;
   } else {
-    inner = <Image src={item.src} alt={alt} fill sizes={sizes} priority={priority} className="object-cover" style={item.position ? { objectPosition: item.position } : undefined} />;
+    // `--media-pos` (definida num contentor pai) troca o ponto de foco num tamanho de ecrã específico.
+    inner = <Image src={item.src} alt={alt} fill sizes={sizes} priority={priority} className="object-cover" style={item.position ? { objectPosition: `var(--media-pos, ${item.position})` } : undefined} />;
   }
 
   return (

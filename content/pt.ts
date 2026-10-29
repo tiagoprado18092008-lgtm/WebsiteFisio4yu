@@ -172,9 +172,9 @@ export const pt = {
   home: {
     hero: {
       eyebrow: "Centro de Reabilitação · Portimão",
-      lines: ["Fisioterapia em Portimão,", "com ecografia e ginásio próprio."],
-      sub: "Fisioterapia com avaliação ecográfica, ginásio de reabilitação de 100 m² e recuperação com crioterapia e sauna — tudo num só espaço, em Portimão.",
-      facts: ["Ecografia na avaliação", "Ginásio de 100 m²", "Banheira de gelo e sauna"],    },
+      lines: ["Fisioterapia", "em Portimão."],
+      sub: "Avaliação com ecografia, ginásio de reabilitação e recuperação, no mesmo espaço.",
+    },
     stack: {
       title: "Tudo o que precisa, num só espaço",
       more: "Ver detalhes",

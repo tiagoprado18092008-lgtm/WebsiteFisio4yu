@@ -60,7 +60,8 @@ body {
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
-.lenis.lenis-stopped { overflow: clip; }
+/* Sem `.lenis-stopped { overflow: clip }`: o bloqueio já vem de `body.style.overflow` (menu, galeria, vídeo),
+   e o clip no <html> fazia do <body> o contentor de scroll, atirando o header sticky para fora do ecrã. */
 
 :focus-visible {
   outline: 2px solid var(--f4y-teal-strong);
@@ -136,16 +137,11 @@ p, li, dd, blockquote { text-wrap: pretty; }
 }
 
 /* Entrada única e orquestrada do hero */
-/* Menu mobile: o painel desce do header e o fundo escurece */
-.menu-sheet { animation: menu-in 0.32s cubic-bezier(0.22, 1, 0.36, 1) both; transform-origin: top center; }
-.menu-backdrop { animation: fade-in 0.25s ease-out both; }
-@keyframes menu-in {
-  from { opacity: 0; transform: translateY(-10px) scale(0.98); }
+/* Menu mobile: o header estica até ao fundo do ecrã e as linhas entram em cascata */
+.menu-open .menu-row { animation: menu-row-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: calc(60ms + var(--i, 0) * 35ms); }
+@keyframes menu-row-in {
+  from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: none; }
-}
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
 }
 @keyframes rise {
   from { opacity: 0; transform: translateY(14px); }
@@ -188,7 +184,7 @@ p, li, dd, blockquote { text-wrap: pretty; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-in > *, .pulse, .bm-swap, .menu-sheet, .menu-backdrop, .marquee-track { animation: none; }
+  .hero-in > *, .pulse, .bm-swap, .menu-open .menu-row, .marquee-track { animation: none; }
   .dx-move, .dx-fade { transition: none; }
   .marquee { overflow-x: auto; }
   .marquee-copy { display: none; }
