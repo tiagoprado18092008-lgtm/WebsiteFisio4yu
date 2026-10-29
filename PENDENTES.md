@@ -19,7 +19,7 @@ Tudo o que no site aparece como `[[ ]]` (ou tem um comentário `[[ ]]` no códig
 | 6 | ~~16 anos de experiência~~ — **confirmado: experiência do Mário** (já aplicado no site) | — |
 | 7 | **Nota e n.º de avaliações Google** + URL do perfil Google (ficam ocultos no site até serem preenchidos). A 28/10/2026 o perfil mostrava **4,5 ★ (17 avaliações)** — decidir se querem mostrar. | `content/site.ts` → `googleRating`, `googleReviewCount`, `social.google` |
 | 8 | **3 avaliações Google reais** (copiadas com autorização) | `content/reviews.ts` |
-| 9 | **URL do Instagram**; confirmar URL do Facebook | `content/site.ts` → `social` |
+| 9 | **URL do Instagram** (sem ele, a secção "A clínica no Instagram" da home não mostra o botão "Seguir no Instagram" nem o ícone do rodapé); confirmar URL do Facebook | `content/site.ts` → `social` |
 | 10 | ~~Mário: apelido e cargo~~ — **Mário Barroso, CEO e fisioterapeuta** (tirado das entrevistas em vídeo e do polo "FT. Mário Barroso"; já no site). Opcional: versão longa do percurso | `pt.ts`/`en.ts` → `team`, `about.founderLong` |
 | 11 | **História da clínica** (opcional; a secção só aparece quando houver texto) | `pt.ts`/`en.ts` → `about.story` |
 | 12 | **Equipa:** no site estão **Mário Barroso** e **Angela Brazona** (ambos "CEO e fisioterapeuta", como nas entrevistas em vídeo). Confirmar a grafia "Angela" (sem acento, como no vídeo e na pasta de fotos) e se há mais profissionais a mostrar | `pt.ts`/`en.ts` → `team` |
@@ -37,6 +37,7 @@ Tudo o que no site aparece como `[[ ]]` (ou tem um comentário `[[ ]]` no códig
 | 29 | **Dermatofuncional, textos novos (já publicados, a validar com a Angela):** esquema "O que é a diástase abdominal" (3 fases), "Como avaliamos", lista "Reconhece-se em alguma destas situações?", detalhe de cada passo de "Como funciona" e as perguntas novas (como saber se tenho diástase, parto há anos, cicatriz de cesariana) | `services.dermato.explainer`, `signs`, `how.steps[].details`, `faq[1]`, `faq[3]`, `faq[4]` |
 | 30 | **Fisioterapeuta de cada serviço:** a página da Musculoesquelética mostra o Mário e a da Dermatofuncional a Angela (com o vídeo de cada um). Confirmar que é assim que dividem as áreas | `services.*.specialist` |
 | 31 | **Musculoesquelética, textos novos (a validar com o Mário):** detalhe de cada passo de "Como funciona" e as perguntas "Tenho esta dor há meses" e "ecografia vs. ressonância" | `services.msk.how.steps[].details`, `faq[2]`, `faq[4]` |
+| 32 | **Instagram na home** (links confirmados). Opcional: capas em melhor resolução (as atuais são capturas de ~280 px e ficam algo moles nos telemóveis) | `content/media.ts` → `instagramList`; capas em `/public/media/instagram/<código>.webp` |
 
 ## 🟢 Técnico
 
@@ -52,7 +53,7 @@ Tudo o que no site aparece como `[[ ]]` (ou tem um comentário `[[ ]]` no códig
 
 - **Especialidades "Em breve"** (Fisiatria, Osteopatia, Pilates Clínico, Psicologia): retiradas do site por agora. O texto continua em `content/pt.ts` / `en.ts` (`comingSoon`) para reativar quando abrirem.
 - **16 anos de experiência:** são do Mário.
-- **Hero sem vídeo** (pedido do cliente): foto de tratamento. Os vídeos (entrevistas do Mário e da Angela, testemunho do Pedro Senra, circuito de recuperação) estão na home, na página Sobre e nas páginas de serviço, e só tocam quando se carrega no play.
+- **Hero sem vídeo** (pedido do cliente): foto de tratamento. Os vídeos (entrevistas do Mário e da Angela, testemunho do Pedro Senra, circuito de recuperação) estão na home, na página Sobre e nas páginas de serviço, e só tocam quando se carrega no play. Na home, a antiga secção de vídeos deu lugar à "A clínica no Instagram" (4 posts que abrem no Instagram); as entrevistas passaram para os cartões da equipa.
 - **Fotos com o mural de jogadores famosos em destaque** ficam de fora (direitos de imagem). Ver `MEDIA.md`.
 - **Originais em `/Fotos`** (~1,3 GB) não são publicados: estão no `.gitignore` e no `.vercelignore`.
 - Contexto de produto em `PRODUCT.md`.

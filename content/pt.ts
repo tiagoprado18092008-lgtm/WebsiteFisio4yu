@@ -288,10 +288,18 @@ export const pt = {
       intro: "Tratamos lesões e dor com método, e acompanhamos a recuperação depois do parto com a mesma atenção.",
       includesLabel: "Inclui",
     },
-    videos: {
-      title: "A Fisio4you na primeira pessoa",
-      intro: "Conheça quem está à frente da clínica e veja como se treina e recupera cá dentro.",
-      items: ["video-mario", "video-angela", "video-circuito"],
+    photoStrip: {
+      title: "Avaliar. Tratar. Recuperar.",
+      sub: "Fisioterapia e reabilitação em Portimão.",
+      pause: "Pausar as fotos",
+      play: "Retomar as fotos",
+    },
+    instagram: {
+      title: "A clínica no Instagram",
+      intro: "Testes físicos, tratamentos e o dia a dia da Fisio4you em vídeos curtos.",
+      follow: "Seguir no Instagram",
+      open: "Ver no Instagram",
+      badge: "Reel",
     },
     visit: {
       title: "Por dentro da clínica",

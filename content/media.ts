@@ -272,5 +272,54 @@ export function videoFor(id: string, locale: Locale): VideoData {
   return { ...v, name: v.name[locale], caption: v.caption[locale] };
 }
 
+/** Faixa de fotos em movimento (home): as melhores da sessão, a alternar pessoas e espaço. Todas verticais 3:4, como os cartões. */
+export const photoStrip = [
+  "advantages-therapy", // Mário em terapia manual
+  "brand-room", // sala com o logótipo
+  "athletes", // Mário com atletas
+  "hero", // ginásio com a iluminação hexagonal
+  "service-dermato", // Angela com os instrumentos em madeira
+  "jerseys", // parede de camisolas
+  "service-recovery", // banheira de gelo
+  "clinic-08", // sala com o mural azul e dourado
+  "about-hero", // Mário e Angela
+  "clinic-05", // sala de avaliação
+];
+
+/** Post do Instagram na secção "A clínica no Instagram" (home). A capa é /media/instagram/<code>.webp. */
+export type InstagramPost = { code: string; alt: { pt: string; en: string } };
+
+// Capas: capturas dos posts enviadas pelo cliente (≈280 px de largura, em /Fotos/<code>.png), sem o ícone de reel
+// do canto e ampliadas 2x. Ficam algo moles em ecrãs de alta densidade: trocar por capas maiores quando houver.
+const instagramList: InstagramPost[] = [
+  {
+    code: "Dbk4X0NsOEt",
+    alt: { pt: "Reel «Testes físicos»: atleta durante um teste no ginásio da clínica", en: "“Physical tests” reel: an athlete doing a test in the clinic gym" },
+  },
+  {
+    code: "DWCF7KbjB65",
+    alt: { pt: "Reel «Expectativa de um paciente que vem à fisioterapia»: utente a entrar na clínica", en: "“What a patient expects from physiotherapy” reel: a patient walking into the clinic" },
+  },
+  {
+    code: "DXADiDvjD1s",
+    alt: { pt: "Fisioterapeuta a tratar o pescoço de um utente deitado na marquesa", en: "Physiotherapist treating the neck of a patient lying on a treatment couch" },
+  },
+  {
+    code: "DV9KNrbDFi-",
+    alt: { pt: "Fisioterapeuta a avaliar um utente deitado na marquesa, em frente a um painel da Fisio4you", en: "Physiotherapist assessing a patient lying on a treatment couch, in front of a Fisio4you banner" },
+  },
+];
+
+export type InstagramPostData = { code: string; url: string; cover: string; alt: string };
+
+export function instagramFor(locale: Locale): InstagramPostData[] {
+  return instagramList.map((p) => ({
+    code: p.code,
+    url: `https://www.instagram.com/p/${p.code}/`,
+    cover: `/media/instagram/${p.code}.webp`,
+    alt: p.alt[locale],
+  }));
+}
+
 /** Imagem de partilha (1200×630): terapia manual sobre o mural teal, com o logótipo branco. */
 export const ogCover: string | null = "/media/og-cover.jpg";

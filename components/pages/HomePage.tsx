@@ -3,7 +3,7 @@ import { ChevronRight, Clock, Dumbbell, ScanLine, Snowflake, Star } from "lucide
 import { getDict } from "@/content";
 import { site, isPending } from "@/content/site";
 import { reviews } from "@/content/reviews";
-import { videoFor } from "@/content/media";
+import { videoFor, instagramFor, photoStrip } from "@/content/media";
 import { href, type Locale } from "@/lib/routes";
 import { waMessages } from "@/lib/whatsapp";
 import { Section, SectionTitle } from "../Section";
@@ -15,7 +15,9 @@ import { Testimonials } from "../Testimonials";
 import { CtaTriad } from "../CtaTriad";
 import { WhatsAppButton, CallButton } from "../Buttons";
 import { TeamMember } from "../Cards";
-import { VideoCard } from "../VideoCard";
+import { VideoCard, VideoButton } from "../VideoCard";
+import { InstagramFeed } from "../InstagramFeed";
+import { PhotoStrip } from "../PhotoStrip";
 
 export function HomePage({ locale }: { locale: Locale }) {
   const t = getDict(locale);
@@ -29,7 +31,7 @@ export function HomePage({ locale }: { locale: Locale }) {
   // Sem URL do perfil Google confirmado, o cartão "Ver todas" abre a pesquisa da clínica no Google Maps
   const reviewsUrl = googleUrl ?? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Fisio4you ${site.address.city}`)}`;
   const team = t.team.slice(0, 4);
-  const homeVideos = h.videos.items.map((id) => videoFor(id, locale));
+  const instagramUrl = isPending(site.social.instagram) ? null : site.social.instagram;
   const clientVideo = videoFor("video-pedro", locale);
   const videoLabels = { play: t.common.watchVideo, close: t.common.close };
   const msk = t.services.msk;
@@ -178,17 +180,32 @@ export function HomePage({ locale }: { locale: Locale }) {
         </div>
       </Section>
 
-      {/* Vídeos: entrevistas do Mário e da Angela e o circuito de recuperação (o testemunho do Pedro está junto das
-          avaliações). Tocam com som, só quando se carrega. */}
-      <Section tone="mist" labelledBy="videos-title">
-        <SectionTitle title={h.videos.title} intro={h.videos.intro} id="videos-title" />
-        <ul className="-mx-4 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 md:mx-0 md:grid md:grid-cols-3 md:gap-5 md:overflow-visible md:px-0 md:pb-0">
-          {homeVideos.map((v) => (
-            <li key={v.id} className="w-[72%] shrink-0 snap-start sm:w-[42%] md:w-auto">
-              <VideoCard video={v} labels={videoLabels} sizes="(min-width: 768px) 33vw, 72vw" />
-            </li>
-          ))}
-        </ul>
+      {/* Faixa com as melhores fotos da clínica a deslizar devagar para a direita, de ponta a ponta, e a frase da marca por baixo */}
+      <section aria-labelledby="fotos-title" className="bg-white pb-20 md:pb-28">
+        <PhotoStrip
+          photos={photoStrip.map((id) => ({
+            id,
+            node: <Media id={id} locale={locale} cover sizes="(min-width: 1790px) 340px, (min-width: 1053px) 19vw, 200px" />,
+          }))}
+          labels={h.photoStrip}
+        />
+        <div className="container-x mt-12 text-center md:mt-16">
+          <h2 id="fotos-title" className="t-h2">
+            {h.photoStrip.title}
+          </h2>
+          <p className="t-lead mx-auto mt-4 max-w-xl">{h.photoStrip.sub}</p>
+        </div>
+      </section>
+
+      {/* Instagram: quatro vídeos da clínica, cada um abre o post. As entrevistas do Mário e da Angela estão nos
+          cartões da equipa e o testemunho do Pedro junto das avaliações. */}
+      <Section tone="mist" labelledBy="instagram-title">
+        <InstagramFeed
+          posts={instagramFor(locale)}
+          profileUrl={instagramUrl}
+          titleId="instagram-title"
+          labels={{ ...h.instagram, newWindow: t.common.newWindow }}
+        />
       </Section>
 
       {/* Avaliações Google (só 5 estrelas) no azul da marca: foto do Mário com clientes e vídeo do Pedro Senra (cliente)
@@ -197,7 +214,7 @@ export function HomePage({ locale }: { locale: Locale }) {
       {realReviews.length > 0 && (
         <section aria-labelledby="reviews-title" className="px-2 md:px-4">
           <div className="on-dark rounded-[28px] bg-[linear-gradient(160deg,#118193_0%,#0d6b7a_50%,#0c6372_100%)] text-white md:rounded-[34px]">
-            <div className="container-x grid gap-10 py-20 md:py-28 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-12 xl:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] xl:gap-x-24">
+            <div className="container-x grid gap-10 py-20 md:py-28 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-12 xl:gap-x-20">
               <div className="lg:col-start-2">
                 <h2 id="reviews-title" className="t-h1 max-w-xl">
                   {h.reviews.title}
@@ -207,14 +224,14 @@ export function HomePage({ locale }: { locale: Locale }) {
               <div className="grid grid-cols-2 items-start gap-3 sm:gap-4 lg:sticky lg:top-28 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:self-start">
                 <figure>
                   <div className="relative aspect-[4/5] overflow-hidden rounded-[22px] shadow-[0_24px_50px_-28px_rgba(6,40,46,.6)]">
-                    <Media id="athletes" locale={locale} cover sizes="(min-width: 1280px) 18vw, (min-width: 1024px) 22vw, 48vw" />
+                    <Media id="athletes" locale={locale} cover sizes="(min-width: 1024px) 22vw, 48vw" />
                   </div>
                   <figcaption className="mt-3 text-sm">{h.reviews.photoCaption}</figcaption>
                 </figure>
                 <VideoCard
                   video={clientVideo}
                   labels={videoLabels}
-                  sizes="(min-width: 1280px) 18vw, (min-width: 1024px) 22vw, 48vw"
+                  sizes="(min-width: 1024px) 22vw, 48vw"
                   className="mt-10 shadow-[0_24px_50px_-28px_rgba(6,40,46,.6)] sm:mt-16"
                 />
               </div>
@@ -232,16 +249,26 @@ export function HomePage({ locale }: { locale: Locale }) {
         </section>
       )}
 
-      {/* Equipa: quem está à frente da clínica (nomes e cargos das entrevistas em vídeo) */}
+      {/* Equipa: quem está à frente da clínica (nomes e cargos das entrevistas em vídeo), cada um com o seu vídeo */}
       {team.length > 0 && (
         <Section tone="light" labelledBy="equipa-title">
           <SectionTitle title={h.team.title} id="equipa-title" />
           <ul className="mt-12 grid gap-5 lg:grid-cols-2">
-            {team.map((m) => (
-              <li key={m.media}>
-                <TeamMember locale={locale} mediaId={m.media} name={m.name} role={m.role} focus={m.focus} />
-              </li>
-            ))}
+            {team.map((m) => {
+              const v = m.video ? videoFor(m.video, locale) : null;
+              return (
+                <li key={m.media}>
+                  <TeamMember
+                    locale={locale}
+                    mediaId={m.media}
+                    name={m.name}
+                    role={m.role}
+                    focus={m.focus}
+                    video={v && <VideoButton video={v} label={v.caption} labels={videoLabels} />}
+                  />
+                </li>
+              );
+            })}
           </ul>
         </Section>
       )}

@@ -175,9 +175,23 @@ p, li, dd, blockquote { text-wrap: pretty; }
 .dx-move { transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), fill 0.6s ease; }
 .dx-fade { transition: opacity 0.5s ease; }
 
+/* Faixa de fotos da home (components/PhotoStrip.tsx): a lista vai duplicada, por isso -50% → 0 dá uma volta sem costura */
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: none; }
+}
+.marquee { overflow: hidden; }
+.marquee-track { animation: marquee-right var(--marquee-duration, 90s) linear infinite; }
+.marquee[data-paused="true"] .marquee-track { animation-play-state: paused; }
+@media (hover: hover) {
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .hero-in > *, .pulse, .bm-swap, .menu-sheet, .menu-backdrop { animation: none; }
+  .hero-in > *, .pulse, .bm-swap, .menu-sheet, .menu-backdrop, .marquee-track { animation: none; }
   .dx-move, .dx-fade { transition: none; }
+  .marquee { overflow-x: auto; }
+  .marquee-copy { display: none; }
 }
 
 details > summary { list-style: none; }

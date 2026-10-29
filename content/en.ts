@@ -200,10 +200,18 @@ export const en: Dict = {
       intro: "We treat injuries and pain methodically, and support postnatal recovery with the same attention.",
       includesLabel: "Includes",
     },
-    videos: {
-      title: "Fisio4you, in their own words",
-      intro: "Meet the people who run the clinic and see how training and recovery work here. Videos in Portuguese.",
-      items: ["video-mario", "video-angela", "video-circuito"],
+    photoStrip: {
+      title: "Assess. Treat. Recover.",
+      sub: "Physiotherapy and rehabilitation in Portimão.",
+      pause: "Pause the photos",
+      play: "Play the photos",
+    },
+    instagram: {
+      title: "The clinic on Instagram",
+      intro: "Physical tests, treatments and everyday life at Fisio4you in short videos. Videos in Portuguese.",
+      follow: "Follow on Instagram",
+      open: "Watch on Instagram",
+      badge: "Reel",
     },
     visit: {
       title: "Inside the clinic",
