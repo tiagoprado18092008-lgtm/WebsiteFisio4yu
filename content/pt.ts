@@ -406,7 +406,7 @@ export const pt = {
     {
       media: "team-angela",
       name: "Angela Brazona",
-      role: "Fisioterapeuta e CEO",
+      role: "Fisioterapeuta",
       focus: "Fisioterapia dermatofuncional e saúde da mulher, durante a gravidez e no pós-parto, nas vertentes funcional e estética. [[Cédula profissional n.º e formação relevante]]",
       video: "video-angela",
     },

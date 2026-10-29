@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { site, fullAddress, isPending } from "@/content/site";
+import { site, isPending } from "@/content/site";
 import { getDict } from "@/content";
 import { href, serviceKeys, type Locale } from "@/lib/routes";
 import { waLink, waMessages } from "@/lib/whatsapp";
@@ -24,7 +24,7 @@ export function Footer({ locale }: { locale: Locale }) {
   ].filter(Boolean);
   const hasTeam = t.team.length > 0;
   const h = "mb-4 text-[15px] font-semibold text-ink";
-  const link = "text-grey hover:text-teal-dark";
+  const link = "text-grey transition-colors hover:text-teal-dark";
   // Em telemóvel, cada link do rodapé tem um alvo de toque de 44 px
   const tap = "[&_a]:inline-flex [&_a]:min-h-11 [&_a]:items-center [&_button]:min-h-11 md:[&_a]:min-h-0 md:[&_button]:min-h-0";
 
@@ -100,16 +100,23 @@ export function Footer({ locale }: { locale: Locale }) {
           <div className="order-last col-span-2 md:order-none md:col-span-1">
             <h2 className={h}>{f.contacts}</h2>
             <address className={`space-y-1 text-[15px] not-italic text-grey md:space-y-2.5 ${tap}`}>
-              <p>{fullAddress}</p>
+              {/* Rua numa linha, código postal e localidade na seguinte: assim o "8500-759" nunca parte no hífen */}
               <p>
-                <a href={site.phoneHref} data-track="phone" data-location="footer" className="hover:text-teal-dark">
+                {site.address.street}
+                <br />
+                <span className="whitespace-nowrap">
+                  {site.address.postalCode} {site.address.city}
+                </span>
+              </p>
+              <p>
+                <a href={site.phoneHref} data-track="phone" data-location="footer" className="tabular-nums transition-colors hover:text-teal-dark">
                   {t.common.phoneDisplay}
                 </a>
                 <br />
                 <span className="text-xs text-grey">{t.common.phoneNote}</span>
               </p>
               <p>
-                <a href={`mailto:${site.email}`} className="break-all hover:text-teal-dark">
+                <a href={`mailto:${site.email}`} className="break-all transition-colors hover:text-teal-dark">
                   {site.email}
                 </a>
               </p>
@@ -120,7 +127,7 @@ export function Footer({ locale }: { locale: Locale }) {
                   rel="noopener noreferrer"
                   data-track="whatsapp"
                   data-location="footer"
-                  className="hover:text-teal-dark"
+                  className="transition-colors hover:text-teal-dark"
                 >
                   {t.common.whatsapp}
                 </a>
@@ -130,7 +137,7 @@ export function Footer({ locale }: { locale: Locale }) {
 
           <div>
             <h2 className={h}>{t.hours.title}</h2>
-            <p className="text-[15px] text-grey">
+            <p className="text-[15px] tabular-nums text-grey">
               {t.hours.weekdays}
               <br />
               {site.hours[0].opens.replace(":", "h")} – {site.hours[0].closes.replace(":", "h")}
@@ -139,7 +146,7 @@ export function Footer({ locale }: { locale: Locale }) {
         </div>
 
         <div className="mt-14 flex flex-col gap-6 border-t border-line pt-8 text-sm text-grey lg:flex-row lg:items-center lg:justify-between">
-          <div className="space-y-1">
+          <div className="space-y-1 lg:shrink-0">
             <p>
               {legal.join(" · ")}
             </p>
@@ -147,7 +154,8 @@ export function Footer({ locale }: { locale: Locale }) {
               © {new Date().getFullYear()} {site.name}. {f.rights}
             </p>
           </div>
-          <ul className={`flex flex-wrap items-center gap-x-5 md:gap-y-2 ${tap}`}>
+          {/* O bloco legal não encolhe: se faltar largura, são os links que passam à linha seguinte, alinhados à direita */}
+          <ul className={`flex flex-wrap items-center gap-x-5 md:gap-y-2 lg:justify-end lg:gap-x-4 ${tap}`}>
             <li>
               <a href={site.complaintsBook} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-teal-dark">
                 <span className="rounded border border-line bg-white px-2 py-1 text-xs font-bold uppercase leading-tight text-[#c8102e]">Livro de Reclamações</span>
@@ -155,17 +163,17 @@ export function Footer({ locale }: { locale: Locale }) {
               </a>
             </li>
             <li>
-              <Link href={href(locale, "privacy")} className="hover:text-teal-dark">
+              <Link href={href(locale, "privacy")} className="transition-colors hover:text-teal-dark">
                 {f.privacy}
               </Link>
             </li>
             <li>
-              <Link href={href(locale, "terms")} className="hover:text-teal-dark">
+              <Link href={href(locale, "terms")} className="transition-colors hover:text-teal-dark">
                 {f.terms}
               </Link>
             </li>
             <li>
-              <Link href={href(locale, "cookies")} className="hover:text-teal-dark">
+              <Link href={href(locale, "cookies")} className="transition-colors hover:text-teal-dark">
                 {f.cookies}
               </Link>
             </li>

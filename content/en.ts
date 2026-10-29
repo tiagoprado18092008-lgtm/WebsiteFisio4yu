@@ -315,7 +315,7 @@ export const en: Dict = {
     {
       media: "team-angela",
       name: "Angela Brazona",
-      role: "Physiotherapist and CEO",
+      role: "Physiotherapist",
       focus: "Dermatofunctional physiotherapy and women's health, during pregnancy and after childbirth, covering both functional and aesthetic aspects. [[Professional registration no. and relevant training]]",
       video: "video-angela",
     },

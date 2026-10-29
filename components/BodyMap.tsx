@@ -176,7 +176,7 @@ export function BodyMap({ regions, labels, initial }: { regions: BodyRegion[]; l
                 <WhatsAppIcon className="size-5" />
                 {labels.talk}
               </a>
-              <Link href={r.serviceHref} className="link">
+              <Link href={r.serviceHref} className="link inline-flex min-h-11 items-center">
                 {labels.see}
               </Link>
             </div>

@@ -1,9 +1,11 @@
+import { Info } from "lucide-react";
 import { getDict } from "@/content";
 import { mediaList, videoFor } from "@/content/media";
 import { site } from "@/content/site";
 import { href, serviceKeys, type Locale, type PageKey } from "@/lib/routes";
 import { waMessages } from "@/lib/whatsapp";
 import { breadcrumbJsonLd } from "@/lib/seo";
+import { cn } from "@/lib/cn";
 import { Section, SectionTitle } from "../Section";
 import { PageHero } from "../PageHero";
 import { Media } from "../Media";
@@ -53,7 +55,11 @@ export function ServicesPage({ locale }: { locale: Locale }) {
               href={href(locale, `service:${k}`)}
               cta={t.common.learnMore}
               includesLabel={t.home.featured.includesLabel}
-              includes={t.services[k].modules?.map((m) => ({ label: m.title, text: m.summary, href: href(locale, `service:${k}`, m.id) }))}
+              // Sem recursos próprios (dermatofuncional): a lista mostra as situações acompanhadas, para as duas linhas terem o mesmo peso
+              includes={
+                t.services[k].modules?.map((m) => ({ label: m.title, text: m.summary, href: href(locale, `service:${k}`, m.id) })) ??
+                t.services[k].forWho.items.map((it) => ({ label: it.title, text: it.text, href: href(locale, `service:${k}`, "para-quem") }))
+              }
             />
           ))}
         </div>
@@ -81,29 +87,32 @@ export function AboutPage({ locale }: { locale: Locale }) {
         media={<Media id="about-hero" locale={locale} priority sizes="(min-width: 768px) 40vw, 100vw" />}
       />
 
-      {/* A história só aparece quando o texto do Mário chegar; até lá, missão e valores ocupam a secção */}
+      {/* A história só aparece quando o texto do Mário chegar; até lá, a secção abre com a missão */}
       <Section tone="mist" labelledBy={a.story.length ? "historia" : "missao"}>
-        <div className={a.story.length ? "grid gap-12 md:grid-cols-[1fr_1.2fr] md:gap-20" : "max-w-3xl"}>
-          {a.story.length > 0 && (
+        {a.story.length > 0 && (
+          <div className="mb-16 grid gap-x-20 gap-y-6 border-b border-line pb-16 md:grid-cols-[1fr_1.4fr]">
+            <h2 id="historia" className="t-h2">
+              {a.storyTitle}
+            </h2>
             <div>
-              <h2 id="historia" className="t-h2">
-                {a.storyTitle}
-              </h2>
-              {a.story.map((p) => (
-                <p key={p} className="t-lead mt-6">
+              {a.story.map((p, i) => (
+                <p key={p} className={cn("t-lead", i > 0 && "mt-6")}>
                   {p}
                 </p>
               ))}
             </div>
-          )}
-          <div>
-            <h2 id="missao" className="text-[15px] font-medium text-teal-strong">{a.missionTitle}</h2>
-            <p className="mt-3 font-display text-2xl font-medium leading-snug tracking-tight md:text-3xl">{a.mission}</p>
-            <h3 className="mt-12 text-[15px] font-medium text-teal-strong">{a.valuesTitle}</h3>
-            <div className="mt-4">
-              <IconList items={a.values} />
-            </div>
           </div>
+        )}
+        {/* Título à esquerda e missão à direita, como nas outras secções; os valores ocupam a largura toda por baixo */}
+        <div className="grid gap-x-20 gap-y-6 md:grid-cols-[1fr_1.4fr]">
+          <h2 id="missao" className="t-h2">
+            {a.missionTitle}
+          </h2>
+          <p className="font-display text-2xl leading-snug tracking-tight text-ink md:pt-1 md:text-[1.75rem]">{a.mission}</p>
+        </div>
+        <h3 className="t-h3 mt-14 md:mt-20">{a.valuesTitle}</h3>
+        <div className="mt-5">
+          <IconList items={a.values} cols={3} />
         </div>
       </Section>
 
@@ -174,14 +183,15 @@ export function ContactPage({ locale }: { locale: Locale }) {
       />
       {/* O cartão de marcação vem logo a seguir ao título: os botões não se repetem no hero */}
       <CtaTriad locale={locale} waMessage={wa.general()} location="contactos" photo={false} withMap />
+      {/* Título à esquerda, horário à direita; a nota dos seguros fica logo por baixo do horário */}
       <Section tone="mist" labelledBy="horario">
-        <div className="grid gap-12 md:grid-cols-2 md:gap-20">
+        <div className="grid gap-x-20 gap-y-8 md:grid-cols-[1fr_1.4fr]">
+          <h2 id="horario" className="t-h2">
+            {t.hours.title}
+          </h2>
           <div>
-            <h2 id="horario" className="t-h2">
-              {t.hours.title}
-            </h2>
-            <table className="mt-8 w-full text-lg">
-              <tbody>
+            <table className="w-full text-lg tabular-nums">
+              <tbody className="border-t border-line">
                 {days.map((r) => (
                   <tr key={r.d} className="border-b border-line">
                     <th scope="row" className="py-4 text-left font-medium">
@@ -192,16 +202,17 @@ export function ContactPage({ locale }: { locale: Locale }) {
                 ))}
               </tbody>
             </table>
+            <p className="mt-8 flex gap-3 text-grey">
+              <Info className="mt-1 size-5 shrink-0 text-teal" aria-hidden />
+              {t.home.insurance}
+            </p>
           </div>
-          <div className="md:pt-2">
-            {c.access && (
-              <>
-                <h2 className="t-h2">{c.accessTitle}</h2>
-                <p className="t-lead mt-6">{c.access}</p>
-              </>
-            )}
-            <p className={c.access ? "mt-10 border-t border-line pt-6 text-grey" : "text-lg leading-relaxed text-grey md:mt-16"}>{t.home.insurance}</p>
-          </div>
+          {c.access && (
+            <>
+              <h2 className="t-h2 md:mt-12">{c.accessTitle}</h2>
+              <p className="t-lead md:mt-12">{c.access}</p>
+            </>
+          )}
         </div>
       </Section>
     </>

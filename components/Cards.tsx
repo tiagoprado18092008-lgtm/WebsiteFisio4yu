@@ -19,7 +19,8 @@ export function ServiceRow({ locale, mediaId, title, text, href, cta, includesLa
 }) {
   return (
     <article className="grid items-center gap-8 md:grid-cols-2 md:gap-14 lg:gap-20">
-      <Link href={href} tabIndex={-1} aria-hidden className={cn("block overflow-hidden rounded-[var(--radius-img)]", reverse && "md:order-last")}>
+      {/* Em desktop a foto fica 5:4: em retrato, a coluna da imagem ficava muito mais alta do que o texto ao lado */}
+      <Link href={href} tabIndex={-1} aria-hidden className={cn("block overflow-hidden rounded-[var(--radius-img)] md:[&>div]:aspect-[5/4]!", reverse && "md:order-last")}>
         <Media id={mediaId} locale={locale} compact sizes="(min-width: 768px) 50vw, 100vw" className="transition-transform duration-700 hover:scale-[1.02]" />
       </Link>
       <div>
@@ -34,7 +35,7 @@ export function ServiceRow({ locale, mediaId, title, text, href, cta, includesLa
             {includesLabel && <p className="text-sm font-semibold text-muted">{includesLabel}</p>}
             <ul className="mt-2 divide-y divide-line border-y border-line">
               {includes.map((i) => (
-                <li key={i.href}>
+                <li key={i.label}>
                   <Link href={i.href} className="group flex flex-col gap-0.5 py-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
                     <span className="font-semibold text-ink group-hover:text-teal-strong">{i.label}</span>
                     <span className="text-[15px] text-grey sm:max-w-[60%] sm:text-right">{i.text}</span>
@@ -44,7 +45,7 @@ export function ServiceRow({ locale, mediaId, title, text, href, cta, includesLa
             </ul>
           </div>
         )}
-        <Link href={href} className="link mt-8 inline-block">
+        <Link href={href} className="link mt-6 inline-flex min-h-11 items-center">
           {cta}
         </Link>
       </div>
@@ -52,12 +53,39 @@ export function ServiceRow({ locale, mediaId, title, text, href, cta, includesLa
   );
 }
 
+/** O outro serviço, no fim de cada página de serviço: uma linha com miniatura, sem repetir a secção inteira. */
+export function RelatedService({ locale, mediaId, title, text, href, cta }: {
+  locale: Locale; mediaId: string; title: string; text: string; href: string; cta: string;
+}) {
+  return (
+    <Link href={href} className="group grid items-center gap-5 border-y border-line py-5 sm:grid-cols-[minmax(0,220px)_1fr] sm:gap-8">
+      <span className="relative block aspect-[3/2] overflow-hidden rounded-[18px]">
+        <Media id={mediaId} locale={locale} cover sizes="(min-width: 640px) 220px, 100vw" className="transition-transform duration-700 group-hover:scale-[1.03]" />
+      </span>
+      <span>
+        <span className="block font-display text-2xl font-medium leading-tight tracking-tight text-ink group-hover:text-teal-dark md:text-[1.75rem]">{title}</span>
+        <span className="mt-2 block max-w-lg text-grey">{text}</span>
+        <span className="link mt-3 inline-flex min-h-11 items-center">{cta}</span>
+      </span>
+    </Link>
+  );
+}
+
 /** Lista com ícone discreto, em duas colunas, separada por filetes (sem caixas). */
 export function IconList({ items, cols = 2 }: { items: { icon: IconName; title: string; text: string }[]; cols?: 1 | 2 | 3 }) {
+  // Número ímpar em duas colunas: o último item ocupa a linha toda, em vez de ficar com meio filete órfão
+  const oddLast = cols > 1 && items.length % 2 === 1;
   return (
     <ul className={cn("grid border-t border-line", cols > 1 && "sm:grid-cols-2", cols === 3 && "lg:grid-cols-3")}>
-      {items.map((it) => (
-        <li key={it.title} className="flex gap-4 border-b border-line py-6 sm:pr-8">
+      {items.map((it, i) => (
+        <li
+          key={it.title}
+          className={cn(
+            "flex gap-4 border-b border-line py-6 sm:pr-8",
+            oddLast && i === items.length - 1 && "sm:col-span-2",
+            oddLast && i === items.length - 1 && cols === 3 && items.length % 3 === 0 && "lg:col-span-1",
+          )}
+        >
           <Icon name={it.icon} className="mt-1 size-6 shrink-0 text-teal" />
           <div>
             <p className="t-h3">{it.title}</p>

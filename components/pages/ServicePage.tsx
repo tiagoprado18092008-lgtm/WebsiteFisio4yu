@@ -13,7 +13,7 @@ import { JourneySteps } from "../JourneySteps";
 import { Faq } from "../Faq";
 import { CtaTriad } from "../CtaTriad";
 import { CallButton, WhatsAppButton } from "../Buttons";
-import { IconList, ServiceRow, TeamMember } from "../Cards";
+import { IconList, RelatedService, TeamMember } from "../Cards";
 import { JsonLd } from "../JsonLd";
 import { SectionNav } from "../SectionNav";
 import { VideoButton, VideoCard } from "../VideoCard";
@@ -177,7 +177,7 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
                 )}
               </div>
               <div>
-                <h2 id={`${m.id}-title`} className="t-h1">
+                <h2 id={`${m.id}-title`} className="t-h2">
                   {m.title}
                 </h2>
                 <p className="t-lead mt-6">{m.text}</p>
@@ -291,25 +291,25 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
         </div>
       </Section>
 
-      {/* Outro serviço */}
+      {/* Outro serviço: uma linha compacta antes da marcação, para não alongar o fim da página */}
       <Section tone={tone()} labelledBy="related">
-        <h2 id="related" className="text-[15px] font-medium text-teal-strong">
-          {sp.related}
-        </h2>
-        <div className="mt-6">
-          {s.related.map((k) => (
-            <ServiceRow
-              key={k}
-              locale={locale}
-              mediaId={t.services[k].mediaId}
-              title={t.services[k].name}
-              text={t.services[k].short}
-              href={href(locale, `service:${k}`)}
-              cta={t.common.learnMore}
-              includesLabel={t.home.featured.includesLabel}
-              includes={t.services[k].modules?.map((m) => ({ label: m.title, text: m.summary, href: href(locale, `service:${k}`, m.id) }))}
-            />
-          ))}
+        <div className="grid items-center gap-8 md:grid-cols-[1fr_1.4fr] md:gap-16">
+          <h2 id="related" className="t-h2">
+            {sp.related}
+          </h2>
+          <div>
+            {s.related.map((k) => (
+              <RelatedService
+                key={k}
+                locale={locale}
+                mediaId={t.services[k].mediaId}
+                title={t.services[k].name}
+                text={t.services[k].short}
+                href={href(locale, `service:${k}`)}
+                cta={t.common.learnMore}
+              />
+            ))}
+          </div>
         </div>
       </Section>
 

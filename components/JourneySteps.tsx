@@ -46,7 +46,7 @@ export function JourneySteps({ title, intro, steps, id, linksLabel, cta }: {
                     <Link
                       key={l.href}
                       href={l.href}
-                      className="inline-flex min-h-9 items-center rounded-full bg-ice px-3.5 font-semibold text-teal-dark transition-colors hover:bg-[#d3e8ec]"
+                      className="inline-flex min-h-11 items-center rounded-full bg-ice px-4 font-semibold text-teal-dark transition-colors hover:bg-[#d3e8ec] md:min-h-9 md:px-3.5"
                     >
                       {l.label}
                     </Link>

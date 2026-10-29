@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-29T17:00:00Z",
+  "title": "Design System: Fisio4you",
+  "extensions": {
+    "colorMeta": {
+      "ink": { "role": "neutral", "displayName": "Grafite Frio", "canonical": "#20282b", "tonalRamp": ["#0f1416", "#20282b", "#343f43", "#4b575b", "#667276", "#8a9599", "#b8c1c4", "#e6ebec"] },
+      "grey": { "role": "neutral", "displayName": "Cinza do Logótipo", "canonical": "#4e5053", "tonalRamp": ["#1f2021", "#323436", "#4e5053", "#66686b", "#808285", "#9fa1a3", "#c4c5c7", "#ebebec"] },
+      "muted": { "role": "neutral", "displayName": "Cinza Terciário", "canonical": "#6a7377", "tonalRamp": ["#262a2c", "#3b4144", "#525a5d", "#6a7377", "#848c90", "#a2a9ac", "#c6cbcd", "#eceeef"] },
+      "line": { "role": "neutral", "displayName": "Filete", "canonical": "#d7e2e5", "tonalRamp": ["#4d6a71", "#6b878e", "#8ba5ab", "#a9c0c5", "#c3d4d8", "#d7e2e5", "#e7eef0", "#f5f8f9"] },
+      "mist": { "role": "neutral", "displayName": "Mist", "canonical": "#f4f8f9", "tonalRamp": ["#5d7c83", "#7f9ba1", "#a2b8bd", "#c2d3d7", "#dbe6e8", "#e9f0f2", "#f4f8f9", "#fbfdfd"] },
+      "ice": { "role": "neutral", "displayName": "Ice", "canonical": "#e4f1f3", "tonalRamp": ["#2f6a74", "#4f8a94", "#76a9b2", "#9fc7ce", "#c3dfe3", "#d6e9ec", "#e4f1f3", "#f3f9fa"] },
+      "teal": { "role": "primary", "displayName": "Teal do \"4\"", "canonical": "#118193", "tonalRamp": ["#063a43", "#0a5560", "#0e6c7b", "#118193", "#3b9cab", "#6fb8c3", "#a6d4db", "#ddf0f3"] },
+      "teal-strong": { "role": "primary", "displayName": "Teal Instrumento", "canonical": "#0d6b7a", "tonalRamp": ["#05323a", "#094a55", "#0d6b7a", "#2a8392", "#559fab", "#85bcc5", "#b6d8dd", "#e3f1f3"] },
+      "teal-dark": { "role": "primary", "displayName": "Teal Profundo", "canonical": "#0e4c57", "tonalRamp": ["#05242a", "#0a3740", "#0e4c57", "#2c6772", "#548791", "#80a8b0", "#b0cbd0", "#e0ecee"] },
+      "cyan": { "role": "primary", "displayName": "Brilho do \"4\"", "canonical": "#1fb5ca", "tonalRamp": ["#0a4a53", "#106b78", "#168ea0", "#1fb5ca", "#4cc6d7", "#7dd6e2", "#b0e7ee", "#e2f7fa"] },
+      "panel": { "role": "neutral", "displayName": "Teal Painel", "canonical": "#1d5a64", "tonalRamp": ["#0b262b", "#133d44", "#1d5a64", "#3a7580", "#5f939c", "#8bb2b9", "#bad3d7", "#e6f0f1"] },
+      "frame": { "role": "neutral", "displayName": "Moldura", "canonical": "#a9ced5", "tonalRamp": ["#2f5d66", "#477a84", "#6597a1", "#87b5bd", "#a9ced5", "#c3dde2", "#dbebee", "#f1f8f9"] },
+      "whatsapp": { "role": "secondary", "displayName": "Verde WhatsApp", "canonical": "#25d366", "tonalRamp": ["#05301a", "#0b5a2f", "#118a45", "#1fc15c", "#25d366", "#5fe08e", "#9cecb8", "#dbf9e6"] },
+      "whatsapp-ink": { "role": "secondary", "displayName": "Tinta WhatsApp", "canonical": "#05301a", "tonalRamp": ["#021a0e", "#05301a", "#0a4a29", "#126639", "#22854f", "#4aa771", "#8bcca3", "#d4eedd"] },
+      "white": { "role": "neutral", "displayName": "Branco da Folha", "canonical": "#ffffff", "tonalRamp": ["#8c9497", "#a8aeb0", "#c2c7c9", "#d9dddf", "#eaedee", "#f4f6f7", "#fafbfb", "#ffffff"] }
+    },
+    "typographyMeta": {
+      "hero": { "displayName": "Hero", "purpose": "Só o hero da página inicial." },
+      "display": { "displayName": "Display", "purpose": "H1 das páginas internas e título do bloco de marcação." },
+      "headline": { "displayName": "Headline", "purpose": "Todos os H2 de secção; um só tamanho por página." },
+      "subhead": { "displayName": "Subhead", "purpose": "Nomes da equipa, frase da missão, nome do outro serviço." },
+      "title": { "displayName": "Title", "purpose": "Itens de lista, passos do percurso, perguntas frequentes, subtítulos dentro de uma secção." },
+      "lead": { "displayName": "Lead", "purpose": "Introdução sob H1/H2, em cinza do logótipo." },
+      "body": { "displayName": "Body", "purpose": "Texto corrido." },
+      "label": { "displayName": "Label", "purpose": "Cargos e rótulos curtos de listas, em teal instrumento." }
+    },
+    "shadows": [
+      { "name": "bar-rest", "value": "0 6px 20px -14px rgba(14,76,87,.25)", "purpose": "Header no topo da página." },
+      { "name": "bar-scrolled", "value": "0 12px 32px -14px rgba(14,76,87,.35)", "purpose": "Header depois de descer." },
+      { "name": "card-resting", "value": "0 18px 40px -30px rgba(14,76,87,.45)", "purpose": "Cartão de pessoa e cartão do mapa do corpo." },
+      { "name": "photo-framed", "value": "0 30px 60px -34px rgba(6,40,46,.55)", "purpose": "Foto no hero de cada serviço." }
+    ],
+    "motion": [
+      { "name": "ease-out-soft", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Easing de todas as entradas e transições de estado." },
+      { "name": "rise", "value": "0.8s ease-out-soft, 14px", "purpose": "Entrada única do hero, com 80 ms entre filhos." },
+      { "name": "menu-row", "value": "0.45s ease-out-soft, 35ms stagger", "purpose": "Cascata das linhas do menu mobile." },
+      { "name": "swap", "value": "0.35s ease-out-soft, 6px", "purpose": "Troca de zona no mapa do corpo." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botão WhatsApp",
+      "kind": "button",
+      "refersTo": "button-whatsapp",
+      "description": "Conversão principal: abre o WhatsApp com a mensagem do contexto.",
+      "html": "<a class=\"ds-btn ds-btn-wa\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2Z\"/></svg>Marcar consulta por WhatsApp</a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 12px 20px; border-radius: 999px; font: 600 15px/1 'Public Sans', system-ui, sans-serif; text-decoration: none; transition: background-color .2s, border-color .2s, color .2s; } .ds-btn-wa { background: var(--f4y-whatsapp, #25d366); color: #05301a; } .ds-btn-wa:hover { background: #1fc15c; } .ds-btn:focus-visible { outline: 2px solid var(--f4y-teal-strong, #0d6b7a); outline-offset: 3px; }"
+    },
+    {
+      "name": "Botão Teal",
+      "kind": "button",
+      "refersTo": "button-teal",
+      "description": "Ação secundária que não abre o WhatsApp (ex.: mostrar mapa).",
+      "html": "<button class=\"ds-btn-teal\" type=\"button\">Mostrar mapa</button>",
+      "css": ".ds-btn-teal { display: inline-flex; align-items: center; min-height: 48px; padding: 12px 20px; border: 0; border-radius: 999px; background: var(--f4y-teal-strong, #0d6b7a); color: #fff; font: 600 15px/1 'Public Sans', system-ui, sans-serif; cursor: pointer; transition: background-color .2s; } .ds-btn-teal:hover { background: var(--f4y-teal-dark, #0e4c57); } .ds-btn-teal:focus-visible { outline: 2px solid var(--f4y-teal-strong, #0d6b7a); outline-offset: 3px; }"
+    },
+    {
+      "name": "Botão Telefone (outline)",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Conversão secundária, sempre ao lado do WhatsApp.",
+      "html": "<a class=\"ds-btn-outline\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z\"/></svg>924 098 545</a>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 12px 20px; border: 1px solid rgba(32,40,43,.2); border-radius: 999px; background: #fff; color: var(--f4y-ink, #20282b); font: 600 15px/1 'Public Sans', system-ui, sans-serif; text-decoration: none; transition: border-color .2s; } .ds-btn-outline:hover { border-color: var(--f4y-ink, #20282b); } .ds-btn-outline:focus-visible { outline: 2px solid var(--f4y-teal-strong, #0d6b7a); outline-offset: 3px; }"
+    },
+    {
+      "name": "Chip de recurso",
+      "kind": "chip",
+      "refersTo": "chip-link",
+      "description": "Liga um passo do percurso ao recurso usado nessa fase.",
+      "html": "<a class=\"ds-chip\" href=\"#\">Ecografia</a>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; border-radius: 999px; background: var(--f4y-ice, #e4f1f3); color: var(--f4y-teal-dark, #0e4c57); font: 600 14px/1 'Public Sans', system-ui, sans-serif; text-decoration: none; transition: background-color .2s; } .ds-chip:hover { background: #d3e8ec; } .ds-chip:focus-visible { outline: 2px solid var(--f4y-teal-strong, #0d6b7a); outline-offset: 3px; }"
+    },
+    {
+      "name": "Cartão de marcação",
+      "kind": "card",
+      "refersTo": "card-booking",
+      "description": "Painel teal com telefone, horário, morada e o botão WhatsApp a toda a largura.",
+      "html": "<div class=\"ds-booking\"><p class=\"ds-booking-t\">Contactos</p><p class=\"ds-booking-s\">Respondemos às mensagens durante o horário da clínica.</p><p class=\"ds-booking-row\">924 098 545</p><p class=\"ds-booking-row\">Seg–Sex, 09h00–19h00</p><a class=\"ds-booking-cta\" href=\"#\">Marcar consulta por WhatsApp</a></div>",
+      "css": ".ds-booking { max-width: 400px; padding: 28px; border-radius: 28px; background: var(--f4y-panel, #1d5a64); color: #fff; font-family: 'Public Sans', system-ui, sans-serif; } .ds-booking-t { margin: 0; font: 400 24px/1.2 'Bricolage Grotesque', system-ui, sans-serif; letter-spacing: -0.02em; } .ds-booking-s { margin: 4px 0 20px; font-size: 15px; color: rgba(255,255,255,.85); } .ds-booking-row { margin: 0 0 8px; padding: 12px 16px; border-radius: 16px; background: rgba(255,255,255,.08); font-size: 15px; } .ds-booking-cta { display: flex; justify-content: center; margin-top: 20px; min-height: 48px; align-items: center; border-radius: 999px; background: #25d366; color: #05301a; font-weight: 600; font-size: 15px; text-decoration: none; } .ds-booking-cta:hover { background: #1fc15c; } .ds-booking-cta:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Lista com filetes",
+      "kind": "custom",
+      "description": "Itens repetidos (indicações, valores, recursos) com ícone teal e filetes, sem caixas.",
+      "html": "<ul class=\"ds-list\"><li><span class=\"ds-list-i\" aria-hidden=\"true\"></span><div><p class=\"ds-list-t\">Tendinopatias</p><p class=\"ds-list-d\">Ombro, cotovelo, joelho e tendão de Aquiles.</p></div></li><li><span class=\"ds-list-i\" aria-hidden=\"true\"></span><div><p class=\"ds-list-t\">Dor lombar e cervical</p><p class=\"ds-list-d\">Incluindo hérnia discal e dor irradiada.</p></div></li></ul>",
+      "css": ".ds-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--f4y-line, #d7e2e5); font-family: 'Public Sans', system-ui, sans-serif; } .ds-list li { display: flex; gap: 16px; padding: 24px 0; border-bottom: 1px solid var(--f4y-line, #d7e2e5); } .ds-list-i { flex: none; width: 24px; height: 24px; margin-top: 4px; border-radius: 999px; border: 2px solid var(--f4y-teal, #118193); } .ds-list-t { margin: 0; font: 600 21px/1.2 'Bricolage Grotesque', system-ui, sans-serif; letter-spacing: -0.012em; color: var(--f4y-ink, #20282b); } .ds-list-d { margin: 4px 0 0; color: var(--f4y-grey, #4e5053); }"
+    },
+    {
+      "name": "Navegação de secção",
+      "kind": "nav",
+      "description": "Faixa fixa nas páginas de serviço; o separador ativo leva sublinhado teal.",
+      "html": "<nav class=\"ds-secnav\"><a href=\"#\" aria-current=\"location\">Indicações</a><a href=\"#\">Onde dói</a><a href=\"#\">Ecografia</a><a href=\"#\">Perguntas</a></nav>",
+      "css": ".ds-secnav { display: flex; gap: 28px; padding: 0 16px; border-block: 1px solid var(--f4y-line, #d7e2e5); background: rgba(255,255,255,.95); font: 400 15px/1 'Public Sans', system-ui, sans-serif; } .ds-secnav a { position: relative; display: inline-flex; align-items: center; min-height: 48px; color: var(--f4y-grey, #4e5053); text-decoration: none; transition: color .2s; } .ds-secnav a:hover { color: var(--f4y-teal-strong, #0d6b7a); } .ds-secnav a[aria-current] { color: var(--f4y-teal-strong, #0d6b7a); font-weight: 500; } .ds-secnav a[aria-current]::after { content: ''; position: absolute; inset: auto 0 0; height: 2px; border-radius: 999px; background: var(--f4y-teal-strong, #0d6b7a); } .ds-secnav a:focus-visible { outline: 2px solid var(--f4y-teal-strong, #0d6b7a); outline-offset: 3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "A Sala de Avaliação Clara",
+    "overview": "O site comporta-se como a sala onde a primeira consulta acontece: luz branca, superfícies limpas, instrumentos precisos e uma pessoa próxima a explicar o que vê. O teal do logótipo é o instrumento, não a decoração. Marca o que se pode fazer (botões, links, a fase ativa, o ponto no mapa do corpo) e nunca cobre a página. O calor vem das fotografias reais da clínica e da equipa, nunca de gradientes ou ilustrações genéricas.\n\nA página inteira vive numa folha branca de cantos largos (34 px em desktop) pousada sobre uma moldura teal suave. Isto dá ao site um objeto físico reconhecível e separa o conteúdo do browser. Dentro da folha, as secções alternam entre branco e \"mist\", um branco frio quase impercetível, e o ritmo vem de espaço generoso e filetes finos, não de caixas. O cliente pediu um site clínico, claro e não escuro. O único painel escuro (teal \"panel\") está reservado ao momento de marcar consulta e ao hero do serviço desportivo.\n\nA densidade é editorial: títulos grandes em frase normal (Bricolage Grotesque 400), texto corrido sóbrio (Public Sans), listas separadas por filetes em vez de cartões, e a informação clínica organizada por fases e por zonas do corpo.",
+    "keyCharacteristics": [
+      "Folha branca de cantos largos sobre moldura teal (`frame`), com rodapé em painel \"ice\" recolhido nas margens.",
+      "Teal como instrumento: ação, estado e foco. O verde WhatsApp é a única cor de conversão.",
+      "Fotografias reais com cantos de 24–28 px; nada de ilustração decorativa.",
+      "Listas com filetes (`line`) em vez de grelhas de cartões.",
+      "Movimento curto e único: entrada do hero, cascata do menu, troca de zona no mapa do corpo."
+    ],
+    "rules": [
+      { "name": "A Regra do Instrumento", "body": "O teal marca o que se pode usar ou o que está ativo. Um bloco teal grande só existe para pedir a marcação ou para emoldurar a foto de um serviço.", "section": "colors" },
+      { "name": "A Regra de Uma Conversão", "body": "O verde WhatsApp só aparece em botões que abrem o WhatsApp. Nenhum outro elemento é verde.", "section": "colors" },
+      { "name": "A Regra de Um Nível por Papel", "body": "Dentro de uma página, todos os H2 usam Headline. Um H2 nunca sobe a Display para parecer mais importante. A importância vem da posição e da fotografia.", "section": "typography" },
+      { "name": "A Regra da Frase Normal", "body": "Sem maiúsculas em títulos nem em rótulos. A única exceção é o selo do Livro de Reclamações, que é um elemento oficial.", "section": "typography" },
+      { "name": "A Regra do Título Sem Eyebrow", "body": "Nenhum rótulo pequeno por cima de um título faz de título. Se a secção precisa de um nome, esse nome é o H2, em Headline, à esquerda do conteúdo.", "section": "typography" },
+      { "name": "A Regra da Folha Plana", "body": "As secções e as listas não têm sombra. Uma sombra significa que o elemento está pousado sobre outro.", "section": "elevation" }
+    ],
+    "dos": [
+      "**Do** usar `teal-strong` (#0d6b7a) para qualquer texto teal; `teal` (#118193) só em ícones e marcas.",
+      "**Do** separar itens repetidos com filetes `line` (#d7e2e5) em vez de os meter em cartões.",
+      "**Do** usar fotografias reais da clínica com cantos de 24–28 px; enquanto faltar uma foto, usar outra foto real do espaço.",
+      "**Do** manter todos os H2 de uma página no nível Headline.",
+      "**Do** dar a cada alvo de toque pelo menos 44 px em mobile.",
+      "**Do** levar cada página a um WhatsApp com a mensagem pré-preenchida pelo contexto."
+    ],
+    "donts": [
+      "**Don't** escurecer o site: o cliente pediu um site clínico, claro e não escuro. O painel escuro fica reservado ao bloco de marcação e ao hero da musculoesquelética.",
+      "**Don't** usar verde fora dos botões de WhatsApp.",
+      "**Don't** usar maiúsculas em títulos ou rótulos (exceto o selo oficial do Livro de Reclamações).",
+      "**Don't** remover o \"fisio4you\" grande no fundo do rodapé.",
+      "**Don't** pôr sombras em secções ou listas; a sombra é só para elementos pousados sobre outros.",
+      "**Don't** inventar números, testemunhos ou nomes; o que falta fica pendente e não aparece ao público."
+    ]
+  }
+}
