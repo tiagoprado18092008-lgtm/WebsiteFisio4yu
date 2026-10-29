@@ -39,6 +39,21 @@ Tudo o que no site aparece como `[[ ]]` (ou tem um comentário `[[ ]]` no códig
 | 31 | **Musculoesquelética, textos novos (a validar com o Mário):** detalhe de cada passo de "Como funciona" e as perguntas "Tenho esta dor há meses" e "ecografia vs. ressonância" | `services.msk.how.steps[].details`, `faq[2]`, `faq[4]` |
 | 32 | **Instagram na home** (links confirmados). Opcional: capas em melhor resolução (as atuais são capturas de ~280 px e ficam algo moles nos telemóveis) | `content/media.ts` → `instagramList`; capas em `/public/media/instagram/<código>.webp` |
 
+### Reformulação do copy (29/10/2026): pontos a validar
+
+| # | Pendente | Onde alterar |
+|---|---|---|
+| 33 | **Cédula profissional** (Ordem dos Fisioterapeutas) e **formação relevante** do Mário e da Angela. Aparecem nos cartões da equipa assim que preenchidas | `pt.ts`/`en.ts` → `team[].focus` |
+| 34 | **Cargo:** os dois aparecem como "Fisioterapeuta e CEO" (como nas entrevistas). Preferem outra designação (ex.: sócio-gerente, direção clínica) ou só "Fisioterapeuta"? | `team[].role` |
+| 35 | **Divisão das áreas:** o site diz que a musculoesquelética "é a área de Mário Barroso" e a dermatofuncional "é a área de Angela Brazona" (home, páginas de serviço). Confirmar (liga-se ao #30) | `home.featured.intro`, `home.advantages.items[3]`, `services.*.distinct.text` |
+| 36 | **Gravidez:** o perfil da Angela refere acompanhamento durante a gravidez (dito no vídeo), mas a página do serviço só fala do pós-parto. Há acompanhamento na gravidez? Se sim, acrescentar ao serviço | `team[1].focus`, `services.dermato` |
+| 37 | **Pressoterapia:** aparece numa foto da faixa da home e no vídeo "Circuito de recuperação", mas não está descrita como serviço. Querem mencioná-la? | `services.msk.modules[2]` |
+| 38 | **Processo clínico:** as fases de cada serviço (avaliação → plano → tratamento e exercício → alta) e os princípios da página Sobre ("Avaliação antes do tratamento", "Exercício supervisionado", "Reavaliação regular") descrevem a prática habitual. Confirmar que correspondem ao que fazem | `services.*.how`, `about.values` |
+| 39 | **Exercício supervisionado "por fisioterapeutas":** além do Mário e da Angela, há outros profissionais no ginásio? | `home.advantages.items[2]`, `services.msk.modules[1].text` |
+| 40 | **Avaliações Google e publicidade em saúde:** uma das avaliações publicadas diz "A melhor clínica de fisioterapia de Portimão". O texto é da utente e não foi alterado, mas convém confirmar que a utilização de testemunhos cumpre as regras de publicidade em saúde (ERS) | `content/reviews.ts` |
+| 41 | **Perguntas escondidas até haver resposta:** "Preciso de prescrição médica?" (#17) e "Posso usar o ginásio, a banheira de gelo ou a sauna sem fazer fisioterapia?" (#19) deixaram de aparecer: a resposta pública era apenas "fale connosco". Voltam a aparecer quando a resposta for escrita | `services.msk.faq[0]`, `faq[6]` |
+| 42 | **Seguros:** a frase passou a "De momento, a Fisio4you não tem acordos com seguradoras nem com subsistemas de saúde." Se preferirem anunciar que estão em negociação, confirmar a redação (liga-se ao #23) | `home.insurance` |
+
 ## 🟢 Técnico
 
 | # | Pendente | Onde alterar |

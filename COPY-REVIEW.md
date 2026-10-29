@@ -1,5 +1,7 @@
 # Fisio4you · Revisão de copy (PT-PT)
 
+> **Substituído a 29/10/2026.** O copy do site foi reformulado diretamente em `content/pt.ts` e `content/en.ts` (tom clínico e institucional, CTA "Marcar consulta"). Este documento fica como histórico da proposta anterior; os pontos por validar estão em `PENDENTES.md` (#33–#42).
+
 Proposta de reescrita de todo o texto visível do site, com base no estilo e na estrutura da Alfra Clinic (sem copiar frases).
 Formato: **Atual** → **Proposto**. Quando um texto não muda, aparece como *mantém*.
 
