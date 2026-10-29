@@ -140,8 +140,8 @@ const items: MediaItem[] = [
     type: "image",
     src: photo.duo,
     ratio: "4/5",
-    alt: { pt: "Mário Barroso e Angela Brazona, fisioterapeutas e responsáveis da Fisio4you", en: "Mário Barroso and Angela Brazona, physiotherapists who run Fisio4you" },
-    brief: "Os responsáveis da clínica juntos.",
+    alt: { pt: "Mário Barroso, fisioterapeuta e CEO, e Angela Brazona, fisioterapeuta da Fisio4you", en: "Mário Barroso, physiotherapist and CEO, and Angela Brazona, physiotherapist at Fisio4you" },
+    brief: "O Mário e a Angela juntos.",
     position: "50% 30%",
   },
   {

@@ -30,7 +30,7 @@ Tudo o que aparece no site está registado em `content/media.ts`. Os originais e
 | `brand-room` | 3/2 | ✅ | Sala com o logótipo. | `/public/media/espaco/sala-fisio4you.webp` |
 | `athletes` | 3/2 | ✅ | Mário com clientes/atletas na clínica (secção de avaliações da home). | `/public/media/clientes/atletas.webp` |
 | `jerseys` | 3/2 | ✅ | Camisolas assinadas (colagem da secção de vantagens, home). | `/public/media/espaco/camisolas.webp` |
-| `about-hero` | 4/5 | ✅ | Os responsáveis da clínica juntos. | `/public/media/equipa/mario-e-angela.webp` |
+| `about-hero` | 4/5 | ✅ | O Mário e a Angela juntos. | `/public/media/equipa/mario-e-angela.webp` |
 | `service-msk` | 4/5 | ✅ | Terapia manual num desportista. | `/public/media/tratamentos/tratamento-sala.webp` |
 | `service-dermato` | 4/5 | ✅ | Fisioterapeuta da área dermatofuncional. | `/public/media/tratamentos/angela-dermatofuncional.webp` |
 | `service-eco` | 4/5 | ✅ | Ideal: fisioterapeuta com sonda do ecógrafo, ecrã visível. | `/public/media/espaco/sala-avaliacao.webp` |

@@ -158,7 +158,7 @@ export const pt = {
     },
     about: {
       title: "Sobre a Fisio4you | Clínica de Fisioterapia em Portimão",
-      description: "Clínica de fisioterapia em Portimão dirigida pelos fisioterapeutas Mário Barroso e Angela Brazona. Conheça a equipa, a forma de trabalhar e as instalações.",
+      description: "Clínica de fisioterapia em Portimão dirigida pelo fisioterapeuta Mário Barroso, com Angela Brazona na fisioterapia dermatofuncional. Conheça a equipa, a forma de trabalhar e as instalações.",
     },
     contact: {
       title: "Contactos e Horário | Fisio4you Portimão",
@@ -290,7 +290,7 @@ export const pt = {
     },
     photoStrip: {
       title: "O espaço e a equipa",
-      sub: "Salas de tratamento, ginásio de reabilitação e área de recuperação, numa clínica dirigida por dois fisioterapeutas.",
+      sub: "Salas de tratamento, ginásio de reabilitação e área de recuperação, onde os fisioterapeutas acompanham cada fase do tratamento.",
       pause: "Pausar as fotos",
       play: "Retomar as fotos",
     },
@@ -722,7 +722,7 @@ export const pt = {
   about: {
     eyebrow: "Sobre nós",
     title: "Fisio4you, centro de reabilitação em Portimão",
-    sub: "Clínica de fisioterapia dirigida por Mário Barroso e Angela Brazona, com duas áreas de intervenção: fisioterapia musculoesquelética e fisioterapia dermatofuncional.",
+    sub: "Clínica de fisioterapia dirigida pelo fisioterapeuta Mário Barroso, com duas áreas de intervenção: fisioterapia musculoesquelética, com o Mário, e fisioterapia dermatofuncional, com a fisioterapeuta Angela Brazona.",
     storyTitle: "A nossa história",
     story: ["[[Pedir ao Mário o texto da história da clínica.]]"],
     // Descrição factual da clínica e da forma de trabalhar (substitui a missão e os valores genéricos).

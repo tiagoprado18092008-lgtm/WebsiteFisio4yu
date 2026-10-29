@@ -70,7 +70,7 @@ export const en: Dict = {
     },
     about: {
       title: "About Fisio4you | Physiotherapy Clinic in Portimão",
-      description: "Physiotherapy clinic in Portimão run by physiotherapists Mário Barroso and Angela Brazona. Meet the team, see how we work and view the facilities.",
+      description: "Physiotherapy clinic in Portimão run by physiotherapist Mário Barroso, with Angela Brazona in dermatofunctional physiotherapy. Meet the team, see how we work and view the facilities.",
     },
     contact: {
       title: "Contact & Opening Hours | Fisio4you Portimão",
@@ -202,7 +202,7 @@ export const en: Dict = {
     },
     photoStrip: {
       title: "The space and the team",
-      sub: "Treatment rooms, a rehabilitation gym and a recovery area, in a clinic run by two physiotherapists.",
+      sub: "Treatment rooms, a rehabilitation gym and a recovery area, where our physiotherapists guide every stage of treatment.",
       pause: "Pause the photos",
       play: "Play the photos",
     },
@@ -629,7 +629,7 @@ export const en: Dict = {
   about: {
     eyebrow: "About us",
     title: "Fisio4you, rehabilitation centre in Portimão",
-    sub: "A physiotherapy clinic run by Mário Barroso and Angela Brazona, with two areas of practice: musculoskeletal physiotherapy and dermatofunctional physiotherapy.",
+    sub: "A physiotherapy clinic run by physiotherapist Mário Barroso, with two areas of practice: musculoskeletal physiotherapy, with Mário, and dermatofunctional physiotherapy, with physiotherapist Angela Brazona.",
     storyTitle: "Our story",
     story: ["[[Ask Mário for the clinic's story.]]"],
     missionTitle: "The clinic",
