@@ -80,9 +80,13 @@ p, li, dd, blockquote { text-wrap: pretty; }
     font-family: var(--font-display);
     font-weight: 400;
     font-size: clamp(2.6rem, 1.5rem + 4.4vw, 5.25rem);
-    line-height: 0.98;
-    letter-spacing: -0.035em;
+    line-height: 0.96;
+    letter-spacing: -0.038em;
     text-wrap: balance;
+    /* A partir de 1280 px continua a crescer até 7,5rem (~1920 px), para encher a metade esquerda do hero */
+    @media (min-width: 1280px) {
+      font-size: clamp(5.25rem, 1rem + 5.4vw, 7.5rem);
+    }
   }
   .t-h1 {
     font-family: var(--font-display);

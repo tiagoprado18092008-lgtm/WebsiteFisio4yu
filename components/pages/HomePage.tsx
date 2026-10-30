@@ -9,7 +9,6 @@ import { waMessages } from "@/lib/whatsapp";
 import { Section, SectionTitle } from "../Section";
 import { Pictogram, type PictogramName } from "../Pictograms";
 import { Media } from "../Media";
-import { Advantages } from "../Advantages";
 import { ServiceDuo } from "../ServiceDuo";
 import { Testimonials } from "../Testimonials";
 import { CtaTriad } from "../CtaTriad";
@@ -44,24 +43,27 @@ export function HomePage({ locale }: { locale: Locale }) {
   ];
   return (
     <>
-      {/* Hero com a foto do Mário a tratar um utente (sem vídeo, a pedido do cliente) e pouco texto: título, uma frase
-          e os dois contactos. A foto é vertical: até 1024 px fica em cima, a fundir-se com o painel, e o texto por baixo;
-          a partir de 1024 px ocupa a parte direita e o degradê teal cobre o mural do lado esquerdo da foto. */}
-      <section className="px-2 pb-6 pt-2 md:px-4 md:pt-3">
-        <div className="on-dark relative overflow-hidden rounded-[28px] bg-panel text-white md:rounded-[34px]">
-          {/* Até 1024 px, o recorte quadrado mantém o rosto e as mãos e deixa de fora o topo do mural; o título assenta nas pernas do utente. */}
-          {/* A partir de 1024 px, a foto mostra-se quase inteira: toda a largura e da faixa dos rostos do mural (18% de
-              cima, que fica de fora) até ao fundo. Para isso a caixa tem 0,915× a altura do hero (3/4 × 1/0,82; 33rem cobre
-              o hero mais baixo, quando é o texto que lhe dá a altura) e a foto assenta no fundo; 133,333cqw é a altura da
-              foto. Em ecrãs largos a caixa nunca fica abaixo de 47% do painel, para não sobrar teal a mais: a foto amplia
-              um pouco e perde só o fundo (as meias). O rebordo esquerdo funde-se no teal com uma máscara. */}
-          <div className="relative aspect-square [--media-pos:50%_66%] lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:w-[max(47%,calc((100svh_-_8rem)*0.915),33rem)] lg:[container-type:size] lg:[--media-pos:50%_min(0px,max(100cqh_-_133.333cqw,-24cqw))] lg:[mask-image:linear-gradient(90deg,transparent,#000_24%)]">
-            <Media id="hero" locale={locale} cover priority sizes="(min-width: 1536px) 50vw, (min-width: 1024px) 64vw, 100vw" placeholder="corner" />
-            <div aria-hidden className="absolute inset-0 bg-[linear-gradient(0deg,var(--f4y-panel)_0%,var(--f4y-panel)_10%,rgba(29,90,100,0)_36%)] lg:hidden" />
+      {/* Hero em cartaz: a foto do Mário a tratar um utente (sem vídeo, a pedido do cliente) ocupa o painel todo, com o
+          header por cima (transparente no topo da página) e o texto em baixo, à esquerda, sobre um degradê teal. Pouco
+          texto: título, uma frase e os dois contactos. O margin negativo, igual à altura do header, sobe o painel para
+          debaixo dele. */}
+      <section className="-mt-20 px-2 pb-6 pt-2 md:-mt-[88px] md:px-4 md:pt-3">
+        <div className="on-dark relative flex min-h-[max(36rem,calc(100svh-6.5rem))] flex-col justify-end overflow-hidden rounded-[28px] bg-panel text-white md:rounded-[34px] lg:min-h-[max(40rem,calc(100svh-2.25rem))]">
+          {/* A foto é vertical e os rostos do mural ficam nos 17% de cima, que nunca aparecem. Até 1024 px a caixa da foto
+              é 25% mais alta do que o painel e assenta no fundo (os 20% de cima ficam de fora), com o Mário à direita.
+              A partir de 1024 px a foto cobre o painel na largura e mostra uma faixa da altura: a faixa acaba a 73% da
+              foto (as mãos no utente) e nunca começa acima de 22%; em ecrãs muito largos perde o topo da cabeça.
+              133,333cqw é a altura da foto (97,333cqw = 73%; 29,333cqw = 22%). */}
+          <div className="absolute inset-x-0 bottom-0 h-[125%] [--media-pos:60%_100%] lg:top-0 lg:h-auto lg:[container-type:size] lg:[--media-pos:50%_calc(-1*max(29.333cqw,97.333cqw_-_100cqh))]">
+            <Media id="hero" locale={locale} cover priority sizes="(min-width: 2200px) 2200px, 100vw" placeholder="corner" />
           </div>
-          <div className="relative -mt-8 flex flex-col px-5 pb-8 sm:-mt-28 md:px-12 md:pb-12 lg:mt-0 lg:min-h-[calc(100svh-8rem)] lg:justify-center lg:py-16">
-            {/* Em ecrãs mais altos do que largos a foto chega por baixo do texto: um véu teal atrás do texto mantém-no legível */}
-            <div className="hero-in relative isolate lg:max-w-[48%] lg:before:absolute lg:before:inset-y-[-100vh] lg:before:left-[-50vw] lg:before:right-[-6rem] lg:before:-z-10 lg:before:bg-[linear-gradient(90deg,var(--f4y-panel)_calc(100%-6rem),rgba(29,90,100,0))]">
+          {/* Degradês: escuro em cima para o logótipo branco, teal no canto de baixo à esquerda para o texto */}
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,38,44,.55)_0%,rgba(9,38,44,0)_22%),linear-gradient(0deg,var(--f4y-panel)_0%,rgba(29,90,100,.92)_28%,rgba(29,90,100,0)_62%)] lg:bg-[linear-gradient(180deg,rgba(9,38,44,.5)_0%,rgba(9,38,44,0)_20%),linear-gradient(90deg,rgba(17,64,73,.94)_0%,rgba(17,64,73,.72)_30%,rgba(17,64,73,0)_60%),linear-gradient(0deg,rgba(17,64,73,.7)_0%,rgba(17,64,73,0)_45%)]"
+          />
+          <div className="relative px-5 pb-10 md:px-12 md:pb-14 lg:pb-[clamp(3.5rem,10vh,7.5rem)]">
+            <div className="hero-in lg:max-w-[52%]">
               <h1 className="t-hero">
                 {h.hero.lines.map((l) => (
                   <span key={l} className="block">
@@ -69,10 +71,13 @@ export function HomePage({ locale }: { locale: Locale }) {
                   </span>
                 ))}
               </h1>
-              <p className="mt-5 max-w-md text-lg leading-relaxed text-white/90 md:text-xl">{h.hero.sub}</p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <WhatsAppButton message={wa.general()} location="hero" label={t.common.whatsappCta} />
-                <CallButton location="hero" label={t.common.phoneDisplay} note={t.common.phoneNote} variant="onDark" />
+              {/* A partir de 1280 px a frase acompanha o título: até 1,5rem por volta dos 1920 px */}
+              <p className="mt-5 max-w-md text-lg leading-relaxed text-white/90 md:text-xl xl:mt-7 xl:max-w-[33rem] xl:text-[clamp(1.25rem,0.55rem+0.8vw,1.5rem)]">
+                {h.hero.sub}
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3 xl:mt-10">
+                <WhatsAppButton message={wa.general()} location="hero" label={t.common.whatsappCta} className="xl:min-h-14 xl:px-7 xl:text-base" />
+                <CallButton location="hero" label={t.common.phoneDisplay} note={t.common.phoneNote} variant="onDark" className="xl:min-h-14 xl:px-7 xl:text-base" />
               </div>
               {hasRating && (
                 <p className="mt-6 flex items-center gap-2.5 text-[15px] text-white/90">
@@ -90,20 +95,6 @@ export function HomePage({ locale }: { locale: Locale }) {
           </div>
         </div>
       </section>
-
-      {/* Vantagens: acordeão em que cada ponto mostra a sua foto real e leva à secção onde se vê mais */}
-      <Section tone="light" labelledBy="vantagens-title">
-        <Advantages
-          title={h.advantages.title}
-          titleId="vantagens-title"
-          items={h.advantages.items.map((it) => ({
-            title: it.title,
-            text: it.text,
-            media: <Media id={it.media} locale={locale} cover sizes="(min-width: 768px) 50vw, 100vw" />,
-            link: { label: it.link.label, href: href(locale, it.link.page, it.link.hash) },
-          }))}
-        />
-      </Section>
 
       {/* Tudo num só espaço: os quatro recursos da clínica, cada um com ligação direta */}
       <section aria-labelledby="hub-title" className="bg-white pb-16 md:pb-24">

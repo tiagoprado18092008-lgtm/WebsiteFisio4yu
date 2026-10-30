@@ -99,16 +99,6 @@ const items: MediaItem[] = [
     position: p.position,
   })),
   {
-    // Foto do ponto "16 anos de experiência" na secção de vantagens (home), recortada quase quadrada: foco no rosto.
-    id: "advantages-therapy",
-    type: "image",
-    src: photo.manualTherapy,
-    ratio: "9/16",
-    alt: { pt: "Mário Barroso, fisioterapeuta, a fazer terapia manual na coxa de um utente", en: "Mário Barroso, physiotherapist, giving manual therapy to a patient's thigh" },
-    brief: "Terapia manual (foto do ponto \"16 anos de experiência\", home).",
-    position: "55% 18%",
-  },
-  {
     id: "brand-room",
     type: "image",
     src: space.brandRoom,
@@ -210,22 +200,12 @@ const items: MediaItem[] = [
     position: "50% 46%",
   },
   {
-    id: "slot-dermato",
-    type: "image",
-    src: photo.angela,
-    ratio: "3/4",
-    alt: { pt: "Angela Brazona, fisioterapeuta, a sorrir", en: "Angela Brazona, physiotherapist, smiling" },
-    brief: "Faixa no título da página da dermatofuncional: o rosto da Angela.",
-    position: "50% 20%",
-  },
-  {
     id: "wide-dermato",
     type: "image",
     src: photo.angelaDermato,
     ratio: "3/4",
     alt: { pt: "Angela Brazona, fisioterapeuta, com instrumentos de massagem em madeira", en: "Angela Brazona, physiotherapist, holding wooden massage tools" },
-    brief: "Foto larga do hero da dermatofuncional (rosto inteiro e os instrumentos).",
-    position: "50% 13%",
+    brief: "Foto do hero da dermatofuncional, inteira (3:4) ao lado do título: a Angela com os instrumentos em madeira.",
   },
   {
     id: "team-mario",

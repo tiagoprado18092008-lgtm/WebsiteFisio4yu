@@ -20,10 +20,10 @@ colors:
 typography:
   hero:
     fontFamily: "Bricolage Grotesque, system-ui, sans-serif"
-    fontSize: "clamp(2.6rem, 1.5rem + 4.4vw, 5.25rem)"
+    fontSize: "clamp(2.6rem, 1.5rem + 4.4vw, 5.25rem); ≥1280px: clamp(5.25rem, 1rem + 5.4vw, 7.5rem)"
     fontWeight: 400
-    lineHeight: 0.98
-    letterSpacing: "-0.035em"
+    lineHeight: 0.96
+    letterSpacing: "-0.038em"
   display:
     fontFamily: "Bricolage Grotesque, system-ui, sans-serif"
     fontSize: "clamp(2.2rem, 1.5rem + 2.8vw, 3.75rem)"
@@ -160,7 +160,7 @@ Paleta amostrada do logótipo: grafite frio para texto, uma família teal do "4"
 - **Filete** (`line`): divisores entre itens de lista, bordas de cartões e chips.
 - **Mist** (`mist`): fundo das secções alternadas.
 - **Ice** (`ice`): o painel do rodapé, chips de link, o campo da frase do mural na página da musculoesquelética.
-- **Teal Painel** (`panel`): o painel escuro do bloco de marcação e o painel final das páginas de serviço.
+- **Teal Painel** (`panel`): o painel escuro do bloco de marcação.
 - **Moldura** (`frame`): só a moldura exterior da página.
 
 ### Named Rules
@@ -176,12 +176,12 @@ Paleta amostrada do logótipo: grafite frio para texto, uma família teal do "4"
 **Character:** uma grotesca com eixo ótico e um ligeiro carácter humano nos títulos, ao lado de uma sans institucional, muito legível, para o texto clínico. Os títulos vêm sempre em frase normal, nunca em maiúsculas.
 
 ### Hierarchy
-- **Hero** (400, `clamp(2.6rem…5.25rem)`, 0.98): só o hero da página inicial.
+- **Hero** (400, `clamp(2.6rem…5.25rem)`, 0.96; a partir de 1280 px continua até 7,5rem por volta dos 1920 px): só o hero da página inicial. Em ecrãs largos o título enche a metade esquerda do painel, a frase sobe até 1,5rem e os botões até 56 px, para não sobrar teal vazio entre o texto e a foto.
 - **Display** (400, `clamp(2.2rem…3.75rem)`, 1.02): o H1 de cada página interna e o título do bloco de marcação.
 - **Headline** (400, `clamp(1.85rem…2.8rem)`, 1.06): o H2 de cada secção. Todas as secções de uma página partilham este tamanho.
 - **Subhead** (400–500, 1.75rem, 1.2): nomes nos cartões da equipa, a frase da missão em /sobre.
 
-As **páginas de serviço** têm escala própria, em cinco degraus (`globals.css`): **Cartaz** (`t-poster`, 500, `clamp(2.1rem, 9vw, 9.25rem)`, 0.94, -0.045em) para o nome do serviço e a pergunta final; **Título** (`t-display`, 400, `clamp(2rem…4.5rem)`, 1.0) para os títulos de secção e as frases do percurso; **Afirmação** (`t-statement`, 400, `clamp(1.3rem…2.25rem)`, 1.18) para perguntas, biografia, títulos dos recursos e a mensagem final; e o corpo a 17–18 px e notas a 15 px.
+As **páginas de serviço** têm escala própria, em cinco degraus (`globals.css`): **Cartaz** (`t-poster`, 500, `clamp(2.1rem, 9vw, 9.25rem)`, 0.94, -0.045em) para o nome do serviço; **Título** (`t-display`, 400, `clamp(2rem…4.5rem)`, 1.0) para os títulos de secção e as frases do percurso; **Afirmação** (`t-statement`, 400, `clamp(1.3rem…2.25rem)`, 1.18) para perguntas, biografia e títulos dos recursos; e o corpo a 17–18 px e notas a 15 px.
 - **Title** (600, 1.32rem, 1.2): títulos de itens de lista, passos do percurso, perguntas, subtítulos dentro de uma secção ("Como trabalhamos").
 - **Lead** (400, `clamp(1.1rem…1.28rem)`, 1.55, `grey`): introdução sob um H1 ou H2, até cerca de 60ch.
 - **Body** (400, 17px, 1.6): texto corrido.
@@ -248,7 +248,7 @@ Cantos largos e suaves em tudo o que é superfície, e pílula em tudo o que é 
 - **Mobile:** a barra estica até ao fundo do ecrã e passa a ser o painel do menu, com as linhas a entrar em cascata.
 ### Páginas de serviço (signature)
 Curta, com pouco texto e feita de **fotos dos tratamentos** (`components/pages/ServicePage.tsx`). O cliente pediu menos texto e nada de fotos do ginásio no topo. Sem figuras humanas desenhadas (a silhueta do mapa do corpo saiu a pedido do cliente), sem filetes, sem sombras, sem cartões.
-1. **O nome em cartaz:** o H1 em `t-poster` com uma foto do serviço em faixa no lugar de uma palavra (as mãos do Mário em terapia manual; o rosto da Angela). Em telemóvel a faixa desce para a sua própria linha. Por baixo, uma frase curta (`page.lead`) e os dois botões; depois outra foto do serviço abre larga (2:1), com o único momento forte de movimento.
+1. **O nome em cartaz:** o H1 em `t-poster` com uma foto do serviço em faixa no lugar de uma palavra (as mãos do Mário em terapia manual). Em telemóvel a faixa desce para a sua própria linha. Por baixo, uma frase curta (`page.lead`) e os dois botões; depois outra foto do serviço abre larga (2:1), com o único momento forte de movimento. Na dermatofuncional não há faixa no título: a foto da Angela (vertical) aparece inteira, sem recorte, numa coluna à direita (4 de 12 colunas a partir de 1024 px), com o título, a frase e os botões assentes no fundo dela; em telemóvel e tablet fica por baixo dos botões.
 2. **Situações:** título e introdução à esquerda; à direita, linhas separadas só por espaço (zonas do corpo com WhatsApp já escrito, ou as indicações) e, quando há poucas linhas, uma foto do serviço por baixo.
 3. **Recursos** (musculoesquelética): três colunas, cada uma com foto, nome e uma linha.
 4. **Diástase** (dermatofuncional): o esquema por fases, em teal liso.
@@ -256,7 +256,7 @@ Curta, com pouco texto e feita de **fotos dos tratamentos** (`components/pages/S
 6. **Quem acompanha:** retrato 4:5 grande e, ao lado, nome, cargo e uma frase.
 7. **O mural** (musculoesquelética): «A lesão é uma oportunidade de mudança», a frase pintada na entrada, em duas linhas justificadas de margem a margem sobre `ice`.
 8. **Perguntas:** só as perguntas à vista; a resposta abre ao tocar.
-9. **A mensagem:** painel `panel` com "Por onde / começamos?" nas duas margens e, ao meio, a mensagem de WhatsApp como uma frase que o visitante completa com dois `<select>` nativos. O que se vê é o que segue na mensagem.
+9. **O outro serviço:** só o nome, grande, com uma seta. A página acaba aqui e segue para o rodapé (o painel final "Por onde começamos?" saiu a pedido do cliente).
 
 ### Rodapé (signature)
 Painel `ice` encostado às margens e ao fundo da folha, só com os cantos de cima arredondados (os de baixo são os da folha), com cinco colunas (marca, Serviços, Clínica, Contactos e Horário), uma linha legal com o selo oficial do Livro de Reclamações Eletrónico (imagem, 48 px de altura) e o "fisio4you" gigante a toda a largura, a desvanecer no fundo (máscara, cor lisa, o "4" em `teal` como a fita do logótipo). O wordmark fica, a pedido do cliente. Na coluna da marca: logótipo a 72 px e ícones redondos de Facebook, Instagram e WhatsApp. No fim da linha legal, "Desenvolvido por" com o logótipo da AlphaScale (28 px, máscara pintada a `ink`); ao passar o cursor passa a `teal-strong`, sobe 1 px, ganha um halo `cyan` e uma faixa de luz atravessa as letras uma vez (sem a viagem com `prefers-reduced-motion`).

@@ -1,7 +1,7 @@
 // Conteúdo em português europeu. Nenhum componente deve ter texto fora de content/.
 // {s} = nome do serviço · {p} = zona/problema · {n} = número
 
-import type { Locale, PageKey, ServiceKey } from "@/lib/routes";
+import type { Locale, ServiceKey } from "@/lib/routes";
 
 export type IconName =
   | "activity" | "bone" | "heart" | "snowflake" | "flame" | "dumbbell" | "scan" | "baby"
@@ -9,8 +9,6 @@ export type IconName =
   | "footprints" | "clipboard" | "stethoscope" | "brain" | "flower" | "clock" | "mappin";
 
 type Item = { icon: IconName; title: string; text: string };
-/** Vantagem da home: a foto (id em content/media.ts) troca com o ponto aberto; o link leva a quem quer ver mais. */
-type Advantage = { title: string; text: string; media: string; link: { label: string; page: PageKey; hash?: string } };
 type Faq = { q: string; a: string };
 type LegalSection = { h: string; p: string[] };
 
@@ -52,20 +50,15 @@ export type ServiceExplainer = {
   assess: string[];
 };
 
-/** Mensagem de WhatsApp montada pelo visitante no fim da página: a frase com duas escolhas ({a} e {b}). */
-export type ServiceComposer = {
-  sentence: string;
-  close: string;
-  a: { label: string; options: string[] };
-  b: { label: string; options: string[] };
-};
-
 /** Textos e fotos próprios da página de serviço (components/pages/ServicePage.tsx). Fotos: ids de content/media.ts. */
 export type ServicePageCopy = {
   /** Frase curta por baixo do título (o `heroSub`, mais longo, fica para a home). */
   lead: string;
-  /** Foto de um tratamento em faixa dentro do título; outra foto do serviço abre larga logo abaixo (`heroWide`). */
-  heroSlot: string;
+  /**
+   * Foto de um tratamento em faixa dentro do título; outra foto do serviço abre larga logo abaixo (`heroWide`).
+   * Sem `heroSlot`, a `heroWide` (vertical, 3:4) aparece inteira, sem recorte, ao lado do título.
+   */
+  heroSlot?: string;
   heroWide: string;
   /** Foto 4:5 por baixo da introdução das situações (quando a página tem poucas fotos). */
   conditionsPhoto?: string;
@@ -73,7 +66,6 @@ export type ServicePageCopy = {
   person: { bio: string };
   /** Frase do mural da entrada, espalhada de margem a margem: duas linhas, palavras de cada linha. */
   motto?: { lines: string[][]; by: [string, string, string] };
-  composer: ServiceComposer;
 };
 
 export type ServiceContent = {
@@ -190,35 +182,6 @@ export const pt = {
     stack: {
       title: "Tudo o que precisa, num só espaço",
       more: "Conhecer o serviço",
-    },
-    advantages: {
-      title: "O que encontra na Fisio4you",
-      items: [
-        {
-          title: "Avaliação com ecografia",
-          text: "A ecografia permite observar músculos, tendões e ligamentos em tempo real. Complementa a avaliação física e ajuda a acompanhar a evolução.",
-          media: "service-eco",
-          link: { label: "Como usamos a ecografia", page: "service:msk", hash: "ecografia" },
-        },
-        {
-          title: "Salas de tratamento e ginásio",
-          text: "A clínica tem salas de avaliação e tratamento, um ginásio de reabilitação com 100 m², banheira de gelo e sauna. O tratamento e o exercício decorrem no mesmo local.",
-          media: "brand-room",
-          link: { label: "Ver as instalações", page: "about", hash: "galeria" },
-        },
-        {
-          title: "Exercício supervisionado",
-          text: "O exercício terapêutico é acompanhado por fisioterapeutas e progride com a recuperação, até ao regresso ao treino ou à atividade habitual.",
-          media: "service-gym",
-          link: { label: "Conhecer o ginásio", page: "service:msk", hash: "ginasio" },
-        },
-        {
-          title: "Equipa clínica",
-          text: "Mário Barroso, fisioterapeuta com 16 anos de experiência, acompanha as lesões musculoesqueléticas. Angela Brazona é fisioterapeuta na área dermatofuncional e da saúde da mulher.",
-          media: "advantages-therapy",
-          link: { label: "Conhecer a equipa", page: "about", hash: "equipa" },
-        },
-      ] as Advantage[],
     },
     hub: {
       title: "Tratamento e reabilitação no mesmo espaço",
@@ -434,10 +397,6 @@ export const pt = {
     write: "Descrever",
     seeService: "Ver o serviço",
     meetTeam: "Conhecer a equipa",
-    /** Pergunta do bloco final, partida nas duas margens do painel. */
-    question: ["Por onde", "começamos?"] as [string, string],
-    send: "Enviar por WhatsApp",
-    or: "ou",
   },
 
   services: <Record<ServiceKey, ServiceContent>>{
@@ -600,12 +559,6 @@ export const pt = {
           lines: [["«A", "lesão", "é", "uma"], ["oportunidade", "de", "mudança»"]],
           by: ["Mural da entrada", "Fisio4you", "Portimão"],
         },
-        composer: {
-          sentence: "Olá! Tenho dor {a} e quero {b}.",
-          close: "Gostava de marcar uma avaliação.",
-          a: { label: "Zona", options: ["no joelho", "no ombro", "nas costas", "no pescoço", "na anca", "no tornozelo ou no pé", "noutra zona"] },
-          b: { label: "Objetivo", options: ["voltar a treinar", "voltar a competir", "fazer o dia a dia sem dor", "recuperar de uma cirurgia"] },
-        },
       },
     },
     dermato: {
@@ -719,17 +672,10 @@ export const pt = {
       related: ["msk"],
       page: {
         lead: "Recuperação pós-parto, diástase abdominal e cicatrizes, com a fisioterapeuta Angela Brazona.",
-        heroSlot: "slot-dermato",
         heroWide: "wide-dermato",
         conditionsPhoto: "strip-angela",
         person: {
           bio: "é fisioterapeuta e a responsável pela fisioterapia dermatofuncional na Fisio4you, dedicada à saúde da mulher durante a gravidez e no pós-parto.",
-        },
-        composer: {
-          sentence: "Olá! {a} e queria {b}.",
-          close: "Gostava de marcar uma avaliação.",
-          a: { label: "Parto", options: ["Tive o bebé há poucas semanas", "Tive o bebé há poucos meses", "Tive o bebé há mais de um ano", "Não estou no pós-parto"] },
-          b: { label: "Objetivo", options: ["recuperar o abdómen", "perceber se tenho diástase", "tratar a cicatriz da cesariana", "voltar a treinar em segurança"] },
         },
       },
     },

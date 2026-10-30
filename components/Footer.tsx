@@ -6,6 +6,7 @@ import { getDict } from "@/content";
 import { href, serviceKeys, type Locale } from "@/lib/routes";
 import { waLink, waMessages } from "@/lib/whatsapp";
 import { Logo } from "./Logo";
+import { Wordmark } from "./Wordmark";
 import { FacebookIcon, GoogleIcon, InstagramIcon, WhatsAppIcon } from "./Icon";
 import { CookieSettingsLink } from "./Consent";
 
@@ -205,11 +206,9 @@ export function Footer({ locale }: { locale: Locale }) {
           </ul>
         </div>
       </div>
-      {/* Marca em grande, a toda a largura e a desvanecer no fundo (pedido do cliente: manter). O "4" leva o teal da fita
-          do logótipo; o desvanecer é uma máscara, para a cor das letras ficar lisa */}
-      <p aria-hidden className="pointer-events-none mt-12 select-none text-center font-display text-[clamp(4.5rem,22vw,22rem)] leading-[0.78] tracking-[-0.04em] text-teal-dark/50 [mask-image:linear-gradient(to_bottom,#000_20%,transparent_95%)]">
-        fisio<span className="text-teal">4</span>you
-      </p>
+      {/* Marca em grande, a toda a largura e a desvanecer no fundo (pedido do cliente: manter), com as letras e a fita
+          do "4" do próprio logótipo; o desvanecer é uma máscara, para a cor das letras ficar lisa */}
+      <Wordmark className="pointer-events-none mx-auto mt-12 block h-auto w-[min(86vw,87rem)] select-none text-teal-dark/50 [mask-image:linear-gradient(to_bottom,#000_30%,transparent_88%)]" />
       </div>
     </footer>
   );

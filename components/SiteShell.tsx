@@ -20,6 +20,8 @@ export function SiteShell({ locale, page, waMessage, children }: { locale: Local
         <Header
           homeHref={href(locale, "home")}
           logo={<Logo priority className="h-11 md:h-[52px]" />}
+          overlay={page === "home"}
+          logoOverlay={<Logo variant="white" priority className="h-11 md:h-[52px]" />}
           links={{
             home: { label: t.nav.home, href: href(locale, "home") },
             services: {

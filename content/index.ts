@@ -39,4 +39,4 @@ const publish = <T,>(d: T): T => (showPending ? d : (strip(d) as T));
 
 export const dictionaries = { pt: publish(pt), en: publish(en) };
 export const getDict = (locale: Locale) => dictionaries[locale];
-export type { Dict, IconName, ServiceComposer, ServiceContent } from "./pt";
+export type { Dict, IconName, ServiceContent } from "./pt";

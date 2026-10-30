@@ -28,7 +28,6 @@ Tudo o que aparece no site está registado em `content/media.ts`. Os originais e
 | `clinic-06` | 9/16 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/sala-tratamento.webp` |
 | `clinic-07` | 9/16 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/ginasio-maquinas.webp` |
 | `clinic-08` | 3/4 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/camisolas.webp` |
-| `advantages-therapy` | 9/16 | ✅ | Terapia manual (foto do ponto "16 anos de experiência", home). | `/public/media/tratamentos/terapia-manual.webp` |
 | `brand-room` | 3/2 | ✅ | Sala com o logótipo. | `/public/media/espaco/sala-fisio4you.webp` |
 | `athletes` | 3/2 | ✅ | Mário com clientes/atletas na clínica (secção de avaliações da home). | `/public/media/clientes/atletas.webp` |
 | `jerseys` | 3/2 | ✅ | Camisolas assinadas (colagem da secção de vantagens, home). | `/public/media/espaco/camisolas.webp` |
@@ -38,6 +37,9 @@ Tudo o que aparece no site está registado em `content/media.ts`. Os originais e
 | `service-eco` | 4/5 | ✅ | Ideal: fisioterapeuta com sonda do ecógrafo, ecrã visível. | `/public/media/espaco/sala-avaliacao.webp` |
 | `service-gym` | 4/5 | ✅ | Ginásio de 100 m² em plano aberto. | `/public/media/espaco/ginasio-corredor.webp` |
 | `service-recovery` | 4/5 | ✅ | Banheira de gelo. | `/public/media/tratamentos/banheira-gelo.webp` |
+| `slot-msk` | 3/4 | ✅ | Faixa no título da página da musculoesquelética: as mãos em terapia manual. | `/public/media/tratamentos/terapia-manual.webp` |
+| `wide-msk` | 3/4 | ✅ | Foto larga do topo da musculoesquelética (as mãos do Mário no utente, na marquesa). | `/public/media/tratamentos/tratamento-sala.webp` |
+| `wide-dermato` | 3/4 | ✅ | Foto do hero da dermatofuncional, inteira (3:4) ao lado do título: a Angela com os instrumentos em madeira. | `/public/media/tratamentos/angela-dermatofuncional.webp` |
 | `team-mario` | 4/5 | ✅ | Retrato do Mário. | `/public/media/equipa/mario-barroso.webp` |
 | `team-angela` | 4/5 | ✅ | Retrato da Angela. | `/public/media/equipa/angela-brazona.webp` |
 | `strip-pressotherapy` | 3/4 | ✅ | Faixa de fotos da home. | `/public/media/clientes/pressoterapia.webp` |

@@ -19,6 +19,10 @@ type NavLink = { label: string; href: string; badge?: string };
 type Props = {
   homeHref: string;
   logo: React.ReactNode;
+  /** Página com hero em foto (home): no topo, a barra fica transparente por cima da foto, com o logótipo branco
+   *  (`logoOverlay`) e os links numa pílula branca; ao descer volta a ser a barra branca. */
+  overlay?: boolean;
+  logoOverlay?: React.ReactNode;
   links: { home: NavLink; services: NavLink & { children: NavLink[] }; about: NavLink; contact: NavLink };
   /** Língua atual (só texto) e link para a outra língua. */
   lang: { current: string; other: string; href: string; label: string; hrefLang: string };
@@ -50,7 +54,7 @@ function LangSwitch({ lang, onNavigate }: { lang: Props["lang"]; onNavigate?: ()
   );
 }
 
-export function Header({ homeHref, logo, links, lang, labels, waMessage }: Props) {
+export function Header({ homeHref, logo, overlay, logoOverlay, links, lang, labels, waMessage }: Props) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   // Distância da barra ao topo do ecrã no momento em que o menu abre (16 px no topo da página, 8 px em scroll)
@@ -113,6 +117,8 @@ export function Header({ homeHref, logo, links, lang, labels, waMessage }: Props
     setOpen((o) => !o);
   };
 
+  // Transparente por cima da foto do hero: só no topo da página e com o menu fechado
+  const clear = !!overlay && !scrolled && !open;
   const navCls = "text-[15px] font-medium text-ink hover:text-teal-strong aria-[current=page]:text-teal-strong";
   const mobileLinks = [links.home, links.services, links.about, links.contact];
   // Ordem de entrada em cascata das linhas do menu mobile
@@ -124,86 +130,108 @@ export function Header({ homeHref, logo, links, lang, labels, waMessage }: Props
   );
 
   return (
-    <header ref={ref} className="sticky top-0 z-50 bg-[linear-gradient(to_bottom,#fff_55%,rgba(255,255,255,0))] px-2 pb-1 pt-2 md:px-4 md:pt-3">
+    <header
+      ref={ref}
+      className={cn("sticky top-0 z-50 px-2 pb-1 pt-2 md:px-4 md:pt-3", !clear && "bg-[linear-gradient(to_bottom,#fff_55%,rgba(255,255,255,0))]")}
+    >
       {/* Barra flutuante arredondada; no mobile, ao abrir o menu, estica até ao fundo do ecrã e passa a ser o painel */}
       <div
         ref={barRef}
         style={open ? { height: `calc(100dvh - ${menuTop + 8}px)` } : undefined}
         className={cn(
-          "mx-auto flex h-[68px] flex-col overflow-hidden rounded-[20px] ring-1 ring-line backdrop-blur-md transition-[height,box-shadow,background-color] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none md:h-[72px] lg:overflow-visible",
+          "mx-auto flex h-[68px] flex-col overflow-hidden rounded-[20px] ring-1 transition-[height,box-shadow,background-color,--tw-ring-color,translate] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none md:h-[72px] lg:overflow-visible",
           open
-            ? "bg-white shadow-[0_24px_48px_-18px_rgba(14,76,87,.45)]"
-            : scrolled
-              ? "bg-white/95 shadow-[0_12px_32px_-14px_rgba(14,76,87,.35)]"
-              : "bg-white/95 shadow-[0_6px_20px_-14px_rgba(14,76,87,.25)]",
+            ? "bg-white shadow-[0_24px_48px_-18px_rgba(14,76,87,.45)] ring-line backdrop-blur-md"
+            : clear
+              ? "bg-transparent ring-transparent lg:translate-y-3"
+              : scrolled
+                ? "bg-white/95 shadow-[0_12px_32px_-14px_rgba(14,76,87,.35)] ring-line backdrop-blur-md"
+                : "bg-white/95 shadow-[0_6px_20px_-14px_rgba(14,76,87,.25)] ring-line backdrop-blur-md",
         )}
       >
         <div className="flex h-[68px] shrink-0 items-center gap-4 pl-4 pr-2 md:h-[72px] md:pl-6 md:pr-3">
-          <Link href={homeHref} aria-label={labels.homeAria} onClick={() => setOpen(false)} className="shrink-0">
-            {logo}
+          <Link href={homeHref} aria-label={labels.homeAria} onClick={() => setOpen(false)} className="grid shrink-0">
+            {overlay && logoOverlay ? (
+              <>
+                <span className={cn("col-start-1 row-start-1 transition-opacity duration-300", clear && "opacity-0")}>{logo}</span>
+                <span aria-hidden className={cn("col-start-1 row-start-1 transition-opacity duration-300", !clear && "opacity-0")}>
+                  {logoOverlay}
+                </span>
+              </>
+            ) : (
+              logo
+            )}
           </Link>
 
-          <nav aria-label={labels.nav} className="ml-auto hidden items-center gap-8 lg:flex">
-            <Link href={links.home.href} aria-current={current(links.home.href)} className={navCls}>
-              {links.home.label}
-            </Link>
-            <div className="group relative">
-              <Link href={links.services.href} aria-current={current(links.services.href, true)} className={cn(navCls, "inline-flex items-center gap-1")}>
-                {links.services.label}
-                <ChevronDown className="size-3.5 transition-transform group-focus-within:rotate-180 group-hover:rotate-180" aria-hidden />
+          {/* Links e ações: por cima da foto ficam numa pílula branca; na barra branca, a pílula desaparece no fundo */}
+          <div
+            className={cn(
+              "ml-auto flex items-center gap-1 rounded-full py-1 pl-2 pr-1 transition-[background-color,box-shadow] duration-300 sm:gap-3 lg:gap-6 lg:py-1.5 lg:pl-7",
+              clear && "bg-white shadow-[0_10px_30px_-14px_rgba(6,40,46,.55)]",
+            )}
+          >
+            <nav aria-label={labels.nav} className="hidden items-center gap-8 lg:flex">
+              <Link href={links.home.href} aria-current={current(links.home.href)} className={navCls}>
+                {links.home.label}
               </Link>
-              <div className="invisible absolute left-1/2 top-full w-80 -translate-x-1/2 pt-5 opacity-0 transition-all group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
-                <ul className="rounded-[20px] bg-white p-2 shadow-[0_20px_40px_-16px_rgba(14,76,87,.3)] ring-1 ring-line">
-                  {links.services.children.map((c) => (
-                    <li key={c.href}>
-                      <Link
-                        href={c.href}
-                        aria-current={current(c.href)}
-                        className="block rounded-xl px-4 py-3 text-[15px] text-ink hover:bg-mist hover:text-teal-strong aria-[current=page]:bg-mist aria-[current=page]:text-teal-strong"
-                      >
-                        {c.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+              <div className="group relative">
+                <Link href={links.services.href} aria-current={current(links.services.href, true)} className={cn(navCls, "inline-flex items-center gap-1")}>
+                  {links.services.label}
+                  <ChevronDown className="size-3.5 transition-transform group-focus-within:rotate-180 group-hover:rotate-180" aria-hidden />
+                </Link>
+                <div className="invisible absolute left-1/2 top-full w-80 -translate-x-1/2 pt-5 opacity-0 transition-all group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                  <ul className="rounded-[20px] bg-white p-2 shadow-[0_20px_40px_-16px_rgba(14,76,87,.3)] ring-1 ring-line">
+                    {links.services.children.map((c) => (
+                      <li key={c.href}>
+                        <Link
+                          href={c.href}
+                          aria-current={current(c.href)}
+                          className="block rounded-xl px-4 py-3 text-[15px] text-ink hover:bg-mist hover:text-teal-strong aria-[current=page]:bg-mist aria-[current=page]:text-teal-strong"
+                        >
+                          {c.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </div>
-            <Link href={links.about.href} aria-current={current(links.about.href)} className={navCls}>
-              {links.about.label}
-            </Link>
-            <Link href={links.contact.href} aria-current={current(links.contact.href)} className={navCls}>
-              {links.contact.label}
-            </Link>
-          </nav>
+              <Link href={links.about.href} aria-current={current(links.about.href)} className={navCls}>
+                {links.about.label}
+              </Link>
+              <Link href={links.contact.href} aria-current={current(links.contact.href)} className={navCls}>
+                {links.contact.label}
+              </Link>
+            </nav>
 
-          <div className="ml-auto flex items-center gap-1 sm:gap-3 lg:ml-6">
-            <a
-              href={site.phoneHref}
-              data-track="phone"
-              data-location="header"
-              title={labels.phoneNote}
-              className="hidden min-h-11 items-center gap-2 px-2 text-sm font-semibold text-ink hover:text-teal-strong xl:inline-flex"
-            >
-              <Phone className="size-4" aria-hidden />
-              {labels.phone}
-            </a>
-            <span className="hidden md:block">
-              <WhatsAppButton message={waMessage} location="header" label={labels.book} className="min-h-11 px-5 py-2.5 text-sm" />
-            </span>
-            <span className="px-2">
-              <LangSwitch lang={lang} />
-            </span>
-            <button
-              ref={toggleRef}
-              type="button"
-              className="inline-flex size-11 items-center justify-center rounded-xl text-ink hover:bg-mist lg:hidden"
-              aria-expanded={open}
-              aria-controls="mobile-menu"
-              aria-label={open ? labels.close : labels.open}
-              onClick={toggle}
-            >
-              {open ? <X className="size-6" aria-hidden /> : <Menu className="size-6" strokeWidth={1.75} aria-hidden />}
-            </button>
+            <div className="flex items-center gap-1 sm:gap-3">
+              <a
+                href={site.phoneHref}
+                data-track="phone"
+                data-location="header"
+                title={labels.phoneNote}
+                className="hidden min-h-11 items-center gap-2 px-2 text-sm font-semibold text-ink hover:text-teal-strong xl:inline-flex"
+              >
+                <Phone className="size-4" aria-hidden />
+                {labels.phone}
+              </a>
+              <span className="hidden md:block">
+                <WhatsAppButton message={waMessage} location="header" label={labels.book} className="min-h-11 px-5 py-2.5 text-sm" />
+              </span>
+              <span className="px-2">
+                <LangSwitch lang={lang} />
+              </span>
+              <button
+                ref={toggleRef}
+                type="button"
+                className="inline-flex size-11 items-center justify-center rounded-xl text-ink hover:bg-mist lg:hidden"
+                aria-expanded={open}
+                aria-controls="mobile-menu"
+                aria-label={open ? labels.close : labels.open}
+                onClick={toggle}
+              >
+                {open ? <X className="size-6" aria-hidden /> : <Menu className="size-6" strokeWidth={1.75} aria-hidden />}
+              </button>
+            </div>
           </div>
         </div>
 

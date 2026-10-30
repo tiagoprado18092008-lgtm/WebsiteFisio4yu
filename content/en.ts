@@ -91,35 +91,6 @@ export const en: Dict = {
       title: "Everything you need, in one place",
       more: "About this service",
     },
-    advantages: {
-      title: "What you'll find at Fisio4you",
-      items: [
-        {
-          title: "Ultrasound assessment",
-          text: "Ultrasound shows muscles, tendons and ligaments in real time. It complements the physical assessment and helps us track progress.",
-          media: "service-eco",
-          link: { label: "How we use ultrasound", page: "service:msk", hash: "ecografia" },
-        },
-        {
-          title: "Treatment rooms and gym",
-          text: "The clinic has assessment and treatment rooms, a 100 m² rehabilitation gym, an ice bath and a sauna. Treatment and exercise take place in the same building.",
-          media: "brand-room",
-          link: { label: "See the facilities", page: "about", hash: "galeria" },
-        },
-        {
-          title: "Supervised exercise",
-          text: "Therapeutic exercise is supervised by physiotherapists and progresses with your recovery, until you return to training or your usual activities.",
-          media: "service-gym",
-          link: { label: "Explore the gym", page: "service:msk", hash: "ginasio" },
-        },
-        {
-          title: "Clinical team",
-          text: "Mário Barroso, a physiotherapist with 16 years of experience, treats musculoskeletal injuries. Angela Brazona is a physiotherapist specialising in dermatofunctional care and women's health.",
-          media: "advantages-therapy",
-          link: { label: "Meet the team", page: "about", hash: "equipa" },
-        },
-      ],
-    },
     hub: {
       title: "Treatment and rehabilitation under one roof",
       text: "Musculoskeletal physiotherapy includes ultrasound, the rehabilitation gym, ice bath and sauna. Dermatofunctional physiotherapy focuses on postnatal recovery and diastasis recti.",
@@ -330,9 +301,6 @@ export const en: Dict = {
     write: "Describe",
     seeService: "See the service",
     meetTeam: "Meet the team",
-    question: ["Where do", "we start?"],
-    send: "Send on WhatsApp",
-    or: "or",
   },
 
   services: {
@@ -495,12 +463,6 @@ export const en: Dict = {
           lines: [["“Injury", "is", "an"], ["opportunity", "for", "change”"]],
           by: ["Entrance mural", "Fisio4you", "Portimão"],
         },
-        composer: {
-          sentence: "Hi! I have pain {a} and I'd like to {b}.",
-          close: "I'd like to book an assessment.",
-          a: { label: "Area", options: ["in my knee", "in my shoulder", "in my back", "in my neck", "in my hip", "in my ankle or foot", "somewhere else"] },
-          b: { label: "Goal", options: ["get back to training", "get back to competing", "get through the day without pain", "recover from surgery"] },
-        },
       },
     },
     dermato: {
@@ -612,17 +574,10 @@ export const en: Dict = {
       related: ["msk"],
       page: {
         lead: "Postnatal recovery, diastasis recti and scars, with physiotherapist Angela Brazona.",
-        heroSlot: "slot-dermato",
         heroWide: "wide-dermato",
         conditionsPhoto: "strip-angela",
         person: {
           bio: "is a physiotherapist and leads dermatofunctional physiotherapy at Fisio4you, focusing on women's health during pregnancy and after childbirth.",
-        },
-        composer: {
-          sentence: "Hi! {a} and I'd like to {b}.",
-          close: "I'd like to book an assessment.",
-          a: { label: "Birth", options: ["I had my baby a few weeks ago", "I had my baby a few months ago", "I had my baby over a year ago", "I'm not postnatal"] },
-          b: { label: "Goal", options: ["recover my core", "find out if I have diastasis", "treat my C-section scar", "get back to exercise safely"] },
         },
       },
     },

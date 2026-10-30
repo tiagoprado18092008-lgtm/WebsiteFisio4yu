@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ArrowRight, Plus } from "lucide-react";
 import { getDict } from "@/content";
 import { media, videoFor } from "@/content/media";
-import { fullAddress, site } from "@/content/site";
 import { href, type Locale, type ServiceKey } from "@/lib/routes";
 import { waLink, waMessages } from "@/lib/whatsapp";
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from "@/lib/seo";
@@ -15,7 +14,6 @@ import { WhatsAppIcon } from "../Icon";
 import { JsonLd } from "../JsonLd";
 import { VideoButton } from "../VideoCard";
 import { DiastasisExplorer } from "../DiastasisExplorer";
-import { Composer } from "../Composer";
 import { RevealOnScroll } from "../RevealOnScroll";
 
 type Row = { main: string; sub: string; action?: { href: string; label: string; wa?: string } };
@@ -57,7 +55,7 @@ const stairs = ["lg:col-start-1", "lg:col-start-3", "lg:col-start-5", "lg:col-st
  * o nome em cartaz com uma foto do serviço no lugar de uma palavra → outra foto do serviço, larga → situações →
  * (musculoesquelética) os três recursos, só com foto, nome e uma linha · (dermatofuncional) o esquema da diástase →
  * o percurso em quatro frases → quem acompanha → (musculoesquelética) a frase do mural → perguntas fechadas →
- * o outro serviço → a mensagem de WhatsApp montada pelo visitante.
+ * o outro serviço.
  */
 export function ServicePage({ locale, service }: { locale: Locale; service: ServiceKey }) {
   const t = getDict(locale);
@@ -73,12 +71,17 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
     { name: s.name, href: url },
   ];
   const [titleFirst, ...titleRest] = s.heroTitle.split(" ");
-  const slot = media[p.heroSlot];
+  const slot = p.heroSlot ? media[p.heroSlot] : undefined;
+  const actions = (
+    <>
+      <WhatsAppButton message={wa} location={`servico-${service}`} label={t.common.whatsappCta} />
+      <CallButton location={`servico-${service}`} label={t.common.phoneDisplay} note={t.common.phoneNote} />
+    </>
+  );
   const specialist = t.team.find((m) => m.media === s.specialist);
   const modules = s.modules ?? [];
   const videoLabels = { play: t.common.watchVideo, close: t.common.close };
   const conditionsTitle = s.forWho.title.split(" ");
-  const hours = `${t.hours.weekdays}, ${site.hours[0].opens.replace(":", "h")}–${site.hours[0].closes.replace(":", "h")}`;
   // Tons alternados: o percurso fica claro quando vem a seguir ao esquema da diástase (mist)
   const stepsTone = s.explainer ? "bg-white" : "bg-mist";
   const personTone = s.explainer ? "bg-mist" : "bg-white";
@@ -106,36 +109,54 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
       />
       <RevealOnScroll />
 
-      {/* O nome em cartaz, com uma foto do serviço no lugar de uma palavra; outra foto do serviço abre larga por baixo */}
+      {/* O nome em cartaz, com uma foto do serviço no lugar de uma palavra; outra foto do serviço abre larga por baixo.
+          Sem foto no título (dermatofuncional), a foto do serviço fica inteira, sem recorte nem deriva: por baixo dos
+          botões em telemóvel e, a partir de 1024 px, numa coluna à direita, com o título assente no fundo da foto. */}
       <section className="bg-white pb-24 pt-6 md:pb-36 md:pt-10">
-        <div className="container-x">
-          <div className="svc-in">
-            <Breadcrumbs crumbs={crumbs} />
-            <h1 className="t-poster mt-10 md:mt-16" style={{ "--i": 1 } as React.CSSProperties}>
-              {titleFirst}{" "}
-              {slot?.src && (
-                <span aria-hidden className="t-slot bg-ice">
-                  <Image src={slot.src} alt="" fill priority sizes="(min-width: 640px) 320px, 100vw" className="object-cover" style={{ objectPosition: slot.position }} />
-                </span>
-              )}{" "}
-              {titleRest.join(" ")}
-            </h1>
-            <div className="mt-8 grid gap-8 md:mt-12 lg:grid-cols-12 lg:items-end lg:gap-x-6" style={{ "--i": 2 } as React.CSSProperties}>
-              <p className="max-w-[34rem] text-lg leading-relaxed text-ink md:text-xl lg:col-span-7">{p.lead}</p>
-              <div className="flex flex-wrap gap-3 lg:col-span-5 lg:justify-end">
-                <WhatsAppButton message={wa} location={`servico-${service}`} label={t.common.whatsappCta} />
-                <CallButton location={`servico-${service}`} label={t.common.phoneDisplay} note={t.common.phoneNote} />
+        {slot ? (
+          <div className="container-x">
+            <div className="svc-in">
+              <Breadcrumbs crumbs={crumbs} />
+              <h1 className="t-poster mt-10 md:mt-16" style={{ "--i": 1 } as React.CSSProperties}>
+                {titleFirst}{" "}
+                {slot.src && (
+                  <span aria-hidden className="t-slot bg-ice">
+                    <Image src={slot.src} alt="" fill priority sizes="(min-width: 640px) 320px, 100vw" className="object-cover" style={{ objectPosition: slot.position }} />
+                  </span>
+                )}{" "}
+                {titleRest.join(" ")}
+              </h1>
+              <div className="mt-8 grid gap-8 md:mt-12 lg:grid-cols-12 lg:items-end lg:gap-x-6" style={{ "--i": 2 } as React.CSSProperties}>
+                <p className="max-w-[34rem] text-lg leading-relaxed text-ink md:text-xl lg:col-span-7">{p.lead}</p>
+                <div className="flex flex-wrap gap-3 lg:col-span-5 lg:justify-end">{actions}</div>
+              </div>
+            </div>
+            <div className="svc-shutter relative mt-12 aspect-[4/3] overflow-hidden rounded-[var(--radius-img)] bg-ice md:mt-16 md:aspect-[2/1]">
+              <div className="svc-settle absolute inset-0">
+                <div className="svc-drift absolute inset-0">
+                  <Media id={p.heroWide} locale={locale} cover priority sizes="(min-width: 1480px) 1400px, 100vw" />
+                </div>
               </div>
             </div>
           </div>
-          <div className="svc-shutter relative mt-12 aspect-[4/3] overflow-hidden rounded-[var(--radius-img)] bg-ice md:mt-16 md:aspect-[2/1]">
-            <div className="svc-settle absolute inset-0">
-              <div className="svc-drift absolute inset-0">
-                <Media id={p.heroWide} locale={locale} cover priority sizes="(min-width: 1480px) 1400px, 100vw" />
+        ) : (
+          <div className="container-x grid gap-12 md:gap-16 lg:grid-cols-12 lg:gap-x-6">
+            <div className="svc-in flex flex-col lg:col-span-8">
+              <Breadcrumbs crumbs={crumbs} />
+              {/* O título mede-se pela coluna (cqi), para a palavra mais longa caber inteira ao lado da foto */}
+              <div className="mt-10 md:mt-16 lg:mt-auto lg:pt-16 lg:[container-type:inline-size]" style={{ "--i": 1 } as React.CSSProperties}>
+                <h1 className="t-poster lg:text-[min(11.5cqi,9.25rem)]">{s.heroTitle}</h1>
+                <p className="mt-8 max-w-[34rem] text-lg leading-relaxed text-ink md:mt-10 md:text-xl">{p.lead}</p>
+                <div className="mt-8 flex flex-wrap gap-3">{actions}</div>
+              </div>
+            </div>
+            <div className="svc-shutter relative aspect-[3/4] w-full overflow-hidden rounded-[var(--radius-img)] bg-ice sm:max-w-[28rem] lg:col-span-4 lg:max-w-none">
+              <div className="svc-settle absolute inset-0">
+                <Media id={p.heroWide} locale={locale} cover priority sizes="(min-width: 1480px) 460px, (min-width: 1024px) 31vw, (min-width: 640px) 448px, 100vw" />
               </div>
             </div>
           </div>
-        </div>
+        )}
       </section>
 
       {/* Situações: título e introdução à esquerda, a lista à direita */}
@@ -322,19 +343,6 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
           ))}
         </div>
       </section>
-
-      <Composer
-        copy={p.composer}
-        question={sp.question}
-        location={`servico-${service}-mensagem`}
-        labels={{
-          send: sp.send,
-          or: sp.or,
-          phone: `${t.common.call} ${t.common.phoneDisplay}`,
-          phoneNote: t.common.phoneNote,
-          visit: `${fullAddress} · ${hours}`,
-        }}
-      />
     </>
   );
 }
