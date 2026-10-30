@@ -11,7 +11,9 @@ writeFileSync(
 
 Tudo o que aparece no site está registado em \`content/media.ts\`. Os originais estão em \`/Fotos\` (não são publicados: ver \`.vercelignore\`); o site usa as versões otimizadas em \`/public/media\`.
 
-**Seleção de outubro de 2026:** entraram as fotos de tratamento, equipa e espaço com boa nitidez e enquadramento. Ficaram de fora as fotos em que o mural de jogadores famosos aparece em destaque atrás do tratamento (IMG_7603, IMG_7589, e as vistas do corredor "God, why me?" e da sala a preto e branco), por direitos de imagem; as de festa da inauguração (comida, cartões); e os vídeos repetidos ou de evento (\`18_10_2026\` está incluído como testemunho do Pedro Senra; \`INAUGURAÇÃO\` não entrou).
+**Seleção de outubro de 2026:** entraram as fotos de tratamento, equipa e espaço com boa nitidez e enquadramento. Ficaram de fora a IMG_7589 (mural de jogadores famosos em destaque atrás do tratamento), por direitos de imagem; as de festa da inauguração (comida, cartões); e os vídeos repetidos ou de evento (\`18_10_2026\` está incluído como testemunho do Pedro Senra; \`INAUGURAÇÃO\` não entrou).
+
+**Galeria das instalações (página Sobre):** as versões editadas das fotos do espaço (soltas em \`/Fotos\`), em WebP no tamanho original em \`/public/media/instalacoes\`. Incluem o corredor "God, why me?" e a sala com o mural a preto e branco, ambos com jogadores famosos. Grelha regular de quadrados 3:4, em 2 colunas (3 a partir de 1024 px): a foto horizontal ocupa duas colunas e, se com 2 colunas sobrar um lugar, a última ocupa a linha toda. No lightbox cada foto aparece inteira.
 
 **Hero:** foto (sem vídeo, a pedido do cliente). É vertical: até 1024 px ocupa o hero todo; a partir daí fica na metade direita e funde-se com o painel teal.
 

@@ -29,10 +29,6 @@ function Figure({ stage }: { stage: number }) {
   return (
     <svg viewBox="0 0 300 380" className="mx-auto h-auto w-full max-w-[250px] sm:max-w-[300px] lg:max-w-[340px]" aria-hidden>
       <defs>
-        <linearGradient id="dx-muscle" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" style={{ stopColor: "var(--f4y-teal)" }} />
-          <stop offset="1" style={{ stopColor: "var(--f4y-cyan)" }} />
-        </linearGradient>
         <linearGradient id="dx-fade" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#fff" />
           <stop offset="1" stopColor="#fff" stopOpacity="0" />
@@ -63,7 +59,7 @@ function Figure({ stage }: { stage: number }) {
       {/* Retos do abdómen */}
       {([-1, 1] as const).map((dir) => (
         <g key={dir} className="dx-move" style={side(dir)}>
-          <path d={rectus} fill="url(#dx-muscle)" />
+          <path d={rectus} fill="var(--f4y-teal)" />
           <path d={intersections} fill="none" stroke="#fff" strokeOpacity=".6" strokeWidth="2.5" strokeLinecap="round" />
         </g>
       ))}
@@ -99,10 +95,10 @@ export function DiastasisExplorer({ stages, stagesLabel, legend, header, footer 
   const [stage, setStage] = useState(0);
   const current = stages[stage];
   return (
-    <div className="grid gap-x-20 gap-y-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-y-8">
+    <div className="grid gap-x-20 gap-y-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-y-10">
       <div className="lg:col-start-2">{header}</div>
 
-      <div role="group" aria-label={stagesLabel} className="grid grid-cols-3 gap-1 rounded-[22px] bg-white p-1 ring-1 ring-line lg:col-start-2">
+      <div role="group" aria-label={stagesLabel} className="grid grid-cols-3 gap-1 rounded-[22px] bg-white p-1 lg:col-start-2">
         {stages.map((s, i) => (
           <button
             key={s.label}
@@ -120,12 +116,12 @@ export function DiastasisExplorer({ stages, stagesLabel, legend, header, footer 
         ))}
       </div>
 
-      <figure className="rounded-[28px] bg-white px-5 pb-6 pt-8 ring-1 ring-line md:px-8 lg:sticky lg:top-40 lg:col-start-1 lg:row-span-4 lg:row-start-1 lg:self-start">
+      <figure className="rounded-[var(--radius-img)] bg-white px-5 pb-6 pt-8 md:px-8 lg:sticky lg:top-32 lg:col-start-1 lg:row-span-4 lg:row-start-1 lg:self-start">
         <Figure stage={stage} />
         <figcaption>
           <ul className="mt-6 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-grey">
             <li className="flex items-center gap-2">
-              <span aria-hidden className="size-3 rounded-[4px] bg-[linear-gradient(180deg,var(--f4y-teal),var(--f4y-cyan))]" />
+              <span aria-hidden className="size-3 rounded-[4px] bg-teal" />
               {legend.muscle}
             </li>
             <li className="flex items-center gap-2">
@@ -142,10 +138,10 @@ export function DiastasisExplorer({ stages, stagesLabel, legend, header, footer 
         </figcaption>
       </figure>
 
-      <div id="dx-detail" aria-live="polite" className="min-h-[9.5rem] border-l-2 border-teal pl-5 md:min-h-[8rem] lg:col-start-2">
+      <div id="dx-detail" aria-live="polite" className="min-h-[10rem] md:min-h-[9rem] lg:col-start-2">
         <div key={stage} className="bm-swap">
-          <h3 className="t-h3">{current.title}</h3>
-          <p className="mt-2 max-w-xl text-lg leading-relaxed text-grey">{current.text}</p>
+          <h3 className="t-statement">{current.title}</h3>
+          <p className="mt-3 max-w-xl text-lg leading-relaxed text-ink">{current.text}</p>
         </div>
       </div>
 

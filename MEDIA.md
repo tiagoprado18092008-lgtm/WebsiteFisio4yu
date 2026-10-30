@@ -2,7 +2,9 @@
 
 Tudo o que aparece no site está registado em `content/media.ts`. Os originais estão em `/Fotos` (não são publicados: ver `.vercelignore`); o site usa as versões otimizadas em `/public/media`.
 
-**Seleção de outubro de 2026:** entraram as fotos de tratamento, equipa e espaço com boa nitidez e enquadramento. Ficaram de fora as fotos em que o mural de jogadores famosos aparece em destaque atrás do tratamento (IMG_7603, IMG_7589, e as vistas do corredor "God, why me?" e da sala a preto e branco), por direitos de imagem; as de festa da inauguração (comida, cartões); e os vídeos repetidos ou de evento (`18_10_2026` está incluído como testemunho do Pedro Senra; `INAUGURAÇÃO` não entrou).
+**Seleção de outubro de 2026:** entraram as fotos de tratamento, equipa e espaço com boa nitidez e enquadramento. Ficaram de fora a IMG_7589 (mural de jogadores famosos em destaque atrás do tratamento), por direitos de imagem; as de festa da inauguração (comida, cartões); e os vídeos repetidos ou de evento (`18_10_2026` está incluído como testemunho do Pedro Senra; `INAUGURAÇÃO` não entrou).
+
+**Galeria das instalações (página Sobre):** as versões editadas das fotos do espaço (soltas em `/Fotos`), em WebP no tamanho original em `/public/media/instalacoes`. Incluem o corredor "God, why me?" e a sala com o mural a preto e branco, ambos com jogadores famosos. Grelha regular de quadrados 3:4, em 2 colunas (3 a partir de 1024 px): a foto horizontal ocupa duas colunas e, se com 2 colunas sobrar um lugar, a última ocupa a linha toda. No lightbox cada foto aparece inteira.
 
 **Hero:** foto (sem vídeo, a pedido do cliente). É vertical: até 1024 px ocupa o hero todo; a partir daí fica na metade direita e funde-se com o painel teal.
 
@@ -18,14 +20,14 @@ Tudo o que aparece no site está registado em `content/media.ts`. Os originais e
 |---|---|---|---|---|
 | `hero` | 3/4 | ✅ | Mário a tratar um utente (escolhida pelo cliente). | `/public/media/tratamentos/mario-tratamento.webp` |
 | `gym` | 3/4 | ✅ | Ginásio de reabilitação com a iluminação hexagonal (faixa de fotos da home). | `/public/media/espaco/ginasio.webp` |
-| `clinic-01` | 3/4 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/espaco/ginasio.webp` |
-| `clinic-02` | 3/4 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/espaco/camisolas.webp` |
-| `clinic-03` | 3/4 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/espaco/sala-fisio4you.webp` |
-| `clinic-04` | 9/16 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/espaco/ginasio-corredor.webp` |
-| `clinic-05` | 3/4 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/espaco/sala-avaliacao.webp` |
-| `clinic-06` | 9/16 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/espaco/gabinetes.webp` |
-| `clinic-07` | 3/4 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/espaco/sala-tratamento.webp` |
-| `clinic-08` | 3/4 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/espaco/sala-mural.webp` |
+| `clinic-01` | 16/9 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/ginasio.webp` |
+| `clinic-02` | 9/16 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/ginasio-corredor.webp` |
+| `clinic-03` | 3/4 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/sala-fisio4you.webp` |
+| `clinic-04` | 9/16 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/corredor-mural.webp` |
+| `clinic-05` | 9/16 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/gabinetes.webp` |
+| `clinic-06` | 9/16 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/sala-tratamento.webp` |
+| `clinic-07` | 9/16 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/ginasio-maquinas.webp` |
+| `clinic-08` | 3/4 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/camisolas.webp` |
 | `advantages-therapy` | 9/16 | ✅ | Terapia manual (foto do ponto "16 anos de experiência", home). | `/public/media/tratamentos/terapia-manual.webp` |
 | `brand-room` | 3/2 | ✅ | Sala com o logótipo. | `/public/media/espaco/sala-fisio4you.webp` |
 | `athletes` | 3/2 | ✅ | Mário com clientes/atletas na clínica (secção de avaliações da home). | `/public/media/clientes/atletas.webp` |
@@ -42,6 +44,7 @@ Tudo o que aparece no site está registado em `content/media.ts`. Os originais e
 | `strip-rack` | 3/4 | ✅ | Faixa de fotos da home. | `/public/media/espaco/rack.webp` |
 | `strip-duo-gym` | 3/4 | ✅ | Faixa de fotos da home. | `/public/media/equipa/mario-e-angela-ginasio.webp` |
 | `strip-angela` | 3/4 | ✅ | Faixa de fotos da home. | `/public/media/tratamentos/angela-instrumentos.webp` |
+| `strip-mural` | 3/4 | ✅ | Faixa de fotos da home. | `/public/media/espaco/sala-mural.webp` |
 | `strip-cards` | 3/4 | ✅ | Faixa de fotos da home. | `/public/media/espaco/cartoes.webp` |
 | `strip-gym` | 3/4 | ✅ | Faixa de fotos da home. | `/public/media/espaco/ginasio-kettlebells.webp` |
 | `eco-photo` | 4/5 | ⬜ | Fisioterapeuta com a sonda do ecógrafo, ecrã visível (substitui a sala de avaliação em service-eco). | — |

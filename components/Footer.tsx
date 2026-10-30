@@ -1,19 +1,23 @@
+import Image from "next/image";
 import Link from "next/link";
+import complaintsBadge from "@/public/brand/livro-reclamacoes.webp";
 import { site, isPending } from "@/content/site";
 import { getDict } from "@/content";
 import { href, serviceKeys, type Locale } from "@/lib/routes";
 import { waLink, waMessages } from "@/lib/whatsapp";
 import { Logo } from "./Logo";
-import { FacebookIcon, GoogleIcon, InstagramIcon } from "./Icon";
+import { FacebookIcon, GoogleIcon, InstagramIcon, WhatsAppIcon } from "./Icon";
 import { CookieSettingsLink } from "./Consent";
 
 export function Footer({ locale }: { locale: Locale }) {
   const t = getDict(locale);
   const f = t.footer;
+  // Redes sociais e, no fim, o WhatsApp (o único que conta como conversão no tracking)
   const social = [
-    { url: site.social.instagram, label: "Instagram", Icon: InstagramIcon },
     { url: site.social.facebook, label: "Facebook", Icon: FacebookIcon },
+    { url: site.social.instagram, label: "Instagram", Icon: InstagramIcon },
     { url: site.social.google, label: "Google", Icon: GoogleIcon },
+    { url: waLink(waMessages(t).general()), label: "WhatsApp", Icon: WhatsAppIcon, track: "whatsapp" },
   ].filter((s) => !isPending(s.url));
   // Registo ERS e licença só aparecem quando confirmados (ver PENDENTES.md)
   const legal = [
@@ -29,25 +33,28 @@ export function Footer({ locale }: { locale: Locale }) {
   const tap = "[&_a]:inline-flex [&_a]:min-h-11 [&_a]:items-center [&_button]:min-h-11 md:[&_a]:min-h-0 md:[&_button]:min-h-0";
 
   return (
-    // Painel arredondado em ice (teal claro), recolhido nas margens: separa claramente o rodapé do conteúdo
-    <footer className="bg-white px-2 pb-2 pt-4 text-ink md:px-4 md:pb-4 md:pt-6">
-      <div className="overflow-hidden rounded-[28px] bg-ice pb-20 pt-16 md:rounded-[34px] md:pb-0 md:pt-20">
+    // Painel ice encostado às margens e ao fundo da folha, só com os cantos de cima arredondados: os de baixo são os
+    // da própria folha, por isso não há dois cantos desencontrados lado a lado
+    <footer className="bg-white pt-4 text-ink md:pt-6">
+      <div className="overflow-hidden rounded-t-[28px] bg-ice pb-20 pt-16 md:rounded-t-[34px] md:pb-0 md:pt-20">
       <div className="container-x">
         {/* Em telemóvel: 2 colunas (Clínica | Horário lado a lado) e Contactos no fim, para um rodapé mais curto */}
         <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:gap-12 lg:grid-cols-[1.3fr_1fr_1fr_1.2fr_1fr]">
           <div className="col-span-2 md:col-span-1">
-            <Logo className="h-14 w-auto" />
-            <p className="mt-5 max-w-xs text-grey">{f.tagline}</p>
+            <Logo className="h-16 w-auto md:h-[72px]" sizes="180px" />
+            <p className="mt-6 max-w-xs text-grey">{f.tagline}</p>
             {social.length > 0 && (
-              <ul className="mt-6 flex gap-3">
-                {social.map(({ url, label, Icon }) => (
+              <ul className="mt-6 flex gap-2.5">
+                {social.map(({ url, label, Icon, track }) => (
                   <li key={label}>
                     <a
                       href={url}
                       target="_blank"
                       rel="noopener noreferrer"
+                      data-track={track}
+                      data-location={track && "footer-social"}
                       aria-label={`${label} ${t.common.newWindow}`}
-                      className="flex size-11 items-center justify-center rounded-full border border-line bg-white text-teal-dark hover:border-teal hover:text-teal"
+                      className="flex size-11 items-center justify-center rounded-full border border-line bg-white text-teal-dark transition-colors hover:border-teal hover:bg-teal-dark hover:text-white"
                     >
                       <Icon className="size-5" />
                     </a>
@@ -116,8 +123,13 @@ export function Footer({ locale }: { locale: Locale }) {
                 <span className="text-xs text-grey">{t.common.phoneNote}</span>
               </p>
               <p>
-                <a href={`mailto:${site.email}`} className="break-all transition-colors hover:text-teal-dark">
-                  {site.email}
+                {/* Se não couber, parte a seguir à "@" e não a meio de "gmail" (o span evita que o inline-flex do alvo de
+                    toque transforme cada metade num item de flex que não parte) */}
+                <a href={`mailto:${site.email}`} className="transition-colors hover:text-teal-dark">
+                  <span>
+                    {site.email.split("@")[0]}@<wbr />
+                    {site.email.split("@")[1]}
+                  </span>
                 </a>
               </p>
               <p>
@@ -157,9 +169,9 @@ export function Footer({ locale }: { locale: Locale }) {
           {/* O bloco legal não encolhe: se faltar largura, são os links que passam à linha seguinte, alinhados à direita */}
           <ul className={`flex flex-wrap items-center gap-x-5 md:gap-y-2 lg:justify-end lg:gap-x-4 ${tap}`}>
             <li>
-              <a href={site.complaintsBook} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-teal-dark">
-                <span className="rounded border border-line bg-white px-2 py-1 text-xs font-bold uppercase leading-tight text-[#c8102e]">Livro de Reclamações</span>
-                <span className="sr-only">{f.complaints}</span>
+              {/* Selo oficial do Livro de Reclamações Eletrónico */}
+              <a href={site.complaintsBook} target="_blank" rel="noopener noreferrer" className="rounded-[5px] transition-transform hover:-translate-y-px">
+                <Image src={complaintsBadge} alt={`${f.complaints} ${t.common.newWindow}`} sizes="106px" className="h-12 w-auto rounded-[5px]" />
               </a>
             </li>
             <li>
@@ -181,17 +193,22 @@ export function Footer({ locale }: { locale: Locale }) {
               <CookieSettingsLink label={f.cookieSettings} />
             </li>
             <li>
-              {f.builtBy}{" "}
-              <a href={site.agency.url} target="_blank" rel="noopener" className="font-semibold text-teal-dark hover:text-teal-dark">
-                {site.agency.name}
+              {/* Logótipo da agência com brilho ao passar o cursor (.agency em app/globals.css) */}
+              <a href={site.agency.url} target="_blank" rel="noopener" className="agency inline-flex items-center gap-2.5 transition-colors hover:text-teal-dark">
+                {f.builtBy}
+                <span className="agency-mark">
+                  <span aria-hidden className="agency-logo" />
+                </span>
+                <span className="sr-only">{site.agency.name}</span>
               </a>
             </li>
           </ul>
         </div>
       </div>
-      {/* Marca em grande, a desvanecer (pedido do cliente: manter) */}
-      <p aria-hidden className="pointer-events-none mt-12 select-none bg-gradient-to-b from-teal-dark/70 via-teal/40 to-transparent bg-clip-text text-center font-display text-[clamp(4.5rem,19vw,17rem)] leading-[0.78] tracking-[-0.05em] text-transparent">
-        fisio4you
+      {/* Marca em grande, a toda a largura e a desvanecer no fundo (pedido do cliente: manter). O "4" leva o teal da fita
+          do logótipo; o desvanecer é uma máscara, para a cor das letras ficar lisa */}
+      <p aria-hidden className="pointer-events-none mt-12 select-none text-center font-display text-[clamp(4.5rem,22vw,22rem)] leading-[0.78] tracking-[-0.04em] text-teal-dark/50 [mask-image:linear-gradient(to_bottom,#000_20%,transparent_95%)]">
+        fisio<span className="text-teal">4</span>you
       </p>
       </div>
     </footer>

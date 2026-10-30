@@ -1,6 +1,6 @@
 import { Info } from "lucide-react";
 import { getDict } from "@/content";
-import { mediaList, videoFor } from "@/content/media";
+import { mediaList } from "@/content/media";
 import { site } from "@/content/site";
 import { href, serviceKeys, type Locale, type PageKey } from "@/lib/routes";
 import { waMessages } from "@/lib/whatsapp";
@@ -13,7 +13,6 @@ import { CtaTriad } from "../CtaTriad";
 import { Gallery } from "../Gallery";
 import { WhatsAppButton } from "../Buttons";
 import { IconList, ServiceRow, TeamMember } from "../Cards";
-import { VideoButton } from "../VideoCard";
 import { JsonLd } from "../JsonLd";
 
 const crumbsFor = (locale: Locale, items: { name: string; page: PageKey }[]) => {
@@ -116,26 +115,16 @@ export function AboutPage({ locale }: { locale: Locale }) {
         </div>
       </Section>
 
-      {/* Quem está por trás: o Mário e a Angela, cada um com o seu vídeo */}
+      {/* Quem está por trás: o Mário e a Angela */}
       {t.team.length > 0 && (
         <Section tone="light" id="equipa" labelledBy="equipa-h">
           <SectionTitle title={a.founderTitle} id="equipa-h" />
           <ul className="mt-12 grid gap-5 lg:grid-cols-2">
-            {t.team.map((m) => {
-              const v = m.video ? videoFor(m.video, locale) : null;
-              return (
-                <li key={m.media}>
-                  <TeamMember
-                    locale={locale}
-                    mediaId={m.media}
-                    name={m.name}
-                    role={m.role}
-                    focus={m.focus}
-                    video={v && <VideoButton video={v} label={v.caption} labels={{ play: t.common.watchVideo, close: t.common.close }} />}
-                  />
-                </li>
-              );
-            })}
+            {t.team.map((m) => (
+              <li key={m.media}>
+                <TeamMember locale={locale} mediaId={m.media} name={m.name} role={m.role} focus={m.focus} />
+              </li>
+            ))}
           </ul>
         </Section>
       )}
@@ -146,13 +135,17 @@ export function AboutPage({ locale }: { locale: Locale }) {
         </h2>
         <Gallery
           labels={{ close: t.common.close, previous: t.common.previous, next: t.common.next }}
-          items={gallery.map((g) => ({
-            id: g.id,
-            alt: g.alt[locale],
-            ratio: g.ratio,
-            thumb: <Media id={g.id} locale={locale} compact sizes="(min-width: 1024px) 33vw, 100vw" />,
-            full: <Media id={g.id} locale={locale} sizes="90vw" />,
-          }))}
+          items={gallery.map((g) => {
+            const wide = g.ratio === "16/9";
+            return {
+              id: g.id,
+              alt: g.alt[locale],
+              ratio: g.ratio,
+              wide,
+              thumb: <Media id={g.id} locale={locale} cover compact sizes={wide ? "(min-width: 1024px) 66vw, 100vw" : "(min-width: 1024px) 33vw, 50vw"} />,
+              full: <Media id={g.id} locale={locale} sizes="90vw" />,
+            };
+          })}
         />
       </Section>
 

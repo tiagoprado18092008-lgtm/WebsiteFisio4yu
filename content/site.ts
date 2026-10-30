@@ -29,7 +29,7 @@ export const site = {
   yearsExperience: 16, // experiência do Mário (confirmado)
   gymArea: 100,
   social: {
-    instagram: "[[URL Instagram]]",
+    instagram: "https://www.instagram.com/fisio_4you/",
     facebook: "https://www.facebook.com/fisio4youportimao/",
     google: "[[URL do perfil Google]]",
   },

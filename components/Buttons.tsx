@@ -14,6 +14,8 @@ export const btn = {
   panel: cn(base, "bg-panel text-white hover:bg-teal-dark"),
   outline: cn(base, "border border-ink/20 bg-white text-ink hover:border-ink"),
   onDark: cn(base, "border border-white/55 text-white backdrop-blur-sm hover:bg-white hover:text-teal-dark"),
+  /** Sobre um painel liso (sem foto por trás), não precisa do desfoque. */
+  onPanel: cn(base, "border border-white/55 text-white hover:bg-white hover:text-teal-dark"),
 };
 
 type WaProps = { message: string; location: string; label: string; className?: string; variant?: keyof typeof btn };

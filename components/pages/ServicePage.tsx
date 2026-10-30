@@ -1,38 +1,69 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Snowflake } from "lucide-react";
+import { ArrowRight, Plus } from "lucide-react";
 import { getDict } from "@/content";
-import { videoFor } from "@/content/media";
+import { media, videoFor } from "@/content/media";
+import { fullAddress, site } from "@/content/site";
 import { href, type Locale, type ServiceKey } from "@/lib/routes";
 import { waLink, waMessages } from "@/lib/whatsapp";
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from "@/lib/seo";
 import { cn } from "@/lib/cn";
-import { Section, SectionTitle } from "../Section";
-import { ServiceHero } from "../ServiceHero";
+import { Breadcrumbs } from "../PageHero";
 import { Media } from "../Media";
-import { JourneySteps } from "../JourneySteps";
-import { Faq } from "../Faq";
-import { CtaTriad } from "../CtaTriad";
 import { CallButton, WhatsAppButton } from "../Buttons";
-import { IconList, RelatedService, TeamMember } from "../Cards";
+import { WhatsAppIcon } from "../Icon";
 import { JsonLd } from "../JsonLd";
-import { SectionNav } from "../SectionNav";
-import { VideoButton, VideoCard } from "../VideoCard";
-import { BodyMap } from "../BodyMap";
+import { VideoButton } from "../VideoCard";
 import { DiastasisExplorer } from "../DiastasisExplorer";
-import { SignsChecklist } from "../SignsChecklist";
+import { Composer } from "../Composer";
+import { RevealOnScroll } from "../RevealOnScroll";
 
-/** Cor do hero de cada serviço: o desporto no teal escuro, o pós-parto num tom claro. */
-const heroTone: Record<ServiceKey, "panel" | "ice"> = { msk: "panel", dermato: "ice" };
+type Row = { main: string; sub: string; action?: { href: string; label: string; wa?: string } };
+
+/** Linha da lista de situações: só espaço entre linhas; as que têm ação são um link inteiro. */
+function ConditionRow({ row }: { row: Row }) {
+  const cells = (
+    <>
+      <span className="col-start-1 row-start-1 font-medium text-ink">{row.main}</span>
+      <span className="col-span-2 row-start-2 text-grey sm:col-span-1 sm:col-start-2 sm:row-start-1">{row.sub}</span>
+      {row.action && (
+        <span className="col-start-2 row-start-1 inline-flex items-center gap-1.5 justify-self-end whitespace-nowrap text-[15px] font-semibold text-teal-strong sm:col-start-3">
+          {row.action.wa && <WhatsAppIcon className="size-4 shrink-0" />}
+          {row.action.label}
+          <ArrowRight aria-hidden className="size-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
+        </span>
+      )}
+    </>
+  );
+  const grid = "grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-x-6 gap-y-1 py-3.5 sm:grid-cols-[minmax(0,0.8fr)_minmax(0,1.7fr)_7.5rem]";
+  if (!row.action) return <div className={grid}>{cells}</div>;
+  const link = cn(grid, "group -mx-3 rounded-[14px] px-3 transition-colors hover:bg-mist");
+  return row.action.wa ? (
+    <a href={row.action.href} target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-location={row.action.wa} className={link}>
+      {cells}
+    </a>
+  ) : (
+    <Link href={row.action.href} className={link}>
+      {cells}
+    </Link>
+  );
+}
+
+/** Escada de frases do percurso: cada fase começa duas colunas mais à direita. */
+const stairs = ["lg:col-start-1", "lg:col-start-3", "lg:col-start-5", "lg:col-start-7"];
 
 /**
- * Página de cada serviço. As secções próprias de cada um vêm do conteúdo:
- * musculoesquelética → mapa do corpo (`bodyMap`) e recursos (`modules`);
- * dermatofuncional → esquema da diástase (`explainer`) e lista de sinais (`signs`).
+ * Página de cada serviço, curta e feita de fotos dos tratamentos:
+ * o nome em cartaz com uma foto do serviço no lugar de uma palavra → outra foto do serviço, larga → situações →
+ * (musculoesquelética) os três recursos, só com foto, nome e uma linha · (dermatofuncional) o esquema da diástase →
+ * o percurso em quatro frases → quem acompanha → (musculoesquelética) a frase do mural → perguntas fechadas →
+ * o outro serviço → a mensagem de WhatsApp montada pelo visitante.
  */
 export function ServicePage({ locale, service }: { locale: Locale; service: ServiceKey }) {
   const t = getDict(locale);
   const s = t.services[service];
   const sp = t.servicePage;
+  const p = s.page;
   const msg = waMessages(t);
   const wa = msg.service(s.name);
   const url = href(locale, `service:${service}`);
@@ -41,24 +72,28 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
     { name: t.nav.services, href: href(locale, "services") },
     { name: s.name, href: url },
   ];
-  const modules = s.modules ?? [];
-  const bm = t.home.bodyMap;
-  const nav = [
-    { id: "para-quem", label: sp.forWho },
-    ...(s.bodyMap ? [{ id: "onde-doi", label: sp.where }] : []),
-    ...(s.explainer ? [{ id: "diastase", label: s.explainer.nav }] : []),
-    ...modules.map((m) => ({ id: m.id, label: m.nav })),
-    ...(s.signs ? [{ id: "sinais", label: s.signs.nav }] : []),
-    { id: "como-funciona", label: sp.how },
-    { id: "perguntas", label: sp.faqShort },
-  ];
-  const videoLabels = { play: t.common.watchVideo, close: t.common.close };
+  const [titleFirst, ...titleRest] = s.heroTitle.split(" ");
+  const slot = media[p.heroSlot];
   const specialist = t.team.find((m) => m.media === s.specialist);
-  const specialistVideo = specialist?.video ? videoFor(specialist.video, locale) : null;
-  const moduleNav = Object.fromEntries(modules.map((m) => [m.id, m.nav]));
-  // Fundos alternados ao longo da página
-  let n = 0;
-  const tone = () => (n++ % 2 === 0 ? "light" : "mist") as "light" | "mist";
+  const modules = s.modules ?? [];
+  const videoLabels = { play: t.common.watchVideo, close: t.common.close };
+  const conditionsTitle = s.forWho.title.split(" ");
+  const hours = `${t.hours.weekdays}, ${site.hours[0].opens.replace(":", "h")}–${site.hours[0].closes.replace(":", "h")}`;
+  // Tons alternados: o percurso fica claro quando vem a seguir ao esquema da diástase (mist)
+  const stepsTone = s.explainer ? "bg-white" : "bg-mist";
+  const personTone = s.explainer ? "bg-mist" : "bg-white";
+
+  // Situações: na musculoesquelética, as zonas do corpo (cada uma abre o WhatsApp); na dermatofuncional, as indicações
+  const rows: Row[] = s.bodyMap
+    ? t.home.bodyMap.regions.map((r) => ({
+        main: r.label,
+        sub: r.common.join(", "),
+        action:
+          r.service === service
+            ? { href: waLink(msg.problem(r.waTopic)), label: sp.write, wa: `servico-${service}-zona-${r.id}` }
+            : { href: href(locale, `service:${r.service}`), label: sp.seeService },
+      }))
+    : s.forWho.items.map((i) => ({ main: i.title, sub: i.text }));
 
   return (
     <>
@@ -69,251 +104,237 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
           breadcrumbJsonLd(crumbs.map((c) => ({ name: c.name, url: c.href }))),
         ]}
       />
-      <ServiceHero
-        tone={heroTone[service]}
-        crumbs={crumbs}
-        title={s.heroTitle}
-        sub={s.heroSub}
-        facts={s.facts}
-        actions={
-          <>
-            <WhatsAppButton message={wa} location={`servico-${service}`} label={t.common.whatsappCta} />
-            <CallButton location={`servico-${service}`} label={t.common.phoneDisplay} note={t.common.phoneNote} />
-          </>
-        }
-        media={<Media id={s.mediaId} locale={locale} cover priority sizes="(min-width: 1024px) 500px, 100vw" />}
-        specialist={
-          specialist && {
-            name: specialist.name,
-            role: specialist.role,
-            avatar: <Media id={specialist.media} locale={locale} cover sizes="44px" />,
-          }
-        }
-      />
+      <RevealOnScroll />
 
-      {/* Navegação interna fixa, com a secção visível marcada */}
-      <SectionNav label={sp.onThisPage} items={nav} />
-
-      {/* Para quem é */}
-      <Section tone={tone()} id="para-quem" labelledBy="forwho">
-        <SectionTitle title={s.forWho.title} intro={s.forWho.intro} id="forwho" />
-        <div className="mt-12">
-          <IconList items={s.forWho.items} cols={3} />
-        </div>
-      </Section>
-
-      {/* Mapa do corpo: cada zona abre o WhatsApp já com a zona escrita */}
-      {s.bodyMap && (
-        <Section tone={tone()} id="onde-doi" labelledBy="onde-doi-title">
-          <SectionTitle title={bm.title} intro={bm.intro} id="onde-doi-title" />
-          <div className="mt-12 md:mt-16">
-            <BodyMap
-              initial="joelho"
-              labels={{ list: bm.listLabel, common: bm.commonLabel, talk: bm.talk, see: bm.see }}
-              regions={bm.regions.map((r) => ({
-                id: r.id,
-                x: r.x,
-                y: r.y,
-                label: r.label,
-                title: r.title,
-                text: r.text,
-                common: r.common,
-                waHref: waLink(msg.problem(r.waTopic)),
-                // Zonas deste serviço levam à secção certa desta página; as outras, à página do outro serviço
-                serviceHref: r.service === service ? `#${r.anchor ?? "como-funciona"}` : href(locale, `service:${r.service}`, r.anchor),
-              }))}
-            />
-          </div>
-          {modules.some((m) => m.id === "recuperacao") && (
-            <p className="mt-12 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-line pt-6 md:mt-16">
-              <Snowflake className="size-5 shrink-0 text-teal-strong" aria-hidden />
-              <span className="font-semibold">{bm.recovery.title}</span>
-              <span className="text-grey">{bm.recovery.text}</span>
-              <Link href="#recuperacao" className="link inline-flex min-h-11 items-center">
-                {bm.recovery.link}
-              </Link>
-            </p>
-          )}
-        </Section>
-      )}
-
-      {/* Diástase abdominal: esquema por fases + como avaliamos */}
-      {s.explainer && (
-        <Section tone={tone()} id="diastase" labelledBy="diastase-title">
-          <DiastasisExplorer
-            stages={s.explainer.stages}
-            stagesLabel={s.explainer.stagesLabel}
-            legend={s.explainer.legend}
-            header={<SectionTitle title={s.explainer.title} intro={s.explainer.intro} id="diastase-title" />}
-            footer={
-              <div className="border-t border-line pt-8">
-                <h3 className="t-h3">{s.explainer.assessTitle}</h3>
-                <ul className="mt-4 space-y-3">
-                  {s.explainer.assess.map((a) => (
-                    <li key={a} className="flex gap-3 text-grey">
-                      <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-teal-strong" aria-hidden />
-                      {a}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            }
-          />
-        </Section>
-      )}
-
-      {/* Recursos incluídos (ecografia, ginásio, recuperação) */}
-      {modules.map((m, i) => {
-        const mv = m.video ? videoFor(m.video, locale) : null;
-        return (
-          <Section key={m.id} id={m.id} tone={tone()} labelledBy={`${m.id}-title`}>
-            <div className="grid items-start gap-12 md:grid-cols-2 md:gap-16 lg:gap-24">
-              <div className={cn("overflow-hidden rounded-[var(--radius-img)] md:sticky md:top-40", i % 2 === 1 && "md:order-last")}>
-                {/* Recurso com vídeo: no lugar da foto fica só a capa do vídeo, com o play ao centro */}
-                {mv ? (
-                  <VideoCard video={mv} labels={videoLabels} sizes="(min-width: 768px) 45vw, 100vw" bare />
-                ) : (
-                  <Media id={m.mediaId} locale={locale} sizes="(min-width: 768px) 45vw, 100vw" />
-                )}
-              </div>
-              <div>
-                <h2 id={`${m.id}-title`} className="t-h2">
-                  {m.title}
-                </h2>
-                <p className="t-lead mt-6">{m.text}</p>
-                <div className="mt-10">
-                  <IconList items={m.points} />
-                </div>
-                {m.items && m.items.length > 0 && (
-                  <div className="mt-12">
-                    {m.itemsTitle && <h3 className="t-h3">{m.itemsTitle}</h3>}
-                    <dl className="mt-4 divide-y divide-line border-y border-line">
-                      {m.items.map((it) => (
-                        <div key={it.title} className="py-4">
-                          <dt className="font-semibold">{it.title}</dt>
-                          <dd className="mt-1 text-grey">{it.text}</dd>
-                        </div>
-                      ))}
-                    </dl>
-                  </div>
-                )}
-                {m.note && <p className="mt-8 border-t border-line pt-5 text-[15px] text-grey">{m.note}</p>}
+      {/* O nome em cartaz, com uma foto do serviço no lugar de uma palavra; outra foto do serviço abre larga por baixo */}
+      <section className="bg-white pb-24 pt-6 md:pb-36 md:pt-10">
+        <div className="container-x">
+          <div className="svc-in">
+            <Breadcrumbs crumbs={crumbs} />
+            <h1 className="t-poster mt-10 md:mt-16" style={{ "--i": 1 } as React.CSSProperties}>
+              {titleFirst}{" "}
+              {slot?.src && (
+                <span aria-hidden className="t-slot bg-ice">
+                  <Image src={slot.src} alt="" fill priority sizes="(min-width: 640px) 320px, 100vw" className="object-cover" style={{ objectPosition: slot.position }} />
+                </span>
+              )}{" "}
+              {titleRest.join(" ")}
+            </h1>
+            <div className="mt-8 grid gap-8 md:mt-12 lg:grid-cols-12 lg:items-end lg:gap-x-6" style={{ "--i": 2 } as React.CSSProperties}>
+              <p className="max-w-[34rem] text-lg leading-relaxed text-ink md:text-xl lg:col-span-7">{p.lead}</p>
+              <div className="flex flex-wrap gap-3 lg:col-span-5 lg:justify-end">
+                <WhatsAppButton message={wa} location={`servico-${service}`} label={t.common.whatsappCta} />
+                <CallButton location={`servico-${service}`} label={t.common.phoneDisplay} note={t.common.phoneNote} />
               </div>
             </div>
-          </Section>
-        );
-      })}
-
-      {/* Sinais: a seleção vai escrita na mensagem de WhatsApp */}
-      {s.signs && (
-        <Section tone={tone()} id="sinais" labelledBy="sinais-title">
-          <SectionTitle title={s.signs.title} intro={s.signs.intro} id="sinais-title" />
-          <div className="mt-12">
-            <SignsChecklist
-              items={s.signs.items}
-              baseMessage={wa}
-              location={`servico-${service}-sinais`}
-              labels={{
-                legend: s.signs.title,
-                countOne: s.signs.countOne,
-                countMany: s.signs.countMany,
-                none: s.signs.none,
-                noneHint: s.signs.noneHint,
-                messageIntro: s.signs.messageIntro,
-                send: s.signs.send,
-                fallback: t.common.whatsappCta,
-                note: s.signs.note,
-              }}
-            />
           </div>
-        </Section>
-      )}
+          <div className="svc-shutter relative mt-12 aspect-[4/3] overflow-hidden rounded-[var(--radius-img)] bg-ice md:mt-16 md:aspect-[2/1]">
+            <div className="svc-settle absolute inset-0">
+              <div className="svc-drift absolute inset-0">
+                <Media id={p.heroWide} locale={locale} cover priority sizes="(min-width: 1480px) 1400px, 100vw" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      {/* O que nos distingue + quem está à frente do serviço (com vídeo) */}
-      <Section tone={tone()} id="fisioterapeuta" labelledBy="distinct">
-        <div className={cn("grid gap-12", specialist && "items-center lg:grid-cols-[1fr_1.15fr] lg:gap-20")}>
-          <div>
-            <SectionTitle title={s.distinct.title} intro={s.distinct.text} id="distinct" />
-            {/* Com recursos próprios (ecografia, ginásio, recuperação), os pontos já estão detalhados acima */}
-            {modules.length === 0 && (
-              <ul className="mt-8 divide-y divide-line border-y border-line">
-                {s.distinct.points.map((p) => (
-                  <li key={p} className="flex items-center gap-4 py-4 text-lg">
-                    <span className="size-2 shrink-0 rounded-full bg-teal" aria-hidden />
-                    {p}
-                  </li>
-                ))}
-              </ul>
+      {/* Situações: título e introdução à esquerda, a lista à direita */}
+      <section id="situacoes" aria-labelledby="situacoes-title" className="bg-white pb-24 md:pb-36">
+        <div className="container-x grid gap-10 lg:grid-cols-12 lg:gap-x-6">
+          <div className="lg:col-span-5">
+            <h2 id="situacoes-title" data-reveal className="t-display">
+              <span className="block">{conditionsTitle.slice(0, -1).join(" ")}</span>
+              <span className="block">{conditionsTitle.at(-1)}</span>
+            </h2>
+            <p data-reveal className="mt-6 max-w-[34ch] text-lg leading-relaxed text-ink">
+              {s.forWho.intro}
+            </p>
+          </div>
+          <div className="lg:col-span-7 lg:col-start-6 lg:pt-3">
+            <ul>
+              {rows.map((row, i) => (
+                <li key={`${row.main}-${row.sub}`} data-reveal style={{ "--d": i } as React.CSSProperties}>
+                  <ConditionRow row={row} />
+                </li>
+              ))}
+            </ul>
+            {/* Com poucas linhas (dermatofuncional), uma foto do serviço por baixo, encostada à direita */}
+            {p.conditionsPhoto && (
+              <div data-reveal className="relative ml-auto mt-10 aspect-[4/5] w-[70%] overflow-hidden rounded-[var(--radius-img)] bg-ice sm:w-1/2">
+                <Media id={p.conditionsPhoto} locale={locale} cover sizes="(min-width: 1024px) 28vw, 70vw" />
+              </div>
             )}
           </div>
-          {specialist && (
-            <TeamMember
-              locale={locale}
-              mediaId={specialist.media}
-              name={specialist.name}
-              role={specialist.role}
-              focus={specialist.focus}
-              video={specialistVideo && <VideoButton video={specialistVideo} label={specialistVideo.caption} labels={videoLabels} />}
-            />
-          )}
         </div>
-      </Section>
+      </section>
 
-      {/* Como funciona */}
-      <Section tone={tone()} id="como-funciona" labelledBy="how">
-        <JourneySteps
-          id="how"
-          title={s.how.title}
-          intro={s.how.intro}
-          linksLabel={sp.inStep}
-          cta={<WhatsAppButton message={wa} location={`servico-${service}-percurso`} label={t.common.whatsappCta} />}
-          steps={s.how.steps.map((st) => ({
-            ...st,
-            links: st.uses?.filter((id) => moduleNav[id]).map((id) => ({ label: moduleNav[id], href: `#${id}` })),
-          }))}
-        />
-      </Section>
+      {/* Musculoesquelética: os três recursos, cada um com a sua foto, o nome e uma linha */}
+      {s.includes && modules.length > 0 && (
+        <section id="espaco" aria-labelledby="espaco-title" className="bg-white pb-24 md:pb-36">
+          <div className="container-x">
+            <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-x-6">
+              <h2 id="espaco-title" data-reveal className="t-display lg:col-span-6">
+                {s.includes.title}
+              </h2>
+              <p data-reveal className="max-w-[38ch] text-lg leading-relaxed text-ink lg:col-span-4 lg:col-start-9">
+                {s.includes.intro}
+              </p>
+            </div>
+            <div className="mt-12 grid gap-12 sm:grid-cols-3 sm:gap-6 md:mt-16 lg:gap-x-8">
+              {modules.map((m, i) => (
+                <article key={m.id} id={m.id} aria-labelledby={`${m.id}-title`} data-reveal style={{ "--d": i } as React.CSSProperties}>
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-[var(--radius-img)] bg-ice sm:aspect-[4/5]">
+                    <Media id={m.mediaId} locale={locale} cover sizes="(min-width: 640px) 33vw, 100vw" />
+                  </div>
+                  <h3 id={`${m.id}-title`} className="t-statement mt-6">
+                    {m.title}
+                  </h3>
+                  <p className="mt-2 leading-relaxed text-grey">{m.summary}</p>
+                  {m.note && <p className="mt-3 text-[15px] leading-relaxed text-muted">{m.note}</p>}
+                  {m.video && <VideoButton className="mt-5" video={videoFor(m.video, locale)} label={videoFor(m.video, locale).name} labels={videoLabels} />}
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
-      {/* Perguntas + duração */}
-      <Section tone={tone()} id="perguntas" labelledBy="faq">
-        <div className="grid gap-14 md:grid-cols-[1fr_1.6fr] md:gap-16">
-          <div>
-            <h2 id="faq" className="t-h2">
+      {/* Dermatofuncional: o esquema da diástase por fases */}
+      {s.explainer && (
+        <section id="diastase" aria-labelledby="diastase-title" className="bg-mist py-24 md:py-36">
+          <div className="container-x">
+            <DiastasisExplorer
+              stages={s.explainer.stages}
+              stagesLabel={s.explainer.stagesLabel}
+              legend={s.explainer.legend}
+              header={
+                <div>
+                  <h2 id="diastase-title" className="t-display">
+                    {s.explainer.title}
+                  </h2>
+                  <p className="mt-6 max-w-[40ch] text-lg leading-relaxed text-ink">{s.explainer.intro}</p>
+                </div>
+              }
+            />
+          </div>
+        </section>
+      )}
+
+      {/* Percurso: uma frase por fase, em escada, com uma linha de explicação */}
+      <section id="como-funciona" aria-labelledby="percurso-title" className={cn("py-24 md:py-36", stepsTone)}>
+        <div className="container-x">
+          <h2 id="percurso-title" data-reveal className="t-statement text-muted">
+            {s.how.title}
+          </h2>
+          <ol className="mt-12 grid gap-12 md:mt-20 md:gap-14 lg:grid-cols-12 lg:gap-x-6">
+            {s.how.steps.map((st, i) => (
+              <li
+                key={st.title}
+                data-reveal
+                style={{ "--d": i, paddingInlineStart: `calc(${i} * 6vw)` } as React.CSSProperties}
+                className={cn("lg:col-end-13 lg:!ps-0", stairs[i])}
+              >
+                <h3 className={cn("t-display", i === s.how.steps.length - 1 && "text-teal-strong")}>{st.line}</h3>
+                <p className="mt-3 max-w-[38ch] leading-relaxed text-grey">{st.text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* Quem acompanha: o retrato grande e, ao lado, o nome e uma frase */}
+      {specialist && (
+        <section id="fisioterapeuta" aria-labelledby="pessoa-title" className={cn("py-24 md:py-36", personTone)}>
+          <div className="container-x grid items-center gap-10 sm:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:grid-cols-12 lg:gap-x-6">
+            <div data-reveal className="relative aspect-[4/5] w-[75%] overflow-hidden rounded-[var(--radius-img)] bg-ice sm:w-full lg:col-span-4 lg:col-start-2">
+              <Media id={specialist.media} locale={locale} cover sizes="(min-width: 1024px) 30vw, (min-width: 640px) 40vw, 75vw" />
+            </div>
+            <div data-reveal style={{ "--d": 1 } as React.CSSProperties} className="lg:col-span-5 lg:col-start-7">
+              <h2 id="pessoa-title" className="t-display">
+                {specialist.name}
+              </h2>
+              <p className="mt-3 text-lg font-medium text-teal-strong">{specialist.role}</p>
+              <p className="mt-6 max-w-[42ch] text-lg leading-relaxed text-ink">
+                {specialist.name} {p.person.bio}
+              </p>
+              <Link href={`${href(locale, "about")}#equipa`} className="link mt-8 inline-flex min-h-11 items-center">
+                {sp.meetTeam}
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* A frase do mural da entrada, espalhada de margem a margem */}
+      {p.motto && (
+        <figure className="bg-ice py-28 md:py-36">
+          {/* Duas linhas com as palavras encostadas às margens; a entrelinha larga faz das distâncias pausas */}
+          <blockquote className="container-x font-display text-[clamp(1.5rem,7vw,3.4rem)] font-medium leading-[1.45] tracking-[-0.04em] text-teal-dark md:text-[min(7vw,7.5rem)]">
+            <p>
+              {p.motto.lines.map((words) => (
+                <span key={words.join(" ")} className="block text-justify [text-align-last:justify]">
+                  {words.join(" ")}
+                </span>
+              ))}
+            </p>
+          </blockquote>
+          <figcaption className="container-x mt-12 flex flex-col gap-1 text-[15px] text-teal-dark md:mt-16 md:flex-row md:justify-between md:text-lg">
+            <span>{p.motto.by[0]}</span>
+            <span className="self-center md:self-auto">{p.motto.by[1]}</span>
+            <span className="self-end md:self-auto">{p.motto.by[2]}</span>
+          </figcaption>
+        </figure>
+      )}
+
+      {/* Perguntas: só as perguntas à vista; a resposta abre ao tocar */}
+      {s.faq.length > 0 && (
+        <section id="perguntas" aria-labelledby="faq-title" className="bg-white py-24 md:py-36">
+          <div className="container-x grid gap-10 lg:grid-cols-12 lg:gap-x-6">
+            <h2 id="faq-title" data-reveal className="t-statement text-muted lg:col-span-4">
               {sp.faq}
             </h2>
-            <div className="mt-10 border-t border-line pt-6">
-              <h3 className="t-h3">{s.duration.title}</h3>
-              <p className="mt-2 text-grey">{s.duration.text}</p>
+            <div data-reveal className="space-y-2 lg:col-span-8">
+              {s.faq.map((f) => (
+                <details key={f.q} className="group rounded-[18px] transition-colors open:bg-mist hover:bg-mist">
+                  <summary className="flex min-h-14 cursor-pointer items-center justify-between gap-6 px-4 py-4 md:px-6">
+                    <span className="font-display text-xl leading-snug tracking-[-0.015em] text-ink md:text-2xl">{f.q}</span>
+                    <Plus aria-hidden className="size-6 shrink-0 text-teal-strong transition-transform duration-300 group-open:rotate-45" />
+                  </summary>
+                  <p className="max-w-[60ch] px-4 pb-6 leading-relaxed text-ink md:px-6">{f.a}</p>
+                </details>
+              ))}
             </div>
-            <WhatsAppButton message={wa} location={`servico-${service}-faq`} label={t.common.whatsappCta} className="mt-8" />
           </div>
-          <Faq items={s.faq} />
-        </div>
-      </Section>
+        </section>
+      )}
 
-      {/* Outro serviço: uma linha compacta antes da marcação, para não alongar o fim da página */}
-      <Section tone={tone()} labelledBy="related">
-        <div className="grid items-center gap-8 md:grid-cols-[1fr_1.4fr] md:gap-16">
-          <h2 id="related" className="t-h2">
+      {/* O outro serviço: só o nome, grande */}
+      <section aria-labelledby="related-title" className="bg-white pb-24 md:pb-36">
+        <div className="container-x grid gap-4 lg:grid-cols-12 lg:items-baseline lg:gap-x-6">
+          <h2 id="related-title" className="t-statement text-muted lg:col-span-4">
             {sp.related}
           </h2>
-          <div>
-            {s.related.map((k) => (
-              <RelatedService
-                key={k}
-                locale={locale}
-                mediaId={t.services[k].mediaId}
-                title={t.services[k].name}
-                text={t.services[k].short}
-                href={href(locale, `service:${k}`)}
-                cta={t.common.learnMore}
-              />
-            ))}
-          </div>
+          {s.related.map((k) => (
+            <Link key={k} href={href(locale, `service:${k}`)} data-reveal className="group inline-flex items-baseline gap-3 lg:col-span-8">
+              <span className="t-display text-ink transition-colors group-hover:text-teal-strong">{t.services[k].name}</span>
+              <ArrowRight aria-hidden className="size-7 shrink-0 self-center text-teal-strong transition-transform duration-300 group-hover:translate-x-1.5 md:size-9" />
+            </Link>
+          ))}
         </div>
-      </Section>
+      </section>
 
-      <CtaTriad locale={locale} waMessage={wa} location={`servico-${service}-cta`} />
+      <Composer
+        copy={p.composer}
+        question={sp.question}
+        location={`servico-${service}-mensagem`}
+        labels={{
+          send: sp.send,
+          or: sp.or,
+          phone: `${t.common.call} ${t.common.phoneDisplay}`,
+          phoneNote: t.common.phoneNote,
+          visit: `${fullAddress} · ${hours}`,
+        }}
+      />
     </>
   );
 }

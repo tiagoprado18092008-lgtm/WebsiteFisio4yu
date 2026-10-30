@@ -107,7 +107,7 @@
   ],
   "narrative": {
     "northStar": "A Sala de Avaliação Clara",
-    "overview": "O site comporta-se como a sala onde a primeira consulta acontece: luz branca, superfícies limpas, instrumentos precisos e uma pessoa próxima a explicar o que vê. O teal do logótipo é o instrumento, não a decoração. Marca o que se pode fazer (botões, links, a fase ativa, o ponto no mapa do corpo) e nunca cobre a página. O calor vem das fotografias reais da clínica e da equipa, nunca de gradientes ou ilustrações genéricas.\n\nA página inteira vive numa folha branca de cantos largos (34 px em desktop) pousada sobre uma moldura teal suave. Isto dá ao site um objeto físico reconhecível e separa o conteúdo do browser. Dentro da folha, as secções alternam entre branco e \"mist\", um branco frio quase impercetível, e o ritmo vem de espaço generoso e filetes finos, não de caixas. O cliente pediu um site clínico, claro e não escuro. O único painel escuro (teal \"panel\") está reservado ao momento de marcar consulta e ao hero do serviço desportivo.\n\nA densidade é editorial: títulos grandes em frase normal (Bricolage Grotesque 400), texto corrido sóbrio (Public Sans), listas separadas por filetes em vez de cartões, e a informação clínica organizada por fases e por zonas do corpo.",
+    "overview": "O site comporta-se como a sala onde a primeira consulta acontece: luz branca, superfícies limpas, instrumentos precisos e uma pessoa próxima a explicar o que vê. O teal do logótipo é o instrumento, não a decoração. Marca o que se pode fazer (botões, links, a fase ativa, o ponto no mapa do corpo) e nunca cobre a página. O calor vem das fotografias reais da clínica e da equipa, nunca de gradientes ou ilustrações genéricas.\n\nA página inteira vive numa folha branca de cantos largos (34 px em desktop) pousada sobre uma moldura teal suave. Isto dá ao site um objeto físico reconhecível e separa o conteúdo do browser. Dentro da folha, as secções alternam entre branco e \"mist\", um branco frio quase impercetível, e o ritmo vem de espaço generoso e filetes finos, não de caixas. O cliente pediu um site clínico, claro e não escuro. O painel escuro (teal \"panel\") está reservado a três momentos: o hero da página inicial, o hero do serviço desportivo e o bloco de marcação.\n\nA densidade é editorial: títulos grandes em frase normal (Bricolage Grotesque 400), texto corrido sóbrio (Public Sans), listas separadas por filetes em vez de cartões, e a informação clínica organizada por fases e por zonas do corpo.",
     "keyCharacteristics": [
       "Folha branca de cantos largos sobre moldura teal (`frame`), com rodapé em painel \"ice\" recolhido nas margens.",
       "Teal como instrumento: ação, estado e foco. O verde WhatsApp é a única cor de conversão.",
@@ -132,7 +132,7 @@
       "**Do** levar cada página a um WhatsApp com a mensagem pré-preenchida pelo contexto."
     ],
     "donts": [
-      "**Don't** escurecer o site: o cliente pediu um site clínico, claro e não escuro. O painel escuro fica reservado ao bloco de marcação e ao hero da musculoesquelética.",
+      "**Don't** escurecer o site: o cliente pediu um site clínico, claro e não escuro. O painel escuro fica reservado ao hero da página inicial, ao hero da musculoesquelética e ao bloco de marcação.",
       "**Don't** usar verde fora dos botões de WhatsApp.",
       "**Don't** usar maiúsculas em títulos ou rótulos (exceto o selo oficial do Livro de Reclamações).",
       "**Don't** remover o \"fisio4you\" grande no fundo do rodapé.",

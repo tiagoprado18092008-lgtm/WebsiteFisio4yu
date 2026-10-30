@@ -19,7 +19,7 @@ Tudo o que no site aparece como `[[ ]]` (ou tem um comentário `[[ ]]` no códig
 | 6 | ~~16 anos de experiência~~ — **confirmado: experiência do Mário** (já aplicado no site) | — |
 | 7 | **Nota e n.º de avaliações Google** + URL do perfil Google (ficam ocultos no site até serem preenchidos). A 28/10/2026 o perfil mostrava **4,5 ★ (17 avaliações)** — decidir se querem mostrar. | `content/site.ts` → `googleRating`, `googleReviewCount`, `social.google` |
 | 8 | **3 avaliações Google reais** (copiadas com autorização) | `content/reviews.ts` |
-| 9 | **URL do Instagram** (sem ele, a secção "A clínica no Instagram" da home não mostra o botão "Seguir no Instagram" nem o ícone do rodapé); confirmar URL do Facebook | `content/site.ts` → `social` |
+| 9 | ~~URL do Instagram~~ — **instagram.com/fisio_4you** (já no site: botão "Seguir no Instagram", menu e rodapé). Falta confirmar o URL do Facebook | `content/site.ts` → `social` |
 | 10 | ~~Mário: apelido e cargo~~ — **Mário Barroso, CEO e fisioterapeuta** (tirado das entrevistas em vídeo e do polo "FT. Mário Barroso"; já no site). Opcional: versão longa do percurso | `pt.ts`/`en.ts` → `team`, `about.founderLong` |
 | 11 | **História da clínica** (opcional; a secção só aparece quando houver texto) | `pt.ts`/`en.ts` → `about.story` |
 | 12 | **Equipa:** no site estão **Mário Barroso** e **Angela Brazona** (ambos "CEO e fisioterapeuta", como nas entrevistas em vídeo). Confirmar a grafia "Angela" (sem acento, como no vídeo e na pasta de fotos) e se há mais profissionais a mostrar | `pt.ts`/`en.ts` → `team` |

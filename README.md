@@ -34,7 +34,7 @@ O placeholder tem o mesmo rácio, por isso o layout não muda.
 
 ## Conversões
 
-Todos os links de WhatsApp e telefone têm `data-track="whatsapp|phone"` e `data-location="..."`. O `components/TrackingListener.tsx` envia `contact_click` para `window.dataLayer` quando o GTM existe (só é carregado depois de o utilizador aceitar cookies). O mapa do Google também só carrega com consentimento.
+Todos os links de WhatsApp e telefone têm `data-track="whatsapp|phone"` e `data-location="..."`. O `components/TrackingListener.tsx` envia `contact_click` para `window.dataLayer` quando o GTM existe (só é carregado depois de o utilizador aceitar cookies). O mapa do Google (Contactos) carrega logo, sem clique.
 
 ## Rotas
 

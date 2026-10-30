@@ -53,24 +53,6 @@ export function ServiceRow({ locale, mediaId, title, text, href, cta, includesLa
   );
 }
 
-/** O outro serviço, no fim de cada página de serviço: uma linha com miniatura, sem repetir a secção inteira. */
-export function RelatedService({ locale, mediaId, title, text, href, cta }: {
-  locale: Locale; mediaId: string; title: string; text: string; href: string; cta: string;
-}) {
-  return (
-    <Link href={href} className="group grid items-center gap-5 border-y border-line py-5 sm:grid-cols-[minmax(0,220px)_1fr] sm:gap-8">
-      <span className="relative block aspect-[3/2] overflow-hidden rounded-[18px]">
-        <Media id={mediaId} locale={locale} cover sizes="(min-width: 640px) 220px, 100vw" className="transition-transform duration-700 group-hover:scale-[1.03]" />
-      </span>
-      <span>
-        <span className="block font-display text-2xl font-medium leading-tight tracking-tight text-ink group-hover:text-teal-dark md:text-[1.75rem]">{title}</span>
-        <span className="mt-2 block max-w-lg text-grey">{text}</span>
-        <span className="link mt-3 inline-flex min-h-11 items-center">{cta}</span>
-      </span>
-    </Link>
-  );
-}
-
 /** Lista com ícone discreto, em duas colunas, separada por filetes (sem caixas). */
 export function IconList({ items, cols = 2 }: { items: { icon: IconName; title: string; text: string }[]; cols?: 1 | 2 | 3 }) {
   // Número ímpar em duas colunas: o último item ocupa a linha toda, em vez de ficar com meio filete órfão
@@ -97,9 +79,9 @@ export function IconList({ items, cols = 2 }: { items: { icon: IconName; title: 
   );
 }
 
-/** Pessoa da equipa em cartão: retrato, nome, função, especialização e (opcional) um vídeo. */
-export function TeamMember({ locale, mediaId, name, role, focus, video }: {
-  locale: Locale; mediaId: string; name: string; role: string; focus: string; video?: React.ReactNode;
+/** Pessoa da equipa em cartão: retrato, nome, função e especialização. */
+export function TeamMember({ locale, mediaId, name, role, focus }: {
+  locale: Locale; mediaId: string; name: string; role: string; focus: string;
 }) {
   return (
     <figure className="grid h-full gap-6 rounded-[30px] bg-white p-5 shadow-[0_18px_40px_-30px_rgba(14,76,87,.45)] ring-1 ring-line sm:grid-cols-[minmax(0,180px)_1fr] sm:items-center sm:p-6 xl:grid-cols-[minmax(0,210px)_1fr]">
@@ -110,7 +92,6 @@ export function TeamMember({ locale, mediaId, name, role, focus, video }: {
         <p className="font-display text-2xl font-medium leading-tight tracking-tight md:text-[28px]">{name}</p>
         <p className="mt-1.5 text-[15px] font-medium text-teal-strong">{role}</p>
         <p className="mt-4 leading-relaxed text-grey">{focus}</p>
-        {video && <div className="mt-6">{video}</div>}
       </figcaption>
     </figure>
   );

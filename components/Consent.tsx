@@ -7,13 +7,9 @@ import { btn } from "./Buttons";
 
 type Consent = "granted" | "denied" | null;
 const KEY = "f4y-consent";
-// O mapa tem consentimento próprio: carregá-lo não autoriza a medição (GTM).
-const MAPS_KEY = "f4y-maps";
-const Ctx = createContext<{ consent: Consent; maps: boolean; set: (c: Exclude<Consent, null>) => void; allowMaps: () => void; reopen: () => void }>({
+const Ctx = createContext<{ consent: Consent; set: (c: Exclude<Consent, null>) => void; reopen: () => void }>({
   consent: null,
-  maps: false,
   set: () => {},
-  allowMaps: () => {},
   reopen: () => {},
 });
 export const useConsent = () => useContext(Ctx);
@@ -22,7 +18,6 @@ type BannerText = { text: string; accept: string; reject: string; more: string; 
 
 export function ConsentProvider({ children, banner }: { children: React.ReactNode; banner: BannerText }) {
   const [consent, setConsent] = useState<Consent>(null);
-  const [mapsOnly, setMapsOnly] = useState(false);
   const [ready, setReady] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -30,7 +25,6 @@ export function ConsentProvider({ children, banner }: { children: React.ReactNod
     let v: Consent = null;
     try {
       v = localStorage.getItem(KEY) as Consent;
-      setMapsOnly(localStorage.getItem(MAPS_KEY) === "granted");
     } catch {}
     setConsent(v);
     setOpen(!v);
@@ -40,18 +34,9 @@ export function ConsentProvider({ children, banner }: { children: React.ReactNod
   const set = useCallback((c: Exclude<Consent, null>) => {
     try {
       localStorage.setItem(KEY, c);
-      if (c === "denied") localStorage.removeItem(MAPS_KEY);
     } catch {}
-    if (c === "denied") setMapsOnly(false);
     setConsent(c);
     setOpen(false);
-  }, []);
-
-  const allowMaps = useCallback(() => {
-    try {
-      localStorage.setItem(MAPS_KEY, "granted");
-    } catch {}
-    setMapsOnly(true);
   }, []);
 
   // GTM só depois de consentimento e com ID real
@@ -67,7 +52,7 @@ export function ConsentProvider({ children, banner }: { children: React.ReactNod
   }, [consent]);
 
   return (
-    <Ctx.Provider value={{ consent, maps: consent === "granted" || mapsOnly, set, allowMaps, reopen: () => setOpen(true) }}>
+    <Ctx.Provider value={{ consent, set, reopen: () => setOpen(true) }}>
       {children}
       {ready && open && <CookieBanner t={banner} set={set} />}
     </Ctx.Provider>

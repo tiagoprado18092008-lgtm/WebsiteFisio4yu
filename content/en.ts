@@ -132,7 +132,7 @@ export const en: Dict = {
       hoursLabel: "Hours",
     },
     bodyMap: {
-      title: "Common conditions by body area",
+      title: "Where does it hurt?",
       intro: "Select an area to see the conditions we treat most often there. You can describe your case on WhatsApp before your appointment.",
       listLabel: "Body areas",
       commonLabel: "Common conditions",
@@ -140,49 +140,49 @@ export const en: Dict = {
       see: "See the treatment",
       regions: [
         {
-          id: "cervical", x: 100, y: 72, label: "Neck",
+          id: "cervical", label: "Neck",
           title: "Neck",
           text: "Neck pain and stiffness and headaches of cervical origin, often linked to sustained postures such as desk work.",
           common: ["Neck pain", "Wry neck", "Pain radiating into the arm"],
           service: "msk", waTopic: "neck pain",
         },
         {
-          id: "ombro", x: 59, y: 104, label: "Shoulder",
+          id: "ombro", label: "Shoulder",
           title: "Shoulder",
           text: "Pain when raising your arm, loss of strength or instability. Ultrasound lets us look at the state of the tendons.",
           common: ["Rotator cuff tendinopathy", "Frozen shoulder", "After surgery"],
           service: "msk", anchor: "ecografia", waTopic: "shoulder pain",
         },
         {
-          id: "coluna", x: 100, y: 140, label: "Back",
+          id: "coluna", label: "Back",
           title: "Back and spine",
           text: "Low or mid back pain, recent or persistent. Treatment combines manual therapy and exercise to restore mobility and strength.",
           common: ["Low back pain", "Disc herniation", "Sciatica"],
           service: "msk", anchor: "ginasio", waTopic: "back pain",
         },
         {
-          id: "abdomen", x: 100, y: 184, label: "Abdomen",
+          id: "abdomen", label: "Abdomen",
           title: "Abdomen and postnatal",
           text: "Recovery of the abdominal wall and pelvic floor after pregnancy, within our dermatofunctional physiotherapy service.",
           common: ["Diastasis recti", "Postnatal recovery", "C-section scar"],
           service: "dermato", waTopic: "a postnatal / diastasis recti concern",
         },
         {
-          id: "anca", x: 77, y: 208, label: "Hip",
+          id: "anca", label: "Hip",
           title: "Hip",
           text: "Hip or groin pain when walking, running or climbing stairs, and rehab after hip replacement.",
           common: ["Gluteal tendinopathy", "Groin pain", "Hip replacement"],
           service: "msk", anchor: "ginasio", waTopic: "hip pain",
         },
         {
-          id: "joelho", x: 82, y: 318, label: "Knee",
+          id: "joelho", label: "Knee",
           title: "Knee",
           text: "Sports injuries, pain when running or squatting and rehab after surgery, through to your return to training.",
           common: ["ACL", "Meniscus", "Patellar tendinopathy"],
           service: "msk", anchor: "ginasio", waTopic: "knee pain",
         },
         {
-          id: "tornozelo", x: 82, y: 396, label: "Ankle",
+          id: "tornozelo", label: "Ankle",
           title: "Ankle and foot",
           text: "Recurrent or poorly healed sprains, Achilles pain or pain under the foot.",
           common: ["Ankle sprain", "Achilles tendinopathy", "Plantar fasciitis"],
@@ -299,8 +299,6 @@ export const en: Dict = {
 
   map: {
     title: "Map",
-    consentText: "The map is provided by Google and may set cookies. Only load it if you agree.",
-    load: "Show map",
     open: "Open in Google Maps",
   },
 
@@ -310,14 +308,12 @@ export const en: Dict = {
       name: "Mário Barroso",
       role: "Physiotherapist and CEO",
       focus: "Musculoskeletal injuries, rehabilitation and sports performance. 16 years of clinical experience. [[Professional registration no. and relevant training]]",
-      video: "video-mario-mensagem",
     },
     {
       media: "team-angela",
       name: "Angela Brazona",
       role: "Physiotherapist",
       focus: "Dermatofunctional physiotherapy and women's health, during pregnancy and after childbirth, covering both functional and aesthetic aspects. [[Professional registration no. and relevant training]]",
-      video: "video-angela",
     },
   ],
 
@@ -329,17 +325,14 @@ export const en: Dict = {
   },
 
   servicePage: {
-    forWho: "Indications",
-    includes: "What's included",
-    how: "How it works",
-    distinct: "What sets us apart",
-    duration: "Duration and frequency",
     faq: "Frequently asked questions",
-    faqShort: "FAQ",
-    onThisPage: "On this page",
-    related: "Also available",
-    where: "Where it hurts",
-    inStep: "At this stage",
+    related: "Also at Fisio4you",
+    write: "Describe",
+    seeService: "See the service",
+    meetTeam: "Meet the team",
+    question: ["Where do", "we start?"],
+    send: "Send on WhatsApp",
+    or: "or",
   },
 
   services: {
@@ -375,8 +368,8 @@ export const en: Dict = {
         ],
       },
       includes: {
-        title: "Everything your recovery needs, in one place",
-        intro: "Musculoskeletal physiotherapy at Fisio4you brings together three resources that make a difference.",
+        title: "All under one roof",
+        intro: "Assessment, treatment and recovery all happen at the same clinic, with no need to go anywhere else.",
       },
       modules: [
         {
@@ -384,7 +377,7 @@ export const en: Dict = {
           nav: "Ultrasound",
           summary: "See the injury and guide treatment",
           eyebrow: "Assessment",
-          title: "Ultrasound & ultrasound-guided techniques",
+          title: "Ultrasound & guided techniques",
           text: "Ultrasound shows muscles, tendons and ligaments in real time, at rest and in motion. It is painless and uses no radiation. At the clinic, it complements the physical assessment, helps track progress and guides ultrasound-guided techniques.",
           mediaId: "service-eco",
           points: [
@@ -407,7 +400,7 @@ export const en: Dict = {
           eyebrow: "Active rehab",
           title: "100 m² rehabilitation gym",
           text: "Therapeutic exercise is supervised by physiotherapists and matched to your stage of recovery. Your plan moves from hands-on treatment to strength, mobility and motor control work without leaving the clinic.",
-          mediaId: "service-gym",
+          mediaId: "athletes",
           points: [
             { icon: "dumbbell", title: "Therapeutic exercise", text: "Supervised, with progressive loading." },
             { icon: "footprints", title: "Reconditioning", text: "Rebuilding physical capacity and load tolerance." },
@@ -433,6 +426,7 @@ export const en: Dict = {
             { title: "General contraindications", text: "Cardiovascular conditions, uncontrolled blood pressure, pregnancy, altered sensation or circulation, among others." },
             { title: "Prior check", text: "Before your first session, we confirm whether the ice bath and sauna are suitable for you." },
           ],
+          note: "Before your first session, we check that it's suitable for you.",
           video: "video-circuito",
         },
       ],
@@ -442,23 +436,27 @@ export const en: Dict = {
         steps: [
           {
             title: "Assessment",
+            line: "First, we assess.",
             text: "Clinical history, movement testing and, when indicated, ultrasound.",
             details: ["History of the injury, your routine and your goals", "Movement, strength and mobility tests", "Ultrasound, when it helps characterise the injury"],
             uses: ["ecografia"],
           },
           {
             title: "Plan",
+            line: "Then, the plan.",
             text: "Treatment goals and an estimated duration, set according to your activity.",
             details: ["Goals for each stage of your recovery", "An estimate of the number of sessions, reviewed as you progress"],
           },
           {
             title: "Treatment and exercise",
+            line: "We treat and train.",
             text: "Manual therapy, ultrasound-guided techniques when indicated, and supervised exercise.",
             details: ["Manual therapy and ultrasound-guided techniques, when indicated", "Supervised exercise with progressive load", "Regular reassessment to adjust the plan"],
             uses: ["ecografia", "ginasio"],
           },
           {
             title: "Discharge & prevention",
+            line: "Finally, discharge.",
             text: "An exercise plan to maintain progress and reduce the risk of recurrence.",
             details: ["Defined criteria for returning to training and competition", "Exercises to continue at home or build into your training"],
             uses: ["ginasio", "recuperacao"],
@@ -486,6 +484,24 @@ export const en: Dict = {
         { q: "What should I bring to my first appointment?", a: "Comfortable clothing that lets us see and move the area being treated, and any scans or medical reports you have." },
       ],
       related: ["dermato"],
+      page: {
+        lead: "Sports injuries, pain and rehab after surgery, with physiotherapist Mário Barroso.",
+        heroSlot: "slot-msk",
+        heroWide: "wide-msk",
+        person: {
+          bio: "has been a physiotherapist for 16 years and runs Fisio4you. He leads musculoskeletal physiotherapy, from sports injuries to rehab after surgery.",
+        },
+        motto: {
+          lines: [["“Injury", "is", "an"], ["opportunity", "for", "change”"]],
+          by: ["Entrance mural", "Fisio4you", "Portimão"],
+        },
+        composer: {
+          sentence: "Hi! I have pain {a} and I'd like to {b}.",
+          close: "I'd like to book an assessment.",
+          a: { label: "Area", options: ["in my knee", "in my shoulder", "in my back", "in my neck", "in my hip", "in my ankle or foot", "somewhere else"] },
+          b: { label: "Goal", options: ["get back to training", "get back to competing", "get through the day without pain", "recover from surgery"] },
+        },
+      },
     },
     dermato: {
       name: "Dermatofunctional Physiotherapy",
@@ -535,26 +551,6 @@ export const en: Dict = {
           "We repeat the assessment during your care, so progress is recorded objectively.",
         ],
       },
-      signs: {
-        nav: "Signs",
-        title: "Common signs and situations",
-        intro: "Select whatever applies to you. Your selection is included in the WhatsApp message, to help prepare your assessment.",
-        items: [
-          "A bulge or dip along the middle of the abdomen when sitting up or straining",
-          "An abdomen that still lacks firmness, months after birth",
-          "Low back pain or pain around the pelvis",
-          "Leaking urine when coughing, laughing or jumping",
-          "A C-section scar that pulls, feels stuck or has altered sensation",
-          "I want to get back to training or running safely",
-        ],
-        countOne: "1 item selected",
-        countMany: "{n} items selected",
-        none: "Nothing selected",
-        noneHint: "You can send the message without selecting anything.",
-        messageIntro: "These apply to me:",
-        send: "Send selection on WhatsApp",
-        note: "This list is not a diagnosis. It only gives us some information before the assessment.",
-      },
       forWho: {
         title: "Most common conditions",
         intro: "We mainly see women after childbirth, however long ago the birth was.",
@@ -572,21 +568,25 @@ export const en: Dict = {
         steps: [
           {
             title: "Assessment",
+            line: "First, we assess.",
             text: "Clinical history and assessment of the abdominal wall, with ultrasound when indicated.",
             details: ["Pregnancy, birth, any previous surgery and current symptoms", "Assessment of your abdominal wall, posture and breathing"],
           },
           {
             title: "Plan",
+            line: "Then, the plan.",
             text: "Realistic goals, adapted to your stage and your routine.",
             details: ["The plan starts from your situation, whether weeks, months or years after birth", "Exercises that fit into your day"],
           },
           {
             title: "Treatment",
+            line: "We treat, step by step.",
             text: "Manual techniques and guided exercise, with each step explained.",
             details: ["Breathing, posture and activation of the deep core and pelvic floor", "Progressive strengthening of the abdominal wall", "Manual techniques, including for scars and adhesions"],
           },
           {
             title: "Independence",
+            line: "Finally, independence.",
             text: "Home exercises and support as you return to physical exercise.",
             details: ["Home exercises, explained and reviewed in your sessions", "A gradual return to exercise, running or sport"],
           },
@@ -610,6 +610,21 @@ export const en: Dict = {
         { q: "What is the first assessment like?", a: "It starts with a conversation about your clinical history and goals, followed by a physical assessment explained step by step." },
       ],
       related: ["msk"],
+      page: {
+        lead: "Postnatal recovery, diastasis recti and scars, with physiotherapist Angela Brazona.",
+        heroSlot: "slot-dermato",
+        heroWide: "wide-dermato",
+        conditionsPhoto: "strip-angela",
+        person: {
+          bio: "is a physiotherapist and leads dermatofunctional physiotherapy at Fisio4you, focusing on women's health during pregnancy and after childbirth.",
+        },
+        composer: {
+          sentence: "Hi! {a} and I'd like to {b}.",
+          close: "I'd like to book an assessment.",
+          a: { label: "Birth", options: ["I had my baby a few weeks ago", "I had my baby a few months ago", "I had my baby over a year ago", "I'm not postnatal"] },
+          b: { label: "Goal", options: ["recover my core", "find out if I have diastasis", "treat my C-section scar", "get back to exercise safely"] },
+        },
+      },
     },
   },
 
@@ -678,7 +693,7 @@ export const en: Dict = {
   },
 
   cookieBanner: {
-    text: "We use essential cookies to make the site work and, with your consent, analytics cookies and Google Maps.",
+    text: "We use essential cookies to make the site work and, with your consent, analytics cookies.",
     accept: "Accept",
     reject: "Decline",
     more: "Learn more",
@@ -710,7 +725,7 @@ export const en: Dict = {
       title: "Cookie Policy",
       sections: [
         { h: "What cookies are", p: ["Cookies are small files stored on your device when you visit a website."] },
-        { h: "Cookies we use", p: ["Essential: store your consent choice (browser local storage).", "Analytics (only with consent): Google Tag Manager / Google Analytics, to understand how the site is used.", "Third-party (only with consent): the Google Maps embed may set its own cookies."] },
+        { h: "Cookies we use", p: ["Essential: store your consent choice (browser local storage).", "Analytics (only with consent): Google Tag Manager / Google Analytics, to understand how the site is used.", "Third-party: the Google Maps embed on the Contact page may set its own cookies."] },
         { h: "Managing consent", p: ["You can change your choice at any time via the “Cookie preferences” link in the footer, or delete cookies in your browser settings."] },
       ],
     },

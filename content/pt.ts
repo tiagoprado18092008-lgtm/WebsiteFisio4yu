@@ -31,8 +31,11 @@ export type ServiceModule = {
   video?: string;
 };
 
-/** Passo do percurso. `uses`: ids dos recursos (`modules`) usados nesse passo, mostrados como links. */
-type Step = { title: string; text: string; details?: string[]; uses?: string[] };
+/**
+ * Passo do percurso. `line`: a frase curta da fase, em letra grande, na escada de frases da página de serviço
+ * (começa pela palavra de ordem: "Primeiro…", "Depois…"). `uses`: ids dos recursos (`modules`) usados nesse passo.
+ */
+type Step = { title: string; line: string; text: string; details?: string[]; uses?: string[] };
 
 /**
  * Esquema interativo da diástase abdominal (components/DiastasisExplorer.tsx).
@@ -49,20 +52,28 @@ export type ServiceExplainer = {
   assess: string[];
 };
 
-/** Lista de situações para selecionar; a seleção segue escrita na mensagem de WhatsApp (components/SignsChecklist.tsx). */
-export type ServiceSigns = {
-  nav: string;
-  title: string;
-  intro: string;
-  items: string[];
-  /** {n} = número de situações selecionadas */
-  countOne: string;
-  countMany: string;
-  none: string;
-  noneHint: string;
-  messageIntro: string;
-  send: string;
-  note: string;
+/** Mensagem de WhatsApp montada pelo visitante no fim da página: a frase com duas escolhas ({a} e {b}). */
+export type ServiceComposer = {
+  sentence: string;
+  close: string;
+  a: { label: string; options: string[] };
+  b: { label: string; options: string[] };
+};
+
+/** Textos e fotos próprios da página de serviço (components/pages/ServicePage.tsx). Fotos: ids de content/media.ts. */
+export type ServicePageCopy = {
+  /** Frase curta por baixo do título (o `heroSub`, mais longo, fica para a home). */
+  lead: string;
+  /** Foto de um tratamento em faixa dentro do título; outra foto do serviço abre larga logo abaixo (`heroWide`). */
+  heroSlot: string;
+  heroWide: string;
+  /** Foto 4:5 por baixo da introdução das situações (quando a página tem poucas fotos). */
+  conditionsPhoto?: string;
+  /** Biografia do fisioterapeuta responsável: o nome vem de `team`, por isso `bio` começa logo a seguir ao nome. */
+  person: { bio: string };
+  /** Frase do mural da entrada, espalhada de margem a margem: duas linhas, palavras de cada linha. */
+  motto?: { lines: string[][]; by: [string, string, string] };
+  composer: ServiceComposer;
 };
 
 export type ServiceContent = {
@@ -79,15 +90,16 @@ export type ServiceContent = {
   /** Mostra o mapa do corpo (texto em `home.bodyMap`). */
   bodyMap?: boolean;
   explainer?: ServiceExplainer;
-  signs?: ServiceSigns;
   forWho: { title: string; intro: string; items: Item[] };
   how: { title: string; intro?: string; steps: Step[] };
   distinct: { title: string; text: string; points: string[] };
+  /** Recursos incluídos (`modules`): título e introdução da secção. */
   includes?: { title: string; intro: string };
   modules?: ServiceModule[];
   duration: { title: string; text: string };
   faq: Faq[];
   related: ServiceKey[];
+  page: ServicePageCopy;
 };
 
 export const pt = {
@@ -220,7 +232,7 @@ export const pt = {
       hoursLabel: "Horário",
     },
     bodyMap: {
-      title: "Situações frequentes por zona do corpo",
+      title: "Onde sente dor?",
       intro: "Selecione uma zona para ver as situações que acompanhamos com mais frequência. Pode descrever o seu caso por WhatsApp antes da consulta.",
       listLabel: "Zonas do corpo",
       commonLabel: "Situações frequentes",
@@ -228,55 +240,55 @@ export const pt = {
       see: "Ver o tratamento",
       regions: [
         {
-          id: "cervical", x: 100, y: 72, label: "Pescoço",
+          id: "cervical", label: "Pescoço",
           title: "Pescoço e cervical",
           text: "Dor e rigidez cervical e dores de cabeça de origem cervical, muitas vezes associadas a posturas mantidas, como o trabalho ao computador.",
           common: ["Cervicalgia", "Torcicolo", "Dor irradiada para o braço"],
           service: "msk", waTopic: "dor no pescoço",
         },
         {
-          id: "ombro", x: 59, y: 104, label: "Ombro",
+          id: "ombro", label: "Ombro",
           title: "Ombro",
           text: "Dor ao elevar o braço, perda de força ou instabilidade. A ecografia permite observar o estado dos tendões.",
           common: ["Tendinopatia da coifa dos rotadores", "Ombro congelado", "Pós-operatório"],
           service: "msk", anchor: "ecografia", waTopic: "dor no ombro",
         },
         {
-          id: "coluna", x: 100, y: 140, label: "Costas",
+          id: "coluna", label: "Costas",
           title: "Costas e coluna",
           text: "Dor lombar ou dorsal, aguda ou persistente. O tratamento combina terapia manual e exercício para recuperar a mobilidade e a força.",
           common: ["Lombalgia", "Hérnia discal", "Ciática"],
           service: "msk", anchor: "ginasio", waTopic: "dor nas costas",
         },
         {
-          id: "abdomen", x: 100, y: 184, label: "Abdómen",
+          id: "abdomen", label: "Abdómen",
           title: "Abdómen e pós-parto",
           text: "Recuperação da parede abdominal e do pavimento pélvico depois da gravidez, na área de fisioterapia dermatofuncional.",
           common: ["Diástase abdominal", "Recuperação pós-parto", "Cicatriz de cesariana"],
           service: "dermato", waTopic: "uma questão de pós-parto/diástase abdominal",
         },
         {
-          id: "anca", x: 77, y: 208, label: "Anca",
+          id: "anca", label: "Anca",
           title: "Anca",
           text: "Dor na anca ou na virilha ao caminhar, correr ou subir escadas, e reabilitação após prótese da anca.",
           common: ["Tendinopatia glútea", "Pubalgia", "Prótese da anca"],
           service: "msk", anchor: "ginasio", waTopic: "dor na anca",
         },
         {
-          id: "joelho", x: 82, y: 318, label: "Joelho",
+          id: "joelho", label: "Joelho",
           title: "Joelho",
           text: "Lesões desportivas, dor ao correr ou agachar e reabilitação após cirurgia, até ao regresso ao treino.",
           common: ["Ligamento cruzado (LCA)", "Menisco", "Tendinopatia rotuliana"],
           service: "msk", anchor: "ginasio", waTopic: "dor no joelho",
         },
         {
-          id: "tornozelo", x: 82, y: 396, label: "Tornozelo",
+          id: "tornozelo", label: "Tornozelo",
           title: "Tornozelo e pé",
           text: "Entorses recorrentes ou mal recuperadas, dor no tendão de Aquiles ou na planta do pé.",
           common: ["Entorse", "Tendinopatia de Aquiles", "Fascite plantar"],
           service: "msk", waTopic: "dor no tornozelo/pé",
         },
-      ] as { id: string; x: number; y: number; label: string; title: string; text: string; common: string[]; service: ServiceKey; anchor?: string; waTopic: string }[],
+      ] as { id: string; label: string; title: string; text: string; common: string[]; service: ServiceKey; anchor?: string; waTopic: string }[],
       recovery: {
         title: "Recuperação entre treinos",
         text: "Banheira de gelo e sauna para quem treina com regularidade.",
@@ -389,26 +401,22 @@ export const pt = {
 
   map: {
     title: "Mapa",
-    consentText: "O mapa é fornecido pelo Google e pode usar cookies. Carregue-o apenas se concordar.",
-    load: "Mostrar mapa",
     open: "Abrir no Google Maps",
   },
 
-  // Nomes e cargos como aparecem nas entrevistas em vídeo (outubro 2026). `video`: id em content/media.ts.
+  // Nomes e cargos como aparecem nas entrevistas em vídeo (outubro 2026).
   team: [
     {
       media: "team-mario",
       name: "Mário Barroso",
       role: "Fisioterapeuta e CEO",
       focus: "Lesões musculoesqueléticas, reabilitação e performance desportiva. Tem 16 anos de experiência clínica. [[Cédula profissional n.º e formação relevante]]",
-      video: "video-mario-mensagem",
     },
     {
       media: "team-angela",
       name: "Angela Brazona",
       role: "Fisioterapeuta",
       focus: "Fisioterapia dermatofuncional e saúde da mulher, durante a gravidez e no pós-parto, nas vertentes funcional e estética. [[Cédula profissional n.º e formação relevante]]",
-      video: "video-angela",
     },
   ],
 
@@ -420,17 +428,16 @@ export const pt = {
   },
 
   servicePage: {
-    forWho: "Indicações",
-    includes: "O que inclui",
-    how: "Como decorre",
-    distinct: "O que nos distingue",
-    duration: "Duração e frequência",
     faq: "Perguntas frequentes",
-    faqShort: "Perguntas",
-    onThisPage: "Nesta página",
-    related: "Também disponível",
-    where: "Onde dói",
-    inStep: "Nesta fase",
+    related: "Também na Fisio4you",
+    /** Ação de cada zona na tabela de situações (abre o WhatsApp com a zona escrita). */
+    write: "Descrever",
+    seeService: "Ver o serviço",
+    meetTeam: "Conhecer a equipa",
+    /** Pergunta do bloco final, partida nas duas margens do painel. */
+    question: ["Por onde", "começamos?"] as [string, string],
+    send: "Enviar por WhatsApp",
+    or: "ou",
   },
 
   services: <Record<ServiceKey, ServiceContent>>{
@@ -466,8 +473,8 @@ export const pt = {
         ],
       },
       includes: {
-        title: "Tudo o que a sua recuperação precisa, no mesmo espaço",
-        intro: "A fisioterapia musculoesquelética na Fisio4you integra três recursos que fazem a diferença.",
+        title: "Tudo no mesmo espaço",
+        intro: "A avaliação, o tratamento e a recuperação acontecem na mesma clínica, sem ter de ir a outro sítio.",
       },
       modules: [
         {
@@ -498,7 +505,7 @@ export const pt = {
           eyebrow: "Reabilitação ativa",
           title: "Ginásio de reabilitação com 100 m²",
           text: "O exercício terapêutico é supervisionado por fisioterapeutas e ajustado à fase da recuperação. O plano passa do tratamento na marquesa ao trabalho de força, mobilidade e controlo motor sem sair da clínica.",
-          mediaId: "service-gym",
+          mediaId: "athletes",
           points: [
             { icon: "dumbbell", title: "Exercício terapêutico", text: "Supervisionado e com progressão de carga." },
             { icon: "footprints", title: "Readaptação ao esforço", text: "Recuperação da capacidade física e da tolerância à carga." },
@@ -524,6 +531,7 @@ export const pt = {
             { title: "Contraindicações gerais", text: "Problemas cardiovasculares, tensão arterial não controlada, gravidez, alterações de sensibilidade ou circulação, entre outras." },
             { title: "Avaliação prévia", text: "Antes da primeira sessão, confirmamos se a banheira de gelo e a sauna são adequadas ao seu caso." },
           ],
+          note: "Antes da primeira sessão, confirmamos se é adequada ao seu caso.",
           video: "video-circuito",
         },
       ],
@@ -533,23 +541,27 @@ export const pt = {
         steps: [
           {
             title: "Avaliação",
+            line: "Primeiro, avaliamos.",
             text: "História clínica, testes de movimento e, quando indicado, ecografia.",
             details: ["Historial da lesão, rotina e objetivos", "Testes de movimento, força e mobilidade", "Ecografia, quando é útil para caracterizar a lesão"],
             uses: ["ecografia"],
           },
           {
             title: "Plano",
+            line: "Depois, o plano.",
             text: "Definição dos objetivos terapêuticos e de uma estimativa de duração, de acordo com a sua atividade.",
             details: ["Objetivos para cada fase da recuperação", "Uma estimativa do número de sessões, revista ao longo do tratamento"],
           },
           {
             title: "Tratamento e exercício",
+            line: "Tratamos e treinamos.",
             text: "Terapia manual, técnicas ecoguiadas quando indicadas e exercício supervisionado.",
             details: ["Terapia manual e técnicas ecoguiadas, quando indicadas", "Exercício supervisionado, com carga progressiva", "Reavaliação regular para ajustar o plano"],
             uses: ["ecografia", "ginasio"],
           },
           {
             title: "Alta e prevenção",
+            line: "Por fim, a alta.",
             text: "Plano de exercícios para manter a evolução e reduzir o risco de recidiva.",
             details: ["Critérios definidos para o regresso ao treino e à competição", "Exercícios para continuar em casa ou integrar no treino"],
             uses: ["ginasio", "recuperacao"],
@@ -577,6 +589,24 @@ export const pt = {
         { q: "O que devo levar para a primeira consulta?", a: "Roupa confortável, que permita observar e mobilizar a zona a tratar, e os exames ou relatórios médicos que tiver." },
       ],
       related: ["dermato"],
+      page: {
+        lead: "Lesões desportivas, dor e reabilitação depois de uma cirurgia, com o fisioterapeuta Mário Barroso.",
+        heroSlot: "slot-msk",
+        heroWide: "wide-msk",
+        person: {
+          bio: "é fisioterapeuta há 16 anos e dirige a Fisio4you. É o responsável pela fisioterapia musculoesquelética, das lesões desportivas à reabilitação depois de uma cirurgia.",
+        },
+        motto: {
+          lines: [["«A", "lesão", "é", "uma"], ["oportunidade", "de", "mudança»"]],
+          by: ["Mural da entrada", "Fisio4you", "Portimão"],
+        },
+        composer: {
+          sentence: "Olá! Tenho dor {a} e quero {b}.",
+          close: "Gostava de marcar uma avaliação.",
+          a: { label: "Zona", options: ["no joelho", "no ombro", "nas costas", "no pescoço", "na anca", "no tornozelo ou no pé", "noutra zona"] },
+          b: { label: "Objetivo", options: ["voltar a treinar", "voltar a competir", "fazer o dia a dia sem dor", "recuperar de uma cirurgia"] },
+        },
+      },
     },
     dermato: {
       name: "Fisioterapia Dermatofuncional",
@@ -627,26 +657,6 @@ export const pt = {
           "Repetimos a avaliação ao longo do acompanhamento, para registar a evolução de forma objetiva.",
         ],
       },
-      signs: {
-        nav: "Sinais",
-        title: "Sinais e situações frequentes",
-        intro: "Selecione o que se aplica ao seu caso. A seleção é incluída na mensagem de WhatsApp, para preparar a avaliação.",
-        items: [
-          "Uma saliência ou um afundamento a meio do abdómen ao levantar-se ou ao fazer força",
-          "Abdómen sem firmeza, meses depois do parto",
-          "Dor lombar ou na zona da bacia",
-          "Perdas de urina ao tossir, rir ou saltar",
-          "Cicatriz de cesariana que repuxa, parece aderente ou tem a sensibilidade alterada",
-          "Quero voltar a treinar ou a correr em segurança",
-        ],
-        countOne: "1 situação selecionada",
-        countMany: "{n} situações selecionadas",
-        none: "Nenhuma situação selecionada",
-        noneHint: "Pode enviar a mensagem sem selecionar nenhuma opção.",
-        messageIntro: "Situações que se aplicam ao meu caso:",
-        send: "Enviar seleção por WhatsApp",
-        note: "Esta lista não constitui um diagnóstico. Serve apenas para nos dar informação antes da avaliação.",
-      },
       forWho: {
         title: "Situações mais frequentes",
         intro: "Acompanhamos sobretudo mulheres no pós-parto, independentemente do tempo que passou desde o parto.",
@@ -665,21 +675,25 @@ export const pt = {
         steps: [
           {
             title: "Avaliação",
+            line: "Primeiro, avaliamos.",
             text: "História clínica e avaliação da parede abdominal, com ecografia quando indicado.",
             details: ["Gravidez, parto, cirurgias anteriores e sintomas atuais", "Avaliação da parede abdominal, da postura e da respiração"],
           },
           {
             title: "Plano",
+            line: "Depois, o plano.",
             text: "Objetivos realistas, adaptados à fase em que se encontra e à sua rotina.",
             details: ["O plano parte da sua situação, seja semanas, meses ou anos após o parto", "Exercícios compatíveis com o seu dia a dia"],
           },
           {
             title: "Tratamento",
+            line: "Tratamos, passo a passo.",
             text: "Técnicas manuais e exercício orientado, com cada passo explicado.",
             details: ["Respiração, postura e ativação do abdómen profundo e do pavimento pélvico", "Fortalecimento progressivo da parede abdominal", "Técnicas manuais, incluindo para cicatrizes e aderências"],
           },
           {
             title: "Autonomia",
+            line: "Por fim, autonomia.",
             text: "Exercícios para casa e acompanhamento no regresso ao exercício físico.",
             details: ["Exercícios para casa, explicados e revistos nas sessões", "Regresso gradual ao exercício, à corrida ou ao desporto"],
           },
@@ -703,6 +717,21 @@ export const pt = {
         { q: "Como é a primeira avaliação?", a: "Começa por uma conversa sobre a sua história clínica e os seus objetivos, seguida de uma avaliação física explicada passo a passo." },
       ],
       related: ["msk"],
+      page: {
+        lead: "Recuperação pós-parto, diástase abdominal e cicatrizes, com a fisioterapeuta Angela Brazona.",
+        heroSlot: "slot-dermato",
+        heroWide: "wide-dermato",
+        conditionsPhoto: "strip-angela",
+        person: {
+          bio: "é fisioterapeuta e a responsável pela fisioterapia dermatofuncional na Fisio4you, dedicada à saúde da mulher durante a gravidez e no pós-parto.",
+        },
+        composer: {
+          sentence: "Olá! {a} e queria {b}.",
+          close: "Gostava de marcar uma avaliação.",
+          a: { label: "Parto", options: ["Tive o bebé há poucas semanas", "Tive o bebé há poucos meses", "Tive o bebé há mais de um ano", "Não estou no pós-parto"] },
+          b: { label: "Objetivo", options: ["recuperar o abdómen", "perceber se tenho diástase", "tratar a cicatriz da cesariana", "voltar a treinar em segurança"] },
+        },
+      },
     },
   },
 
@@ -772,7 +801,7 @@ export const pt = {
   },
 
   cookieBanner: {
-    text: "Usamos cookies essenciais para o site funcionar e, com o seu consentimento, cookies de medição e o mapa do Google.",
+    text: "Usamos cookies essenciais para o site funcionar e, com o seu consentimento, cookies de medição.",
     accept: "Aceitar",
     reject: "Recusar",
     more: "Saber mais",
@@ -804,7 +833,7 @@ export const pt = {
       title: "Política de Cookies",
       sections: [
         { h: "O que são cookies", p: ["Cookies são pequenos ficheiros guardados no seu dispositivo quando visita um website."] },
-        { h: "Cookies que usamos", p: ["Essenciais: guardam a sua escolha de consentimento (armazenamento local do navegador).", "Medição (apenas com consentimento): Google Tag Manager / Google Analytics, para perceber como o site é usado.", "Terceiros (apenas com consentimento): o mapa do Google Maps pode definir cookies próprios."] },
+        { h: "Cookies que usamos", p: ["Essenciais: guardam a sua escolha de consentimento (armazenamento local do navegador).", "Medição (apenas com consentimento): Google Tag Manager / Google Analytics, para perceber como o site é usado.", "Terceiros: o mapa do Google Maps na página de Contactos pode definir cookies próprios."] },
         { h: "Gerir o consentimento", p: ["Pode alterar a sua escolha em qualquer momento através do link “Preferências de cookies” no rodapé, ou apagar os cookies nas definições do seu navegador."] },
       ] as LegalSection[],
     },

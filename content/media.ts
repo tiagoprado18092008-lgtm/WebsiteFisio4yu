@@ -45,16 +45,13 @@ const photo = {
   duo: "/media/equipa/mario-e-angela.webp", // IMG_7636
 };
 
-// Fotos do espaço. As de 1180 px são as melhores versões recebidas dessas vistas; ficaram de fora as que têm
-// murais de jogadores famosos como tema principal (direitos de imagem) e a da receção (a pedido do cliente).
+// Fotos do espaço usadas fora da galeria das instalações (essa tem fotos próprias, mais abaixo).
 const space = {
   gym: "/media/espaco/ginasio.webp", // IMG_6880
   gymCorridor: "/media/espaco/ginasio-corredor.webp", // 1180×2096
   jerseys: "/media/espaco/camisolas.webp", // IMG_6905
   brandRoom: "/media/espaco/sala-fisio4you.webp", // IMG_6909
-  bays: "/media/espaco/gabinetes.webp", // 1180×2096
   assessmentRoom: "/media/espaco/sala-avaliacao.webp", // IMG_7664
-  treatmentRoom: "/media/espaco/sala-tratamento.webp", // IMG_7666
   muralRoom: "/media/espaco/sala-mural.webp", // IMG_7667
 };
 
@@ -80,23 +77,26 @@ const items: MediaItem[] = [
     brief: "Ginásio de reabilitação com a iluminação hexagonal (faixa de fotos da home).",
     position: "58% 38%",
   },
-  // Galeria "As instalações" (página Sobre), no rácio original de cada foto
+  // Galeria "Instalações" (página Sobre): as versões editadas das fotos do espaço (soltas em /Fotos; entraram a
+  // 30/10/2026). `ratio` é o original, para o lightbox as mostrar inteiras; na grelha ficam a 3:4 (a
+  // horizontal ocupa duas colunas) e o `position` guarda o foco do recorte. A ordem alterna vistas claras e escuras.
   ...[
-    { src: space.gym, ratio: "3/4", pt: "Ginásio de reabilitação com máquinas de força e iluminação hexagonal", en: "Rehabilitation gym with strength machines and hexagonal lighting" },
-    { src: space.jerseys, ratio: "3/4", pt: "Parede de camisolas desportivas assinadas no ginásio", en: "Wall of signed sports shirts in the gym" },
-    { src: space.brandRoom, ratio: "3/4", pt: "Sala com o logótipo Fisio4you na parede", en: "Room with the Fisio4you logo on the wall" },
-    { src: space.gymCorridor, ratio: "9/16", pt: "Vista ao longo do ginásio de reabilitação", en: "View along the rehabilitation gym" },
-    { src: space.assessmentRoom, ratio: "3/4", pt: "Sala de avaliação e tratamento, com marquesa e equipamento", en: "Assessment and treatment room, with a couch and equipment" },
-    { src: space.bays, ratio: "9/16", pt: "Zona de tratamento com marquesas e cortinas", en: "Treatment area with couches and curtains" },
-    { src: space.treatmentRoom, ratio: "3/4", pt: "Sala de tratamento com parede de pedra e marquesa", en: "Treatment room with a stone wall and couch" },
-    { src: space.muralRoom, ratio: "3/4", pt: "Sala de tratamento com mural em tons de azul e dourado", en: "Treatment room with a blue and gold mural" },
+    { file: "ginasio", ratio: "16/9", position: "50% 50%", pt: "Vista geral do ginásio de reabilitação, com iluminação hexagonal, máquinas de força e kettlebells", en: "Overview of the rehabilitation gym, with hexagonal lighting, strength machines and kettlebells" }, // Foto heroe.png
+    { file: "ginasio-corredor", ratio: "9/16", position: "50% 55%", pt: "Vista ao longo do ginásio de reabilitação, com passadeiras e parede de camisolas", en: "View along the rehabilitation gym, with treadmills and a wall of shirts" },
+    { file: "sala-fisio4you", ratio: "3/4", position: "50% 50%", pt: "Sala com o logótipo Fisio4you na parede de pedra, mesa de vidro e plantas", en: "Room with the Fisio4you logo on a stone wall, a glass table and plants" },
+    { file: "corredor-mural", ratio: "9/16", position: "50% 55%", pt: "Corredor de entrada com mural desportivo e a frase «A lesão é uma oportunidade de mudança»", en: "Entrance corridor with a sports mural reading “Injury is an opportunity for change”" },
+    { file: "gabinetes", ratio: "9/16", position: "50% 70%", pt: "Zona de tratamento com marquesas separadas por cortinas", en: "Treatment area with couches separated by curtains" },
+    { file: "sala-tratamento", ratio: "9/16", position: "50% 65%", pt: "Sala de tratamento com marquesa, equipamento de fisioterapia e mural de futebol a preto e branco", en: "Treatment room with a couch, physiotherapy equipment and a black-and-white football mural" },
+    { file: "ginasio-maquinas", ratio: "9/16", position: "50% 40%", pt: "Ginásio de reabilitação com máquinas de força, kettlebells e iluminação hexagonal", en: "Rehabilitation gym with strength machines, kettlebells and hexagonal lighting" },
+    { file: "camisolas", ratio: "3/4", position: "50% 45%", pt: "Parede de camisolas desportivas assinadas no ginásio", en: "Wall of signed sports shirts in the gym" },
   ].map<MediaItem>((p, i) => ({
     id: `clinic-0${i + 1}`,
     type: "image",
-    src: p.src,
+    src: `/media/instalacoes/${p.file}.webp`,
     ratio: p.ratio as MediaRatio,
     alt: { pt: p.pt, en: p.en },
     brief: "Instalações: salas, ginásio, equipamento.",
+    position: p.position,
   })),
   {
     // Foto do ponto "16 anos de experiência" na secção de vantagens (home), recortada quase quadrada: foco no rosto.
@@ -189,6 +189,44 @@ const items: MediaItem[] = [
     alt: { pt: "Atleta dentro da banheira de gelo, de polegar para cima", en: "Athlete standing in the ice bath, giving a thumbs up" },
     brief: "Banheira de gelo.",
   },
+  // Páginas de serviço: só fotos de tratamentos (a pedido do cliente, nada de fotos do ginásio no topo). A faixa dentro
+  // do título é um recorte baixo e largo (decorativo); a foto larga logo abaixo é outra cena do mesmo serviço, a 2:1.
+  {
+    id: "slot-msk",
+    type: "image",
+    src: photo.manualTherapy,
+    ratio: "3/4",
+    alt: { pt: "Mãos do fisioterapeuta em terapia manual", en: "The physiotherapist's hands during manual therapy" },
+    brief: "Faixa no título da página da musculoesquelética: as mãos em terapia manual.",
+    position: "50% 84%",
+  },
+  {
+    id: "wide-msk",
+    type: "image",
+    src: photo.treatmentRoom,
+    ratio: "3/4",
+    alt: { pt: "Mário Barroso a fazer terapia manual a um utente deitado na marquesa", en: "Mário Barroso giving manual therapy to a patient lying on the couch" },
+    brief: "Foto larga do topo da musculoesquelética (as mãos do Mário no utente, na marquesa).",
+    position: "50% 46%",
+  },
+  {
+    id: "slot-dermato",
+    type: "image",
+    src: photo.angela,
+    ratio: "3/4",
+    alt: { pt: "Angela Brazona, fisioterapeuta, a sorrir", en: "Angela Brazona, physiotherapist, smiling" },
+    brief: "Faixa no título da página da dermatofuncional: o rosto da Angela.",
+    position: "50% 20%",
+  },
+  {
+    id: "wide-dermato",
+    type: "image",
+    src: photo.angelaDermato,
+    ratio: "3/4",
+    alt: { pt: "Angela Brazona, fisioterapeuta, com instrumentos de massagem em madeira", en: "Angela Brazona, physiotherapist, holding wooden massage tools" },
+    brief: "Foto larga do hero da dermatofuncional (rosto inteiro e os instrumentos).",
+    position: "50% 13%",
+  },
   {
     id: "team-mario",
     type: "image",
@@ -213,6 +251,7 @@ const items: MediaItem[] = [
     { id: "strip-rack", src: "/media/espaco/rack.webp", pt: "Rack de força com discos de peso no ginásio de reabilitação", en: "Strength rack with weight plates in the rehabilitation gym" }, // 1180×2096
     { id: "strip-duo-gym", src: "/media/equipa/mario-e-angela-ginasio.webp", pt: "Mário Barroso e Angela Brazona no ginásio da Fisio4you, sob a iluminação hexagonal", en: "Mário Barroso and Angela Brazona in the Fisio4you gym, under the hexagonal lighting" },
     { id: "strip-angela", src: "/media/tratamentos/angela-instrumentos.webp", pt: "Angela Brazona a mostrar instrumentos de massagem em madeira", en: "Angela Brazona showing wooden massage tools" }, // IMG_7654
+    { id: "strip-mural", src: space.muralRoom, pt: "Sala de tratamento com mural em tons de azul e dourado", en: "Treatment room with a blue and gold mural" },
     { id: "strip-cards", src: "/media/espaco/cartoes.webp", pt: "Cartões de visita da Fisio4you ao lado de um difusor de aroma", en: "Fisio4you business cards next to a reed diffuser" }, // IMG_6881
     { id: "strip-gym", src: "/media/espaco/ginasio-kettlebells.webp", pt: "Ginásio de reabilitação com kettlebells, máquinas de força e iluminação hexagonal", en: "Rehabilitation gym with kettlebells, strength machines and hexagonal lighting" }, // 1180×2096
   ].map<MediaItem>((p) => ({
@@ -300,15 +339,15 @@ export function videoFor(id: string, locale: Locale): VideoData {
 }
 
 /** Faixa de fotos em movimento (home): fotos boas e pouco vistas no resto do site, a alternar pessoas e espaço.
- *  Todas verticais 3:4, como os cartões. A sala do mural só está na galeria da página Sobre e a banheira de gelo numa lista de recuperação. */
+ *  Todas verticais 3:4, como os cartões. A sala do mural só aparece aqui. A banheira de gelo saiu
+ *  a pedido do cliente (30/10/2026). */
 export const photoStrip = [
   "strip-pressotherapy", // utente com as botas de pressoterapia
   "strip-rack", // rack de força
   "strip-duo-gym", // Mário e Angela no ginásio
-  "clinic-08", // sala com o mural azul e dourado
+  "strip-mural", // sala com o mural azul e dourado
   "strip-angela", // Angela com os instrumentos em madeira
   "strip-cards", // cartões e difusor
-  "service-recovery", // banheira de gelo
   "strip-gym", // ginásio com kettlebells e iluminação hexagonal
 ];
 

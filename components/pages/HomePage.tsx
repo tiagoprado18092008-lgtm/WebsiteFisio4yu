@@ -15,7 +15,7 @@ import { Testimonials } from "../Testimonials";
 import { CtaTriad } from "../CtaTriad";
 import { WhatsAppButton, CallButton } from "../Buttons";
 import { TeamMember } from "../Cards";
-import { VideoCard, VideoButton } from "../VideoCard";
+import { VideoCard } from "../VideoCard";
 import { InstagramFeed } from "../InstagramFeed";
 import { PhotoStrip } from "../PhotoStrip";
 
@@ -50,16 +50,18 @@ export function HomePage({ locale }: { locale: Locale }) {
       <section className="px-2 pb-6 pt-2 md:px-4 md:pt-3">
         <div className="on-dark relative overflow-hidden rounded-[28px] bg-panel text-white md:rounded-[34px]">
           {/* Até 1024 px, o recorte quadrado mantém o rosto e as mãos e deixa de fora o topo do mural; o título assenta nas pernas do utente. */}
-          <div className="relative aspect-square [--media-pos:50%_66%] lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:w-[52%] lg:[--media-pos:50%_45%]">
-            <Media id="hero" locale={locale} cover priority sizes="(min-width: 1024px) 52vw, 100vw" placeholder="corner" />
+          {/* A partir de 1024 px, a foto mostra-se quase inteira: toda a largura e da faixa dos rostos do mural (18% de
+              cima, que fica de fora) até ao fundo. Para isso a caixa tem 0,915× a altura do hero (3/4 × 1/0,82; 33rem cobre
+              o hero mais baixo, quando é o texto que lhe dá a altura) e a foto assenta no fundo; 133,333cqw é a altura da
+              foto. Em ecrãs largos a caixa nunca fica abaixo de 47% do painel, para não sobrar teal a mais: a foto amplia
+              um pouco e perde só o fundo (as meias). O rebordo esquerdo funde-se no teal com uma máscara. */}
+          <div className="relative aspect-square [--media-pos:50%_66%] lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:w-[max(47%,calc((100svh_-_8rem)*0.915),33rem)] lg:[container-type:size] lg:[--media-pos:50%_min(0px,max(100cqh_-_133.333cqw,-24cqw))] lg:[mask-image:linear-gradient(90deg,transparent,#000_24%)]">
+            <Media id="hero" locale={locale} cover priority sizes="(min-width: 1536px) 50vw, (min-width: 1024px) 64vw, 100vw" placeholder="corner" />
             <div aria-hidden className="absolute inset-0 bg-[linear-gradient(0deg,var(--f4y-panel)_0%,var(--f4y-panel)_10%,rgba(29,90,100,0)_36%)] lg:hidden" />
           </div>
-          <div
-            aria-hidden
-            className="absolute inset-0 hidden lg:block lg:bg-[linear-gradient(90deg,var(--f4y-panel)_49%,rgba(29,90,100,.8)_56%,rgba(29,90,100,0)_68%)]"
-          />
           <div className="relative -mt-8 flex flex-col px-5 pb-8 sm:-mt-28 md:px-12 md:pb-12 lg:mt-0 lg:min-h-[calc(100svh-8rem)] lg:justify-center lg:py-16">
-            <div className="hero-in lg:max-w-[48%]">
+            {/* Em ecrãs mais altos do que largos a foto chega por baixo do texto: um véu teal atrás do texto mantém-no legível */}
+            <div className="hero-in relative isolate lg:max-w-[48%] lg:before:absolute lg:before:inset-y-[-100vh] lg:before:left-[-50vw] lg:before:right-[-6rem] lg:before:-z-10 lg:before:bg-[linear-gradient(90deg,var(--f4y-panel)_calc(100%-6rem),rgba(29,90,100,0))]">
               <h1 className="t-hero">
                 {h.hero.lines.map((l) => (
                   <span key={l} className="block">
@@ -235,26 +237,16 @@ export function HomePage({ locale }: { locale: Locale }) {
         </section>
       )}
 
-      {/* Equipa: quem está à frente da clínica (nomes e cargos das entrevistas em vídeo), cada um com o seu vídeo */}
+      {/* Equipa: quem está à frente da clínica (nomes e cargos das entrevistas em vídeo) */}
       {team.length > 0 && (
         <Section tone="light" labelledBy="equipa-title">
           <SectionTitle title={h.team.title} id="equipa-title" />
           <ul className="mt-12 grid gap-5 lg:grid-cols-2">
-            {team.map((m) => {
-              const v = m.video ? videoFor(m.video, locale) : null;
-              return (
-                <li key={m.media}>
-                  <TeamMember
-                    locale={locale}
-                    mediaId={m.media}
-                    name={m.name}
-                    role={m.role}
-                    focus={m.focus}
-                    video={v && <VideoButton video={v} label={v.caption} labels={videoLabels} />}
-                  />
-                </li>
-              );
-            })}
+            {team.map((m) => (
+              <li key={m.media}>
+                <TeamMember locale={locale} mediaId={m.media} name={m.name} role={m.role} focus={m.focus} />
+              </li>
+            ))}
           </ul>
         </Section>
       )}
