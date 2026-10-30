@@ -58,10 +58,11 @@ export function HomePage({ locale }: { locale: Locale }) {
             className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,38,44,.55)_0%,rgba(9,38,44,0)_22%),linear-gradient(0deg,var(--f4y-panel)_0%,rgba(29,90,100,.92)_28%,rgba(29,90,100,0)_62%)] lg:bg-[linear-gradient(180deg,rgba(9,38,44,.5)_0%,rgba(9,38,44,0)_20%),linear-gradient(270deg,rgba(17,64,73,.92)_0%,rgba(17,64,73,.7)_32%,rgba(17,64,73,0)_62%),linear-gradient(0deg,rgba(17,64,73,.6)_0%,rgba(17,64,73,0)_40%)]"
           />
           <div className="relative px-5 pb-10 md:px-12 md:pb-14 lg:pb-[clamp(3.5rem,10vh,7.5rem)]">
-            <div className="hero-in lg:ml-auto lg:w-[46%]">
+            {/* A partir de 1024 px o bloco tem a largura do título (cada linha inteira, sem quebrar) e encosta à direita */}
+            <div className="hero-in lg:ml-auto lg:w-fit lg:max-w-[58%]">
               <h1 className="t-hero">
                 {h.hero.lines.map((l) => (
-                  <span key={l} className="block">
+                  <span key={l} className="block lg:whitespace-nowrap">
                     {l}
                   </span>
                 ))}

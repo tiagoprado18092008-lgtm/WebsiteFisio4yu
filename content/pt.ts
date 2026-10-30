@@ -176,8 +176,9 @@ export const pt = {
   home: {
     hero: {
       eyebrow: "Centro de Reabilitação · Portimão",
-      lines: ["Fisioterapia", "em Portimão."],
-      sub: "Tratamento de lesões musculoesqueléticas e recuperação pós-parto, com ecografia e ginásio de reabilitação na própria clínica.",
+      // A assinatura da clínica ("Rehab & Performance", na parede e nas camisolas); "Fisioterapia em Portimão" abre a frase
+      lines: ["Reabilitação", "e Performance."],
+      sub: "Fisioterapia em Portimão para lesões musculoesqueléticas e recuperação pós-parto, com ecografia e ginásio de reabilitação na própria clínica.",
     },
     stack: {
       title: "Tudo o que precisa, num só espaço",
