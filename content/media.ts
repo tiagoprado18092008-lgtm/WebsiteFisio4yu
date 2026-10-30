@@ -31,14 +31,15 @@ export type VideoItem = {
 };
 
 // Sessão fotográfica de outubro de 2026 (alta resolução). Ficaram de fora as fotos com o mural de jogadores
-// famosos em destaque atrás do tratamento (IMG_7589): direitos de imagem. A IMG_7603 entrou no hero a pedido do
-// cliente (29/10/2026); no desktop o mural fica sob o degradê teal.
+// famosos em destaque atrás do tratamento (IMG_7589): direitos de imagem. O hero usa a "Foto hero" enviada pelo
+// cliente (30/10/2026): horizontal, com o mural teal, sem o mural dos jogadores.
 const photo = {
-  heroTreatment: "/media/tratamentos/mario-tratamento.webp", // Mário a tratar um utente na marquesa (IMG_7603)
+  heroTreatment: "/media/tratamentos/hero-mario-tratamento.webp", // Mário a tratar um utente na marquesa, mural teal ("fOTO HERO MELHOR QUALIDADE", 1672×941)
   manualTherapy: "/media/tratamentos/terapia-manual.webp", // terapia manual na coxa, mural teal (IMG_7612)
   treatmentRoom: "/media/tratamentos/tratamento-sala.webp", // Mário a tratar um utente, mural teal (IMG_7622)
+  treatmentAthletesMural: "/media/tratamentos/mario-tratamento.webp", // Mário a tratar um utente na marquesa, mural de atletas (IMG_7603, antigo hero)
   angelaDermato: "/media/tratamentos/angela-dermatofuncional.webp", // Angela com instrumentos em madeira (IMG_7641)
-  iceBath: "/media/tratamentos/banheira-gelo.webp", // fotograma do vídeo "Circuito de recuperação" (28,5 s)
+  iceBath: "/media/tratamentos/banheira-gelo-vazia.webp", // a banheira de gelo vazia, com a luz azul (IMG_7033, sem as barras pretas da captura)
   athletes: "/media/clientes/atletas.webp", // Mário com atletas no ginásio (IMG_7627)
   mario: "/media/equipa/mario-barroso.webp", // IMG_7678
   angela: "/media/equipa/angela-brazona.webp", // IMG_7660
@@ -57,16 +58,15 @@ const space = {
 
 const items: MediaItem[] = [
   {
-    // Hero da home (sem vídeo, a pedido do cliente): Mário em terapia manual (exportado a 2400 px).
-    // Foto vertical: em cima, a toda a largura, até 1024 px; daí para cima ocupa a parte direita do hero e
-    // funde-se com o painel teal. Nunca é cortada na largura, só na altura: o foco mantém o rosto e as mãos.
+    // Hero da home (sem vídeo, a pedido do cliente): ocupa o painel todo. O Mário está à esquerda (cabeça e mãos
+    // entre 25% e 42% da largura); em ecrãs estreitos o recorte segue-o.
     id: "hero",
     type: "image",
     src: photo.heroTreatment,
-    ratio: "3/4",
-    alt: { pt: "Mário Barroso, fisioterapeuta, a fazer terapia manual a um utente deitado na marquesa", en: "Mário Barroso, physiotherapist, giving manual therapy to a patient lying on the couch" },
-    brief: "Mário a tratar um utente (escolhida pelo cliente).",
-    position: "50% 45%",
+    ratio: "16/9",
+    alt: { pt: "Mário Barroso, fisioterapeuta, a fazer terapia manual na perna de um utente deitado na marquesa", en: "Mário Barroso, physiotherapist, giving manual therapy to the leg of a patient lying on the couch" },
+    brief: "Mário a tratar um utente, com o mural teal («Foto hero», escolhida pelo cliente).",
+    position: "19% 15%",
   },
   {
     id: "gym",
@@ -74,8 +74,8 @@ const items: MediaItem[] = [
     src: space.gym,
     ratio: "3/4",
     alt: { pt: "Ginásio de reabilitação da Fisio4you, com máquinas de força e iluminação hexagonal", en: "The Fisio4you rehabilitation gym, with strength machines and hexagonal lighting" },
-    brief: "Ginásio de reabilitação com a iluminação hexagonal (faixa de fotos da home).",
-    position: "58% 38%",
+    brief: "Ginásio de reabilitação com a iluminação hexagonal (cartão do ginásio na página da musculoesquelética).",
+    position: "50% 45%",
   },
   // Galeria "Instalações" (página Sobre): as versões editadas das fotos do espaço (soltas em /Fotos; entraram a
   // 30/10/2026). `ratio` é o original, para o lightbox as mostrar inteiras; na grelha ficam a 3:4 (a
@@ -144,6 +144,18 @@ const items: MediaItem[] = [
     position: "50% 50%",
   },
   {
+    // Cartão da musculoesquelética (home e Serviços): o antigo hero. Foto vertical recortada na horizontal; com o foco a
+    // 55% da altura, em 16:9, 3:2 e 5:4 a faixa fica entre o rosto e as mãos do Mário e os rostos do mural (17% de cima)
+    // ficam sempre de fora.
+    id: "msk-card",
+    type: "image",
+    src: photo.treatmentAthletesMural,
+    ratio: "3/2",
+    alt: { pt: "Mário Barroso, fisioterapeuta, a fazer terapia manual a um utente deitado na marquesa", en: "Mário Barroso, physiotherapist, giving manual therapy to a patient lying on the couch" },
+    brief: "Cartão da fisioterapia musculoesquelética: o Mário a tratar um utente (o antigo hero, escolhido pelo cliente).",
+    position: "50% 55%",
+  },
+  {
     id: "service-dermato",
     type: "image",
     src: photo.angelaDermato,
@@ -176,8 +188,10 @@ const items: MediaItem[] = [
     type: "image",
     src: photo.iceBath,
     ratio: "4/5",
-    alt: { pt: "Atleta dentro da banheira de gelo, de polegar para cima", en: "Athlete standing in the ice bath, giving a thumbs up" },
-    brief: "Banheira de gelo.",
+    alt: { pt: "Banheira de gelo da Fisio4you, numa sala de azulejos escuros com luz azul", en: "The Fisio4you ice bath, in a dark-tiled room with blue lighting" },
+    brief: "Banheira de gelo, vazia (cartão da crioterapia e visita à clínica).",
+    // Foto alta (9:16): o recorte assenta em baixo, na banheira, com um pouco da luz azul do teto
+    position: "50% 80%",
   },
   // Páginas de serviço: só fotos de tratamentos (a pedido do cliente, nada de fotos do ginásio no topo). A faixa dentro
   // do título é um recorte baixo e largo (decorativo); a foto larga logo abaixo é outra cena do mesmo serviço, a 2:1.

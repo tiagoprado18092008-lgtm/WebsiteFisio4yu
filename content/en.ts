@@ -307,7 +307,7 @@ export const en: Dict = {
     msk: {
       name: "Musculoskeletal Physiotherapy",
       short: "Assessment and treatment of sports injuries, low back and neck pain, tendinopathies and rehab after orthopaedic surgery.",
-      mediaId: "service-msk",
+      mediaId: "msk-card",
       meta: {
         title: "Musculoskeletal Physiotherapy in Portimão | Fisio4you",
         description:
@@ -368,7 +368,7 @@ export const en: Dict = {
           eyebrow: "Active rehab",
           title: "100 m² rehabilitation gym",
           text: "Therapeutic exercise is supervised by physiotherapists and matched to your stage of recovery. Your plan moves from hands-on treatment to strength, mobility and motor control work without leaving the clinic.",
-          mediaId: "athletes",
+          mediaId: "gym",
           points: [
             { icon: "dumbbell", title: "Therapeutic exercise", text: "Supervised, with progressive loading." },
             { icon: "footprints", title: "Reconditioning", text: "Rebuilding physical capacity and load tolerance." },

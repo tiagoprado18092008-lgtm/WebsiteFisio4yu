@@ -43,27 +43,22 @@ export function HomePage({ locale }: { locale: Locale }) {
   ];
   return (
     <>
-      {/* Hero em cartaz: a foto do Mário a tratar um utente (sem vídeo, a pedido do cliente) ocupa o painel todo, com o
-          header por cima (transparente no topo da página) e o texto em baixo, à esquerda, sobre um degradê teal. Pouco
-          texto: título, uma frase e os dois contactos. O margin negativo, igual à altura do header, sobe o painel para
-          debaixo dele. */}
+      {/* Hero em cartaz: a "Foto hero" do cliente (o Mário a tratar um utente, sem vídeo) ocupa o painel todo, com o
+          header por cima (transparente no topo da página). Pouco texto: título, uma frase e os dois contactos. O Mário
+          está à esquerda da foto, por isso a partir de 1024 px o texto fica à direita, sobre o mural e um degradê teal;
+          em telemóvel fica em baixo. O margin negativo, igual à altura do header, sobe o painel para debaixo dele. */}
       <section className="-mt-20 px-2 pb-6 pt-2 md:-mt-[88px] md:px-4 md:pt-3">
         <div className="on-dark relative flex min-h-[max(36rem,calc(100svh-6.5rem))] flex-col justify-end overflow-hidden rounded-[28px] bg-panel text-white md:rounded-[34px] lg:min-h-[max(40rem,calc(100svh-2.25rem))]">
-          {/* A foto é vertical e os rostos do mural ficam nos 17% de cima, que nunca aparecem. Até 1024 px a caixa da foto
-              é 25% mais alta do que o painel e assenta no fundo (os 20% de cima ficam de fora), com o Mário à direita.
-              A partir de 1024 px a foto cobre o painel na largura e mostra uma faixa da altura: a faixa acaba a 73% da
-              foto (as mãos no utente) e nunca começa acima de 22%; em ecrãs muito largos perde o topo da cabeça.
-              133,333cqw é a altura da foto (97,333cqw = 73%; 29,333cqw = 22%). */}
-          <div className="absolute inset-x-0 bottom-0 h-[125%] [--media-pos:60%_100%] lg:top-0 lg:h-auto lg:[container-type:size] lg:[--media-pos:50%_calc(-1*max(29.333cqw,97.333cqw_-_100cqh))]">
+          <div className="absolute inset-0">
             <Media id="hero" locale={locale} cover priority sizes="(min-width: 2200px) 2200px, 100vw" placeholder="corner" />
           </div>
-          {/* Degradês: escuro em cima para o logótipo branco, teal no canto de baixo à esquerda para o texto */}
+          {/* Degradês: escuro em cima para o logótipo branco; teal em baixo (telemóvel) ou à direita (desktop) para o texto */}
           <div
             aria-hidden
-            className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,38,44,.55)_0%,rgba(9,38,44,0)_22%),linear-gradient(0deg,var(--f4y-panel)_0%,rgba(29,90,100,.92)_28%,rgba(29,90,100,0)_62%)] lg:bg-[linear-gradient(180deg,rgba(9,38,44,.5)_0%,rgba(9,38,44,0)_20%),linear-gradient(90deg,rgba(17,64,73,.94)_0%,rgba(17,64,73,.72)_30%,rgba(17,64,73,0)_60%),linear-gradient(0deg,rgba(17,64,73,.7)_0%,rgba(17,64,73,0)_45%)]"
+            className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,38,44,.55)_0%,rgba(9,38,44,0)_22%),linear-gradient(0deg,var(--f4y-panel)_0%,rgba(29,90,100,.92)_28%,rgba(29,90,100,0)_62%)] lg:bg-[linear-gradient(180deg,rgba(9,38,44,.5)_0%,rgba(9,38,44,0)_20%),linear-gradient(270deg,rgba(17,64,73,.92)_0%,rgba(17,64,73,.7)_32%,rgba(17,64,73,0)_62%),linear-gradient(0deg,rgba(17,64,73,.6)_0%,rgba(17,64,73,0)_40%)]"
           />
           <div className="relative px-5 pb-10 md:px-12 md:pb-14 lg:pb-[clamp(3.5rem,10vh,7.5rem)]">
-            <div className="hero-in lg:max-w-[52%]">
+            <div className="hero-in lg:ml-auto lg:w-[46%]">
               <h1 className="t-hero">
                 {h.hero.lines.map((l) => (
                   <span key={l} className="block">
@@ -97,7 +92,7 @@ export function HomePage({ locale }: { locale: Locale }) {
       </section>
 
       {/* Tudo num só espaço: os quatro recursos da clínica, cada um com ligação direta */}
-      <section aria-labelledby="hub-title" className="bg-white pb-16 md:pb-24">
+      <section aria-labelledby="hub-title" className="bg-white pb-16 pt-6 md:pb-24 md:pt-10">
         <div className="container-x">
           <div className="grid items-center gap-10 rounded-[34px] bg-[radial-gradient(120%_90%_at_85%_0%,#ffffff_0%,transparent_55%),linear-gradient(135deg,var(--f4y-mist),#e9f0f2)] p-6 sm:p-10 md:grid-cols-[1fr_1.1fr] md:gap-12 lg:p-16">
             <div>

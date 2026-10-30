@@ -403,7 +403,7 @@ export const pt = {
     msk: {
       name: "Fisioterapia Musculoesquelética",
       short: "Avaliação e tratamento de lesões desportivas, dor lombar e cervical, tendinopatias e reabilitação após cirurgia ortopédica.",
-      mediaId: "service-msk",
+      mediaId: "msk-card",
       meta: {
         title: "Fisioterapia Musculoesquelética em Portimão | Fisio4you",
         description:
@@ -464,7 +464,7 @@ export const pt = {
           eyebrow: "Reabilitação ativa",
           title: "Ginásio de reabilitação com 100 m²",
           text: "O exercício terapêutico é supervisionado por fisioterapeutas e ajustado à fase da recuperação. O plano passa do tratamento na marquesa ao trabalho de força, mobilidade e controlo motor sem sair da clínica.",
-          mediaId: "athletes",
+          mediaId: "gym",
           points: [
             { icon: "dumbbell", title: "Exercício terapêutico", text: "Supervisionado e com progressão de carga." },
             { icon: "footprints", title: "Readaptação ao esforço", text: "Recuperação da capacidade física e da tolerância à carga." },

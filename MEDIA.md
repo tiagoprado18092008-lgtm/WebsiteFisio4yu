@@ -18,7 +18,7 @@ Tudo o que aparece no site está registado em `content/media.ts`. Os originais e
 
 | id | rácio | feito | o que mostra / o que falta | ficheiro |
 |---|---|---|---|---|
-| `hero` | 3/4 | ✅ | Mário a tratar um utente (escolhida pelo cliente). | `/public/media/tratamentos/mario-tratamento.webp` |
+| `hero` | 16/9 | ✅ | Mário a tratar um utente, com o mural teal ("fOTO HERO MELHOR QUALIDADE", escolhida pelo cliente). | `/public/media/tratamentos/hero-mario-tratamento.webp` |
 | `gym` | 3/4 | ✅ | Ginásio de reabilitação com a iluminação hexagonal (faixa de fotos da home). | `/public/media/espaco/ginasio.webp` |
 | `clinic-01` | 16/9 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/ginasio.webp` |
 | `clinic-02` | 9/16 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/ginasio-corredor.webp` |
@@ -33,10 +33,11 @@ Tudo o que aparece no site está registado em `content/media.ts`. Os originais e
 | `jerseys` | 3/2 | ✅ | Camisolas assinadas (colagem da secção de vantagens, home). | `/public/media/espaco/camisolas.webp` |
 | `about-hero` | 4/5 | ✅ | O Mário e a Angela juntos. | `/public/media/equipa/mario-e-angela.webp` |
 | `service-msk` | 4/5 | ✅ | Terapia manual num desportista. | `/public/media/tratamentos/tratamento-sala.webp` |
+| `msk-card` | 3/2 | ✅ | Cartão da musculoesquelética (home e Serviços): o Mário a tratar um utente (antigo hero). | `/public/media/tratamentos/mario-tratamento.webp` |
 | `service-dermato` | 4/5 | ✅ | Fisioterapeuta da área dermatofuncional. | `/public/media/tratamentos/angela-dermatofuncional.webp` |
 | `service-eco` | 4/5 | ✅ | Ideal: fisioterapeuta com sonda do ecógrafo, ecrã visível. | `/public/media/espaco/sala-avaliacao.webp` |
 | `service-gym` | 4/5 | ✅ | Ginásio de 100 m² em plano aberto. | `/public/media/espaco/ginasio-corredor.webp` |
-| `service-recovery` | 4/5 | ✅ | Banheira de gelo. | `/public/media/tratamentos/banheira-gelo.webp` |
+| `service-recovery` | 4/5 | ✅ | Banheira de gelo, vazia (cartão da crioterapia e visita à clínica). | `/public/media/tratamentos/banheira-gelo-vazia.webp` |
 | `slot-msk` | 3/4 | ✅ | Faixa no título da página da musculoesquelética: as mãos em terapia manual. | `/public/media/tratamentos/terapia-manual.webp` |
 | `wide-msk` | 3/4 | ✅ | Foto larga do topo da musculoesquelética (as mãos do Mário no utente, na marquesa). | `/public/media/tratamentos/tratamento-sala.webp` |
 | `wide-dermato` | 3/4 | ✅ | Foto do hero da dermatofuncional, inteira (3:4) ao lado do título: a Angela com os instrumentos em madeira. | `/public/media/tratamentos/angela-dermatofuncional.webp` |

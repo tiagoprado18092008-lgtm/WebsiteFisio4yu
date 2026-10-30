@@ -119,6 +119,7 @@ export function Header({ homeHref, logo, overlay, logoOverlay, links, lang, labe
 
   // Transparente por cima da foto do hero: só no topo da página e com o menu fechado
   const clear = !!overlay && !scrolled && !open;
+  const pill = "bg-white shadow-[0_10px_30px_-14px_rgba(6,40,46,.55)]";
   const navCls = "text-[15px] font-medium text-ink hover:text-teal-strong aria-[current=page]:text-teal-strong";
   const mobileLinks = [links.home, links.services, links.about, links.contact];
   // Ordem de entrada em cascata das linhas do menu mobile
@@ -149,8 +150,8 @@ export function Header({ homeHref, logo, overlay, logoOverlay, links, lang, labe
                 : "bg-white/95 shadow-[0_6px_20px_-14px_rgba(14,76,87,.25)] ring-line backdrop-blur-md",
         )}
       >
-        <div className="flex h-[68px] shrink-0 items-center gap-4 pl-4 pr-2 md:h-[72px] md:pl-6 md:pr-3">
-          <Link href={homeHref} aria-label={labels.homeAria} onClick={() => setOpen(false)} className="grid shrink-0">
+        <div className="flex h-[68px] shrink-0 items-center gap-4 pl-4 pr-2 md:h-[72px] md:pl-6 md:pr-3 lg:grid lg:grid-cols-[auto_1fr_auto] min-[1440px]:grid-cols-[1fr_auto_1fr]">
+          <Link href={homeHref} aria-label={labels.homeAria} onClick={() => setOpen(false)} className="grid shrink-0 justify-self-start">
             {overlay && logoOverlay ? (
               <>
                 <span className={cn("col-start-1 row-start-1 transition-opacity duration-300", clear && "opacity-0")}>{logo}</span>
@@ -163,75 +164,75 @@ export function Header({ homeHref, logo, overlay, logoOverlay, links, lang, labe
             )}
           </Link>
 
-          {/* Links e ações: por cima da foto ficam numa pílula branca; na barra branca, a pílula desaparece no fundo */}
+          {/* Links ao centro (no centro exato do ecrã a partir de 1440 px; abaixo, entre o logótipo e as ações, que não
+              cabem numa coluna igual à do logótipo) e ações à direita; por cima da foto, cada grupo fica numa pílula
+              branca (na barra branca a pílula desaparece no fundo) */}
+          <nav aria-label={labels.nav} className={cn("hidden items-center gap-8 justify-self-center rounded-full px-7 py-3 transition-[background-color,box-shadow] duration-300 lg:flex", clear && pill)}>
+            <Link href={links.home.href} aria-current={current(links.home.href)} className={navCls}>
+              {links.home.label}
+            </Link>
+            <div className="group relative">
+              <Link href={links.services.href} aria-current={current(links.services.href, true)} className={cn(navCls, "inline-flex items-center gap-1")}>
+                {links.services.label}
+                <ChevronDown className="size-3.5 transition-transform group-focus-within:rotate-180 group-hover:rotate-180" aria-hidden />
+              </Link>
+              <div className="invisible absolute left-1/2 top-full w-80 -translate-x-1/2 pt-5 opacity-0 transition-all group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                <ul className="rounded-[20px] bg-white p-2 shadow-[0_20px_40px_-16px_rgba(14,76,87,.3)] ring-1 ring-line">
+                  {links.services.children.map((c) => (
+                    <li key={c.href}>
+                      <Link
+                        href={c.href}
+                        aria-current={current(c.href)}
+                        className="block rounded-xl px-4 py-3 text-[15px] text-ink hover:bg-mist hover:text-teal-strong aria-[current=page]:bg-mist aria-[current=page]:text-teal-strong"
+                      >
+                        {c.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <Link href={links.about.href} aria-current={current(links.about.href)} className={navCls}>
+              {links.about.label}
+            </Link>
+            <Link href={links.contact.href} aria-current={current(links.contact.href)} className={navCls}>
+              {links.contact.label}
+            </Link>
+          </nav>
+
           <div
             className={cn(
-              "ml-auto flex items-center gap-1 rounded-full py-1 pl-2 pr-1 transition-[background-color,box-shadow] duration-300 sm:gap-3 lg:gap-6 lg:py-1.5 lg:pl-7",
-              clear && "bg-white shadow-[0_10px_30px_-14px_rgba(6,40,46,.55)]",
+              "ml-auto flex items-center gap-1 justify-self-end rounded-full py-1 pl-2 pr-1 transition-[background-color,box-shadow] duration-300 sm:gap-3 lg:ml-0 lg:py-1.5 lg:pl-3",
+              clear && pill,
             )}
           >
-            <nav aria-label={labels.nav} className="hidden items-center gap-8 lg:flex">
-              <Link href={links.home.href} aria-current={current(links.home.href)} className={navCls}>
-                {links.home.label}
-              </Link>
-              <div className="group relative">
-                <Link href={links.services.href} aria-current={current(links.services.href, true)} className={cn(navCls, "inline-flex items-center gap-1")}>
-                  {links.services.label}
-                  <ChevronDown className="size-3.5 transition-transform group-focus-within:rotate-180 group-hover:rotate-180" aria-hidden />
-                </Link>
-                <div className="invisible absolute left-1/2 top-full w-80 -translate-x-1/2 pt-5 opacity-0 transition-all group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
-                  <ul className="rounded-[20px] bg-white p-2 shadow-[0_20px_40px_-16px_rgba(14,76,87,.3)] ring-1 ring-line">
-                    {links.services.children.map((c) => (
-                      <li key={c.href}>
-                        <Link
-                          href={c.href}
-                          aria-current={current(c.href)}
-                          className="block rounded-xl px-4 py-3 text-[15px] text-ink hover:bg-mist hover:text-teal-strong aria-[current=page]:bg-mist aria-[current=page]:text-teal-strong"
-                        >
-                          {c.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              <Link href={links.about.href} aria-current={current(links.about.href)} className={navCls}>
-                {links.about.label}
-              </Link>
-              <Link href={links.contact.href} aria-current={current(links.contact.href)} className={navCls}>
-                {links.contact.label}
-              </Link>
-            </nav>
-
-            <div className="flex items-center gap-1 sm:gap-3">
-              <a
-                href={site.phoneHref}
-                data-track="phone"
-                data-location="header"
-                title={labels.phoneNote}
-                className="hidden min-h-11 items-center gap-2 px-2 text-sm font-semibold text-ink hover:text-teal-strong xl:inline-flex"
-              >
-                <Phone className="size-4" aria-hidden />
-                {labels.phone}
-              </a>
-              <span className="hidden md:block">
-                <WhatsAppButton message={waMessage} location="header" label={labels.book} className="min-h-11 px-5 py-2.5 text-sm" />
-              </span>
-              <span className="px-2">
-                <LangSwitch lang={lang} />
-              </span>
-              <button
-                ref={toggleRef}
-                type="button"
-                className="inline-flex size-11 items-center justify-center rounded-xl text-ink hover:bg-mist lg:hidden"
-                aria-expanded={open}
-                aria-controls="mobile-menu"
-                aria-label={open ? labels.close : labels.open}
-                onClick={toggle}
-              >
-                {open ? <X className="size-6" aria-hidden /> : <Menu className="size-6" strokeWidth={1.75} aria-hidden />}
-              </button>
-            </div>
+            <a
+              href={site.phoneHref}
+              data-track="phone"
+              data-location="header"
+              title={labels.phoneNote}
+              className="hidden min-h-11 items-center gap-2 whitespace-nowrap px-2 text-sm font-semibold text-ink hover:text-teal-strong xl:inline-flex"
+            >
+              <Phone className="size-4" aria-hidden />
+              {labels.phone}
+            </a>
+            <span className="hidden md:block">
+              <WhatsAppButton message={waMessage} location="header" label={labels.book} className="min-h-11 whitespace-nowrap px-5 py-2.5 text-sm" />
+            </span>
+            <span className="px-2">
+              <LangSwitch lang={lang} />
+            </span>
+            <button
+              ref={toggleRef}
+              type="button"
+              className="inline-flex size-11 items-center justify-center rounded-xl text-ink hover:bg-mist lg:hidden"
+              aria-expanded={open}
+              aria-controls="mobile-menu"
+              aria-label={open ? labels.close : labels.open}
+              onClick={toggle}
+            >
+              {open ? <X className="size-6" aria-hidden /> : <Menu className="size-6" strokeWidth={1.75} aria-hidden />}
+            </button>
           </div>
         </div>
 

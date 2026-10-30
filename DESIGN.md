@@ -244,7 +244,7 @@ Cantos largos e suaves em tudo o que é superfície, e pílula em tudo o que é 
 - **Listas em vez de cartões:** os conteúdos repetidos (indicações, valores, recursos) são listas com filetes, sem fundo nem sombra.
 
 ### Navigation
-- **Header:** barra branca flutuante a 95 % com desfoque, cantos de 20 px e anel `line`. Links em 15 px medium `ink`; a página atual fica a `teal-strong`. Do lado direito: telefone, botão WhatsApp e seletor PT | EN.
+- **Header:** barra branca flutuante a 95 % com desfoque, cantos de 20 px e anel `line`, em três colunas: logótipo à esquerda, links ao centro (no centro exato do ecrã a partir de 1440 px) e, à direita, telefone, botão WhatsApp e seletor PT | EN. Links em 15 px medium `ink`; a página atual fica a `teal-strong`. Na home, no topo da página, a barra fica transparente por cima da foto do hero: logótipo branco, e os links e as ações em duas pílulas brancas; ao descer volta a ser a barra branca.
 - **Mobile:** a barra estica até ao fundo do ecrã e passa a ser o painel do menu, com as linhas a entrar em cascata.
 ### Páginas de serviço (signature)
 Curta, com pouco texto e feita de **fotos dos tratamentos** (`components/pages/ServicePage.tsx`). O cliente pediu menos texto e nada de fotos do ginásio no topo. Sem figuras humanas desenhadas (a silhueta do mapa do corpo saiu a pedido do cliente), sem filetes, sem sombras, sem cartões.
