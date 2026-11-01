@@ -43,23 +43,16 @@ export function HomePage({ locale }: { locale: Locale }) {
   ];
   return (
     <>
-      {/* Hero em cartaz: a "Foto hero" do cliente (o Mário a tratar um utente, sem vídeo) ocupa o painel todo, com o
-          header por cima (transparente no topo da página). Pouco texto: título, uma frase e os dois contactos. O Mário
-          está à esquerda da foto, por isso a partir de 1024 px o texto fica à direita, sobre o mural e um degradê teal;
-          em telemóvel fica em baixo. O margin negativo, igual à altura do header, sobe o painel para debaixo dele. */}
+      {/* Hero: painel teal liso. À esquerda o título, uma frase e os dois contactos; à direita a foto do Mário num cartão
+          grande, da linha do header até 20 px do fundo do painel. Em telemóvel e tablet o cartão vem depois dos botões,
+          quase de margem a margem. O margin negativo, igual à altura do header, sobe o painel para debaixo dele (header
+          transparente no topo da página). */}
       <section className="-mt-20 px-2 pb-6 pt-2 md:-mt-[88px] md:px-4 md:pt-3">
-        <div className="on-dark relative flex min-h-[max(36rem,calc(100svh-6.5rem))] flex-col justify-end overflow-hidden rounded-[28px] bg-panel text-white md:rounded-[34px] lg:min-h-[max(40rem,calc(100svh-2.25rem))]">
-          <div className="absolute inset-0">
-            <Media id="hero" locale={locale} cover priority sizes="(min-width: 2200px) 2200px, 100vw" placeholder="corner" />
-          </div>
-          {/* Degradês: escuro em cima para o logótipo branco; teal em baixo (telemóvel) ou à direita (desktop) para o texto */}
-          <div
-            aria-hidden
-            className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,38,44,.55)_0%,rgba(9,38,44,0)_22%),linear-gradient(0deg,var(--f4y-panel)_0%,rgba(29,90,100,.92)_28%,rgba(29,90,100,0)_62%)] lg:bg-[linear-gradient(180deg,rgba(9,38,44,.5)_0%,rgba(9,38,44,0)_20%),linear-gradient(270deg,rgba(17,64,73,.92)_0%,rgba(17,64,73,.7)_32%,rgba(17,64,73,0)_62%),linear-gradient(0deg,rgba(17,64,73,.6)_0%,rgba(17,64,73,0)_40%)]"
-          />
-          <div className="relative px-5 pb-10 md:px-12 md:pb-14 lg:pb-[clamp(3.5rem,10vh,7.5rem)]">
-            {/* A partir de 1024 px o bloco tem a largura do título (cada linha inteira, sem quebrar) e encosta à direita */}
-            <div className="hero-in lg:ml-auto lg:w-fit lg:max-w-[58%]">
+        <div className="on-dark relative overflow-hidden rounded-[28px] bg-panel text-white md:rounded-[34px]">
+          <div className="grid gap-12 px-5 pb-3 pt-28 md:px-12 md:pb-4 md:pt-36 lg:min-h-[max(40rem,calc(100svh-2.25rem))] lg:grid-cols-[auto_minmax(0,1fr)] lg:items-end lg:gap-x-12 lg:pb-5 lg:pr-5 lg:pt-[6.5rem]">
+            {/* Cada linha do título inteira a partir de 1024 px; a coluna tem só a largura do título (a frase e os botões
+                cabem nela), para o cartão ficar com o resto. O bloco assenta à altura do fundo do cartão */}
+            <div className="hero-in lg:w-min lg:pb-[clamp(1.5rem,6vh,4.5rem)]">
               <h1 className="t-hero">
                 {h.hero.lines.map((l) => (
                   <span key={l} className="block lg:whitespace-nowrap">
@@ -87,6 +80,16 @@ export function HomePage({ locale }: { locale: Locale }) {
                   )}
                 </p>
               )}
+            </div>
+
+            {/* No desktop o cartão ocupa a altura toda do painel abaixo do header (--card-h) e toda a largura que o título
+                deixa, até 1,1 vezes a altura; mais largo do que a foto (0,926), o recorte (preso em cima, em media.ts)
+                corta só em baixo, na toalha e na marquesa. Abre de cima para baixo e assenta, como a foto larga das
+                páginas de serviço (globals.css). */}
+            <div className="svc-shutter relative -mx-3 aspect-[4/5] overflow-hidden rounded-[22px] bg-teal-dark sm:mx-auto sm:w-full sm:max-w-[40rem] md:rounded-[24px] lg:mx-0 lg:aspect-auto lg:h-(--card-h) lg:max-w-[calc(var(--card-h)*1.1)] lg:justify-self-end lg:[--card-h:calc(max(40rem,100svh-2.25rem)-7.75rem)]">
+              <div className="svc-settle absolute inset-0">
+                <Media id="hero" locale={locale} cover priority sizes="(min-width: 1024px) 54vw, (min-width: 640px) 40rem, 100vw" />
+              </div>
             </div>
           </div>
         </div>
@@ -183,20 +186,17 @@ export function HomePage({ locale }: { locale: Locale }) {
       </Section>
 
       {/* Avaliações Google (só 5 estrelas) no azul da marca, com a foto do Mário com clientes e o vídeo do Pedro Senra
-          (cliente) lado a lado. A partir de 1280 px: título e introdução numa linha e, por baixo, foto e vídeo à esquerda
-          e as avaliações à direita, à mesma altura. Entre 1024 e 1279 px: título ao lado da foto e do vídeo, avaliações
+          (cliente) lado a lado. A partir de 1280 px: à esquerda o título e, por baixo, a foto e o vídeo; à direita as
+          avaliações, a começar à altura do título. Entre 1024 e 1279 px: título ao lado da foto e do vídeo, avaliações
           por baixo a toda a largura. Em telemóvel e tablet: título, foto e vídeo, avaliações. */}
       {realReviews.length > 0 && (
         <section aria-labelledby="reviews-title" className="px-2 md:px-4">
           <div className="on-dark rounded-[28px] bg-[linear-gradient(160deg,#118193_0%,#0d6b7a_50%,#0c6372_100%)] text-white md:rounded-[34px]">
-            <div className="container-x grid gap-8 py-16 md:gap-10 md:py-20 lg:grid-cols-2 lg:gap-x-16 xl:gap-x-20 xl:gap-y-12">
-              <div className="grid gap-5 lg:self-center xl:col-span-2 xl:grid-cols-2 xl:items-end xl:gap-x-20">
-                <h2 id="reviews-title" className="t-h2 max-w-xl">
-                  {h.reviews.title}
-                </h2>
-                <p className="max-w-lg text-lg leading-relaxed">{h.reviews.intro}</p>
-              </div>
-              <div className="grid w-full max-w-2xl grid-cols-2 items-start gap-3 sm:gap-4 lg:max-w-none">
+            <div className="container-x grid gap-8 py-16 md:gap-10 md:py-20 lg:grid-cols-2 lg:gap-x-16 xl:grid-rows-[auto_1fr] xl:gap-x-20 xl:gap-y-12">
+              <h2 id="reviews-title" className="t-h2 max-w-xl lg:self-center xl:col-start-1 xl:self-start">
+                {h.reviews.title}
+              </h2>
+              <div className="grid w-full max-w-2xl grid-cols-2 items-start gap-3 sm:gap-4 lg:max-w-none xl:col-start-1">
                 <figure>
                   <div className="relative aspect-[4/5] overflow-hidden rounded-[22px] shadow-[0_24px_50px_-28px_rgba(6,40,46,.6)]">
                     <Media id="athletes" locale={locale} cover sizes="(min-width: 1024px) 22vw, 48vw" />
@@ -210,7 +210,7 @@ export function HomePage({ locale }: { locale: Locale }) {
                   className="mt-10 shadow-[0_24px_50px_-28px_rgba(6,40,46,.6)] sm:mt-16"
                 />
               </div>
-              <div className="lg:col-span-2 xl:col-span-1">
+              <div className="lg:col-span-2 xl:col-span-1 xl:col-start-2 xl:row-span-2 xl:row-start-1">
                 <Testimonials
                   reviews={realReviews}
                   sourceLabel={h.reviews.source}

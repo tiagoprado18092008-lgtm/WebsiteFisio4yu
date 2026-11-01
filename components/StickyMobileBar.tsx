@@ -1,13 +1,14 @@
 import { Phone } from "lucide-react";
 import { site } from "@/content/site";
 import { waLink } from "@/lib/whatsapp";
+import type { Dict } from "@/content/pt";
 import { WhatsAppIcon } from "./Icon";
 import { FloatingWhatsApp } from "./FloatingWhatsApp";
 
-type Props = { waMessage: string; callLabel: string; waLabel: string; floatingLabel: string };
+type Props = { waMessage: string; callLabel: string; waLabel: string; chat: Dict["chat"] };
 
-/** Barra fixa em mobile (Ligar + WhatsApp) e botão flutuante de WhatsApp a partir de tablet. */
-export function StickyMobileBar({ waMessage, callLabel, waLabel, floatingLabel }: Props) {
+/** Barra fixa em mobile (Ligar + WhatsApp) e chat flutuante de WhatsApp a partir de tablet. */
+export function StickyMobileBar({ waMessage, callLabel, waLabel, chat }: Props) {
   return (
     <>
       <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 gap-2 border-t border-line bg-white/95 p-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] backdrop-blur md:hidden">
@@ -32,7 +33,7 @@ export function StickyMobileBar({ waMessage, callLabel, waLabel, floatingLabel }
           {waLabel}
         </a>
       </div>
-      <FloatingWhatsApp href={waLink(waMessage)} label={floatingLabel} />
+      <FloatingWhatsApp waMessage={waMessage} t={chat} />
     </>
   );
 }

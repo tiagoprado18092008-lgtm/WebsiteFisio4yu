@@ -14,13 +14,15 @@ type Props = {
   cover?: boolean;
   sizes?: string;
   priority?: boolean;
+  /** Qualidade da compressão (75 por omissão; os valores permitidos estão em next.config.ts `images.qualities`). */
+  quality?: number;
   compact?: boolean;
   /** "corner": placeholder discreto com etiqueta no canto (para fundos com texto por cima). */
   placeholder?: "center" | "corner";
 };
 
 /** Mostra a foto/vídeo real se `src` existir em content/media.ts; caso contrário, um placeholder de marca. */
-export function Media({ id, locale, className, cover, sizes = "(min-width: 1024px) 50vw, 100vw", priority, compact, placeholder = "center" }: Props) {
+export function Media({ id, locale, className, cover, sizes = "(min-width: 1024px) 50vw, 100vw", priority, quality, compact, placeholder = "center" }: Props) {
   const item = media[id];
   if (!item) throw new Error(`Media "${id}" não existe em content/media.ts`);
   const t = getDict(locale);
@@ -34,7 +36,7 @@ export function Media({ id, locale, className, cover, sizes = "(min-width: 1024p
     inner = <VideoPlayer src={item.src} poster={item.poster} alt={alt} className="absolute inset-0 size-full object-cover" />;
   } else {
     // `--media-pos` (definida num contentor pai) troca o ponto de foco num tamanho de ecrã específico.
-    inner = <Image src={item.src} alt={alt} fill sizes={sizes} priority={priority} className="object-cover" style={item.position ? { objectPosition: `var(--media-pos, ${item.position})` } : undefined} />;
+    inner = <Image src={item.src} alt={alt} fill sizes={sizes} priority={priority} quality={quality} className="object-cover" style={item.position ? { objectPosition: `var(--media-pos, ${item.position})` } : undefined} />;
   }
 
   return (

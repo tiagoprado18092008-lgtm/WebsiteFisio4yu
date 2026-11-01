@@ -62,10 +62,12 @@ export type ServicePageCopy = {
   heroWide: string;
   /** Foto 4:5 por baixo da introdução das situações (quando a página tem poucas fotos). */
   conditionsPhoto?: string;
+  /** Mostra as duas áreas da clínica em painéis com foto (texto em `servicePage.areas`), a seguir às situações. */
+  areas?: boolean;
+  /** Foto de um tratamento deste serviço no cartão «Também na Fisio4you», no fim da página do outro serviço. */
+  relatedPhoto: string;
   /** Biografia do fisioterapeuta responsável: o nome vem de `team`, por isso `bio` começa logo a seguir ao nome. */
   person: { bio: string };
-  /** Frase do mural da entrada, espalhada de margem a margem: duas linhas, palavras de cada linha. */
-  motto?: { lines: string[][]; by: [string, string, string] };
 };
 
 export type ServiceContent = {
@@ -83,6 +85,11 @@ export type ServiceContent = {
   bodyMap?: boolean;
   explainer?: ServiceExplainer;
   forWho: { title: string; intro: string; items: Item[] };
+  /**
+   * Sem mapa do corpo: as situações da página de serviço em tabela, uma linha por zona, cada uma abre o WhatsApp.
+   * `waTopic` completa `wa.problem` ("Olá, tenho {p}…"). Com `waTopic` por confirmar, a linha fica escondida.
+   */
+  conditions?: { id: string; label: string; common: string[]; waTopic: string }[];
   how: { title: string; intro?: string; steps: Step[] };
   distinct: { title: string; text: string; points: string[] };
   /** Recursos incluídos (`modules`): título e introdução da secção. */
@@ -137,6 +144,23 @@ export const pt = {
     problem: "Olá, tenho {p} e gostava de marcar uma consulta.",
     notify: "Olá, gostava de ser avisado quando {s} estiver disponível.",
   },
+  /** Janela de chat do botão flutuante (components/FloatingWhatsApp.tsx). A 1.ª resposta rápida usa a mensagem da página. */
+  chat: {
+    status: "WhatsApp",
+    greeting: "Olá. Em que podemos ajudar?",
+    book: "Marcar consulta",
+    quick: [
+      { label: "Saber preços", msg: "Olá, gostava de saber os preços das consultas." },
+      { label: "Tenho outra questão", msg: "Olá, tenho uma questão para a Fisio4you." },
+    ],
+    placeholder: "Escreva a sua mensagem…",
+    redirecting: "A abrir o WhatsApp…",
+    tooltip: "Tem alguma questão? Fale connosco pelo WhatsApp.",
+    open: "Abrir chat do WhatsApp",
+    close: "Fechar chat",
+    send: "Enviar mensagem",
+    dismiss: "Fechar aviso",
+  },
   hours: {
     weekdays: "Segunda a sexta",
     weekdaysShort: "Seg–Sex",
@@ -176,8 +200,8 @@ export const pt = {
   home: {
     hero: {
       eyebrow: "Centro de Reabilitação · Portimão",
-      // A assinatura da clínica ("Rehab & Performance", na parede e nas camisolas); "Fisioterapia em Portimão" abre a frase
-      lines: ["Reabilitação", "e Performance."],
+      // Frase escolhida pelo cliente (30/10/2026); "Fisioterapia em Portimão" abre a frase de baixo
+      lines: ["Fisioterapia", "feita para si."],
       sub: "Fisioterapia em Portimão para lesões musculoesqueléticas e recuperação pós-parto, com ecografia e ginásio de reabilitação na própria clínica.",
     },
     stack: {
@@ -321,7 +345,7 @@ export const pt = {
       ] as Item[],
     },
     founder: {
-      eyebrow: "CEO e fisioterapeuta", // apelido e cargo confirmados nas entrevistas em vídeo (outubro 2026)
+      eyebrow: "Fundador e fisioterapeuta", // apelido e cargo confirmados nas entrevistas em vídeo (outubro 2026)
       name: "Mário Barroso",
       lead: "Fisioterapeuta com 16 anos de experiência a tratar lesões e a acompanhar recuperações, do primeiro dia ao regresso à atividade.",
       bio: [
@@ -340,7 +364,6 @@ export const pt = {
     },
     reviews: {
       title: "Avaliações de utentes",
-      intro: "Comentários publicados no perfil da clínica no Google, reproduzidos sem alterações.",
       photoCaption: "Mário Barroso com atletas no ginásio da Fisio4you.",
       source: "Avaliação no Google",
       all: "Ver todas as avaliações no Google",
@@ -373,7 +396,7 @@ export const pt = {
     {
       media: "team-mario",
       name: "Mário Barroso",
-      role: "Fisioterapeuta e CEO",
+      role: "Fundador e fisioterapeuta",
       focus: "Lesões musculoesqueléticas, reabilitação e performance desportiva. Tem 16 anos de experiência clínica. [[Cédula profissional n.º e formação relevante]]",
     },
     {
@@ -398,6 +421,29 @@ export const pt = {
     write: "Descrever",
     seeService: "Ver o serviço",
     meetTeam: "Conhecer a equipa",
+    /** As duas áreas em painéis com foto (components/ServiceAreas.tsx), nas páginas com `page.areas`. */
+    areas: {
+      title: "Duas áreas, uma clínica",
+      intro: "Cada área tem o seu fisioterapeuta responsável. Escolha uma para ver o que trata.",
+      eyebrow: "Fisioterapia",
+      treats: "O que trata",
+      items: <Record<ServiceKey, { name: string; what: string; treats: string[]; by: string; mediaId: string }>>{
+        msk: {
+          name: "Musculoesquelética",
+          what: "Lesões e dor em músculos, tendões, articulações e coluna.",
+          treats: ["Lesões desportivas", "Tendinopatias", "Dor lombar e cervical", "Reabilitação pós-cirúrgica"],
+          by: "Com o fisioterapeuta Mário Barroso",
+          mediaId: "area-msk",
+        },
+        dermato: {
+          name: "Dermatofuncional",
+          what: "Parede abdominal, pavimento pélvico e cicatrizes, com particular atenção ao pós-parto.",
+          treats: ["Recuperação pós-parto", "Diástase abdominal", "Cicatrizes e aderências"],
+          by: "Com a fisioterapeuta Angela Brazona",
+          mediaId: "service-dermato",
+        },
+      },
+    },
   },
 
   services: <Record<ServiceKey, ServiceContent>>{
@@ -553,12 +599,10 @@ export const pt = {
         lead: "Lesões desportivas, dor e reabilitação depois de uma cirurgia, com o fisioterapeuta Mário Barroso.",
         heroSlot: "slot-msk",
         heroWide: "wide-msk",
+        relatedPhoto: "related-msk",
+        areas: true,
         person: {
           bio: "é fisioterapeuta há 16 anos e dirige a Fisio4you. É o responsável pela fisioterapia musculoesquelética, das lesões desportivas à reabilitação depois de uma cirurgia.",
-        },
-        motto: {
-          lines: [["«A", "lesão", "é", "uma"], ["oportunidade", "de", "mudança»"]],
-          by: ["Mural da entrada", "Fisio4you", "Portimão"],
         },
       },
     },
@@ -622,6 +666,13 @@ export const pt = {
           { icon: "flower", title: "Edema e drenagem linfática", text: "[[confirmar]]" },
         ],
       },
+      conditions: [
+        { id: "pos-parto", label: "Pós-parto", common: ["Parede abdominal", "Pavimento pélvico", "Postura", "Regresso à atividade física"], waTopic: "uma questão de recuperação pós-parto" },
+        { id: "abdomen", label: "Abdómen", common: ["Diástase abdominal", "Fraqueza abdominal"], waTopic: "uma questão de diástase abdominal" },
+        { id: "cicatrizes", label: "Cicatrizes", common: ["Cicatriz de cesariana", "Aderências", "Sensibilidade alterada"], waTopic: "uma questão sobre uma cicatriz" },
+        { id: "estetica", label: "Cirurgia estética", common: ["Pós-operatório de cirurgia plástica/estética"], waTopic: "[[confirmar]]" },
+        { id: "edema", label: "Edema", common: ["Drenagem linfática"], waTopic: "[[confirmar]]" },
+      ],
       how: {
         title: "Como decorre o acompanhamento",
         intro: "O plano parte da sua situação atual e cada fase é explicada antes de começar.",
@@ -675,6 +726,7 @@ export const pt = {
         lead: "Recuperação pós-parto, diástase abdominal e cicatrizes, com a fisioterapeuta Angela Brazona.",
         heroWide: "wide-dermato",
         conditionsPhoto: "strip-angela",
+        relatedPhoto: "related-dermato",
         person: {
           bio: "é fisioterapeuta e a responsável pela fisioterapia dermatofuncional na Fisio4you, dedicada à saúde da mulher durante a gravidez e no pós-parto.",
         },
@@ -714,6 +766,14 @@ export const pt = {
     founderLong: ["[[Versão longa do percurso do Mário: formação, especializações, experiência com desportistas.]]"],
     teamTitle: "A equipa",
     galleryTitle: "Instalações",
+    galleryIntro: "Tudo no mesmo espaço, em Portimão: o plano passa da marquesa para o ginásio e para a recuperação sem sair da clínica.",
+    gallerySpaces: [
+      { title: "Salas de tratamento", text: "Avaliação, com ecografia quando indicado, e terapia manual na marquesa, com privacidade." },
+      { title: "Ginásio de reabilitação", text: "100 m² com máquinas de força, rack, kettlebells e passadeiras, para o exercício supervisionado." },
+      { title: "Recuperação", text: "Banheira de gelo, sauna e pressoterapia, sempre com orientação da equipa." },
+    ],
+    // A primeira foto fica ao lado do texto; as outras formam a faixa por baixo, sem legendas (ids em content/media.ts)
+    galleryPhotos: ["clinic-ginasio", "clinic-sala-fisio4you", "clinic-corredor-mural", "clinic-sala-tratamento", "clinic-camisolas"],
   },
 
   contact: {

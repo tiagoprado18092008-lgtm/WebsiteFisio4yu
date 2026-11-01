@@ -1,6 +1,6 @@
 import { Info } from "lucide-react";
 import { getDict } from "@/content";
-import { mediaList } from "@/content/media";
+import { media } from "@/content/media";
 import { site } from "@/content/site";
 import { href, serviceKeys, type Locale, type PageKey } from "@/lib/routes";
 import { waMessages } from "@/lib/whatsapp";
@@ -11,6 +11,7 @@ import { PageHero } from "../PageHero";
 import { Media } from "../Media";
 import { CtaTriad } from "../CtaTriad";
 import { Gallery } from "../Gallery";
+import { RevealOnScroll } from "../RevealOnScroll";
 import { WhatsAppButton } from "../Buttons";
 import { IconList, ServiceRow, TeamMember } from "../Cards";
 import { JsonLd } from "../JsonLd";
@@ -32,12 +33,8 @@ export function ServicesPage({ locale }: { locale: Locale }) {
   return (
     <>
       <Crumbs crumbs={crumbs} />
-      <PageHero
-        crumbs={crumbs}
-        title={t.servicesPage.title}
-        sub={t.servicesPage.sub}
-        actions={<WhatsAppButton message={wa.general()} location="servicos-hero" label={t.common.whatsappCta} />}
-      />
+      {/* Só o título: sem frase nem botão de marcar no topo, a pedido do cliente */}
+      <PageHero crumbs={crumbs} title={t.servicesPage.title} />
       <Section tone="light" labelledBy="disponiveis" className="pt-0 md:pt-0">
         <h2 id="disponiveis" className="sr-only">
           {t.servicesPage.available}
@@ -74,7 +71,6 @@ export function AboutPage({ locale }: { locale: Locale }) {
   const a = t.about;
   const wa = waMessages(t);
   const crumbs = crumbsFor(locale, [{ name: t.nav.about, page: "about" }]);
-  const gallery = mediaList.filter((m) => m.id.startsWith("clinic-"));
   return (
     <>
       <Crumbs crumbs={crumbs} />
@@ -129,25 +125,40 @@ export function AboutPage({ locale }: { locale: Locale }) {
         </Section>
       )}
 
-      <Section tone="mist" labelledBy="galeria">
-        <h2 id="galeria" className="t-h2 mb-12">
-          {a.galleryTitle}
-        </h2>
+      {/* Instalações: o que há em cada espaço, ao lado do ginásio; por baixo, a faixa com as melhores fotos */}
+      <Section tone="mist" id="instalacoes" labelledBy="instalacoes-h">
         <Gallery
           labels={{ close: t.common.close, previous: t.common.previous, next: t.common.next }}
-          items={gallery.map((g) => {
-            const wide = g.ratio === "16/9";
-            return {
-              id: g.id,
-              alt: g.alt[locale],
-              ratio: g.ratio,
-              wide,
-              thumb: <Media id={g.id} locale={locale} cover compact sizes={wide ? "(min-width: 1024px) 66vw, 100vw" : "(min-width: 1024px) 33vw, 50vw"} />,
-              full: <Media id={g.id} locale={locale} sizes="90vw" />,
-            };
-          })}
+          intro={
+            <>
+              <div>
+                <h2 id="instalacoes-h" data-reveal className="t-h2">
+                  {a.galleryTitle}
+                </h2>
+                <p data-reveal style={{ "--d": 1 } as React.CSSProperties} className="t-lead mt-5 max-w-xl">
+                  {a.galleryIntro}
+                </p>
+              </div>
+              <dl className="grid gap-7">
+                {a.gallerySpaces.map((s, i) => (
+                  <div key={s.title} data-reveal style={{ "--d": i + 2 } as React.CSSProperties}>
+                    <dt className="t-h3">{s.title}</dt>
+                    <dd className="mt-1.5 max-w-md">{s.text}</dd>
+                  </div>
+                ))}
+              </dl>
+            </>
+          }
+          items={a.galleryPhotos.map((id, i) => ({
+            id,
+            alt: media[id].alt[locale],
+            ratio: media[id].ratio,
+            thumb: <Media id={id} locale={locale} cover compact sizes={i === 0 ? "(min-width: 1024px) 55vw, 100vw" : "(min-width: 1024px) 40vw, 60vw"} />,
+            full: <Media id={id} locale={locale} sizes="90vw" />,
+          }))}
         />
       </Section>
+      <RevealOnScroll />
 
       <CtaTriad locale={locale} waMessage={wa.general()} />
     </>

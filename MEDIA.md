@@ -4,7 +4,7 @@ Tudo o que aparece no site está registado em `content/media.ts`. Os originais e
 
 **Seleção de outubro de 2026:** entraram as fotos de tratamento, equipa e espaço com boa nitidez e enquadramento. Ficaram de fora a IMG_7589 (mural de jogadores famosos em destaque atrás do tratamento), por direitos de imagem; as de festa da inauguração (comida, cartões); e os vídeos repetidos ou de evento (`18_10_2026` está incluído como testemunho do Pedro Senra; `INAUGURAÇÃO` não entrou).
 
-**Galeria das instalações (página Sobre):** as versões editadas das fotos do espaço (soltas em `/Fotos`), em WebP no tamanho original em `/public/media/instalacoes`. Incluem o corredor "God, why me?" e a sala com o mural a preto e branco, ambos com jogadores famosos. Grelha regular de quadrados 3:4, em 2 colunas (3 a partir de 1024 px): a foto horizontal ocupa duas colunas e, se com 2 colunas sobrar um lugar, a última ocupa a linha toda. No lightbox cada foto aparece inteira.
+**Galeria das instalações (página Sobre):** as versões editadas das fotos do espaço (soltas em `/Fotos`), em WebP no tamanho original em `/public/media/instalacoes`. Incluem o corredor "God, why me?" e a sala com o mural a preto e branco, ambos com jogadores famosos. A secção mostra as cinco melhores (`about.galleryPhotos` em `content/pt.ts`): o ginásio ao lado do texto sobre os espaços e, por baixo, uma faixa de quatro painéis de larguras desiguais (o que tem o cursor alarga); em telemóvel a faixa fica em 2×2. Sem legendas, a pedido do cliente. No lightbox cada foto aparece inteira.
 
 **Hero:** foto (sem vídeo, a pedido do cliente). É vertical: até 1024 px ocupa o hero todo; a partir daí fica na metade direita e funde-se com o painel teal.
 
@@ -20,14 +20,14 @@ Tudo o que aparece no site está registado em `content/media.ts`. Os originais e
 |---|---|---|---|---|
 | `hero` | 16/9 | ✅ | Mário a tratar um utente, com o mural teal ("fOTO HERO MELHOR QUALIDADE", escolhida pelo cliente). | `/public/media/tratamentos/hero-mario-tratamento.webp` |
 | `gym` | 3/4 | ✅ | Ginásio de reabilitação com a iluminação hexagonal (faixa de fotos da home). | `/public/media/espaco/ginasio.webp` |
-| `clinic-01` | 16/9 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/ginasio.webp` |
-| `clinic-02` | 9/16 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/ginasio-corredor.webp` |
-| `clinic-03` | 3/4 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/sala-fisio4you.webp` |
-| `clinic-04` | 9/16 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/corredor-mural.webp` |
-| `clinic-05` | 9/16 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/gabinetes.webp` |
-| `clinic-06` | 9/16 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/sala-tratamento.webp` |
-| `clinic-07` | 9/16 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/ginasio-maquinas.webp` |
-| `clinic-08` | 3/4 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/camisolas.webp` |
+| `clinic-ginasio` | 16/9 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/ginasio.webp` |
+| `clinic-ginasio-corredor` | 9/16 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/ginasio-corredor.webp` |
+| `clinic-sala-fisio4you` | 3/4 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/sala-fisio4you.webp` |
+| `clinic-corredor-mural` | 9/16 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/corredor-mural.webp` |
+| `clinic-gabinetes` | 9/16 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/gabinetes.webp` |
+| `clinic-sala-tratamento` | 9/16 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/sala-tratamento.webp` |
+| `clinic-ginasio-maquinas` | 9/16 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/ginasio-maquinas.webp` |
+| `clinic-camisolas` | 3/4 | ✅ | Instalações: salas, ginásio, equipamento. | `/public/media/instalacoes/camisolas.webp` |
 | `brand-room` | 3/2 | ✅ | Sala com o logótipo. | `/public/media/espaco/sala-fisio4you.webp` |
 | `athletes` | 3/2 | ✅ | Mário com clientes/atletas na clínica (secção de avaliações da home). | `/public/media/clientes/atletas.webp` |
 | `jerseys` | 3/2 | ✅ | Camisolas assinadas (colagem da secção de vantagens, home). | `/public/media/espaco/camisolas.webp` |

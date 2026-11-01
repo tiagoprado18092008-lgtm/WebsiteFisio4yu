@@ -48,7 +48,7 @@ export function SiteShell({ locale, page, waMessage, children }: { locale: Local
         <Footer locale={locale} />
         </div>
         </div>
-        <StickyMobileBar waMessage={waMessage} callLabel={t.common.call} waLabel={t.common.whatsapp} floatingLabel={t.common.floatingWhatsapp} />
+        <StickyMobileBar waMessage={waMessage} callLabel={t.common.call} waLabel={t.common.whatsapp} chat={t.chat} />
         <TrackingListener />
         <JsonLd data={clinicJsonLd(locale)} />
     </ConsentProvider>

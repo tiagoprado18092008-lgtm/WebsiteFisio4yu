@@ -20,7 +20,7 @@ colors:
 typography:
   hero:
     fontFamily: "Bricolage Grotesque, system-ui, sans-serif"
-    fontSize: "clamp(2.6rem, 1.5rem + 4.4vw, 5.25rem); ≥1280px: clamp(5.25rem, 1rem + 5.4vw, 7.5rem)"
+    fontSize: "clamp(2.6rem, 1.5rem + 4.4vw, 5.25rem); ≥1280px: clamp(5.25rem, 0.5rem + 6.6vw, 8.5rem)"
     fontWeight: 400
     lineHeight: 0.96
     letterSpacing: "-0.038em"
@@ -134,7 +134,7 @@ A página inteira vive numa folha branca de cantos largos (34 px em desktop) pou
 A densidade é editorial: títulos grandes em frase normal (Bricolage Grotesque 400), texto corrido sóbrio (Public Sans), listas separadas por filetes em vez de cartões, e a informação clínica organizada por fases e por zonas do corpo.
 
 **Key Characteristics:**
-- Folha branca de cantos largos sobre moldura teal (`frame`), com rodapé em painel "ice" que sobe do fundo da folha.
+- Folha branca de cantos largos sobre moldura teal (`frame`), com o rodapé num cartão "ice" pousado no fundo da folha.
 - Teal como instrumento: ação, estado e foco. O verde WhatsApp é a única cor de conversão.
 - Fotografias reais com cantos de 24–28 px; nada de ilustração decorativa.
 - Listas com filetes (`line`) em vez de grelhas de cartões.
@@ -176,7 +176,7 @@ Paleta amostrada do logótipo: grafite frio para texto, uma família teal do "4"
 **Character:** uma grotesca com eixo ótico e um ligeiro carácter humano nos títulos, ao lado de uma sans institucional, muito legível, para o texto clínico. Os títulos vêm sempre em frase normal, nunca em maiúsculas.
 
 ### Hierarchy
-- **Hero** (400, `clamp(2.6rem…5.25rem)`, 0.96; a partir de 1280 px continua até 7,5rem por volta dos 1920 px): só o hero da página inicial. Em ecrãs largos o título enche a metade esquerda do painel, a frase sobe até 1,5rem e os botões até 56 px, para não sobrar teal vazio entre o texto e a foto.
+- **Hero** (400, `clamp(2.6rem…5.25rem)`, 0.96; a partir de 1280 px continua até 8,5rem por volta dos 1940 px): só o hero da página inicial. Em ecrãs largos o título enche a coluna à esquerda do cartão da foto, a frase sobe até 1,5rem e os botões até 56 px.
 - **Display** (400, `clamp(2.2rem…3.75rem)`, 1.02): o H1 de cada página interna e o título do bloco de marcação.
 - **Headline** (400, `clamp(1.85rem…2.8rem)`, 1.06): o H2 de cada secção. Todas as secções de uma página partilham este tamanho.
 - **Subhead** (400–500, 1.75rem, 1.2): nomes nos cartões da equipa, a frase da missão em /sobre.
@@ -190,7 +190,7 @@ As **páginas de serviço** têm escala própria, em cinco degraus (`globals.css
 ### Named Rules
 **A Regra de Um Nível por Papel.** Dentro de uma página, todos os H2 usam Headline. Um H2 nunca sobe a Display para parecer mais importante. A importância vem da posição e da fotografia. Exceção: as páginas de serviço, que seguem a sua escala de cinco degraus (ver acima).
 
-**A Regra da Frase Normal.** Sem maiúsculas em títulos nem em rótulos. A única exceção é o selo do Livro de Reclamações, que é um elemento oficial.
+**A Regra da Frase Normal.** Sem maiúsculas em títulos nem em rótulos.
 
 **A Regra do Título Sem Eyebrow.** Nenhum rótulo pequeno por cima de um título faz de título. Se a secção precisa de um nome, esse nome é o H2, em Headline, à esquerda do conteúdo.
 
@@ -244,8 +244,11 @@ Cantos largos e suaves em tudo o que é superfície, e pílula em tudo o que é 
 - **Listas em vez de cartões:** os conteúdos repetidos (indicações, valores, recursos) são listas com filetes, sem fundo nem sombra.
 
 ### Navigation
-- **Header:** barra branca flutuante a 95 % com desfoque, cantos de 20 px e anel `line`, em três colunas: logótipo à esquerda, links ao centro (no centro exato do ecrã a partir de 1440 px) e, à direita, telefone, botão WhatsApp e seletor PT | EN. Links em 15 px medium `ink`; a página atual fica a `teal-strong`. Na home, no topo da página, a barra fica transparente por cima da foto do hero: logótipo branco, e os links e as ações em duas pílulas brancas; ao descer volta a ser a barra branca.
+- **Header:** barra branca flutuante a 95 % com desfoque, cantos de 20 px e anel `line`, em três colunas: logótipo à esquerda, links no centro exato da barra (abaixo de 1280 px mais juntos; o telefone só aparece a partir de 1440 px) e, à direita, telefone, botão WhatsApp e seletor PT | EN. Links em 15 px medium `ink`; a página atual fica a `teal-strong`. Na home, no topo da página, a barra fica transparente por cima do painel do hero: logótipo branco, e os links e as ações em duas pílulas brancas; ao descer volta a ser a barra branca.
 - **Mobile:** a barra estica até ao fundo do ecrã e passa a ser o painel do menu, com as linhas a entrar em cascata.
+### Hero da página inicial (signature)
+Painel `panel` liso (cantos de 34 px), sem textura nem degradê. À esquerda, o título em `t-hero`, uma frase e os dois contactos, assentes à altura do fundo da foto; à direita, a foto do Mário a tratar um utente (IMG_7603) num cartão grande com cantos de 24 px, sem moldura nem etiqueta: no desktop vai da linha do header até 20 px do fundo e da margem direita do painel, e fica com toda a largura que o título deixa (a coluna do texto tem só a largura do título), até 1,1 vezes a altura; em telemóvel e tablet vem depois dos botões, a 4:5, quase de margem a margem (até 40rem). O cartão abre de cima para baixo e assenta (o mesmo movimento da foto larga das páginas de serviço). A foto está recortada para deixar de fora os rostos do mural de atletas; o foco segue o Mário (à direita, em cima).
+
 ### Páginas de serviço (signature)
 Curta, com pouco texto e feita de **fotos dos tratamentos** (`components/pages/ServicePage.tsx`). O cliente pediu menos texto e nada de fotos do ginásio no topo. Sem figuras humanas desenhadas (a silhueta do mapa do corpo saiu a pedido do cliente), sem filetes, sem sombras, sem cartões.
 1. **O nome em cartaz:** o H1 em `t-poster` com uma foto do serviço em faixa no lugar de uma palavra (as mãos do Mário em terapia manual). Em telemóvel a faixa desce para a sua própria linha. Por baixo, uma frase curta (`page.lead`) e os dois botões; depois outra foto do serviço abre larga (2:1), com o único momento forte de movimento. Na dermatofuncional não há faixa no título: a foto da Angela (vertical) aparece inteira, sem recorte, numa coluna à direita (4 de 12 colunas a partir de 1024 px), com o título, a frase e os botões assentes no fundo dela; em telemóvel e tablet fica por baixo dos botões.
@@ -254,12 +257,11 @@ Curta, com pouco texto e feita de **fotos dos tratamentos** (`components/pages/S
 4. **Diástase** (dermatofuncional): o esquema por fases, em teal liso.
 5. **Percurso:** quatro frases em `t-display` que descem em escada ("Primeiro, avaliamos." … a última em `teal-strong`), com uma linha cada.
 6. **Quem acompanha:** retrato 4:5 grande e, ao lado, nome, cargo e uma frase.
-7. **O mural** (musculoesquelética): «A lesão é uma oportunidade de mudança», a frase pintada na entrada, em duas linhas justificadas de margem a margem sobre `ice`.
-8. **Perguntas:** só as perguntas à vista; a resposta abre ao tocar.
-9. **O outro serviço:** só o nome, grande, com uma seta. A página acaba aqui e segue para o rodapé (o painel final "Por onde começamos?" saiu a pedido do cliente).
+7. **Perguntas:** só as perguntas à vista; a resposta abre ao tocar. (A frase do mural, «A lesão é uma oportunidade de mudança», saiu a pedido do cliente.)
+8. **O outro serviço:** só o nome, grande, com uma seta. A página acaba aqui e segue para o rodapé (o painel final "Por onde começamos?" saiu a pedido do cliente).
 
 ### Rodapé (signature)
-Painel `ice` encostado às margens e ao fundo da folha, só com os cantos de cima arredondados (os de baixo são os da folha), com cinco colunas (marca, Serviços, Clínica, Contactos e Horário), uma linha legal com o selo oficial do Livro de Reclamações Eletrónico (imagem, 48 px de altura) e o "fisio4you" gigante a toda a largura, a desvanecer no fundo (máscara, cor lisa, o "4" em `teal` como a fita do logótipo). O wordmark fica, a pedido do cliente. Na coluna da marca: logótipo a 72 px e ícones redondos de Facebook, Instagram e WhatsApp. No fim da linha legal, "Desenvolvido por" com o logótipo da AlphaScale (28 px, máscara pintada a `ink`); ao passar o cursor passa a `teal-strong`, sobe 1 px, ganha um halo `cyan` e uma faixa de luz atravessa as letras uma vez (sem a viagem com `prefers-reduced-motion`).
+Estrutura pedida pelo cliente a partir do rodapé da Ninho Home Care, nas cores do site (claro, não escuro). Cartão `ice` pousado na folha com 8/12 px de margem branca e os quatro cantos arredondados (16/24 px, concêntricos com a folha). Quatro colunas: marca (logótipo a 72 px, a frase em `teal-strong` e ícones redondos de Facebook, Instagram e WhatsApp), Clínica (links e, por baixo, os dados da empresa a negrito), Serviços e Contactos (morada, telefone com a nota, email, WhatsApp e horário, cada um com o seu ícone `teal`, e no fim o Livro de Reclamações: círculo branco com "Livro de" e "Reclamações" ao lado, em HTML). Títulos das colunas em `font-display` e `teal-strong`. Uma linha de baixo com o filete a toda a largura do cartão: direitos à esquerda, links legais à direita. No fundo, o "fisio4you" grande (até 60 rem), a desvanecer (máscara, cor lisa, o "4" em `teal` como a fita do logótipo). O wordmark fica, a pedido do cliente. No fim da linha legal, "Desenvolvido por" com o logótipo da AlphaScale (28 px, máscara pintada a `ink`); ao passar o cursor passa a `teal-strong`, sobe 1 px, ganha um halo `cyan` e uma faixa de luz atravessa as letras uma vez (sem a viagem com `prefers-reduced-motion`).
 
 ## Do's and Don'ts
 
@@ -274,7 +276,7 @@ Painel `ice` encostado às margens e ao fundo da folha, só com os cantos de cim
 ### Don't:
 - **Don't** escurecer o site: o cliente pediu um site clínico, claro e não escuro. O painel escuro fica reservado ao hero da página inicial, ao bloco de marcação e ao painel final das páginas de serviço.
 - **Don't** usar verde fora dos botões de WhatsApp.
-- **Don't** usar maiúsculas em títulos ou rótulos (exceto o selo oficial do Livro de Reclamações).
+- **Don't** usar maiúsculas em títulos ou rótulos.
 - **Don't** remover o "fisio4you" grande no fundo do rodapé.
 - **Don't** pôr sombras em secções ou listas; a sombra é só para elementos pousados sobre outros.
 - **Don't** inventar números, testemunhos ou nomes; o que falta fica pendente e não aparece ao público.

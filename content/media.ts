@@ -31,9 +31,10 @@ export type VideoItem = {
 };
 
 // Sessão fotográfica de outubro de 2026 (alta resolução). Ficaram de fora as fotos com o mural de jogadores
-// famosos em destaque atrás do tratamento (IMG_7589): direitos de imagem. O hero usa a "Foto hero" enviada pelo
-// cliente (30/10/2026): horizontal, com o mural teal, sem o mural dos jogadores.
+// famosos em destaque atrás do tratamento (IMG_7589): direitos de imagem. O hero usa a IMG_7603 num cartão vertical,
+// recortada de forma a deixar de fora os rostos do mural de atletas.
 const photo = {
+  heroCard: "/media/tratamentos/hero-mario-cartao.webp", // IMG_7603 com a largura toda, de y 766 para baixo (2000×2160, rácio 0,926): os rostos do mural ficam acima
   heroTreatment: "/media/tratamentos/hero-mario-tratamento.webp", // Mário a tratar um utente na marquesa, mural teal ("fOTO HERO MELHOR QUALIDADE", 1672×941)
   manualTherapy: "/media/tratamentos/terapia-manual.webp", // terapia manual na coxa, mural teal (IMG_7612)
   treatmentRoom: "/media/tratamentos/tratamento-sala.webp", // Mário a tratar um utente, mural teal (IMG_7622)
@@ -58,15 +59,16 @@ const space = {
 
 const items: MediaItem[] = [
   {
-    // Hero da home (sem vídeo, a pedido do cliente): ocupa o painel todo. O Mário está à esquerda (cabeça e mãos
-    // entre 25% e 42% da largura); em ecrãs estreitos o recorte segue-o.
+    // Hero da home (sem vídeo, a pedido do cliente): a foto num cartão grande ao lado do título (4:5 no telemóvel; no
+    // desktop a altura do painel). O ponto de foco (--media-pos no HomePage) segue o Mário, à direita e em cima.
     id: "hero",
     type: "image",
-    src: photo.heroTreatment,
-    ratio: "16/9",
+    src: photo.heroCard,
+    ratio: "4/5",
+    // Recorte preso em cima (a cabeça do Mário está rente ao topo da foto) e puxado para a direita, para o seguir
+    position: "68% 0%",
     alt: { pt: "Mário Barroso, fisioterapeuta, a fazer terapia manual na perna de um utente deitado na marquesa", en: "Mário Barroso, physiotherapist, giving manual therapy to the leg of a patient lying on the couch" },
-    brief: "Mário a tratar um utente, com o mural teal («Foto hero», escolhida pelo cliente).",
-    position: "19% 15%",
+    brief: "Mário a tratar um utente na marquesa, com o mural de atletas atrás (IMG_7603, escolhida pelo cliente).",
   },
   {
     id: "gym",
@@ -77,9 +79,9 @@ const items: MediaItem[] = [
     brief: "Ginásio de reabilitação com a iluminação hexagonal (cartão do ginásio na página da musculoesquelética).",
     position: "50% 45%",
   },
-  // Galeria "Instalações" (página Sobre): as versões editadas das fotos do espaço (soltas em /Fotos; entraram a
-  // 30/10/2026). `ratio` é o original, para o lightbox as mostrar inteiras; na grelha ficam a 3:4 (a
-  // horizontal ocupa duas colunas) e o `position` guarda o foco do recorte. A ordem alterna vistas claras e escuras.
+  // Instalações (página Sobre): as versões editadas das fotos do espaço (soltas em /Fotos; entraram a 30/10/2026).
+  // `ratio` é o original, para o lightbox as mostrar inteiras; o `position` guarda o foco do recorte. As que aparecem,
+  // e por que ordem, estão em `about.galleryPhotos` (content/pt.ts); as outras ficam registadas para uso futuro.
   ...[
     { file: "ginasio", ratio: "16/9", position: "50% 50%", pt: "Vista geral do ginásio de reabilitação, com iluminação hexagonal, máquinas de força e kettlebells", en: "Overview of the rehabilitation gym, with hexagonal lighting, strength machines and kettlebells" }, // Foto heroe.png
     { file: "ginasio-corredor", ratio: "9/16", position: "50% 55%", pt: "Vista ao longo do ginásio de reabilitação, com passadeiras e parede de camisolas", en: "View along the rehabilitation gym, with treadmills and a wall of shirts" },
@@ -89,8 +91,8 @@ const items: MediaItem[] = [
     { file: "sala-tratamento", ratio: "9/16", position: "50% 65%", pt: "Sala de tratamento com marquesa, equipamento de fisioterapia e mural de futebol a preto e branco", en: "Treatment room with a couch, physiotherapy equipment and a black-and-white football mural" },
     { file: "ginasio-maquinas", ratio: "9/16", position: "50% 40%", pt: "Ginásio de reabilitação com máquinas de força, kettlebells e iluminação hexagonal", en: "Rehabilitation gym with strength machines, kettlebells and hexagonal lighting" },
     { file: "camisolas", ratio: "3/4", position: "50% 45%", pt: "Parede de camisolas desportivas assinadas no ginásio", en: "Wall of signed sports shirts in the gym" },
-  ].map<MediaItem>((p, i) => ({
-    id: `clinic-0${i + 1}`,
+  ].map<MediaItem>((p) => ({
+    id: `clinic-${p.file}`,
     type: "image",
     src: `/media/instalacoes/${p.file}.webp`,
     ratio: p.ratio as MediaRatio,
@@ -130,7 +132,7 @@ const items: MediaItem[] = [
     type: "image",
     src: photo.duo,
     ratio: "4/5",
-    alt: { pt: "Mário Barroso, fisioterapeuta e CEO, e Angela Brazona, fisioterapeuta da Fisio4you", en: "Mário Barroso, physiotherapist and CEO, and Angela Brazona, physiotherapist at Fisio4you" },
+    alt: { pt: "Mário Barroso, fundador e fisioterapeuta, e Angela Brazona, fisioterapeuta da Fisio4you", en: "Mário Barroso, founder and physiotherapist, and Angela Brazona, physiotherapist at Fisio4you" },
     brief: "O Mário e a Angela juntos.",
     position: "50% 30%",
   },
@@ -212,6 +214,41 @@ const items: MediaItem[] = [
     alt: { pt: "Mário Barroso a fazer terapia manual a um utente deitado na marquesa", en: "Mário Barroso giving manual therapy to a patient lying on the couch" },
     brief: "Foto larga do topo da musculoesquelética (as mãos do Mário no utente, na marquesa).",
     position: "50% 46%",
+  },
+  {
+    // Painel da musculoesquelética na secção das duas áreas (a «Foto hero» com o mural teal). O Mário está à esquerda:
+    // o foco a 28% segue-o nos recortes estreitos.
+    id: "area-msk",
+    type: "image",
+    src: photo.heroTreatment,
+    ratio: "16/9",
+    alt: { pt: "Mário Barroso, fisioterapeuta, a fazer terapia manual na perna de um utente deitado na marquesa", en: "Mário Barroso, physiotherapist, giving manual therapy to the leg of a patient lying on the couch" },
+    brief: "Musculoesquelética nas duas áreas: o Mário a tratar um utente, mural teal.",
+    position: "28% 30%",
+  },
+  // Cartões «Também na Fisio4you» (fim das páginas de serviço): exportados em alta qualidade a partir dos originais
+  // (2000×2667, WebP 88) e servidos a qualidade 90, porque a «Foto hero» (1672×941) ficava mole no recorte do cartão.
+  {
+    // Na página da dermatofuncional: o Mário em terapia manual, mural teal (IMG_7612). No cartão quase quadrado do
+    // desktop, o foco a 60% da altura apanha da cara às mãos na perna do utente.
+    id: "related-msk",
+    type: "image",
+    src: "/media/tratamentos/cartao-musculoesqueletica.webp",
+    ratio: "3/4",
+    alt: { pt: "Mário Barroso, fisioterapeuta, a fazer terapia manual na perna de um utente", en: "Mário Barroso, physiotherapist, giving manual therapy to a patient's leg" },
+    brief: "Cartão da musculoesquelética no fim da página da dermatofuncional.",
+    position: "50% 60%",
+  },
+  {
+    // Na página da musculoesquelética: a Angela com os instrumentos (IMG_7654; a foto dos painéis é outra).
+    // Foto vertical em recortes largos: o foco a 28% da altura mantém a cara e os instrumentos.
+    id: "related-dermato",
+    type: "image",
+    src: "/media/tratamentos/cartao-dermatofuncional.webp",
+    ratio: "3/4",
+    alt: { pt: "Angela Brazona, fisioterapeuta, a mostrar instrumentos de massagem em madeira", en: "Angela Brazona, physiotherapist, showing wooden massage tools" },
+    brief: "Cartão da dermatofuncional no fim da página da musculoesquelética.",
+    position: "50% 28%",
   },
   {
     id: "wide-dermato",

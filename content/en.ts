@@ -45,6 +45,22 @@ export const en: Dict = {
     problem: "Hello, I have {p} and I'd like to book an appointment.",
     notify: "Hello, I'd like to be notified when {s} becomes available.",
   },
+  chat: {
+    status: "WhatsApp",
+    greeting: "Hello. How can we help?",
+    book: "Book an appointment",
+    quick: [
+      { label: "Ask about prices", msg: "Hello, I'd like to know your appointment prices." },
+      { label: "Another question", msg: "Hello, I have a question for Fisio4you." },
+    ],
+    placeholder: "Type your message…",
+    redirecting: "Opening WhatsApp…",
+    tooltip: "Have a question? Message us on WhatsApp.",
+    open: "Open WhatsApp chat",
+    close: "Close chat",
+    send: "Send message",
+    dismiss: "Dismiss",
+  },
   hours: {
     weekdays: "Monday to Friday",
     weekdaysShort: "Mon–Fri",
@@ -84,7 +100,7 @@ export const en: Dict = {
   home: {
     hero: {
       eyebrow: "Rehabilitation Centre · Portimão",
-      lines: ["Rehab &", "Performance."],
+      lines: ["Physiotherapy", "made for you."],
       sub: "Physiotherapy in Portimão for musculoskeletal injuries and postnatal recovery, with ultrasound and a rehabilitation gym on site.",
     },
     stack: {
@@ -228,7 +244,7 @@ export const en: Dict = {
       ],
     },
     founder: {
-      eyebrow: "CEO and physiotherapist",
+      eyebrow: "Founder and physiotherapist",
       name: "Mário Barroso",
       lead: "A physiotherapist with 16 years of experience treating injuries and guiding recoveries, from day one to getting back to what you love.",
       bio: ["[[Mário's text, 3–4 sentences: background, specialisations and why he founded Fisio4you.]]"],
@@ -245,7 +261,6 @@ export const en: Dict = {
     },
     reviews: {
       title: "Patient reviews",
-      intro: "Comments published on the clinic's Google profile, reproduced without changes.",
       photoCaption: "Mário Barroso with athletes in the Fisio4you gym.",
       source: "Google review",
       all: "See all reviews on Google",
@@ -277,7 +292,7 @@ export const en: Dict = {
     {
       media: "team-mario",
       name: "Mário Barroso",
-      role: "Physiotherapist and CEO",
+      role: "Founder and physiotherapist",
       focus: "Musculoskeletal injuries, rehabilitation and sports performance. 16 years of clinical experience. [[Professional registration no. and relevant training]]",
     },
     {
@@ -301,6 +316,28 @@ export const en: Dict = {
     write: "Describe",
     seeService: "See the service",
     meetTeam: "Meet the team",
+    areas: {
+      title: "Two areas, one clinic",
+      intro: "Each area has its own lead physiotherapist. Choose one to see what it treats.",
+      eyebrow: "Physiotherapy",
+      treats: "What it treats",
+      items: {
+        msk: {
+          name: "Musculoskeletal",
+          what: "Injuries and pain in muscles, tendons, joints and the spine.",
+          treats: ["Sports injuries", "Tendinopathies", "Low back and neck pain", "Rehab after surgery"],
+          by: "With physiotherapist Mário Barroso",
+          mediaId: "area-msk",
+        },
+        dermato: {
+          name: "Dermatofunctional",
+          what: "The abdominal wall, pelvic floor and scars, with a particular focus on postnatal recovery.",
+          treats: ["Postnatal recovery", "Diastasis recti", "Scars and adhesions"],
+          by: "With physiotherapist Angela Brazona",
+          mediaId: "service-dermato",
+        },
+      },
+    },
   },
 
   services: {
@@ -456,12 +493,10 @@ export const en: Dict = {
         lead: "Sports injuries, pain and rehab after surgery, with physiotherapist Mário Barroso.",
         heroSlot: "slot-msk",
         heroWide: "wide-msk",
+        relatedPhoto: "related-msk",
+        areas: true,
         person: {
           bio: "has been a physiotherapist for 16 years and runs Fisio4you. He leads musculoskeletal physiotherapy, from sports injuries to rehab after surgery.",
-        },
-        motto: {
-          lines: [["“Injury", "is", "an"], ["opportunity", "for", "change”"]],
-          by: ["Entrance mural", "Fisio4you", "Portimão"],
         },
       },
     },
@@ -524,6 +559,13 @@ export const en: Dict = {
           { icon: "flower", title: "Swelling and lymphatic drainage", text: "[[to confirm]]" },
         ],
       },
+      conditions: [
+        { id: "pos-parto", label: "Postnatal", common: ["Abdominal wall", "Pelvic floor", "Posture", "Return to physical activity"], waTopic: "a postnatal recovery concern" },
+        { id: "abdomen", label: "Abdomen", common: ["Diastasis recti", "Abdominal weakness"], waTopic: "a diastasis recti concern" },
+        { id: "cicatrizes", label: "Scars", common: ["C-section scar", "Adhesions", "Altered sensation"], waTopic: "a question about a scar" },
+        { id: "estetica", label: "Cosmetic surgery", common: ["After plastic/cosmetic surgery"], waTopic: "[[to confirm]]" },
+        { id: "edema", label: "Swelling", common: ["Lymphatic drainage"], waTopic: "[[to confirm]]" },
+      ],
       how: {
         title: "How your care works",
         intro: "The plan starts from where you are now, and each stage is explained before it begins.",
@@ -576,6 +618,7 @@ export const en: Dict = {
         lead: "Postnatal recovery, diastasis recti and scars, with physiotherapist Angela Brazona.",
         heroWide: "wide-dermato",
         conditionsPhoto: "strip-angela",
+        relatedPhoto: "related-dermato",
         person: {
           bio: "is a physiotherapist and leads dermatofunctional physiotherapy at Fisio4you, focusing on women's health during pregnancy and after childbirth.",
         },
@@ -614,6 +657,13 @@ export const en: Dict = {
     founderLong: ["[[Long version of Mário's background: training, specialisations, experience with athletes.]]"],
     teamTitle: "The team",
     galleryTitle: "Facilities",
+    galleryIntro: "Everything under one roof in Portimão: the plan moves from the couch to the gym and on to recovery without leaving the clinic.",
+    gallerySpaces: [
+      { title: "Treatment rooms", text: "Assessment, with ultrasound when indicated, and manual therapy on the couch, in private." },
+      { title: "Rehabilitation gym", text: "100 m² with strength machines, a rack, kettlebells and treadmills, for supervised exercise." },
+      { title: "Recovery", text: "Ice bath, sauna and compression therapy, always guided by the team." },
+    ],
+    galleryPhotos: ["clinic-ginasio", "clinic-sala-fisio4you", "clinic-corredor-mural", "clinic-sala-tratamento", "clinic-camisolas"],
   },
 
   contact: {

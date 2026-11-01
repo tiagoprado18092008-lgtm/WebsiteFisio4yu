@@ -13,7 +13,7 @@ Tudo o que aparece no site está registado em \`content/media.ts\`. Os originais
 
 **Seleção de outubro de 2026:** entraram as fotos de tratamento, equipa e espaço com boa nitidez e enquadramento. Ficaram de fora a IMG_7589 (mural de jogadores famosos em destaque atrás do tratamento), por direitos de imagem; as de festa da inauguração (comida, cartões); e os vídeos repetidos ou de evento (\`18_10_2026\` está incluído como testemunho do Pedro Senra; \`INAUGURAÇÃO\` não entrou).
 
-**Galeria das instalações (página Sobre):** as versões editadas das fotos do espaço (soltas em \`/Fotos\`), em WebP no tamanho original em \`/public/media/instalacoes\`. Incluem o corredor "God, why me?" e a sala com o mural a preto e branco, ambos com jogadores famosos. Grelha regular de quadrados 3:4, em 2 colunas (3 a partir de 1024 px): a foto horizontal ocupa duas colunas e, se com 2 colunas sobrar um lugar, a última ocupa a linha toda. No lightbox cada foto aparece inteira.
+**Galeria das instalações (página Sobre):** as versões editadas das fotos do espaço (soltas em \`/Fotos\`), em WebP no tamanho original em \`/public/media/instalacoes\`. Incluem o corredor "God, why me?" e a sala com o mural a preto e branco, ambos com jogadores famosos. A secção mostra as cinco melhores (\`about.galleryPhotos\` em \`content/pt.ts\`): o ginásio ao lado do texto sobre os espaços e, por baixo, uma faixa de quatro painéis de larguras desiguais (o que tem o cursor alarga); em telemóvel a faixa fica em 2×2. Sem legendas, a pedido do cliente. No lightbox cada foto aparece inteira.
 
 **Hero:** foto (sem vídeo, a pedido do cliente). É vertical: até 1024 px ocupa o hero todo; a partir daí fica na metade direita e funde-se com o painel teal.
 

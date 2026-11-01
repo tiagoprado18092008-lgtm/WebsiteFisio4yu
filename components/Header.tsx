@@ -150,7 +150,7 @@ export function Header({ homeHref, logo, overlay, logoOverlay, links, lang, labe
                 : "bg-white/95 shadow-[0_6px_20px_-14px_rgba(14,76,87,.25)] ring-line backdrop-blur-md",
         )}
       >
-        <div className="flex h-[68px] shrink-0 items-center gap-4 pl-4 pr-2 md:h-[72px] md:pl-6 md:pr-3 lg:grid lg:grid-cols-[auto_1fr_auto] min-[1440px]:grid-cols-[1fr_auto_1fr]">
+        <div className="flex h-[68px] shrink-0 items-center gap-4 pl-4 pr-2 md:h-[72px] md:pl-6 md:pr-3 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:gap-2 lg:px-[18px]">
           <Link href={homeHref} aria-label={labels.homeAria} onClick={() => setOpen(false)} className="grid shrink-0 justify-self-start">
             {overlay && logoOverlay ? (
               <>
@@ -164,10 +164,10 @@ export function Header({ homeHref, logo, overlay, logoOverlay, links, lang, labe
             )}
           </Link>
 
-          {/* Links ao centro (no centro exato do ecrã a partir de 1440 px; abaixo, entre o logótipo e as ações, que não
-              cabem numa coluna igual à do logótipo) e ações à direita; por cima da foto, cada grupo fica numa pílula
-              branca (na barra branca a pílula desaparece no fundo) */}
-          <nav aria-label={labels.nav} className={cn("hidden items-center gap-8 justify-self-center rounded-full px-7 py-3 transition-[background-color,box-shadow] duration-300 lg:flex", clear && pill)}>
+          {/* Links no centro exato da barra (margens iguais dos dois lados) e ações à direita; abaixo de 1280 px os links
+              apertam para as ações caberem na coluna da direita. Por cima da foto, cada grupo fica numa pílula branca
+              (na barra branca a pílula desaparece no fundo) */}
+          <nav aria-label={labels.nav} className={cn("hidden items-center gap-4 justify-self-center rounded-full px-4 py-3 transition-[background-color,box-shadow] duration-300 lg:flex xl:gap-8 xl:px-7", clear && pill)}>
             <Link href={links.home.href} aria-current={current(links.home.href)} className={navCls}>
               {links.home.label}
             </Link>
@@ -211,7 +211,8 @@ export function Header({ homeHref, logo, overlay, logoOverlay, links, lang, labe
               data-track="phone"
               data-location="header"
               title={labels.phoneNote}
-              className="hidden min-h-11 items-center gap-2 whitespace-nowrap px-2 text-sm font-semibold text-ink hover:text-teal-strong xl:inline-flex"
+              // Só a partir de 1440 px: abaixo disso não cabe na coluna da direita com os links ao centro
+              className="hidden min-h-11 items-center gap-2 whitespace-nowrap px-2 text-sm font-semibold text-ink hover:text-teal-strong min-[1440px]:inline-flex"
             >
               <Phone className="size-4" aria-hidden />
               {labels.phone}
