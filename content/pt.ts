@@ -231,7 +231,7 @@ export const pt = {
     hero: {
       eyebrow: "Centro de Reabilitação · Portimão",
       // Frase escolhida pelo cliente (30/10/2026); "Fisioterapia em Portimão" abre a frase de baixo
-      lines: ["Fisioterapia", "feita para si."],
+      lines: ["Fisioterapia", "feita para si"],
       sub: "Fisioterapia em Portimão para lesões musculoesqueléticas e recuperação pós-parto, com ecografia e ginásio de reabilitação na própria clínica.",
     },
     stack: {

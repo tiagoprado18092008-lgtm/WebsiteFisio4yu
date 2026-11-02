@@ -6,7 +6,7 @@ Tudo o que no site aparece como `[[ ]]` (ou tem um comentário `[[ ]]` no códig
 
 | # | Pendente | Onde alterar |
 |---|---|---|
-| 1 | **Morada:** briefing diz *Rua Francisco Alvo, loja 11*; Google/Waze/Facebook dizem *R. José Mendes Furtado 13-3* (o mapa do Google no próprio site mostra esta última, verificado a 28/10/2026). Tem de ser **igual** ao perfil Google (NAP). | `content/site.ts` → `address` (e textos de privacidade em `content/pt.ts` / `en.ts`) |
+| 1 | ~~Morada~~ — **confirmada pelo cliente (02/11/2026): Rua Francisco Alvo, loja 11, 8500-759 Portimão** (já era o valor no site; é o perfil/mapa do Google que está errado — *R. José Mendes Furtado 13-3*). **Falta corrigir no perfil Google** para o NAP ficar igual em todo o lado; o site não precisa de mudar. | `content/site.ts` → `address` (já correto) |
 | 2 | **Horário e dias:** briefing 9h–19h; perfis online Seg–Sex 9h–18h30. Abre ao sábado? | `content/site.ts` → `hours`; tabela em Contactos assume sábado e domingo encerrados |
 | 3 | **N.º de registo ERS** e **n.º de licença** de funcionamento | `content/site.ts` → `ers`, `license` |
 | 4 | **Coordenadas GPS** exatas (lat/long) | `content/site.ts` → `geo` |
@@ -17,7 +17,7 @@ Tudo o que no site aparece como `[[ ]]` (ou tem um comentário `[[ ]]` no códig
 | # | Pendente | Onde alterar |
 |---|---|---|
 | 6 | ~~16 anos de experiência~~ — **confirmado: experiência do Mário** (já aplicado no site) | — |
-| 7 | **Nota e n.º de avaliações Google** + URL do perfil Google (ficam ocultos no site até serem preenchidos). A 28/10/2026 o perfil mostrava **4,5 ★ (17 avaliações)** — decidir se querem mostrar. | `content/site.ts` → `googleRating`, `googleReviewCount`, `social.google` |
+| 7 | ~~URL do perfil Google~~ — **confirmado (02/11/2026): https://share.google/jpEz8tZRk0MoqBWe9** (já no site: ícone Google no rodapé). Falta a **nota e o n.º de avaliações** — a 28/10/2026 o perfil mostrava 4,5 ★ (17 avaliações); decidir se querem mostrar. | `content/site.ts` → `googleRating`, `googleReviewCount` |
 | 8 | **3 avaliações Google reais** (copiadas com autorização) | `content/reviews.ts` |
 | 9 | ~~URL do Instagram~~ — **instagram.com/fisio_4you** (já no site: botão "Seguir no Instagram", menu e rodapé). Falta confirmar o URL do Facebook | `content/site.ts` → `social` |
 | 10 | ~~Mário: apelido e cargo~~ — **Mário Barroso, CEO e fisioterapeuta** (tirado das entrevistas em vídeo e do polo "FT. Mário Barroso"; já no site). Opcional: versão longa do percurso | `pt.ts`/`en.ts` → `team`, `about.founderLong` |

@@ -14,7 +14,7 @@ export const site = {
   whatsappNumber: "351924098545",
   email: "fisio4youportimao@gmail.com",
   address: {
-    // [[CONFIRMAR — perfis online indicam R. José Mendes Furtado 13-3]]
+    // Confirmada pelo cliente (02/11/2026): é esta, não a do mapa do Google (perfil por atualizar lá).
     street: "Rua Francisco Alvo, loja 11",
     postalCode: "8500-759",
     city: "Portimão",
@@ -31,7 +31,7 @@ export const site = {
   social: {
     instagram: "https://www.instagram.com/fisio_4you/",
     facebook: "https://www.facebook.com/fisio4youportimao/",
-    google: "[[URL do perfil Google]]",
+    google: "https://share.google/jpEz8tZRk0MoqBWe9",
   },
   gtmId: "[[GTM-XXXXXXX]]",
   complaintsBook: "https://www.livroreclamacoes.pt",

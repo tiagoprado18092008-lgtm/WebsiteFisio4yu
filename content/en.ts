@@ -100,7 +100,7 @@ export const en: Dict = {
   home: {
     hero: {
       eyebrow: "Rehabilitation Centre · Portimão",
-      lines: ["Physiotherapy", "made for you."],
+      lines: ["Physiotherapy", "made for you"],
       sub: "Physiotherapy in Portimão for musculoskeletal injuries and postnatal recovery, with ultrasound and a rehabilitation gym on site.",
     },
     stack: {
