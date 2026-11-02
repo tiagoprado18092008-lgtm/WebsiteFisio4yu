@@ -12,7 +12,7 @@ export type Zone = {
   label: string;
   title: string;
   text: string;
-  /** O que acontece em cada fase (avaliação, tratamento, alta). */
+  /** O que acontece em cada fase (avaliação, tratamento, autonomia). */
   steps: string[];
   common: string[];
   /** Zona deste serviço: o WhatsApp com a zona já escrita. */

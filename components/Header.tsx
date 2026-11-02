@@ -1,9 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, Phone, X } from "lucide-react";
+import { ChevronDown, Phone } from "lucide-react";
 import { isPending, site } from "@/content/site";
 import { cn } from "@/lib/cn";
 import { WhatsAppButton } from "./Buttons";
@@ -15,7 +16,7 @@ const social = [
   { url: site.social.facebook, label: "Facebook", Icon: FacebookIcon },
 ].filter((s) => !isPending(s.url));
 
-type NavLink = { label: string; href: string; badge?: string };
+type NavLink = { label: string; href: string; badge?: string; /** Foto da linha no menu mobile. */ photo?: { src: string | null; position?: string } };
 type Props = {
   homeHref: string;
   logo: React.ReactNode;
@@ -133,7 +134,8 @@ export function Header({ homeHref, logo, overlay, logoOverlay, links, lang, labe
   return (
     <header
       ref={ref}
-      className={cn("sticky top-0 z-50 px-2 pb-1 pt-2 md:px-4 md:pt-3", !clear && "bg-[linear-gradient(to_bottom,#fff_55%,rgba(255,255,255,0))]")}
+      // Com o menu aberto fica por cima do aviso de cookies (z-60), que tapava os botões de contacto
+      className={cn("sticky top-0 px-2 pb-1 pt-2 md:px-4 md:pt-3", open ? "z-[70]" : "z-50", !clear && "bg-[linear-gradient(to_bottom,#fff_55%,rgba(255,255,255,0))]")}
     >
       {/* Barra flutuante arredondada; no mobile, ao abrir o menu, estica até ao fundo do ecrã e passa a ser o painel */}
       <div
@@ -232,7 +234,11 @@ export function Header({ homeHref, logo, overlay, logoOverlay, links, lang, labe
               aria-label={open ? labels.close : labels.open}
               onClick={toggle}
             >
-              {open ? <X className="size-6" aria-hidden /> : <Menu className="size-6" strokeWidth={1.75} aria-hidden />}
+              <span aria-hidden className="menu-icon">
+                <span />
+                <span />
+                <span />
+              </span>
             </button>
           </div>
         </div>
@@ -256,13 +262,13 @@ export function Header({ homeHref, logo, overlay, logoOverlay, links, lang, labe
                   aria-current={current(l.href, l === links.services)}
                   onClick={() => setOpen(false)}
                   style={stagger()}
-                  className="menu-row group flex min-h-[60px] items-center [@media(max-height:700px)]:min-h-[52px] justify-between gap-4 font-display text-[1.75rem] leading-none tracking-[-0.02em] text-ink transition-colors active:text-teal-strong aria-[current=page]:text-teal-strong"
+                  className="menu-row group flex min-h-[clamp(50px,7.6dvh,64px)] items-center justify-between gap-4 font-display text-[1.75rem] leading-none tracking-[-0.02em] text-ink transition-colors active:text-teal-strong aria-[current=page]:text-teal-strong [@media(max-height:620px)]:text-2xl"
                 >
                   {l.label}
                   {currentDot}
                 </Link>
                 {l === links.services && (
-                  <ul className="-mt-1 mb-4 ml-0.5 border-l border-line pl-4">
+                  <ul className="-mx-1.5 -mt-1 mb-3 grid gap-1 sm:grid-cols-2">
                     {links.services.children.map((c) => (
                       <li key={c.href}>
                         <Link
@@ -270,9 +276,15 @@ export function Header({ homeHref, logo, overlay, logoOverlay, links, lang, labe
                           aria-current={current(c.href)}
                           onClick={() => setOpen(false)}
                           style={stagger()}
-                          className="menu-row group flex min-h-11 items-center justify-between gap-4 py-2 text-base font-medium leading-snug text-grey transition-colors active:text-teal-strong aria-[current=page]:text-teal-strong"
+                          className="menu-row group flex items-center gap-3 rounded-2xl p-1.5 text-[15px] font-medium leading-snug text-ink transition-colors hover:bg-mist active:bg-mist active:text-teal-strong aria-[current=page]:text-teal-strong"
                         >
-                          {c.label}
+                          {c.photo?.src && (
+                            // Sempre mais larga do que alta: no recorte 5:4 os rostos do mural ficam de fora
+                            <span className="relative aspect-[5/4] w-[72px] shrink-0 overflow-hidden rounded-xl bg-mist [@media(max-height:700px)]:w-14">
+                              <Image src={c.photo.src} alt="" fill sizes="72px" className="object-cover" style={{ objectPosition: c.photo.position }} />
+                            </span>
+                          )}
+                          <span className="min-w-0 flex-1">{c.label}</span>
                           {currentDot}
                         </Link>
                       </li>
@@ -283,8 +295,8 @@ export function Header({ homeHref, logo, overlay, logoOverlay, links, lang, labe
             ))}
           </ul>
           {/* Email e redes no espaço livre (some em ecrãs baixos); os botões ficam presos ao fundo, ao alcance do polegar */}
-          <div style={stagger()} className="menu-row mt-auto flex items-center justify-between gap-4 px-5 pb-3 pt-8 [@media(max-height:700px)]:hidden">
-            <a href={`mailto:${site.email}`} className="inline-flex min-h-11 min-w-0 items-center text-sm text-grey hover:text-teal-dark">
+          <div style={stagger()} className="menu-row mt-auto flex items-center justify-between gap-4 px-5 pb-2 pt-4 [@media(max-height:620px)]:hidden">
+            <a href={`mailto:${site.email}`} className="inline-flex min-h-11 min-w-0 items-center text-[13px] text-grey hover:text-teal-dark">
               <span className="truncate">{site.email}</span>
             </a>
             {social.length > 0 && (
@@ -296,9 +308,10 @@ export function Header({ homeHref, logo, overlay, logoOverlay, links, lang, labe
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`${label} ${labels.newWindow}`}
-                      className="flex size-11 items-center justify-center rounded-full border border-line bg-white text-teal-dark hover:border-teal hover:text-teal"
+                      // Círculo de 36 px com área de toque de 44 px
+                      className="relative flex size-9 items-center justify-center rounded-full border border-line bg-white text-teal-dark after:absolute after:-inset-1 hover:border-teal hover:text-teal"
                     >
-                      <Icon className="size-5" />
+                      <Icon className="size-[18px]" />
                     </a>
                   </li>
                 ))}
@@ -307,19 +320,19 @@ export function Header({ homeHref, logo, overlay, logoOverlay, links, lang, labe
           </div>
           <div
             style={stagger()}
-            className="menu-row grid gap-2 border-t border-line bg-mist/60 px-4 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-4 [@media(max-height:700px)]:mt-auto"
+            className="menu-row grid gap-1.5 border-t border-line bg-mist/60 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 [@media(max-height:620px)]:mt-auto"
           >
-            <WhatsAppButton message={waMessage} location="menu-mobile" label={labels.book} className="w-full" />
+            <WhatsAppButton message={waMessage} location="menu-mobile" label={labels.book} className="min-h-11! w-full gap-2! py-2! text-sm! [&>svg]:size-[18px]" />
             <a
               href={site.phoneHref}
               data-track="phone"
               data-location="menu-mobile"
-              className="flex min-h-12 items-center justify-center gap-2 rounded-[var(--radius-btn)] border border-teal-dark/25 bg-white text-[15px] font-semibold text-teal-dark"
+              className="flex min-h-11 items-center justify-center gap-2 rounded-[var(--radius-btn)] border border-teal-dark/25 bg-white text-sm font-semibold text-teal-dark"
             >
-              <Phone className="size-[18px]" aria-hidden />
+              <Phone className="size-4" aria-hidden />
               {labels.phone}
             </a>
-            <p className="text-center text-xs text-grey">{labels.phoneNote}</p>
+            <p className="text-center text-[11px] leading-tight text-grey">{labels.phoneNote}</p>
           </div>
         </nav>
       </div>

@@ -18,14 +18,14 @@ export function ServiceRow({ locale, mediaId, title, text, href, cta, includesLa
   reverse?: boolean;
 }) {
   return (
-    <article className="grid items-center gap-8 md:grid-cols-2 md:gap-14 lg:gap-20">
+    <article className="card-hover grid items-center gap-8 md:grid-cols-2 md:gap-14 lg:gap-20">
       {/* Em desktop a foto fica 5:4: em retrato, a coluna da imagem ficava muito mais alta do que o texto ao lado */}
-      <Link href={href} tabIndex={-1} aria-hidden className={cn("block overflow-hidden rounded-[var(--radius-img)] md:[&>div]:aspect-[5/4]!", reverse && "md:order-last")}>
-        <Media id={mediaId} locale={locale} compact sizes="(min-width: 768px) 50vw, 100vw" className="transition-transform duration-700 hover:scale-[1.02]" />
+      <Link href={href} tabIndex={-1} aria-hidden className={cn("card-photo block overflow-hidden rounded-[var(--radius-img)] md:[&>div]:aspect-[5/4]!", reverse && "md:order-last")}>
+        <Media id={mediaId} locale={locale} compact sizes="(min-width: 768px) 50vw, 100vw" />
       </Link>
       <div>
         <h3 className="t-h2">
-          <Link href={href} className="hover:text-teal-dark">
+          <Link href={href} className="card-title">
             {title}
           </Link>
         </h3>
@@ -84,12 +84,14 @@ export function TeamMember({ locale, mediaId, name, role, focus }: {
   locale: Locale; mediaId: string; name: string; role: string; focus: string;
 }) {
   return (
-    <figure className="grid h-full gap-6 rounded-[30px] bg-white p-5 shadow-[0_18px_40px_-30px_rgba(14,76,87,.45)] ring-1 ring-line sm:grid-cols-[minmax(0,180px)_1fr] sm:items-center sm:p-6 xl:grid-cols-[minmax(0,210px)_1fr]">
-      <div className="w-full max-w-[260px] overflow-hidden rounded-[22px]">
+    <figure className="card-hover card-lift grid h-full gap-6 rounded-[30px] bg-white p-5 shadow-[0_18px_40px_-30px_rgba(14,76,87,.45)] ring-1 ring-line sm:grid-cols-[minmax(0,180px)_1fr] sm:items-center sm:p-6 xl:grid-cols-[minmax(0,210px)_1fr]">
+      <div className="card-photo w-full max-w-[260px] overflow-hidden rounded-[22px]">
         <Media id={mediaId} locale={locale} compact sizes="(min-width: 640px) 210px, 260px" />
       </div>
       <figcaption>
-        <p className="font-display text-2xl font-medium leading-tight tracking-tight md:text-[28px]">{name}</p>
+        <p className="font-display text-2xl font-medium leading-tight tracking-tight md:text-[28px]">
+          <span className="card-title">{name}</span>
+        </p>
         <p className="mt-1.5 text-[15px] font-medium text-teal-strong">{role}</p>
         <p className="mt-4 leading-relaxed text-grey">{focus}</p>
       </figcaption>

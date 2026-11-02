@@ -11,7 +11,7 @@ type Props = { waMessage: string; callLabel: string; waLabel: string; chat: Dict
 export function StickyMobileBar({ waMessage, callLabel, waLabel, chat }: Props) {
   return (
     <>
-      <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 gap-2 border-t border-line bg-white/95 p-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] backdrop-blur md:hidden">
+      <div className="mobile-bar fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 gap-2 border-t border-line bg-white/95 p-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] backdrop-blur md:hidden">
         <a
           href={site.phoneHref}
           data-track="phone"

@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { ArrowRight, Plus } from "lucide-react";
+import { ArrowRight, Check, Plus } from "lucide-react";
 import { getDict } from "@/content";
-import { videoFor } from "@/content/media";
+import type { ServiceChapter, ServiceModule } from "@/content/pt";
 import { href, serviceKeys, type Locale, type ServiceKey } from "@/lib/routes";
 import { waLink, waMessages } from "@/lib/whatsapp";
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from "@/lib/seo";
@@ -11,10 +11,10 @@ import { Media } from "../Media";
 import { btn, WhatsAppButton } from "../Buttons";
 import { WhatsAppIcon } from "../Icon";
 import { JsonLd } from "../JsonLd";
-import { VideoButton } from "../VideoCard";
 import { DiastasisExplorer } from "../DiastasisExplorer";
 import { RevealOnScroll } from "../RevealOnScroll";
 import { ServiceAreas } from "../ServiceAreas";
+import { ChapterBlock, RecoveryPanel, ServiceAbout } from "../ServiceChapters";
 import { ZoneGuide, type Zone } from "../ZoneGuide";
 
 type Row = { main: string; sub: string; action?: { href: string; label: string; wa?: string } };
@@ -52,11 +52,11 @@ function ConditionRow({ row }: { row: Row }) {
 const stairs = ["lg:col-start-1", "lg:col-start-3", "lg:col-start-5", "lg:col-start-7"];
 
 /**
- * Página de cada serviço, curta e feita de fotos dos tratamentos:
- * o nome em cartaz e uma frase → uma foto do serviço, larga → (musculoesquelética) o tratamento zona a zona · (dermatofuncional) as situações →
- * (com `page.areas`) as duas áreas da clínica em painéis com foto → (musculoesquelética) os três recursos, só com foto, nome e uma linha · (dermatofuncional) o esquema da diástase →
- * o percurso em quatro frases → quem acompanha → perguntas fechadas →
- * o outro serviço.
+ * Página de cada serviço, completa e feita de fotos dos tratamentos:
+ * o nome em cartaz e uma frase → uma foto do serviço, larga → o que é o serviço →
+ * (musculoesquelética) o tratamento zona a zona · (dermatofuncional) as situações e o esquema da diástase →
+ * (com `page.areas`) as duas áreas da clínica em painéis com foto → os capítulos do serviço (a crioterapia num painel teal) →
+ * o percurso em quatro frases → quem acompanha → perguntas fechadas → o outro serviço.
  */
 export function ServicePage({ locale, service }: { locale: Locale; service: ServiceKey }) {
   const t = getDict(locale);
@@ -72,12 +72,13 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
     { name: s.name, href: url },
   ];
   const specialist = t.team.find((m) => m.media === s.specialist);
-  const modules = s.modules ?? [];
-  const videoLabels = { play: t.common.watchVideo, close: t.common.close };
+  const chapters: (ServiceChapter | ServiceModule)[] = p.chapters ?? s.modules?.filter((m) => !m.noChapter) ?? [];
   const conditionsTitle = s.forWho.title.split(" ");
-  // Tons alternados: o percurso fica claro quando vem a seguir ao esquema da diástase (mist)
-  const stepsTone = s.explainer ? "bg-white" : "bg-mist";
-  const personTone = s.explainer ? "bg-mist" : "bg-white";
+  // Índice do topo: os capítulos, pela ordem da página (a diástase vem antes deles)
+  const links = [
+    ...(s.explainer ? [{ href: "#diastase", label: s.explainer.nav }] : []),
+    ...chapters.map((c) => ({ href: `#${c.id}`, label: c.nav })),
+  ];
 
   // Musculoesquelética: o tratamento por zona do corpo; cada zona abre o WhatsApp, e a de outro serviço leva à página dele
   const bm = t.home.bodyMap;
@@ -184,6 +185,15 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
         )}
       </section>
 
+      <ServiceAbout
+        statement={p.about.statement}
+        text={p.about.text}
+        listTitle={p.about.listTitle}
+        list={p.about.list ?? s.forWho.items}
+        links={links}
+        linksLabel={sp.onThisPage}
+      />
+
       {/* Situações. Com o mapa do corpo (musculoesquelética): o tratamento zona a zona, numa faixa mist, com o título e
           a introdução por cima. Com foto (dermatofuncional): a foto à esquerda, da altura do bloco, e à direita o título
           e a tabela das situações; em telemóvel, título → foto → tabela. */}
@@ -251,38 +261,7 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
         </section>
       )}
 
-      {/* Musculoesquelética: os três recursos, cada um com a sua foto, o nome e uma linha */}
-      {s.includes && modules.length > 0 && (
-        <section id="espaco" aria-labelledby="espaco-title" className="bg-white pb-24 md:pb-36">
-          <div className="container-x">
-            <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-x-6">
-              <h2 id="espaco-title" data-reveal className="t-display lg:col-span-6">
-                {s.includes.title}
-              </h2>
-              <p data-reveal className="max-w-[38ch] text-lg leading-relaxed text-ink lg:col-span-4 lg:col-start-9">
-                {s.includes.intro}
-              </p>
-            </div>
-            <div className="mt-12 grid gap-12 sm:grid-cols-3 sm:gap-6 md:mt-16 lg:gap-x-8">
-              {modules.map((m, i) => (
-                <article key={m.id} id={m.id} aria-labelledby={`${m.id}-title`} data-reveal style={{ "--d": i } as React.CSSProperties}>
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-[var(--radius-img)] bg-ice sm:aspect-[4/5]">
-                    <Media id={m.mediaId} locale={locale} cover sizes="(min-width: 640px) 33vw, 100vw" />
-                  </div>
-                  <h3 id={`${m.id}-title`} className="t-statement mt-6">
-                    {m.title}
-                  </h3>
-                  <p className="mt-2 leading-relaxed text-grey">{m.summary}</p>
-                  {m.note && <p className="mt-3 text-[15px] leading-relaxed text-muted">{m.note}</p>}
-                  {m.video && <VideoButton className="mt-5" video={videoFor(m.video, locale)} label={videoFor(m.video, locale).name} labels={videoLabels} />}
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Dermatofuncional: o esquema da diástase por fases */}
+      {/* Dermatofuncional: o esquema da diástase por fases e, por baixo, como é avaliada */}
       {s.explainer && (
         <section id="diastase" aria-labelledby="diastase-title" className="bg-mist py-24 md:py-36">
           <div className="container-x">
@@ -299,35 +278,93 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
                 </div>
               }
             />
+            <div data-reveal className="mt-16 md:mt-24">
+              <h3 className="t-statement">{s.explainer.assessTitle}</h3>
+              <ul className="mt-8 grid gap-6 md:grid-cols-3 md:gap-8">
+                {s.explainer.assess.map((a) => (
+                  <li key={a} className="flex gap-3">
+                    <Check aria-hidden className="mt-1 size-5 shrink-0 text-teal" strokeWidth={2.25} />
+                    <p className="leading-relaxed text-ink">{a}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
       )}
 
-      {/* Percurso: uma frase por fase, em escada, com uma linha de explicação */}
-      <section id="como-funciona" aria-labelledby="percurso-title" className={cn("py-24 md:py-36", stepsTone)}>
+      {/* Os capítulos do serviço: foto e texto, com os lados a alternar; o capítulo com `panel` (a crioterapia) vai num painel teal */}
+      {s.includes && chapters.length > 0 && (
+        <section id="espaco" aria-labelledby="espaco-title" className={cn("bg-white pb-24 md:pb-36", s.explainer && "pt-24 md:pt-36")}>
+          <div className="container-x">
+            <h2 id="espaco-title" data-reveal className="t-statement text-muted">
+              {s.includes.title}
+            </h2>
+            <p data-reveal className="mt-3 max-w-[52ch] leading-relaxed text-grey">
+              {s.includes.intro}
+            </p>
+            <div className="mt-12 space-y-24 md:mt-20 md:space-y-36">
+              {chapters.map((c, i) =>
+                "panel" in c && c.panel ? (
+                  <RecoveryPanel key={c.id} module={c} locale={locale} waMessage={msg.service(c.panel.waTopic)} waLocation={`servico-${service}-${c.id}`} />
+                ) : (
+                  <ChapterBlock key={c.id} chapter={c} locale={locale} flip={i % 2 === 1} />
+                ),
+              )}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Percurso: uma frase por fase, em escada, com a explicação e o que inclui; a duração fica no canto livre da escada */}
+      <section id="como-funciona" aria-labelledby="percurso-title" className="bg-mist py-24 md:py-36">
         <div className="container-x">
           <h2 id="percurso-title" data-reveal className="t-statement text-muted">
             {s.how.title}
           </h2>
-          <ol className="mt-12 grid gap-12 md:mt-20 md:gap-14 lg:grid-cols-12 lg:gap-x-6">
-            {s.how.steps.map((st, i) => (
-              <li
-                key={st.title}
-                data-reveal
-                style={{ "--d": i, paddingInlineStart: `calc(${i} * 6vw)` } as React.CSSProperties}
-                className={cn("lg:col-end-13 lg:!ps-0", stairs[i])}
-              >
-                <h3 className={cn("t-display", i === s.how.steps.length - 1 && "text-teal-strong")}>{st.line}</h3>
-                <p className="mt-3 max-w-[38ch] leading-relaxed text-grey">{st.text}</p>
-              </li>
-            ))}
-          </ol>
+          {s.how.intro && (
+            <p data-reveal className="mt-3 max-w-[52ch] leading-relaxed text-grey">
+              {s.how.intro}
+            </p>
+          )}
+          <div className="mt-12 grid gap-12 md:mt-20 md:gap-14 lg:grid-cols-12 lg:gap-x-6">
+            <ol className="contents">
+              {s.how.steps.map((st, i) => (
+                <li
+                  key={st.title}
+                  data-reveal
+                  style={{ "--d": i, paddingInlineStart: `calc(${i} * 6vw)` } as React.CSSProperties}
+                  className={cn("lg:col-end-13 lg:!ps-0", stairs[i])}
+                >
+                  <h3 className={cn("t-display", i === s.how.steps.length - 1 && "text-teal-strong")}>{st.line}</h3>
+                  {st.details ? (
+                    <ul className="mt-4 max-w-[46ch] space-y-2">
+                      {st.details.map((d) => (
+                        <li key={d} className="flex gap-3 text-lg leading-relaxed text-ink">
+                          <Check aria-hidden className="mt-1.5 size-[18px] shrink-0 text-teal" strokeWidth={2.25} />
+                          {d}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="mt-3 max-w-[42ch] text-lg leading-relaxed text-ink">{st.text}</p>
+                  )}
+                </li>
+              ))}
+            </ol>
+            {s.duration.text && (
+              <div data-reveal className="lg:col-span-5 lg:col-start-1 lg:row-start-4 lg:self-end">
+                <h3 className="t-h3">{s.duration.title}</h3>
+                <p className="mt-2 max-w-[42ch] leading-relaxed text-grey">{s.duration.text}</p>
+              </div>
+            )}
+          </div>
         </div>
       </section>
 
       {/* Quem acompanha: o retrato grande e, ao lado, o nome e uma frase */}
       {specialist && (
-        <section id="fisioterapeuta" aria-labelledby="pessoa-title" className={cn("py-24 md:py-36", personTone)}>
+        <section id="fisioterapeuta" aria-labelledby="pessoa-title" className="bg-white py-24 md:py-36">
           <div className="container-x grid items-center gap-10 sm:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:grid-cols-12 lg:gap-x-6">
             <div data-reveal className="relative aspect-[4/5] w-[75%] overflow-hidden rounded-[var(--radius-img)] bg-ice sm:w-full lg:col-span-4 lg:col-start-2">
               <Media id={specialist.media} locale={locale} cover sizes="(min-width: 1024px) 30vw, (min-width: 640px) 40vw, 75vw" />
@@ -382,36 +419,37 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
             const r = t.services[k];
             const a = sp.areas.items[k];
             return (
-              <Link
-                key={k}
-                href={href(locale, `service:${k}`)}
-                data-reveal
-                className="on-dark group mt-8 grid overflow-hidden rounded-[var(--radius-img)] bg-panel text-white md:mt-10 md:grid-cols-12"
-              >
-                <div className="relative aspect-[4/5] overflow-hidden md:order-2 md:col-span-5 md:aspect-auto md:min-h-[30rem] lg:min-h-[40rem]">
-                  <div className="absolute inset-0 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03] motion-reduce:transition-none">
+              // `data-reveal` num invólucro: no próprio cartão, a transição da entrada ganharia à de levantar
+              <div key={k} data-reveal className="mt-8 md:mt-10">
+                <Link
+                  href={href(locale, `service:${k}`)}
+                  className="on-dark card-hover card-lift group grid overflow-hidden rounded-[var(--radius-img)] bg-panel text-white md:grid-cols-12"
+                >
+                  <div className="card-photo relative aspect-[4/5] overflow-hidden md:order-2 md:col-span-5 md:aspect-auto md:min-h-[30rem] lg:min-h-[40rem]">
                     <Media id={r.page.relatedPhoto} locale={locale} cover quality={90} sizes="(min-width: 1480px) 580px, (min-width: 768px) 42vw, 100vw" />
                   </div>
-                </div>
-                <div className="flex flex-col justify-end p-6 md:col-span-7 md:p-10 lg:p-12">
-                  <h3 className="font-display text-[clamp(2rem,1.2rem+2vw,3rem)] leading-[1.02] tracking-[-0.03em]">{r.name}</h3>
-                  <p className="mt-5 max-w-[34ch] text-lg leading-relaxed text-white/90">{a.what}</p>
-                  <ul className="mt-6 flex flex-wrap gap-2">
-                    {a.treats.map((item) => (
-                      <li key={item} className="rounded-full bg-white/15 px-3.5 py-1.5 text-[15px]">
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-                    <span className={cn(btn.onPanel, "group-hover:bg-white group-hover:text-teal-dark")}>
-                      {sp.seeService}
-                      <ArrowRight aria-hidden className="size-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
-                    </span>
-                    <span className="text-[15px] text-white/85">{a.by}</span>
+                  <div className="flex flex-col justify-end p-6 md:col-span-7 md:p-10 lg:p-12">
+                    <h3 className="font-display text-[clamp(2rem,1.2rem+2vw,3rem)] leading-[1.02] tracking-[-0.03em]">
+                      <span className="card-title">{r.name}</span>
+                    </h3>
+                    <p className="mt-5 max-w-[34ch] text-lg leading-relaxed text-white/90">{a.what}</p>
+                    <ul className="mt-6 flex flex-wrap gap-2">
+                      {a.treats.map((item) => (
+                        <li key={item} className="rounded-full bg-white/15 px-3.5 py-1.5 text-[15px]">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+                      <span className={cn(btn.onPanel, "group-hover:bg-white group-hover:text-teal-dark")}>
+                        {sp.seeService}
+                        <ArrowRight aria-hidden className="size-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
+                      </span>
+                      <span className="text-[15px] text-white/85">{a.by}</span>
+                    </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </div>
             );
           })}
         </div>

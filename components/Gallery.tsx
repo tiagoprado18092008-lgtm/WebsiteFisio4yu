@@ -12,7 +12,7 @@ type Item = { id: string; thumb: React.ReactNode; full: React.ReactNode; alt: st
 // abaixo de lg, dois por linha a 60/40 e depois 40/60, para os recortes continuarem desiguais.
 const grow = [4, 2, 3, 2];
 const crop = "group relative block w-full overflow-hidden rounded-[var(--radius-img)]";
-const zoom = "absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.03] motion-reduce:transition-none";
+const zoom = "absolute inset-0 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06] motion-reduce:transition-none";
 
 /** Instalações com lightbox acessível (teclado: ← → Esc). `intro` fica à esquerda da primeira foto;
  *  as restantes formam uma faixa de painéis desiguais por baixo. */

@@ -195,6 +195,24 @@ const items: MediaItem[] = [
     // Foto alta (9:16): o recorte assenta em baixo, na banheira, com um pouco da luz azul do teto
     position: "50% 80%",
   },
+  // Capítulos das páginas de serviço
+  {
+    id: "manual-therapy",
+    type: "image",
+    src: photo.manualTherapy,
+    ratio: "4/5",
+    alt: { pt: "Mário Barroso a fazer terapia manual na perna de um utente", en: "Mário Barroso giving manual therapy to a patient's leg" },
+    brief: "Terapia manual na musculoesquelética (IMG_7612).",
+    position: "50% 60%",
+  },
+  {
+    id: "dermato-tools",
+    type: "image",
+    src: "/media/tratamentos/instrumentos-madeira.webp",
+    ratio: "4/5",
+    alt: { pt: "Angela Brazona a mostrar instrumentos de massagem em madeira, em primeiro plano", en: "Angela Brazona showing wooden massage tools, in the foreground" },
+    brief: "Cicatrizes na dermatofuncional: os instrumentos em primeiro plano (IMG_7656). Trocar por uma foto de tratamento quando houver.",
+  },
   // Páginas de serviço: só fotos de tratamentos (a pedido do cliente, nada de fotos do ginásio no topo). Sem foto
   // dentro do título (saiu a pedido do cliente); a foto larga logo abaixo do título é a 2:1.
   {

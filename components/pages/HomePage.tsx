@@ -36,7 +36,7 @@ export function HomePage({ locale }: { locale: Locale }) {
   const msk = t.services.msk;
   const dermato = t.services.dermato;
   const hubItems: { icon: PictogramName; label: string; href: string }[] = [
-    { icon: "eco", label: h.hub.items.eco, href: href(locale, "service:msk", "ecografia") },
+    { icon: "eco", label: h.hub.items.eco, href: href(locale, "service:msk") },
     { icon: "gym", label: h.hub.items.gym, href: href(locale, "service:msk", "ginasio") },
     { icon: "ice", label: h.hub.items.ice, href: href(locale, "service:msk", "recuperacao") },
     { icon: "postnatal", label: h.hub.items.postnatal, href: href(locale, "service:dermato") },
@@ -119,10 +119,10 @@ export function HomePage({ locale }: { locale: Locale }) {
                 <li key={it.icon}>
                   <Link
                     href={it.href}
-                    className="group flex aspect-square flex-col items-center justify-center gap-4 rounded-[24px] bg-white p-4 text-center shadow-[0_14px_30px_-20px_rgba(14,76,87,.45)] ring-1 ring-line/70 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_22px_40px_-22px_rgba(14,76,87,.55)] sm:max-h-[230px] sm:aspect-auto sm:h-[clamp(170px,17vw,230px)]"
+                    className="card-hover card-lift group flex aspect-square flex-col items-center justify-center gap-4 rounded-[24px] bg-white p-4 text-center shadow-[0_14px_30px_-20px_rgba(14,76,87,.45)] ring-1 ring-line/70 sm:max-h-[230px] sm:aspect-auto sm:h-[clamp(170px,17vw,230px)]"
                   >
-                    <Pictogram name={it.icon} className="size-16 text-teal-dark transition-colors group-hover:text-teal-strong sm:size-20 lg:size-24" />
-                    <span className="text-[15px] font-semibold leading-snug text-ink">{it.label}</span>
+                    <Pictogram name={it.icon} className="card-icon size-16 text-teal-dark group-hover:text-teal-strong sm:size-20 lg:size-24" />
+                    <span className="card-title text-[15px] font-semibold leading-snug text-ink">{it.label}</span>
                   </Link>
                 </li>
               ))}
@@ -144,7 +144,7 @@ export function HomePage({ locale }: { locale: Locale }) {
               text: msk.short,
               media: msk.mediaId,
               href: href(locale, "service:msk"),
-              modules: (msk.modules ?? []).map((m) => ({ title: m.title, summary: m.summary, href: href(locale, "service:msk", m.id) })),
+              modules: (msk.modules ?? []).map((m) => ({ title: m.title, summary: m.summary, href: href(locale, "service:msk", m.noChapter ? undefined : m.id) })),
             }}
             second={{
               title: dermato.name,
@@ -198,7 +198,7 @@ export function HomePage({ locale }: { locale: Locale }) {
               </h2>
               <div className="grid w-full max-w-2xl grid-cols-2 items-start gap-3 sm:gap-4 lg:max-w-none xl:col-start-1">
                 <figure>
-                  <div className="relative aspect-[4/5] overflow-hidden rounded-[22px] shadow-[0_24px_50px_-28px_rgba(6,40,46,.6)]">
+                  <div className="card-photo relative aspect-[4/5] overflow-hidden rounded-[22px] shadow-[0_24px_50px_-28px_rgba(6,40,46,.6)]">
                     <Media id="athletes" locale={locale} cover sizes="(min-width: 1024px) 22vw, 48vw" />
                   </div>
                   <figcaption className="mt-3 text-sm">{h.reviews.photoCaption}</figcaption>

@@ -20,11 +20,13 @@ export function ServiceDuo({ locale, lead, second, more, includesLabel }: { loca
   const cta = "mt-8 inline-flex min-h-11 items-center self-start rounded-full px-5 text-[15px] font-semibold transition-colors";
   return (
     <div className="grid gap-5 lg:grid-cols-[1.35fr_1fr]">
-      <article className="on-dark flex flex-col rounded-[30px] bg-panel p-6 text-white md:p-10">
-        <div className="relative aspect-[16/9] overflow-hidden rounded-[20px]">
+      <article className="on-dark card-hover card-lift flex flex-col rounded-[30px] bg-panel p-6 text-white md:p-10">
+        <div className="card-photo relative aspect-[16/9] overflow-hidden rounded-[20px]">
           <Media id={lead.media} locale={locale} cover compact sizes="(min-width: 1024px) 50vw, 100vw" />
         </div>
-        <h3 className="t-h2 mt-8">{lead.title}</h3>
+        <h3 className="t-h2 mt-8">
+          <span className="card-title">{lead.title}</span>
+        </h3>
         <p className="mt-4 max-w-xl text-lg leading-relaxed text-white/90">{lead.text}</p>
         <p className="mt-8 text-sm font-semibold text-white/80">{includesLabel}</p>
         <ul className="mt-2 divide-y divide-white/20 border-y border-white/20">
@@ -43,11 +45,13 @@ export function ServiceDuo({ locale, lead, second, more, includesLabel }: { loca
         </Link>
       </article>
 
-      <article className="flex flex-col rounded-[30px] bg-mist p-6 text-ink md:p-10">
-        <div className="relative aspect-[16/9] overflow-hidden rounded-[20px] lg:aspect-[4/3]">
+      <article className="card-hover card-lift flex flex-col rounded-[30px] bg-mist p-6 text-ink md:p-10">
+        <div className="card-photo relative aspect-[16/9] overflow-hidden rounded-[20px] lg:aspect-[4/3]">
           <Media id={second.media} locale={locale} cover compact sizes="(min-width: 1024px) 40vw, 100vw" />
         </div>
-        <h3 className="t-h2 mt-8">{second.title}</h3>
+        <h3 className="t-h2 mt-8">
+          <span className="card-title">{second.title}</span>
+        </h3>
         <p className="mt-4 max-w-xl text-lg leading-relaxed text-grey">{second.text}</p>
         <ul className="mt-8 space-y-2.5">
           {second.points.map((p) => (

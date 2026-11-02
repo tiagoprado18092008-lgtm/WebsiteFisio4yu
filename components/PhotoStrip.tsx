@@ -13,7 +13,7 @@ export function PhotoStrip({ photos, labels }: { photos: Photo[]; labels: { paus
   const list = (copy?: boolean) => (
     <ul aria-hidden={copy || undefined} className={cn("flex shrink-0 gap-3 pr-3", copy && "marquee-copy")}>
       {photos.map((p) => (
-        <li key={p.id} className="relative aspect-[3/4] w-[clamp(200px,19vw,340px)] shrink-0 overflow-hidden rounded-[22px] bg-mist">
+        <li key={p.id} className="card-photo relative aspect-[3/4] w-[clamp(200px,19vw,340px)] shrink-0 overflow-hidden rounded-[22px] bg-mist">
           {p.node}
         </li>
       ))}

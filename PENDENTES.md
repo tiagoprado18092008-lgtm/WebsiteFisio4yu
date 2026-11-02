@@ -30,7 +30,7 @@ Tudo o que no site aparece como `[[ ]]` (ou tem um comentário `[[ ]]` no códig
 | 17 | **Precisa de prescrição médica?** (FAQ Musculoesquelética) | `services.msk.faq[0]` |
 | 18 | **Pós-parto:** validar resposta "Quando posso começar?" | `services.dermato.faq[0]` |
 | 19 | **Ginásio:** pode ser usado sem fisioterapia? | `services.msk.faq[6]` |
-| 20 | **Crioterapia/sauna:** sessões avulsas? Só uma das duas? Duração e preços | `services.msk.modules[2]`, `duration`, `faq[6]` |
+| 20 | **Crioterapia/sauna:** sessões avulsas? Só uma das duas? Duração e preços | `services.msk.modules[3]`, `duration`, `faq[6]` |
 | 21 | **Duração das sessões e preços** (mostrar ou não) | `duration.text` de cada serviço |
 | 22 | **Estacionamento, referência de localização e acessibilidade** | `ctaFinal.directions.text`, `contact.access` |
 | 23 | **Seguros/subsistemas:** remover ou atualizar a linha quando houver acordos | `home.insurance` |
@@ -47,12 +47,25 @@ Tudo o que no site aparece como `[[ ]]` (ou tem um comentário `[[ ]]` no códig
 | 34 | **Cargo:** os dois aparecem como "Fisioterapeuta e CEO" (como nas entrevistas). Preferem outra designação (ex.: sócio-gerente, direção clínica) ou só "Fisioterapeuta"? | `team[].role` |
 | 35 | **Divisão das áreas:** o site diz que a musculoesquelética "é a área de Mário Barroso" e a dermatofuncional "é a área de Angela Brazona" (home, páginas de serviço). Confirmar (liga-se ao #30) | `home.featured.intro`, `services.*.distinct.text` |
 | 36 | **Gravidez:** o perfil da Angela refere acompanhamento durante a gravidez (dito no vídeo), mas a página do serviço só fala do pós-parto. Há acompanhamento na gravidez? Se sim, acrescentar ao serviço | `team[1].focus`, `services.dermato` |
-| 37 | **Pressoterapia:** aparece numa foto da faixa da home e no vídeo "Circuito de recuperação", mas não está descrita como serviço. Querem mencioná-la? | `services.msk.modules[2]` |
-| 38 | **Processo clínico:** as fases de cada serviço (avaliação → plano → tratamento e exercício → alta) e os princípios da página Sobre ("Avaliação antes do tratamento", "Exercício supervisionado", "Reavaliação regular") descrevem a prática habitual. Confirmar que correspondem ao que fazem | `services.*.how`, `about.values` |
-| 39 | **Exercício supervisionado "por fisioterapeutas":** além do Mário e da Angela, há outros profissionais no ginásio? | `services.msk.modules[1].text` |
+| 37 | ~~Pressoterapia~~ — **já descrita na página da musculoesquelética** (painel da crioterapia), porque aparece na foto da home, no vídeo "Circuito de recuperação" e na página Sobre. Validar a descrição (ver #43) | `services.msk.modules[3].points` |
+| 38 | **Processo clínico:** as fases de cada serviço (avaliação → plano → tratamento e exercício → autonomia) e os princípios da página Sobre ("Avaliação antes do tratamento", "Exercício supervisionado", "Reavaliação regular") descrevem a prática habitual. Confirmar que correspondem ao que fazem | `services.*.how`, `about.values` |
+| 39 | **Exercício supervisionado "por fisioterapeutas":** além do Mário e da Angela, há outros profissionais no ginásio? | `services.msk.modules[2].text` |
 | 40 | **Avaliações Google e publicidade em saúde:** uma das avaliações publicadas diz "A melhor clínica de fisioterapia de Portimão". O texto é da utente e não foi alterado, mas convém confirmar que a utilização de testemunhos cumpre as regras de publicidade em saúde (ERS) | `content/reviews.ts` |
 | 41 | **Perguntas escondidas até haver resposta:** "Preciso de prescrição médica?" (#17) e "Posso usar o ginásio, a banheira de gelo ou a sauna sem fazer fisioterapia?" (#19) deixaram de aparecer: a resposta pública era apenas "fale connosco". Voltam a aparecer quando a resposta for escrita | `services.msk.faq[0]`, `faq[6]` |
 | 42 | **Seguros:** a frase passou a "De momento, a Fisio4you não tem acordos com seguradoras nem com subsistemas de saúde." Se preferirem anunciar que estão em negociação, confirmar a redação (liga-se ao #23) | `home.insurance` |
+
+### Páginas de serviço mais completas (02/11/2026): pontos a validar
+
+| # | Pendente | Onde alterar |
+|---|---|---|
+| 43 | **Crioterapia, texto novo (já publicado, a validar com o Mário):** a descrição, "os estudos apontam para menos dor muscular e menor sensação de fadiga", as três fases da sessão, "Quando pode ser indicada" e a descrição da pressoterapia | `services.msk.modules[3]` |
+| 44 | **Crioterapia, em falta:** temperatura da água e duração da imersão (não publicadas; entram na fase "Durante" quando confirmadas) | `services.msk.modules[3].panel.session[1]` |
+| 45 | **Foto da pressoterapia:** o utente aparece reconhecível no painel da crioterapia. **Confirmar que há consentimento** para o uso no site | `content/media.ts` → `strip-pressotherapy` |
+| 46 | **Terapia manual, capítulo novo (a validar com o Mário):** descrição e as três técnicas | `services.msk.modules[1]` |
+| 47 | **Dermatofuncional, capítulos novos (a validar com a Angela):** "Recuperação pós-parto", "Cicatrizes e aderências" e "Ecografia e exercício orientado" | `services.dermato.page.chapters` |
+| 48 | **Instrumentos em madeira:** a Angela aparece com eles nas fotos, mas o site não diz para que servem. É maderoterapia? Em que casos a usa? Se fizer parte do serviço, acrescentar | `services.dermato.page.chapters` |
+| 49 | **Fotos da dermatofuncional:** só há fotos da Angela a posar com os instrumentos, e nenhuma de um tratamento. Pedir 3 ou 4 fotos em sessão (avaliação do abdómen, cicatriz, exercício), com consentimento | `content/media.ts` → `dermato-tools`, `strip-angela` |
+| 50 | **Foto da ecografia:** o capítulo «Ecografia e técnicas ecoguiadas» saiu da página da musculoesquelética a pedido do cliente, porque a foto da sala não servia. Pedir uma foto com a sonda e o ecrã visíveis; quando chegar, tirar `noChapter` e trocar a foto | `services.msk.modules[0].noChapter`, `content/media.ts` → `service-eco` |
 
 ## 🟢 Técnico
 

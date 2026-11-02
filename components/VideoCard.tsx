@@ -90,7 +90,7 @@ export function VideoCard({ video, labels, sizes, className, bare }: { video: Vi
         aria-label={`${labels.play}: ${video.name}, ${video.caption} (${video.duration})`}
         className={cn("group relative block aspect-[4/5] w-full overflow-hidden rounded-[22px] bg-panel text-left", className)}
       >
-        <Image src={video.poster} alt="" fill sizes={sizes} className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+        <Image src={video.poster} alt="" fill sizes={sizes} className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06] motion-reduce:transition-none" />
         {bare ? (
           <span aria-hidden className="absolute inset-0 flex items-center justify-center bg-black/10">
             <span className="flex size-16 items-center justify-center rounded-full bg-white text-teal-dark shadow-[0_14px_30px_-10px_rgba(6,40,46,.6)] transition-transform duration-300 group-hover:scale-110 md:size-20">

@@ -1,5 +1,6 @@
 import { getDict } from "@/content";
-import { href, otherLocale, serviceKeys, type Locale, type PageKey } from "@/lib/routes";
+import { media } from "@/content/media";
+import { href, otherLocale, serviceKeys, type Locale, type PageKey, type ServiceKey } from "@/lib/routes";
 import { clinicJsonLd } from "@/lib/seo";
 import { Header } from "./Header";
 import { Logo } from "./Logo";
@@ -8,6 +9,9 @@ import { StickyMobileBar } from "./StickyMobileBar";
 import { ConsentProvider } from "./Consent";
 import { TrackingListener } from "./TrackingListener";
 import { JsonLd } from "./JsonLd";
+
+// Foto de cada serviço no menu mobile (as mesmas dos cartões da home)
+const menuPhoto: Record<ServiceKey, string> = { msk: "msk-card", dermato: "service-dermato" };
 
 /** Estrutura comum: header, conteúdo, rodapé, barra móvel, WhatsApp flutuante, cookies e tracking. */
 export function SiteShell({ locale, page, waMessage, children }: { locale: Locale; page: PageKey; waMessage: string; children: React.ReactNode }) {
@@ -28,7 +32,11 @@ export function SiteShell({ locale, page, waMessage, children }: { locale: Local
               label: t.nav.services,
               href: href(locale, "services"),
               children: [
-                ...serviceKeys.map((k) => ({ label: t.services[k].name, href: href(locale, `service:${k}`) })),
+                ...serviceKeys.map((k) => ({
+                  label: t.services[k].name,
+                  href: href(locale, `service:${k}`),
+                  photo: { src: media[menuPhoto[k]].src, position: media[menuPhoto[k]].position },
+                })),
               ],
             },
             about: { label: t.nav.about, href: href(locale, "about") },

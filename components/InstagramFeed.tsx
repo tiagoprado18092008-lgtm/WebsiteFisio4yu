@@ -43,10 +43,10 @@ export function InstagramFeed({ posts, profileUrl, labels, titleId }: {
               data-track="instagram"
               data-location="home-instagram"
               aria-label={`${labels.open}: ${p.alt} ${labels.newWindow}`}
-              className="group relative block aspect-[4/5] overflow-hidden rounded-[22px] bg-panel shadow-[0_18px_40px_-26px_rgba(14,76,87,.55)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_26px_50px_-26px_rgba(14,76,87,.65)]"
+              className="card-lift card-photo group relative block aspect-[4/5] overflow-hidden rounded-[22px] bg-panel shadow-[0_18px_40px_-26px_rgba(14,76,87,.55)]"
             >
               {/* Encostada em baixo: as legendas gravadas no vídeo ficam sempre inteiras */}
-              <Image src={p.cover} alt="" fill sizes="(min-width: 768px) 25vw, 50vw" className="object-cover object-bottom transition-transform duration-700 group-hover:scale-[1.04]" />
+              <Image src={p.cover} alt="" fill sizes="(min-width: 768px) 25vw, 50vw" className="object-cover object-bottom" />
               <span aria-hidden className="absolute inset-0 rounded-[22px] ring-1 ring-inset ring-black/5" />
               {/* Canto superior esquerdo: a zona das capas sem rostos nem logótipos */}
               <span aria-hidden className="absolute left-2.5 top-2.5 flex items-center gap-1.5 rounded-full bg-black/50 px-2.5 py-1 text-xs font-semibold text-white backdrop-blur-sm sm:left-3 sm:top-3">

@@ -120,11 +120,11 @@ export const en: Dict = {
     },
     bodyMap: {
       title: "How we treat each area",
-      intro: "Choose an area to see how assessment, treatment and discharge work. Whether treatment is indicated is confirmed at your appointment.",
+      intro: "Choose an area to see how treatment works, from assessment to independence. Whether treatment is indicated is confirmed at your appointment.",
       listLabel: "Body areas",
       commonLabel: "Common conditions",
       talk: "Describe my case",
-      phases: ["Assessment", "Treatment", "Discharge"],
+      phases: ["Assessment", "Treatment", "Independence"],
       regions: [
         {
           id: "cervical", label: "Neck",
@@ -346,6 +346,7 @@ export const en: Dict = {
     write: "Describe",
     seeService: "See the service",
     meetTeam: "Meet the team",
+    onThisPage: "On this page",
     areas: {
       title: "Two areas, one clinic",
       intro: "Each area has its own lead physiotherapist. Choose one to see what it treats.",
@@ -403,12 +404,13 @@ export const en: Dict = {
         ],
       },
       includes: {
-        title: "All under one roof",
+        title: "What treatment includes",
         intro: "Assessment, treatment and recovery all happen at the same clinic, with no need to go anywhere else.",
       },
       modules: [
         {
           id: "ecografia",
+          noChapter: true,
           nav: "Ultrasound",
           summary: "See the injury and guide treatment",
           eyebrow: "Assessment",
@@ -427,6 +429,20 @@ export const en: Dict = {
             { title: "[[Technique 3]]", text: "[[2–3 lines in plain language.]]" },
           ],
           note: "In physiotherapy, ultrasound is used for functional assessment and to guide treatment. It does not replace diagnostic scans requested by a doctor.",
+        },
+        {
+          id: "terapia-manual",
+          nav: "Manual therapy",
+          summary: "Hands-on techniques, on the treatment couch",
+          eyebrow: "Treatment",
+          title: "Manual therapy",
+          text: "Hands-on techniques applied to the joints, muscles and soft tissue, to help ease pain and restore mobility. It takes place on the treatment couch, is adapted to the stage of your injury and prepares your body for exercise.",
+          mediaId: "manual-therapy",
+          points: [
+            { title: "Joint mobilisation", text: "Targeted movements for joints with limited range." },
+            { title: "Soft tissue", text: "Work on the muscles, tendons and fascia of the affected area." },
+            { title: "Link to exercise", text: "Progress made on the couch is consolidated in the gym." },
+          ],
         },
         {
           id: "ginasio",
@@ -448,21 +464,33 @@ export const en: Dict = {
           nav: "Ice and sauna",
           summary: "Recovery between training and competition",
           eyebrow: "Recovery",
-          title: "Ice bath & sauna",
-          text: "Cold-water immersion and sauna, built into the recovery plan of people who train regularly. Use is always guided by the clinic's team.",
+          title: "Cold therapy (ice bath) & sauna",
+          text: "Cold-water immersion means submerging the body in cold water for a controlled period. At Fisio4you it takes place in the clinic's ice bath, as part of the recovery plan of people who train regularly, and use is always guided by the team.",
           mediaId: "service-recovery",
           points: [
-            { icon: "snowflake", title: "Ice bath", text: "Cold-water immersion with controlled timing." },
-            { icon: "flame", title: "Sauna", text: "Heat exposure, used for muscle relaxation." },
-            { icon: "repeat", title: "Part of your plan", text: "Sessions set according to your treatment plan. [[confirm single sessions]]" },
+            { title: "Sauna", text: "Heat exposure, used for muscle relaxation." },
+            { title: "Compression therapy", text: "Boots that compress and release the legs in cycles, used to recover after exertion." },
           ],
-          itemsTitle: "Before you start",
+          itemsTitle: "General contraindications",
           items: [
             { title: "General contraindications", text: "Cardiovascular conditions, uncontrolled blood pressure, pregnancy, altered sensation or circulation, among others." },
-            { title: "Prior check", text: "Before your first session, we confirm whether the ice bath and sauna are suitable for you." },
           ],
-          note: "Before your first session, we check that it's suitable for you.",
           video: "video-circuito",
+          panel: {
+            moreText: "It is used mainly after demanding training and competition. Studies point to less muscle soreness and a lower feeling of fatigue in the days after exertion, but the effect varies from person to person and it does not replace treatment or rest.",
+            secondMediaId: "strip-pressotherapy",
+            sessionTitle: "What a session involves",
+            session: [
+              { title: "Before", text: "We confirm that it's suitable for you and choose the timing according to your training and stage of recovery." },
+              { title: "During", text: "Cold-water immersion, with controlled timing and guidance from the team. [[water temperature and immersion time: confirm with Mário]]" },
+              { title: "After", text: "Your body warms up gradually, with advice for your next training sessions." },
+            ],
+            indicatedTitle: "When it may be indicated",
+            indicated: ["After intense training and competition", "Between closely spaced matches or events", "During periods of high training load"],
+            alsoTitle: "Also in the recovery area",
+            waTopic: "cold therapy",
+            cta: "Ask about cold therapy",
+          },
         },
       ],
       how: {
@@ -490,8 +518,8 @@ export const en: Dict = {
             uses: ["ecografia", "ginasio"],
           },
           {
-            title: "Discharge & prevention",
-            line: "Finally, discharge.",
+            title: "Independence & prevention",
+            line: "Finally, independence.",
             text: "An exercise plan to maintain progress and reduce the risk of recurrence.",
             details: ["Defined criteria for returning to training and competition", "Exercises to continue at home or build into your training"],
             uses: ["ginasio", "recuperacao"],
@@ -524,6 +552,14 @@ export const en: Dict = {
         heroWide: "wide-msk",
         relatedPhoto: "related-msk",
         areas: true,
+        about: {
+          statement: ["", "Musculoskeletal physiotherapy", " assesses and treats injuries and pain in the muscles, tendons, joints and spine."],
+          text: [
+            "Every treatment starts with an individual assessment: clinical history, movement testing and, when indicated, ultrasound. From there we set a plan that combines manual therapy, supervised exercise and recovery, reviewed with you as you progress.",
+            "We see athletes, physically active people and anyone with pain or limited movement in daily life. Whether treatment is indicated is confirmed at the assessment.",
+          ],
+          listTitle: "What we treat",
+        },
         person: {
           bio: "has been a physiotherapist for 16 years and runs Fisio4you. He leads musculoskeletal physiotherapy, from sports injuries to rehab after surgery.",
         },
@@ -643,12 +679,70 @@ export const en: Dict = {
         { q: "What is the first assessment like?", a: "It starts with a conversation about your clinical history and goals, followed by a physical assessment explained step by step." },
       ],
       related: ["msk"],
+      includes: {
+        title: "What your care includes",
+        intro: "From postnatal recovery to scars, each area has its own assessment and plan.",
+      },
       page: {
         lead: "Postnatal recovery, diastasis recti and scars, with physiotherapist Angela Brazona.",
         heroWide: "wide-dermato",
         heroBeside: true,
         conditionsPhoto: "strip-angela",
         relatedPhoto: "related-dermato",
+        about: {
+          statement: ["", "Dermatofunctional physiotherapy", " assesses and treats the abdominal wall, pelvic floor and scars, with a particular focus on postnatal recovery."],
+          text: [
+            "The plan starts from your situation, whether weeks, months or years after giving birth, and each stage is explained before it begins.",
+            "The first assessment starts with a conversation about your clinical history and goals, followed by a physical assessment explained step by step.",
+          ],
+          listTitle: "How we work",
+          list: [
+            { title: "Manual techniques", text: "Including for scars and adhesions." },
+            { title: "Guided exercise", text: "At the clinic and in the rehabilitation gym, with progressive strengthening." },
+            { title: "Ultrasound", text: "To assess and monitor the abdominal wall, when indicated." },
+            { title: "Home plan", text: "Exercises explained and reviewed in your sessions." },
+          ],
+        },
+        chapters: [
+          {
+            id: "pos-parto",
+            nav: "Postnatal",
+            title: "Postnatal recovery",
+            text: "Pregnancy and birth change the abdominal wall, the pelvic floor and posture. Your care assesses these changes and guides a gradual return to physical activity, at the pace of your recovery.",
+            points: [
+              { title: "Breathing and posture", text: "The starting point of the work, before effort increases." },
+              { title: "Deep core and pelvic floor", text: "Activation and progressive strengthening." },
+              { title: "Exercises for daily life", text: "Fitted to your routine, to continue at home." },
+              { title: "Return to exercise", text: "A gradual return to exercise, running or sport." },
+            ],
+            note: "When to start depends on the type of birth, how your recovery has gone and your doctor's advice.",
+          },
+          {
+            id: "cicatrizes",
+            nav: "Scars",
+            title: "Scars and adhesions",
+            text: "Once the scar has closed and healed, physiotherapy works on the mobility of the skin and surrounding tissue. It may be indicated when the scar pulls, feels stuck or has altered sensation.",
+            mediaId: "dermato-tools",
+            points: [
+              { title: "C-section scar", text: "Can be assessed and treated long after giving birth." },
+              { title: "Adhesions", text: "When the skin and the tissue beneath lose mobility against each other." },
+              { title: "Altered sensation", text: "Areas of the scar with more or less sensitivity to touch." },
+              { title: "Manual techniques", text: "Applied by the physiotherapist and adapted to the state of the scar." },
+            ],
+          },
+          {
+            id: "ecografia",
+            nav: "Ultrasound and exercise",
+            title: "Ultrasound and guided exercise",
+            text: "Ultrasound, when indicated, helps measure the gap between the muscles and monitor the abdominal wall. Exercise is guided at the clinic and in the rehabilitation gym, and continues at home with a plan of your own.",
+            mediaId: "service-eco",
+            points: [
+              { title: "Objective assessment", text: "Progress is recorded throughout your care." },
+              { title: "Progressive strengthening", text: "Effort increases as the abdominal wall responds." },
+              { title: "Independence", text: "Home exercises, explained and reviewed in your sessions." },
+            ],
+          },
+        ],
         person: {
           bio: "is a physiotherapist and leads dermatofunctional physiotherapy at Fisio4you, focusing on women's health during pregnancy and after childbirth.",
         },

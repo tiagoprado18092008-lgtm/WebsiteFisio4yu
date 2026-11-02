@@ -12,21 +12,42 @@ type Item = { icon: IconName; title: string; text: string };
 type Faq = { q: string; a: string };
 type LegalSection = { h: string; p: string[] };
 
-/** Recurso incluído num serviço (ex.: ecografia, ginásio, recuperação) — secção com âncora `#id`. */
-export type ServiceModule = {
+/** Capítulo de uma página de serviço, com âncora `#id` (`nav`: nome curto no índice do topo). Sem `mediaId`: só texto, com o título à esquerda. */
+export type ServiceChapter = {
   id: string;
   nav: string;
-  summary: string;
-  eyebrow: string;
   title: string;
   text: string;
-  mediaId: string;
-  points: Item[];
+  mediaId?: string;
+  points: { icon?: IconName; title: string; text: string }[];
+  note?: string;
+};
+
+/** Recurso incluído num serviço (ex.: ecografia, ginásio, recuperação): também aparece na home e em Serviços, com o `summary`. */
+export type ServiceModule = ServiceChapter & {
+  summary: string;
+  eyebrow: string;
   itemsTitle?: string;
   items?: { title: string; text: string }[];
-  note?: string;
   /** Vídeo (id em content/media.ts) mostrado junto do texto. */
   video?: string;
+  /** Sem capítulo na página do serviço: continua nas listas da home e de Serviços, com o link para o topo da página. */
+  noChapter?: boolean;
+  /** Capítulo em destaque, num painel teal com duas fotos (`RecoveryPanel` em components/ServiceChapters.tsx). */
+  panel?: {
+    moreText: string;
+    /** Segunda foto do painel, por baixo da principal. */
+    secondMediaId: string;
+    sessionTitle: string;
+    session: { title: string; text: string }[];
+    indicatedTitle: string;
+    indicated: string[];
+    /** Título dos `points`: o resto da área de recuperação. */
+    alsoTitle: string;
+    /** Completa `wa.service` ("…marcar uma consulta de {s}."). */
+    waTopic: string;
+    cta: string;
+  };
 };
 
 /**
@@ -61,6 +82,18 @@ export type ServicePageCopy = {
   conditionsPhoto?: string;
   /** Mostra as duas áreas da clínica em painéis com foto (texto em `servicePage.areas`), a seguir às situações. */
   areas?: boolean;
+  /**
+   * O que é o serviço, logo a seguir à foto do topo: `statement` é uma frase grande em três partes (a do meio a teal),
+   * `text` os parágrafos e `list` a lista com visto (sem `list`, usa `forWho.items`).
+   */
+  about: {
+    statement: [string, string, string];
+    text: string[];
+    listTitle: string;
+    list?: { title: string; text: string }[];
+  };
+  /** Capítulos da página quando o serviço não tem `modules` (dermatofuncional). */
+  chapters?: ServiceChapter[];
   /** Foto de um tratamento deste serviço no cartão «Também na Fisio4you», no fim da página do outro serviço. */
   relatedPhoto: string;
   /** Biografia do fisioterapeuta responsável: o nome vem de `team`, por isso `bio` começa logo a seguir ao nome. */
@@ -218,16 +251,16 @@ export const pt = {
     },
     /**
      * Tratamento por zona do corpo, na página da musculoesquelética (components/ZoneGuide.tsx), da cabeça aos pés.
-     * `steps`: o que acontece em cada uma das `phases` (avaliação, tratamento, alta). Uma zona com `service` de outro
+     * `steps`: o que acontece em cada uma das `phases` (avaliação, tratamento, autonomia). Uma zona com `service` de outro
      * serviço (o abdómen) não abre painel: leva à página desse serviço.
      */
     bodyMap: {
       title: "Como tratamos cada zona",
-      intro: "Escolha uma zona para ver como decorrem a avaliação, o tratamento e a alta. A indicação para tratamento é confirmada na consulta.",
+      intro: "Escolha uma zona para ver como decorre o tratamento, da avaliação à autonomia. A indicação para tratamento é confirmada na consulta.",
       listLabel: "Zonas do corpo",
       commonLabel: "Situações frequentes",
       talk: "Descrever o meu caso",
-      phases: ["Avaliação", "Tratamento", "Alta"],
+      phases: ["Avaliação", "Tratamento", "Autonomia"],
       regions: [
         {
           id: "cervical", label: "Pescoço",
@@ -453,6 +486,7 @@ export const pt = {
     write: "Descrever",
     seeService: "Ver o serviço",
     meetTeam: "Conhecer a equipa",
+    onThisPage: "Nesta página",
     /** As duas áreas em painéis com foto (components/ServiceAreas.tsx), nas páginas com `page.areas`. */
     areas: {
       title: "Duas áreas, uma clínica",
@@ -511,12 +545,14 @@ export const pt = {
         ],
       },
       includes: {
-        title: "Tudo no mesmo espaço",
+        title: "O que inclui o tratamento",
         intro: "A avaliação, o tratamento e a recuperação acontecem na mesma clínica, sem ter de ir a outro sítio.",
       },
       modules: [
         {
           id: "ecografia",
+          // Capítulo tirado a pedido do cliente (a foto da sala não servia): volta quando houver uma foto com a sonda e o ecrã (PENDENTES #50)
+          noChapter: true,
           nav: "Ecografia",
           summary: "Observar a lesão e orientar o tratamento",
           eyebrow: "Avaliação",
@@ -535,6 +571,21 @@ export const pt = {
             { title: "[[Técnica 3]]", text: "[[2–3 linhas de explicação em linguagem simples.]]" },
           ],
           note: "Em fisioterapia, a ecografia é usada na avaliação funcional e para orientar o tratamento. Não substitui os exames de diagnóstico pedidos pelo médico. [[confirmar redação com o Mário]]",
+        },
+        {
+          // [[validar com o Mário: descrição da terapia manual]]
+          id: "terapia-manual",
+          nav: "Terapia manual",
+          summary: "Técnicas aplicadas com as mãos, na marquesa",
+          eyebrow: "Tratamento",
+          title: "Terapia manual",
+          text: "Técnicas aplicadas com as mãos sobre as articulações, os músculos e os tecidos moles, para ajudar a aliviar a dor e a recuperar a mobilidade. É feita na marquesa, adaptada à fase da lesão, e prepara o corpo para o exercício.",
+          mediaId: "manual-therapy",
+          points: [
+            { title: "Mobilização articular", text: "Movimentos dirigidos às articulações com a amplitude limitada." },
+            { title: "Tecidos moles", text: "Trabalho sobre músculos, tendões e fáscia da zona afetada." },
+            { title: "Ligação ao exercício", text: "O ganho obtido na marquesa é consolidado no ginásio." },
+          ],
         },
         {
           id: "ginasio",
@@ -557,20 +608,33 @@ export const pt = {
           summary: "Recuperação entre treinos e competições",
           eyebrow: "Recuperação",
           title: "Crioterapia (banheira de gelo) e sauna",
-          text: "Imersão em água fria e sauna, integradas no plano de recuperação de quem treina com regularidade. A utilização é sempre orientada pela equipa da clínica.",
+          // [[validar com o Mário: texto da crioterapia, sessão e indicações]]
+          text: "A crioterapia por imersão consiste em mergulhar o corpo em água fria durante um período controlado. Na Fisio4you é feita na banheira de gelo da clínica, integrada no plano de recuperação de quem treina com regularidade, e a utilização é sempre orientada pela equipa.",
           mediaId: "service-recovery",
           points: [
-            { icon: "snowflake", title: "Banheira de gelo", text: "Imersão em água fria, com tempo controlado." },
-            { icon: "flame", title: "Sauna", text: "Exposição ao calor, usada para relaxamento muscular." },
-            { icon: "repeat", title: "Integrado no plano", text: "Sessões definidas em função do plano de tratamento. [[confirmar se há sessões avulsas]]" },
+            { title: "Sauna", text: "Exposição ao calor, usada para relaxamento muscular." },
+            { title: "Pressoterapia", text: "Botas que comprimem e aliviam as pernas por ciclos, usadas para recuperar depois do esforço." },
           ],
-          itemsTitle: "Antes de começar",
+          itemsTitle: "Contraindicações gerais",
           items: [
             { title: "Contraindicações gerais", text: "Problemas cardiovasculares, tensão arterial não controlada, gravidez, alterações de sensibilidade ou circulação, entre outras." },
-            { title: "Avaliação prévia", text: "Antes da primeira sessão, confirmamos se a banheira de gelo e a sauna são adequadas ao seu caso." },
           ],
-          note: "Antes da primeira sessão, confirmamos se é adequada ao seu caso.",
           video: "video-circuito",
+          panel: {
+            moreText: "É usada sobretudo depois de treinos exigentes e de competições. Os estudos apontam para menos dor muscular e menor sensação de fadiga nos dias seguintes ao esforço, mas o efeito varia de pessoa para pessoa e não substitui o tratamento nem o descanso.",
+            secondMediaId: "strip-pressotherapy",
+            sessionTitle: "Como decorre uma sessão",
+            session: [
+              { title: "Antes", text: "Confirmamos se é adequada ao seu caso e escolhemos o momento de acordo com o treino e a fase da recuperação." },
+              { title: "Durante", text: "Imersão em água fria, com tempo controlado e orientação da equipa. [[temperatura e duração da imersão: confirmar com o Mário]]" },
+              { title: "Depois", text: "O corpo volta a aquecer de forma gradual, com indicações para os treinos seguintes." },
+            ],
+            indicatedTitle: "Quando pode ser indicada",
+            indicated: ["Depois de treinos intensos e de competições", "Entre jogos ou provas próximas", "Em períodos de carga de treino elevada"],
+            alsoTitle: "Também na área de recuperação",
+            waTopic: "crioterapia",
+            cta: "Perguntar pela crioterapia",
+          },
         },
       ],
       how: {
@@ -598,8 +662,8 @@ export const pt = {
             uses: ["ecografia", "ginasio"],
           },
           {
-            title: "Alta e prevenção",
-            line: "Por fim, a alta.",
+            title: "Autonomia e prevenção",
+            line: "Por fim, autonomia.",
             text: "Plano de exercícios para manter a evolução e reduzir o risco de recidiva.",
             details: ["Critérios definidos para o regresso ao treino e à competição", "Exercícios para continuar em casa ou integrar no treino"],
             uses: ["ginasio", "recuperacao"],
@@ -632,6 +696,14 @@ export const pt = {
         heroWide: "wide-msk",
         relatedPhoto: "related-msk",
         areas: true,
+        about: {
+          statement: ["A ", "fisioterapia musculoesquelética", " avalia e trata lesões e dor em músculos, tendões, articulações e coluna."],
+          text: [
+            "Cada tratamento começa por uma avaliação individual: história clínica, testes de movimento e, quando indicado, ecografia. A partir daí definimos um plano que junta terapia manual, exercício supervisionado e recuperação, revisto consigo ao longo do processo.",
+            "Acompanhamos atletas, pessoas fisicamente ativas e quem tem dor ou limitação de movimento no dia a dia. A indicação para tratamento é confirmada na avaliação.",
+          ],
+          listTitle: "O que tratamos",
+        },
         person: {
           bio: "é fisioterapeuta há 16 anos e dirige a Fisio4you. É o responsável pela fisioterapia musculoesquelética, das lesões desportivas à reabilitação depois de uma cirurgia.",
         },
@@ -753,12 +825,71 @@ export const pt = {
         { q: "Como é a primeira avaliação?", a: "Começa por uma conversa sobre a sua história clínica e os seus objetivos, seguida de uma avaliação física explicada passo a passo." },
       ],
       related: ["msk"],
+      includes: {
+        title: "O que inclui o acompanhamento",
+        intro: "Do pós-parto às cicatrizes, cada área tem a sua avaliação e o seu plano.",
+      },
       page: {
         lead: "Recuperação pós-parto, diástase abdominal e cicatrizes, com a fisioterapeuta Angela Brazona.",
         heroWide: "wide-dermato",
         heroBeside: true,
         conditionsPhoto: "strip-angela",
         relatedPhoto: "related-dermato",
+        about: {
+          statement: ["A ", "fisioterapia dermatofuncional", " avalia e trata a parede abdominal, o pavimento pélvico e as cicatrizes, com particular atenção ao pós-parto."],
+          text: [
+            "O plano parte da sua situação, seja semanas, meses ou anos depois do parto, e cada fase é explicada antes de começar.",
+            "A primeira avaliação começa por uma conversa sobre a sua história clínica e os seus objetivos, seguida de uma avaliação física explicada passo a passo.",
+          ],
+          listTitle: "Como trabalhamos",
+          list: [
+            { title: "Técnicas manuais", text: "Incluindo para cicatrizes e aderências." },
+            { title: "Exercício orientado", text: "Na clínica e no ginásio de reabilitação, com fortalecimento progressivo." },
+            { title: "Ecografia", text: "Para avaliar e acompanhar a parede abdominal, quando indicada." },
+            { title: "Plano para casa", text: "Exercícios explicados e revistos nas sessões." },
+          ],
+        },
+        // [[validar com a Angela: texto dos três capítulos]]
+        chapters: [
+          {
+            id: "pos-parto",
+            nav: "Pós-parto",
+            title: "Recuperação pós-parto",
+            text: "A gravidez e o parto alteram a parede abdominal, o pavimento pélvico e a postura. O acompanhamento avalia estas alterações e orienta o regresso gradual à atividade física, ao ritmo da sua recuperação.",
+            points: [
+              { title: "Respiração e postura", text: "O ponto de partida do trabalho, antes de aumentar o esforço." },
+              { title: "Abdómen profundo e pavimento pélvico", text: "Ativação e fortalecimento progressivo." },
+              { title: "Exercícios para o dia a dia", text: "Compatíveis com a sua rotina, para continuar em casa." },
+              { title: "Regresso ao exercício", text: "Regresso gradual ao exercício, à corrida ou ao desporto." },
+            ],
+            note: "O momento para começar depende do tipo de parto, da forma como decorreu a recuperação e da indicação do seu médico.",
+          },
+          {
+            id: "cicatrizes",
+            nav: "Cicatrizes",
+            title: "Cicatrizes e aderências",
+            text: "Depois de a cicatriz estar fechada e cicatrizada, a fisioterapia trabalha a mobilidade da pele e dos tecidos à volta. Pode ser indicada quando a cicatriz repuxa, parece aderente ou tem a sensibilidade alterada.",
+            mediaId: "dermato-tools",
+            points: [
+              { title: "Cicatriz de cesariana", text: "Pode ser avaliada e tratada muito tempo depois do parto." },
+              { title: "Aderências", text: "Quando a pele e os tecidos por baixo perdem mobilidade entre si." },
+              { title: "Sensibilidade alterada", text: "Zonas da cicatriz com mais ou menos sensibilidade ao toque." },
+              { title: "Técnicas manuais", text: "Aplicadas pela fisioterapeuta e adaptadas ao estado da cicatriz." },
+            ],
+          },
+          {
+            id: "ecografia",
+            nav: "Ecografia e exercício",
+            title: "Ecografia e exercício orientado",
+            text: "A ecografia, quando indicada, ajuda a medir a separação dos músculos e a acompanhar a evolução da parede abdominal. O exercício é orientado na clínica e no ginásio de reabilitação, e continua em casa com um plano próprio.",
+            mediaId: "service-eco",
+            points: [
+              { title: "Avaliação objetiva", text: "A evolução é registada ao longo do acompanhamento." },
+              { title: "Fortalecimento progressivo", text: "O esforço aumenta à medida que a parede abdominal responde." },
+              { title: "Autonomia", text: "Exercícios para casa, explicados e revistos nas sessões." },
+            ],
+          },
+        ],
         person: {
           bio: "é fisioterapeuta e a responsável pela fisioterapia dermatofuncional na Fisio4you, dedicada à saúde da mulher durante a gravidez e no pós-parto.",
         },
