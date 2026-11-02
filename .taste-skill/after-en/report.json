@@ -1,0 +1,3097 @@
+{
+ "url": "http://localhost:3000/en/services/musculoskeletal-physiotherapy",
+ "at": "2026-10-30T11:36:27.936Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 12,
+   "filled": [
+    1,
+    1,
+    0.76,
+    0.94,
+    0.99,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "motion": {
+    "elements": 38,
+    "css": 6,
+    "transitions": 31,
+    "scripted": 1,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 10701,
+     "screens": 11.9,
+     "words": 1063,
+     "img": 12,
+     "video": 0,
+     "canvas": 0,
+     "svg": 37,
+     "sections": 8,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 7,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=%2Fmedia%2Fespaco%2Fginasio.webp&w=640",
+      "image?url=%2Fmedia%2Finstalacoes%2Fginasio.webp&",
+      "image?url=%2Fmedia%2Ftratamentos%2Fterapia-manua",
+      "image?url=%2Fmedia%2Fespaco%2Fginasio.webp&w=750",
+      "image?url=%2Fmedia%2Fespaco%2Fsala-avaliacao.web",
+      "image?url=%2Fmedia%2Ftratamentos%2Fbanheira-gelo",
+      "image?url=%2Fmedia%2Fclientes%2Fpressoterapia.we"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Musculoskeletal Physiotherapy",
+     "words": 2,
+     "chars": 29,
+     "lines": 2,
+     "size": 129.6,
+     "vw": 9,
+     "font": "Bricolage Grotesque",
+     "weight": 500,
+     "tracking": -0.045,
+     "leading": 0.94,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.92,
+     "top": 236,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Musculoskeletal Physiotherapy",
+     "words": 2,
+     "lines": 2,
+     "size": 129.6,
+     "font": "Bricolage Grotesque"
+    },
+    "headings": [
+     {
+      "text": "Musculoskeletal Physiotherapy",
+      "words": 2,
+      "chars": 29,
+      "lines": 2,
+      "size": 129.6,
+      "vw": 9,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 0.94,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 236,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Most common conditions",
+      "words": 3,
+      "chars": 22,
+      "lines": 2,
+      "size": 67.8,
+      "vw": 4.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 1549,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "All under one roof",
+      "words": 4,
+      "chars": 18,
+      "lines": 1,
+      "size": 67.8,
+      "vw": 4.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.37,
+      "top": 3026,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "100 m² rehabilitation gym",
+      "words": 4,
+      "chars": 25,
+      "lines": 3,
+      "size": 30.4,
+      "vw": 2.1,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.21,
+      "top": 3158,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Ultrasound & guided techniques",
+      "words": 4,
+      "chars": 30,
+      "lines": 2,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.28,
+      "top": 3922,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "100 m² rehabilitation gym",
+      "words": 4,
+      "chars": 25,
+      "lines": 2,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.28,
+      "top": 3922,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Ice bath & sauna",
+      "words": 4,
+      "chars": 16,
+      "lines": 1,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.28,
+      "top": 3922,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "How treatment works",
+      "words": 3,
+      "chars": 19,
+      "lines": 1,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.37,
+      "top": 4959,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "First, we assess.",
+      "words": 3,
+      "chars": 17,
+      "lines": 1,
+      "size": 67.8,
+      "vw": 4.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 5123,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Then, the plan.",
+      "words": 3,
+      "chars": 15,
+      "lines": 1,
+      "size": 67.8,
+      "vw": 4.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.76,
+      "top": 5314,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "We treat and train.",
+      "words": 4,
+      "chars": 19,
+      "lines": 1,
+      "size": 67.8,
+      "vw": 4.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.61,
+      "top": 5505,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Finally, discharge.",
+      "words": 2,
+      "chars": 19,
+      "lines": 1,
+      "size": 67.8,
+      "vw": 4.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.45,
+      "top": 5696,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Mário Barroso",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.16,
+      "top": 6118,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "has been a physiotherapist for 16 years and runs Fisio4you. He leads musculoskeletal physiotherapy, from sports injuries to low back and neck pain and rehab after surgery.",
+      "words": 27,
+      "chars": 171,
+      "lines": 4,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.66,
+      "top": 6118,
+      "tag": "span",
+      "kind": "statement"
+     },
+     {
+      "text": "At the clinic he has what treatment calls for close at hand: ultrasound in assessment, a 100 m² rehabilitation gym and the recovery area, with an ice bath and sauna.",
+      "words": 30,
+      "chars": 165,
+      "lines": 3,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.76,
+      "top": 6329,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "“Injury is an opportunity for change”",
+      "words": 6,
+      "chars": 37,
+      "lines": 2,
+      "size": 100.8,
+      "vw": 7,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.04,
+      "leading": 1.45,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 6828,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Frequently asked questions",
+      "words": 3,
+      "chars": 26,
+      "lines": 1,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 7500,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "How many sessions are needed?",
+      "words": 5,
+      "chars": 29,
+      "lines": 1,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.02,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.45,
+      "top": 7607,
+      "tag": "dt",
+      "kind": "heading"
+     },
+     {
+      "text": "My pain has lasted several months. Can physiotherapy help?",
+      "words": 9,
+      "chars": 58,
+      "lines": 2,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.02,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.45,
+      "top": 7777,
+      "tag": "dt",
+      "kind": "heading"
+     },
+     {
+      "text": "Does ultrasound hurt or use radiation?",
+      "words": 6,
+      "chars": 38,
+      "lines": 1,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.02,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.45,
+      "top": 7947,
+      "tag": "dt",
+      "kind": "heading"
+     },
+     {
+      "text": "How is ultrasound different from an MRI?",
+      "words": 7,
+      "chars": 40,
+      "lines": 2,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.02,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.45,
+      "top": 8117,
+      "tag": "dt",
+      "kind": "heading"
+     },
+     {
+      "text": "Can I keep training during treatment?",
+      "words": 6,
+      "chars": 37,
+      "lines": 1,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.02,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.45,
+      "top": 8370,
+      "tag": "dt",
+      "kind": "heading"
+     },
+     {
+      "text": "What should I bring to my first appointment?",
+      "words": 8,
+      "chars": 44,
+      "lines": 2,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.02,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.45,
+      "top": 8512,
+      "tag": "dt",
+      "kind": "heading"
+     },
+     {
+      "text": "Also at Fisio4you",
+      "words": 3,
+      "chars": 17,
+      "lines": 1,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.45,
+      "top": 8741,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Dermatofunctional Physiotherapy",
+      "words": 2,
+      "chars": 31,
+      "lines": 2,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.37,
+      "top": 8741,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "Where do",
+      "words": 2,
+      "chars": 8,
+      "lines": 1,
+      "size": 129.6,
+      "vw": 9,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 0.94,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 9142,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Hi! I have pain in my knee in my shoulder in my back in my neck in my hip in my ankle or foot somewhere else and I'd like to get back to training get back to competing get through the day without pain",
+      "words": 54,
+      "chars": 255,
+      "lines": 2,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.62,
+      "top": 9369,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "we start?",
+      "words": 2,
+      "chars": 9,
+      "lines": 1,
+      "size": 129.6,
+      "vw": 9,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 0.94,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 9768,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "fisio4you",
+      "words": 1,
+      "chars": 9,
+      "lines": 1,
+      "size": 316.8,
+      "vw": 22,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.04,
+      "leading": 0.78,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.98,
+      "top": 10442,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 29,
+     "maxLines": 4,
+     "over2Lines": 0,
+     "statements": 8,
+     "centered": 4,
+     "medianWords": 4,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Public Sans",
+       "share": 0.84,
+       "mono": false
+      },
+      {
+       "family": "Bricolage Grotesque",
+       "share": 0.16,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      12,
+      14,
+      15,
+      17,
+      18,
+      20,
+      30,
+      36,
+      68,
+      101,
+      130,
+      317
+     ],
+     "sizeCount": 12,
+     "notLoaded": [],
+     "body": {
+      "font": "Public Sans",
+      "size": 17,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 8.1
+     },
+     "measureChars": 54,
+     "max": {
+      "size": 316.8,
+      "vw": 22,
+      "font": "Bricolage Grotesque",
+      "text": "fisioyou"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.05,
+     "smallText": 1
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#a9ced5",
+     "bodyBgHsl": {
+      "h": 190,
+      "s": 0.34,
+      "l": 0.75
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#ffffff",
+       "top": 12,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      },
+      {
+       "color": "#e4f1f3",
+       "top": 689,
+       "hsl": {
+        "h": 188,
+        "s": 0.38,
+        "l": 0.92
+       }
+      },
+      {
+       "color": "#f4f8f9",
+       "top": 4815,
+       "hsl": {
+        "h": 192,
+        "s": 0.29,
+        "l": 0.97
+       }
+      },
+      {
+       "color": "#1d5a64",
+       "top": 9102,
+       "hsl": {
+        "h": 188,
+        "s": 0.55,
+        "l": 0.25
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#20282b",
+       "share": 0.48
+      },
+      {
+       "color": "#4e5053",
+       "share": 0.37
+      },
+      {
+       "color": "#6a7377",
+       "share": 0.06
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.05
+      },
+      {
+       "color": "#0d6b7a",
+       "share": 0.02
+      }
+     ],
+     "button": {
+      "bg": "#25d366",
+      "hsl": {
+       "h": 142,
+       "s": 0.7,
+       "l": 0.49
+      },
+      "fg": "#05301a"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 10,
+     "inHero": 7,
+     "radius": "pill",
+     "height": 48,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Book an appointment",
+      "Book an appointment on WhatsApp",
+      "+351 924 098 545",
+      "Accept",
+      "Decline"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 3,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 1,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 1,
+     "hairlineSamples": [
+      "div.mt-14.flex 1320px"
+     ],
+     "outlinedBoxes": 1,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 6,
+     "boxRadius": 24,
+     "squareMedia": 5,
+     "roundedMedia": 1,
+     "mediaRadius": 24,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.27
+     }
+    ],
+    "nav": {
+     "links": 9,
+     "fixed": true,
+     "height": 88,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "bricolage grotesque",
+     "public sans"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 10701,
+    "margins": {
+     "left": 60,
+     "right": 60
+    },
+    "sections": [
+     {
+      "sel": "section.bg-white.pb-24",
+      "tag": "section",
+      "top": 100,
+      "height": 1449,
+      "words": 59,
+      "media": 2,
+      "middle": 0,
+      "heading": {
+       "text": "Musculoskeletal",
+       "size": 130,
+       "tag": "h1"
+      },
+      "left": 60,
+      "right": 81,
+      "textLeft": 60,
+      "textRight": 81,
+      "fullBleed": true,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#situacoes.bg-white.pb-24",
+      "tag": "section",
+      "top": 1549,
+      "height": 1457,
+      "words": 163,
+      "media": 1,
+      "middle": 187,
+      "heading": {
+       "text": "conditions",
+       "size": 68,
+       "tag": "h2"
+      },
+      "left": 60,
+      "right": 82,
+      "textLeft": 60,
+      "textRight": 82,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.svc-band.mt-12",
+      "tag": "div",
+      "top": 3158,
+      "height": 612,
+      "words": 4,
+      "media": 4,
+      "middle": 0,
+      "heading": {
+       "text": "100 m² rehabilitation gym",
+       "size": 30,
+       "tag": "p"
+      },
+      "left": 12,
+      "right": 12,
+      "textLeft": 40,
+      "textRight": 1220,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.container-x.mt-20",
+      "tag": "div",
+      "top": 3922,
+      "height": 749,
+      "words": 262,
+      "media": 0,
+      "middle": 59,
+      "heading": {
+       "text": "Ultrasound & guided techniques",
+       "size": 36,
+       "tag": "h3"
+      },
+      "left": 60,
+      "right": 76,
+      "textLeft": 60,
+      "textRight": 76,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#como-funciona.py-24.md:py-36",
+      "tag": "section",
+      "top": 4815,
+      "height": 1161,
+      "words": 78,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "First, we assess.",
+       "size": 68,
+       "tag": "h3"
+      },
+      "left": 60,
+      "right": 143,
+      "textLeft": 60,
+      "textRight": 143,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#fisioterapeuta.py-24.md:py-36",
+      "tag": "section",
+      "top": 5975,
+      "height": 709,
+      "words": 71,
+      "media": 0,
+      "middle": 52,
+      "heading": {
+       "text": "Mário Barroso",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 60,
+      "right": 64,
+      "textLeft": 60,
+      "textRight": 64,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "figure.bg-ice.py-28",
+      "tag": "figure",
+      "top": 6684,
+      "height": 672,
+      "words": 10,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "“Injury is an",
+       "size": 101,
+       "tag": "span"
+      },
+      "left": 60,
+      "right": 60,
+      "textLeft": 60,
+      "textRight": 60,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#perguntas.bg-white.py-24",
+      "tag": "section",
+      "top": 7356,
+      "height": 1385,
+      "words": 194,
+      "media": 0,
+      "middle": 156,
+      "heading": {
+       "text": "Frequently asked questions",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 60,
+      "right": 145,
+      "textLeft": 60,
+      "textRight": 145,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.bg-white.pb-24",
+      "tag": "section",
+      "top": 8741,
+      "height": 360,
+      "words": 20,
+      "media": 0,
+      "middle": 507,
+      "heading": {
+       "text": "Also at Fisio4you",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 60,
+      "right": 74,
+      "textLeft": 60,
+      "textRight": 74,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.on-dark.bg-panel",
+      "tag": "section",
+      "top": 9102,
+      "height": 828,
+      "words": 61,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Where do",
+       "size": 130,
+       "tag": "p"
+      },
+      "left": 292,
+      "right": 292,
+      "textLeft": 389,
+      "textRight": 292,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.bg-white.pt-4",
+      "tag": "footer",
+      "top": 9930,
+      "height": 759,
+      "words": 68,
+      "media": 0,
+      "middle": 123,
+      "heading": {
+       "text": "Services",
+       "size": 15,
+       "tag": "h2"
+      },
+      "left": 60,
+      "right": 145,
+      "textLeft": 60,
+      "textRight": 145,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Musculoskeletal Physiotherapy",
+      "size": 130,
+      "top": 236,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 60,
+      "n": 12
+     },
+     {
+      "x": 284,
+      "n": 2
+     },
+     {
+      "x": 516,
+      "n": 2
+     },
+     {
+      "x": 620,
+      "n": 2
+     },
+     {
+      "x": 972,
+      "n": 2
+     },
+     {
+      "x": 103,
+      "n": 1
+     },
+     {
+      "x": 429,
+      "n": 1
+     },
+     {
+      "x": 844,
+      "n": 1
+     },
+     {
+      "x": 956,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 24,
+    "bodySize": 17,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0.06,
+    "voidBox": {
+     "x": 1020,
+     "y": 360,
+     "w": 420,
+     "h": 180
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 12,
+   "filled": [
+    1,
+    0.75,
+    0.76,
+    1,
+    1,
+    0.91,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "motion": {
+    "elements": 38,
+    "css": 6,
+    "transitions": 31,
+    "scripted": 1,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 12527,
+     "screens": 12.2,
+     "words": 1055,
+     "img": 12,
+     "video": 0,
+     "canvas": 0,
+     "svg": 37,
+     "sections": 8,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 6,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=%2Fmedia%2Finstalacoes%2Fginasio.webp&",
+      "image?url=%2Fmedia%2Ftratamentos%2Fterapia-manua",
+      "image?url=%2Fmedia%2Fespaco%2Fginasio.webp&w=384",
+      "image?url=%2Fmedia%2Fespaco%2Fsala-avaliacao.web",
+      "image?url=%2Fmedia%2Ftratamentos%2Fbanheira-gelo",
+      "image?url=%2Fmedia%2Fclientes%2Fpressoterapia.we"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Musculoskeletal Physiotherapy",
+     "words": 2,
+     "chars": 29,
+     "lines": 2,
+     "size": 69.1,
+     "vw": 9,
+     "font": "Bricolage Grotesque",
+     "weight": 500,
+     "tracking": -0.045,
+     "leading": 0.94,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.89,
+     "top": 234,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Musculoskeletal Physiotherapy",
+     "words": 2,
+     "lines": 2,
+     "size": 69.1,
+     "font": "Bricolage Grotesque"
+    },
+    "headings": [
+     {
+      "text": "Musculoskeletal Physiotherapy",
+      "words": 2,
+      "chars": 29,
+      "lines": 2,
+      "size": 69.1,
+      "vw": 9,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 0.94,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 234,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Most common conditions",
+      "words": 3,
+      "chars": 22,
+      "lines": 2,
+      "size": 43.6,
+      "vw": 5.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 1218,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "All under one roof",
+      "words": 4,
+      "chars": 18,
+      "lines": 1,
+      "size": 43.6,
+      "vw": 5.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 3262,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "100 m² rehabilitation gym",
+      "words": 4,
+      "chars": 25,
+      "lines": 3,
+      "size": 30.4,
+      "vw": 4,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.39,
+      "top": 3481,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "First, we assess.",
+      "words": 3,
+      "chars": 17,
+      "lines": 1,
+      "size": 43.6,
+      "vw": 5.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 6502,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Then, the plan.",
+      "words": 3,
+      "chars": 15,
+      "lines": 1,
+      "size": 43.6,
+      "vw": 5.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.83,
+      "top": 6669,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "We treat and train.",
+      "words": 4,
+      "chars": 19,
+      "lines": 1,
+      "size": 43.6,
+      "vw": 5.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.77,
+      "top": 6836,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Finally, discharge.",
+      "words": 2,
+      "chars": 19,
+      "lines": 1,
+      "size": 43.6,
+      "vw": 5.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.71,
+      "top": 7002,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "“Injury is an opportunity for change”",
+      "words": 6,
+      "chars": 37,
+      "lines": 2,
+      "size": 53.8,
+      "vw": 7,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.04,
+      "leading": 1.45,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 8110,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Where do",
+      "words": 2,
+      "chars": 8,
+      "lines": 1,
+      "size": 69.1,
+      "vw": 9,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 0.94,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 10469,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "we start?",
+      "words": 2,
+      "chars": 9,
+      "lines": 1,
+      "size": 69.1,
+      "vw": 9,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 0.94,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 11266,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "fisio4you",
+      "words": 1,
+      "chars": 9,
+      "lines": 1,
+      "size": 169,
+      "vw": 22,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.04,
+      "leading": 0.78,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.97,
+      "top": 12385,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 12,
+     "maxLines": 3,
+     "over2Lines": 0,
+     "statements": 5,
+     "centered": 3,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Public Sans",
+       "share": 0.84,
+       "mono": false
+      },
+      {
+       "family": "Bricolage Grotesque",
+       "share": 0.16,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      12,
+      14,
+      15,
+      17,
+      18,
+      20,
+      26,
+      30,
+      44,
+      54,
+      69,
+      169
+     ],
+     "sizeCount": 12,
+     "notLoaded": [],
+     "body": {
+      "font": "Public Sans",
+      "size": 17,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 8.1
+     },
+     "measureChars": 54,
+     "max": {
+      "size": 169,
+      "vw": 22,
+      "font": "Bricolage Grotesque",
+      "text": "fisioyou"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.05,
+     "smallText": 1
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#a9ced5",
+     "bodyBgHsl": {
+      "h": 190,
+      "s": 0.34,
+      "l": 0.75
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#ffffff",
+       "top": 10,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      },
+      {
+       "color": "#f4f8f9",
+       "top": 6156,
+       "hsl": {
+        "h": 192,
+        "s": 0.29,
+        "l": 0.97
+       }
+      },
+      {
+       "color": "#e4f1f3",
+       "top": 7966,
+       "hsl": {
+        "h": 188,
+        "s": 0.38,
+        "l": 0.92
+       }
+      },
+      {
+       "color": "#1d5a64",
+       "top": 10429,
+       "hsl": {
+        "h": 188,
+        "s": 0.55,
+        "l": 0.25
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#20282b",
+       "share": 0.48
+      },
+      {
+       "color": "#4e5053",
+       "share": 0.37
+      },
+      {
+       "color": "#6a7377",
+       "share": 0.06
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.05
+      },
+      {
+       "color": "#0d6b7a",
+       "share": 0.02
+      }
+     ],
+     "button": {
+      "bg": "#25d366",
+      "hsl": {
+       "h": 142,
+       "s": 0.7,
+       "l": 0.49
+      },
+      "fg": "#05301a"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 11,
+     "inHero": 8,
+     "radius": "pill",
+     "height": 48,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Book an appointment",
+      "Book an appointment on WhatsApp",
+      "+351 924 098 545",
+      "Accept",
+      "Decline"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 3,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 1,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 1,
+     "hairlineSamples": [
+      "div.mt-14.flex 684px"
+     ],
+     "outlinedBoxes": 1,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 5,
+     "boxRadius": 24,
+     "squareMedia": 2,
+     "roundedMedia": 1,
+     "mediaRadius": 24,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.36
+     }
+    ],
+    "nav": {
+     "links": 4,
+     "fixed": true,
+     "height": 88,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "bricolage grotesque",
+     "public sans"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 12527,
+    "margins": {
+     "left": 42,
+     "right": 42
+    },
+    "sections": [
+     {
+      "sel": "section.bg-white.pb-24",
+      "tag": "section",
+      "top": 98,
+      "height": 1120,
+      "words": 59,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Musculoskeletal",
+       "size": 69,
+       "tag": "h1"
+      },
+      "left": 42,
+      "right": 56,
+      "textLeft": 42,
+      "textRight": 56,
+      "fullBleed": true,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#situacoes.bg-white.pb-24",
+      "tag": "section",
+      "top": 1218,
+      "height": 2044,
+      "words": 163,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "conditions",
+       "size": 44,
+       "tag": "h2"
+      },
+      "left": 42,
+      "right": 42,
+      "textLeft": 42,
+      "textRight": 64,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.container-x.grid",
+      "tag": "div",
+      "top": 3262,
+      "height": 155,
+      "words": 16,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 42,
+      "right": 352,
+      "textLeft": 42,
+      "textRight": 352,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.svc-band.mt-12",
+      "tag": "div",
+      "top": 3481,
+      "height": 696,
+      "words": 4,
+      "media": 4,
+      "middle": 0,
+      "heading": {
+       "text": "100 m² rehabilitation gym",
+       "size": 30,
+       "tag": "p"
+      },
+      "left": 10,
+      "right": 10,
+      "textLeft": 38,
+      "textRight": 550,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.container-x.mt-20",
+      "tag": "div",
+      "top": 4329,
+      "height": 1683,
+      "words": 262,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Ultrasound & guided techniques",
+       "size": 26,
+       "tag": "h3"
+      },
+      "left": 42,
+      "right": 56,
+      "textLeft": 42,
+      "textRight": 56,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#como-funciona.py-24.md:py-36",
+      "tag": "section",
+      "top": 6156,
+      "height": 1101,
+      "words": 78,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "First, we assess.",
+       "size": 44,
+       "tag": "h3"
+      },
+      "left": 42,
+      "right": 199,
+      "textLeft": 42,
+      "textRight": 199,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#fisioterapeuta.py-24.md:py-36",
+      "tag": "section",
+      "top": 7257,
+      "height": 709,
+      "words": 71,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Mário Barroso",
+       "size": 26,
+       "tag": "h2"
+      },
+      "left": 42,
+      "right": 47,
+      "textLeft": 42,
+      "textRight": 47,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "figure.bg-ice.py-28",
+      "tag": "figure",
+      "top": 7966,
+      "height": 536,
+      "words": 10,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "“Injury is an",
+       "size": 54,
+       "tag": "span"
+      },
+      "left": 42,
+      "right": 42,
+      "textLeft": 42,
+      "textRight": 42,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#perguntas.bg-white.py-24",
+      "tag": "section",
+      "top": 8502,
+      "height": 1594,
+      "words": 194,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Frequently asked questions",
+       "size": 26,
+       "tag": "h2"
+      },
+      "left": 42,
+      "right": 79,
+      "textLeft": 42,
+      "textRight": 79,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.bg-white.pb-24",
+      "tag": "section",
+      "top": 10096,
+      "height": 333,
+      "words": 20,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Also at Fisio4you",
+       "size": 26,
+       "tag": "h2"
+      },
+      "left": 42,
+      "right": 96,
+      "textLeft": 42,
+      "textRight": 96,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.on-dark.bg-panel",
+      "tag": "section",
+      "top": 10429,
+      "height": 942,
+      "words": 61,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Where do",
+       "size": 69,
+       "tag": "p"
+      },
+      "left": 76,
+      "right": 76,
+      "textLeft": 106,
+      "textRight": 76,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.bg-white.pt-4",
+      "tag": "footer",
+      "top": 11371,
+      "height": 1146,
+      "words": 68,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Services",
+       "size": 15,
+       "tag": "h2"
+      },
+      "left": 42,
+      "right": 127,
+      "textLeft": 42,
+      "textRight": 127,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Musculoskeletal Physiotherapy",
+      "size": 69,
+      "top": 234,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 42,
+      "n": 23
+     },
+     {
+      "x": 147,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 24,
+    "bodySize": 17,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 12,
+   "filled": [
+    1,
+    1,
+    0.73,
+    0.73,
+    1,
+    1,
+    1,
+    0.99,
+    1,
+    1,
+    1,
+    1
+   ],
+   "motion": {
+    "elements": 37,
+    "css": 6,
+    "transitions": 30,
+    "scripted": 1,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 13004,
+     "screens": 15.4,
+     "words": 1054,
+     "img": 12,
+     "video": 0,
+     "canvas": 0,
+     "svg": 37,
+     "sections": 8,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 6,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=%2Fmedia%2Finstalacoes%2Fginasio.webp&",
+      "image?url=%2Fmedia%2Ftratamentos%2Fterapia-manua",
+      "image?url=%2Fmedia%2Fespaco%2Fginasio.webp&w=384",
+      "image?url=%2Fmedia%2Fespaco%2Fsala-avaliacao.web",
+      "image?url=%2Fmedia%2Ftratamentos%2Fbanheira-gelo",
+      "image?url=%2Fmedia%2Fclientes%2Fpressoterapia.we"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Musculoskeletal Physiotherapy",
+     "words": 2,
+     "chars": 29,
+     "lines": 2,
+     "size": 35.1,
+     "vw": 9,
+     "font": "Bricolage Grotesque",
+     "weight": 500,
+     "tracking": -0.045,
+     "leading": 0.94,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.88,
+     "top": 222,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Musculoskeletal Physiotherapy",
+     "words": 2,
+     "lines": 2,
+     "size": 35.1,
+     "font": "Bricolage Grotesque"
+    },
+    "headings": [
+     {
+      "text": "Musculoskeletal Physiotherapy",
+      "words": 2,
+      "chars": 29,
+      "lines": 2,
+      "size": 35.1,
+      "vw": 9,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 0.94,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 222,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Most common conditions",
+      "words": 3,
+      "chars": 22,
+      "lines": 2,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 1211,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "All under one roof",
+      "words": 4,
+      "chars": 18,
+      "lines": 1,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 3430,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "100 m² rehabilitation gym",
+      "words": 4,
+      "chars": 25,
+      "lines": 3,
+      "size": 23.2,
+      "vw": 5.9,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.58,
+      "top": 3622,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "First, we assess.",
+      "words": 3,
+      "chars": 17,
+      "lines": 1,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 7037,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Then, the plan.",
+      "words": 3,
+      "chars": 15,
+      "lines": 1,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.82,
+      "top": 7185,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "We treat and train.",
+      "words": 4,
+      "chars": 19,
+      "lines": 1,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.76,
+      "top": 7332,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Finally, discharge.",
+      "words": 2,
+      "chars": 19,
+      "lines": 1,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.7,
+      "top": 7507,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "“Injury is an opportunity for change”",
+      "words": 6,
+      "chars": 37,
+      "lines": 2,
+      "size": 27.3,
+      "vw": 7,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.04,
+      "leading": 1.45,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 8551,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Where do",
+      "words": 2,
+      "chars": 8,
+      "lines": 1,
+      "size": 35.1,
+      "vw": 9,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 0.94,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 10725,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "we start?",
+      "words": 2,
+      "chars": 9,
+      "lines": 1,
+      "size": 35.1,
+      "vw": 9,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 0.94,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 11472,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "fisio4you",
+      "words": 1,
+      "chars": 9,
+      "lines": 1,
+      "size": 85.8,
+      "vw": 22,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.04,
+      "leading": 0.78,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.96,
+      "top": 12849,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 12,
+     "maxLines": 3,
+     "over2Lines": 0,
+     "statements": 5,
+     "centered": 3,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Public Sans",
+       "share": 0.84,
+       "mono": false
+      },
+      {
+       "family": "Bricolage Grotesque",
+       "share": 0.16,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      12,
+      14,
+      15,
+      17,
+      18,
+      20,
+      21,
+      23,
+      27,
+      32,
+      35,
+      86
+     ],
+     "sizeCount": 12,
+     "notLoaded": [],
+     "body": {
+      "font": "Public Sans",
+      "size": 17,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 8.1
+     },
+     "measureChars": 40,
+     "max": {
+      "size": 85.8,
+      "vw": 22,
+      "font": "Bricolage Grotesque",
+      "text": "fisioyou"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.05,
+     "smallText": 1
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#a9ced5",
+     "bodyBgHsl": {
+      "h": 190,
+      "s": 0.34,
+      "l": 0.75
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#ffffff",
+       "top": 8,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      },
+      {
+       "color": "#f4f8f9",
+       "top": 6750,
+       "hsl": {
+        "h": 192,
+        "s": 0.29,
+        "l": 0.97
+       }
+      },
+      {
+       "color": "#e4f1f3",
+       "top": 8439,
+       "hsl": {
+        "h": 188,
+        "s": 0.38,
+        "l": 0.92
+       }
+      },
+      {
+       "color": "#1d5a64",
+       "top": 10693,
+       "hsl": {
+        "h": 188,
+        "s": 0.55,
+        "l": 0.25
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#20282b",
+       "share": 0.48
+      },
+      {
+       "color": "#4e5053",
+       "share": 0.37
+      },
+      {
+       "color": "#6a7377",
+       "share": 0.06
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.05
+      },
+      {
+       "color": "#0d6b7a",
+       "share": 0.02
+      }
+     ],
+     "button": {
+      "bg": "#25d366",
+      "hsl": {
+       "h": 142,
+       "s": 0.7,
+       "l": 0.49
+      },
+      "fg": "#05301a"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 11,
+     "inHero": 8,
+     "radius": "pill",
+     "height": 48,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Book an appointment on WhatsApp",
+      "+351 924 098 545",
+      "Call",
+      "WhatsApp",
+      "Accept"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 2,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 1,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 2,
+     "hairlineSamples": [
+      "div.mt-14.flex 342px",
+      "div.fixed.inset-x-0 390px"
+     ],
+     "outlinedBoxes": 1,
+     "dashed": 0,
+     "blurred": 2,
+     "roundedBoxes": 5,
+     "boxRadius": 24,
+     "squareMedia": 3,
+     "roundedMedia": 1,
+     "mediaRadius": 24,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.13
+     },
+     {
+      "type": "img",
+      "ratio": 0.08
+     }
+    ],
+    "nav": {
+     "links": 3,
+     "fixed": true,
+     "height": 80,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "bricolage grotesque",
+     "public sans"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 13004,
+    "margins": {
+     "left": 24,
+     "right": 24
+    },
+    "sections": [
+     {
+      "sel": "section.bg-white.pb-24",
+      "tag": "section",
+      "top": 88,
+      "height": 1123,
+      "words": 59,
+      "media": 2,
+      "middle": 0,
+      "heading": {
+       "text": "Musculoskeletal",
+       "size": 35,
+       "tag": "h1"
+      },
+      "left": 7,
+      "right": 7,
+      "textLeft": 24,
+      "textRight": 36,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#situacoes.bg-white.pb-24",
+      "tag": "section",
+      "top": 1211,
+      "height": 2219,
+      "words": 163,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "conditions",
+       "size": 32,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 24,
+      "textLeft": 24,
+      "textRight": 26,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.container-x.grid",
+      "tag": "div",
+      "top": 3430,
+      "height": 144,
+      "words": 16,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 24,
+      "right": 35,
+      "textLeft": 24,
+      "textRight": 35,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.svc-band.mt-12",
+      "tag": "div",
+      "top": 3622,
+      "height": 709,
+      "words": 4,
+      "media": 4,
+      "middle": 0,
+      "heading": {
+       "text": "100 m² rehabilitation gym",
+       "size": 23,
+       "tag": "p"
+      },
+      "left": 8,
+      "right": 8,
+      "textLeft": 28,
+      "textRight": 224,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.container-x.mt-20",
+      "tag": "div",
+      "top": 4475,
+      "height": 2179,
+      "words": 262,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Ultrasound & guided techniques",
+       "size": 21,
+       "tag": "h3"
+      },
+      "left": 24,
+      "right": 26,
+      "textLeft": 24,
+      "textRight": 26,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#como-funciona.py-24.md:py-36",
+      "tag": "section",
+      "top": 6750,
+      "height": 980,
+      "words": 78,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "First, we assess.",
+       "size": 32,
+       "tag": "h3"
+      },
+      "left": 24,
+      "right": 37,
+      "textLeft": 24,
+      "textRight": 37,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#fisioterapeuta.py-24.md:py-36",
+      "tag": "section",
+      "top": 7730,
+      "height": 710,
+      "words": 71,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Mário Barroso",
+       "size": 21,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 29,
+      "textLeft": 24,
+      "textRight": 29,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "figure.bg-ice.py-28",
+      "tag": "figure",
+      "top": 8439,
+      "height": 431,
+      "words": 10,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "“Injury is an",
+       "size": 27,
+       "tag": "span"
+      },
+      "left": 24,
+      "right": 24,
+      "textLeft": 24,
+      "textRight": 24,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#perguntas.bg-white.py-24",
+      "tag": "section",
+      "top": 8870,
+      "height": 1522,
+      "words": 166,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Frequently asked questions",
+       "size": 21,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 27,
+      "textLeft": 24,
+      "textRight": 27,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.bg-white.pb-24",
+      "tag": "section",
+      "top": 10392,
+      "height": 300,
+      "words": 3,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Also at Fisio4you",
+       "size": 21,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 206,
+      "textLeft": 24,
+      "textRight": 206,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.on-dark.bg-panel",
+      "tag": "section",
+      "top": 10693,
+      "height": 844,
+      "words": 61,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Where do",
+       "size": 35,
+       "tag": "p"
+      },
+      "left": 30,
+      "right": 30,
+      "textLeft": 30,
+      "textRight": 30,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.bg-white.pt-4",
+      "tag": "footer",
+      "top": 11537,
+      "height": 1459,
+      "words": 70,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Services",
+       "size": 15,
+       "tag": "h2"
+      },
+      "left": 23,
+      "right": 23,
+      "textLeft": 23,
+      "textRight": 23,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Musculoskeletal Physiotherapy",
+      "size": 35,
+      "top": 222,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 24,
+      "n": 23
+     },
+     {
+      "x": 133,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 24,
+    "bodySize": 17,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "WARN",
+   "id": "statement-length",
+   "width": 1440,
+   "message": "1 large-set statement(s) run past 3 lines at 1440px: \"has been a physiotherapist for 16 years …\" → 4 lines at 36px",
+   "fix": "A statement set large is about 30 words. Cut it, or set the rest as ordinary body text."
+  },
+  {
+   "level": "WARN",
+   "id": "hairline",
+   "width": 1440,
+   "message": "1 thin rule(s)/divider line(s): div.mt-14.flex 1320px",
+   "fix": "Delete. Separate with space, a tone change, or scale. Lines are only for real tables and form fields.",
+   "alsoAt": [
+    768
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "outlined-box",
+   "width": 1440,
+   "message": "1 box(es) drawn with a 1px outline.",
+   "fix": "Prefer a filled surface or no box.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "size-count",
+   "width": 1440,
+   "message": "12 different font sizes (12, 14, 15, 17, 18, 20, 30, 36, 68, 101, 130, 317).",
+   "fix": "A page needs about five: display, heading, lead, body, small.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "WARN",
+   "id": "small-text",
+   "width": 1440,
+   "message": "1 text block(s) under 13px.",
+   "fix": "Nothing meant to be read goes below 13px.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "covered-text",
+   "width": 1440,
+   "message": "Large text lies under another element at some scroll position: \"conditions\" (screen 2, 100% hidden); \"Then, the plan.\" (screen 6, 38% hidden); \"Mário Barroso\" (screen 7, 75% hidden); \"has been a physiotherapist for 16 years and runs\" (screen 7, 31% hidden)",
+   "fix": "Nothing may sit on top of a headline or statement. Move the picture, shorten the pinned run, or raise the text above it (z-index) and give it a ground.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "hairline",
+   "width": 390,
+   "message": "2 thin rule(s)/divider line(s): div.mt-14.flex 342px | div.fixed.inset-x-0 390px",
+   "fix": "Delete. Separate with space, a tone change, or scale. Lines are only for real tables and form fields."
+  },
+  {
+   "level": "WARN",
+   "id": "glass",
+   "width": 390,
+   "message": "2 backdrop-blur surfaces.",
+   "fix": "One blurred sticky bar at most; glass cards are a tell."
+  },
+  {
+   "level": "FAIL",
+   "id": "reduced-hidden",
+   "width": 1440,
+   "message": "With reduced motion requested, 2 text block(s) on the first screen stay invisible: \"Musculoskeletal Physiotherapy\", \"Dermatofunctional Physiotherapy\"",
+   "fix": "Put every hidden starting state inside @media (prefers-reduced-motion: no-preference); the reduced page is the finished page (references/motion.md §8)."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\after-en\\desktop-fold.jpg",
+   "pages": [
+    "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\after-en\\desktop-page-01.jpg",
+    "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\after-en\\desktop-page-02.jpg",
+    "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\after-en\\desktop-page-03.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\after-en\\tablet-fold.jpg",
+   "pages": [
+    "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\after-en\\tablet-page-01.jpg",
+    "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\after-en\\tablet-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\after-en\\mobile-fold.jpg",
+   "pages": [
+    "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\after-en\\mobile-page-01.jpg",
+    "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\after-en\\mobile-page-02.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

@@ -1,0 +1,2616 @@
+{
+ "url": "http://localhost:3000/servicos/fisioterapia-dermatofuncional",
+ "at": "2026-10-30T14:29:38.462Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 9,
+   "filled": [
+    1,
+    0.97,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0.99
+   ],
+   "motion": {
+    "elements": 26,
+    "css": 7,
+    "transitions": 18,
+    "scripted": 1,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 7768,
+     "screens": 8.6,
+     "words": 467,
+     "img": 7,
+     "video": 0,
+     "canvas": 0,
+     "svg": 30,
+     "sections": 8,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 4,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=%2Fmedia%2Fequipa%2Fangela-brazona.web",
+      "image?url=%2Fmedia%2Ftratamentos%2Fangela-dermat",
+      "image?url=%2Fmedia%2Ftratamentos%2Fangela-instru",
+      "image?url=%2Fmedia%2Fequipa%2Fangela-brazona.web"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Fisioterapia Dermatofuncional",
+     "words": 2,
+     "chars": 29,
+     "lines": 2,
+     "size": 129.6,
+     "vw": 9,
+     "font": "Bricolage Grotesque",
+     "weight": 500,
+     "tracking": -0.045,
+     "leading": 0.94,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.92,
+     "top": 236,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Fisioterapia Dermatofuncional",
+     "words": 2,
+     "lines": 2,
+     "size": 129.6,
+     "font": "Bricolage Grotesque"
+    },
+    "headings": [
+     {
+      "text": "Fisioterapia Dermatofuncional",
+      "words": 2,
+      "chars": 29,
+      "lines": 2,
+      "size": 129.6,
+      "vw": 9,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 0.94,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 236,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Situações mais frequentes",
+      "words": 3,
+      "chars": 25,
+      "lines": 2,
+      "size": 67.8,
+      "vw": 4.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.37,
+      "top": 1461,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "O que é a diástase abdominal",
+      "words": 6,
+      "chars": 28,
+      "lines": 2,
+      "size": 67.8,
+      "vw": 4.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.45,
+      "top": 2523,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Lado a lado",
+      "words": 3,
+      "chars": 11,
+      "lines": 1,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.45,
+      "top": 2906,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Como decorre o acompanhamento",
+      "words": 4,
+      "chars": 29,
+      "lines": 1,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 3378,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Primeiro, avaliamos.",
+      "words": 2,
+      "chars": 20,
+      "lines": 1,
+      "size": 67.8,
+      "vw": 4.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 3501,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Depois, o plano.",
+      "words": 3,
+      "chars": 16,
+      "lines": 1,
+      "size": 67.8,
+      "vw": 4.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.76,
+      "top": 3692,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Tratamos, passo a passo.",
+      "words": 4,
+      "chars": 24,
+      "lines": 1,
+      "size": 67.8,
+      "vw": 4.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.61,
+      "top": 3883,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Por fim, autonomia.",
+      "words": 3,
+      "chars": 19,
+      "lines": 1,
+      "size": 67.8,
+      "vw": 4.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.45,
+      "top": 4074,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Angela Brazona",
+      "words": 2,
+      "chars": 14,
+      "lines": 1,
+      "size": 67.8,
+      "vw": 4.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.37,
+      "top": 4614,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Perguntas frequentes",
+      "words": 2,
+      "chars": 20,
+      "lines": 1,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.29,
+      "top": 5315,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Fisioterapia Musculoesquelética",
+      "words": 2,
+      "chars": 31,
+      "lines": 2,
+      "size": 67.8,
+      "vw": 4.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.61,
+      "top": 5889,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "Também na Fisio4you",
+      "words": 3,
+      "chars": 19,
+      "lines": 1,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.29,
+      "top": 5913,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Por onde",
+      "words": 2,
+      "chars": 8,
+      "lines": 1,
+      "size": 129.6,
+      "vw": 9,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 0.94,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 6209,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Olá! Tive o bebé há poucas semanas Tive o bebé há poucos meses Tive o bebé há mais de um ano Não estou no pós-parto e queria recuperar o abdómen perceber se tenho diástase tratar a cicatriz da cesaria",
+      "words": 50,
+      "chars": 267,
+      "lines": 3,
+      "size": 36,
+      "vw": 2.5,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1.18,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.62,
+      "top": 6427,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "começamos?",
+      "words": 1,
+      "chars": 10,
+      "lines": 1,
+      "size": 129.6,
+      "vw": 9,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 0.94,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 6835,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "fisio4you",
+      "words": 1,
+      "chars": 9,
+      "lines": 1,
+      "size": 316.8,
+      "vw": 22,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.04,
+      "leading": 0.78,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.98,
+      "top": 7509,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 17,
+     "maxLines": 3,
+     "over2Lines": 0,
+     "statements": 4,
+     "centered": 4,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Public Sans",
+       "share": 0.85,
+       "mono": false
+      },
+      {
+       "family": "Bricolage Grotesque",
+       "share": 0.15,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      12,
+      14,
+      15,
+      17,
+      18,
+      20,
+      24,
+      36,
+      68,
+      130,
+      317
+     ],
+     "sizeCount": 11,
+     "notLoaded": [],
+     "body": {
+      "font": "Public Sans",
+      "size": 17,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 8.1
+     },
+     "measureChars": 73,
+     "max": {
+      "size": 316.8,
+      "vw": 22,
+      "font": "Bricolage Grotesque",
+      "text": "fisioyou"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.08,
+     "smallText": 1
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#a9ced5",
+     "bodyBgHsl": {
+      "h": 190,
+      "s": 0.34,
+      "l": 0.75
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#ffffff",
+       "top": 12,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      },
+      {
+       "color": "#e4f1f3",
+       "top": 657,
+       "hsl": {
+        "h": 188,
+        "s": 0.38,
+        "l": 0.92
+       }
+      },
+      {
+       "color": "#f4f8f9",
+       "top": 2379,
+       "hsl": {
+        "h": 192,
+        "s": 0.29,
+        "l": 0.97
+       }
+      },
+      {
+       "color": "#1d5a64",
+       "top": 6169,
+       "hsl": {
+        "h": 188,
+        "s": 0.55,
+        "l": 0.25
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#20282b",
+       "share": 0.6
+      },
+      {
+       "color": "#4e5053",
+       "share": 0.28
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.06
+      },
+      {
+       "color": "#6a7377",
+       "share": 0.02
+      },
+      {
+       "color": "#05301a",
+       "share": 0.02
+      }
+     ],
+     "button": {
+      "bg": "#25d366",
+      "hsl": {
+       "h": 142,
+       "s": 0.7,
+       "l": 0.49
+      },
+      "fg": "#05301a"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 10,
+     "inHero": 7,
+     "radius": "pill",
+     "height": 48,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Marcar consulta",
+      "Marcar consulta por WhatsApp",
+      "924 098 545",
+      "Aceitar",
+      "Recusar"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 3,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 1,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 1,
+     "hairlineSamples": [
+      "div.mt-14.flex 1320px"
+     ],
+     "outlinedBoxes": 1,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 8,
+     "boxRadius": 24,
+     "squareMedia": 1,
+     "roundedMedia": 2,
+     "mediaRadius": 24,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.31
+     }
+    ],
+    "nav": {
+     "links": 9,
+     "fixed": true,
+     "height": 88,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "bricolage grotesque",
+     "public sans"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 7768,
+    "margins": {
+     "left": 60,
+     "right": 64
+    },
+    "sections": [
+     {
+      "sel": "section.bg-white.pb-24",
+      "tag": "section",
+      "top": 100,
+      "height": 1361,
+      "words": 26,
+      "media": 2,
+      "middle": 81,
+      "heading": {
+       "text": "Fisioterapia",
+       "size": 130,
+       "tag": "h1"
+      },
+      "left": 60,
+      "right": 81,
+      "textLeft": 60,
+      "textRight": 81,
+      "fullBleed": true,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#situacoes.bg-white.pb-24",
+      "tag": "section",
+      "top": 1461,
+      "height": 918,
+      "words": 50,
+      "media": 1,
+      "middle": 188,
+      "heading": {
+       "text": "frequentes",
+       "size": 68,
+       "tag": "h2"
+      },
+      "left": 60,
+      "right": 60,
+      "textLeft": 60,
+      "textRight": 230,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#diastase.bg-mist.py-24",
+      "tag": "section",
+      "top": 2379,
+      "height": 855,
+      "words": 79,
+      "media": 1,
+      "middle": 126,
+      "heading": {
+       "text": "O que é a diástase abdominal",
+       "size": 68,
+       "tag": "h2"
+      },
+      "left": 126,
+      "right": 64,
+      "textLeft": 126,
+      "textRight": 114,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": true
+     },
+     {
+      "sel": "section#como-funciona.py-24.md:py-36",
+      "tag": "section",
+      "top": 3234,
+      "height": 1119,
+      "words": 64,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Primeiro, avaliamos.",
+       "size": 68,
+       "tag": "h3"
+      },
+      "left": 60,
+      "right": 143,
+      "textLeft": 60,
+      "textRight": 143,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#fisioterapeuta.py-24.md:py-36",
+      "tag": "section",
+      "top": 4353,
+      "height": 818,
+      "words": 31,
+      "media": 1,
+      "middle": 136,
+      "heading": {
+       "text": "Angela Brazona",
+       "size": 68,
+       "tag": "h2"
+      },
+      "left": 172,
+      "right": 246,
+      "textLeft": 732,
+      "textRight": 246,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#perguntas.bg-white.py-24",
+      "tag": "section",
+      "top": 5171,
+      "height": 718,
+      "words": 217,
+      "media": 0,
+      "middle": 119,
+      "heading": {
+       "text": "Perguntas frequentes",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 60,
+      "right": 334,
+      "textLeft": 60,
+      "textRight": 334,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.bg-white.pb-24",
+      "tag": "section",
+      "top": 5889,
+      "height": 280,
+      "words": 3,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Também na Fisio4you",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 60,
+      "right": 1025,
+      "textLeft": 60,
+      "textRight": 1025,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.on-dark.bg-panel",
+      "tag": "section",
+      "top": 6169,
+      "height": 828,
+      "words": 38,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Por onde",
+       "size": 130,
+       "tag": "p"
+      },
+      "left": 339,
+      "right": 339,
+      "textLeft": 339,
+      "textRight": 339,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.bg-white.pt-4",
+      "tag": "footer",
+      "top": 6997,
+      "height": 759,
+      "words": 69,
+      "media": 0,
+      "middle": 16,
+      "heading": {
+       "text": "Serviços",
+       "size": 15,
+       "tag": "h2"
+      },
+      "left": 60,
+      "right": 149,
+      "textLeft": 60,
+      "textRight": 149,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Fisioterapia Dermatofuncional",
+      "size": 130,
+      "top": 236,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 60,
+      "n": 9
+     },
+     {
+      "x": 532,
+      "n": 6
+     },
+     {
+      "x": 730,
+      "n": 6
+     }
+    ],
+    "leftBlocks": 21,
+    "bodySize": 17,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0.12,
+    "voidBox": {
+     "x": 1080,
+     "y": 120,
+     "w": 360,
+     "h": 420
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 8,
+   "filled": [
+    1,
+    0.94,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "motion": {
+    "elements": 26,
+    "css": 7,
+    "transitions": 18,
+    "scripted": 1,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 8179,
+     "screens": 8,
+     "words": 460,
+     "img": 7,
+     "video": 0,
+     "canvas": 0,
+     "svg": 30,
+     "sections": 8,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 3,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=%2Fmedia%2Ftratamentos%2Fangela-dermat",
+      "image?url=%2Fmedia%2Ftratamentos%2Fangela-instru",
+      "image?url=%2Fmedia%2Fequipa%2Fangela-brazona.web"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Fisioterapia Dermatofuncional",
+     "words": 2,
+     "chars": 29,
+     "lines": 2,
+     "size": 69.1,
+     "vw": 9,
+     "font": "Bricolage Grotesque",
+     "weight": 500,
+     "tracking": -0.045,
+     "leading": 0.94,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.89,
+     "top": 234,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Fisioterapia Dermatofuncional",
+     "words": 2,
+     "lines": 2,
+     "size": 69.1,
+     "font": "Bricolage Grotesque"
+    },
+    "headings": [
+     {
+      "text": "Fisioterapia Dermatofuncional",
+      "words": 2,
+      "chars": 29,
+      "lines": 2,
+      "size": 69.1,
+      "vw": 9,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 0.94,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 234,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Situações mais frequentes",
+      "words": 3,
+      "chars": 25,
+      "lines": 2,
+      "size": 43.6,
+      "vw": 5.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 1107,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "O que é a diástase abdominal",
+      "words": 6,
+      "chars": 28,
+      "lines": 1,
+      "size": 43.6,
+      "vw": 5.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 2349,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Primeiro, avaliamos.",
+      "words": 2,
+      "chars": 20,
+      "lines": 1,
+      "size": 43.6,
+      "vw": 5.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 3679,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Depois, o plano.",
+      "words": 3,
+      "chars": 16,
+      "lines": 1,
+      "size": 43.6,
+      "vw": 5.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.83,
+      "top": 3845,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Tratamos, passo a passo.",
+      "words": 4,
+      "chars": 24,
+      "lines": 1,
+      "size": 43.6,
+      "vw": 5.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.77,
+      "top": 4012,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Por fim, autonomia.",
+      "words": 3,
+      "chars": 19,
+      "lines": 1,
+      "size": 43.6,
+      "vw": 5.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.71,
+      "top": 4179,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Angela Brazona",
+      "words": 2,
+      "chars": 14,
+      "lines": 1,
+      "size": 43.6,
+      "vw": 5.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.49,
+      "top": 4581,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Fisioterapia Musculoesquelética",
+      "words": 2,
+      "chars": 31,
+      "lines": 1,
+      "size": 43.6,
+      "vw": 5.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 5893,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "Por onde",
+      "words": 2,
+      "chars": 8,
+      "lines": 1,
+      "size": 69.1,
+      "vw": 9,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 0.94,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 6120,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "começamos?",
+      "words": 1,
+      "chars": 10,
+      "lines": 1,
+      "size": 69.1,
+      "vw": 9,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 0.94,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 6917,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "fisio4you",
+      "words": 1,
+      "chars": 9,
+      "lines": 1,
+      "size": 169,
+      "vw": 22,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.04,
+      "leading": 0.78,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.97,
+      "top": 8037,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 12,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 3,
+     "centered": 3,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Public Sans",
+       "share": 0.85,
+       "mono": false
+      },
+      {
+       "family": "Bricolage Grotesque",
+       "share": 0.15,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      12,
+      14,
+      15,
+      17,
+      18,
+      20,
+      24,
+      26,
+      44,
+      69,
+      169
+     ],
+     "sizeCount": 11,
+     "notLoaded": [],
+     "body": {
+      "font": "Public Sans",
+      "size": 17,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 8.1
+     },
+     "measureChars": 73,
+     "max": {
+      "size": 169,
+      "vw": 22,
+      "font": "Bricolage Grotesque",
+      "text": "fisioyou"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.08,
+     "smallText": 1
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#a9ced5",
+     "bodyBgHsl": {
+      "h": 190,
+      "s": 0.34,
+      "l": 0.75
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#ffffff",
+       "top": 10,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      },
+      {
+       "color": "#f4f8f9",
+       "top": 2205,
+       "hsl": {
+        "h": 192,
+        "s": 0.29,
+        "l": 0.97
+       }
+      },
+      {
+       "color": "#1d5a64",
+       "top": 6080,
+       "hsl": {
+        "h": 188,
+        "s": 0.55,
+        "l": 0.25
+       }
+      },
+      {
+       "color": "#e4f1f3",
+       "top": 7046,
+       "hsl": {
+        "h": 188,
+        "s": 0.38,
+        "l": 0.92
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#20282b",
+       "share": 0.6
+      },
+      {
+       "color": "#4e5053",
+       "share": 0.28
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.06
+      },
+      {
+       "color": "#6a7377",
+       "share": 0.02
+      },
+      {
+       "color": "#05301a",
+       "share": 0.02
+      }
+     ],
+     "button": {
+      "bg": "#25d366",
+      "hsl": {
+       "h": 142,
+       "s": 0.7,
+       "l": 0.49
+      },
+      "fg": "#05301a"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 11,
+     "inHero": 8,
+     "radius": "pill",
+     "height": 48,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Marcar consulta",
+      "Marcar consulta por WhatsApp",
+      "924 098 545",
+      "Aceitar",
+      "Recusar"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 3,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 1,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 1,
+     "hairlineSamples": [
+      "div.mt-14.flex 684px"
+     ],
+     "outlinedBoxes": 1,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 7,
+     "boxRadius": 24,
+     "squareMedia": 1,
+     "roundedMedia": 2,
+     "mediaRadius": 24,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.36
+     }
+    ],
+    "nav": {
+     "links": 4,
+     "fixed": true,
+     "height": 88,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "bricolage grotesque",
+     "public sans"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 8179,
+    "margins": {
+     "left": 42,
+     "right": 45
+    },
+    "sections": [
+     {
+      "sel": "section.bg-white.pb-24",
+      "tag": "section",
+      "top": 98,
+      "height": 1009,
+      "words": 26,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Fisioterapia",
+       "size": 69,
+       "tag": "h1"
+      },
+      "left": 42,
+      "right": 184,
+      "textLeft": 42,
+      "textRight": 184,
+      "fullBleed": true,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#situacoes.bg-white.pb-24",
+      "tag": "section",
+      "top": 1107,
+      "height": 1098,
+      "words": 50,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "frequentes",
+       "size": 44,
+       "tag": "h2"
+      },
+      "left": 42,
+      "right": 42,
+      "textLeft": 42,
+      "textRight": 226,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#diastase.bg-mist.py-24",
+      "tag": "section",
+      "top": 2205,
+      "height": 1219,
+      "words": 79,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "O que é a diástase abdominal",
+       "size": 44,
+       "tag": "h2"
+      },
+      "left": 42,
+      "right": 46,
+      "textLeft": 42,
+      "textRight": 102,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#como-funciona.py-24.md:py-36",
+      "tag": "section",
+      "top": 3424,
+      "height": 1010,
+      "words": 64,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Primeiro, avaliamos.",
+       "size": 44,
+       "tag": "h3"
+      },
+      "left": 42,
+      "right": 159,
+      "textLeft": 42,
+      "textRight": 159,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#fisioterapeuta.py-24.md:py-36",
+      "tag": "section",
+      "top": 4434,
+      "height": 623,
+      "words": 31,
+      "media": 1,
+      "middle": 40,
+      "heading": {
+       "text": "Angela Brazona",
+       "size": 44,
+       "tag": "h2"
+      },
+      "left": 42,
+      "right": 61,
+      "textLeft": 350,
+      "textRight": 61,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#perguntas.bg-white.py-24",
+      "tag": "section",
+      "top": 5058,
+      "height": 789,
+      "words": 217,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Perguntas frequentes",
+       "size": 26,
+       "tag": "h2"
+      },
+      "left": 42,
+      "right": 128,
+      "textLeft": 42,
+      "textRight": 128,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.bg-white.pb-24",
+      "tag": "section",
+      "top": 5846,
+      "height": 234,
+      "words": 5,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Fisioterapia Musculoesquelética",
+       "size": 44,
+       "tag": "span"
+      },
+      "left": 42,
+      "right": 112,
+      "textLeft": 42,
+      "textRight": 112,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.on-dark.bg-panel",
+      "tag": "section",
+      "top": 6080,
+      "height": 942,
+      "words": 38,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Por onde",
+       "size": 69,
+       "tag": "p"
+      },
+      "left": 108,
+      "right": 108,
+      "textLeft": 108,
+      "textRight": 108,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.bg-white.pt-4",
+      "tag": "footer",
+      "top": 7022,
+      "height": 1146,
+      "words": 69,
+      "media": 0,
+      "middle": 20,
+      "heading": {
+       "text": "Serviços",
+       "size": 15,
+       "tag": "h2"
+      },
+      "left": 42,
+      "right": 67,
+      "textLeft": 42,
+      "textRight": 67,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Fisioterapia Dermatofuncional",
+      "size": 69,
+      "top": 234,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 42,
+      "n": 13
+     },
+     {
+      "x": 66,
+      "n": 6
+     },
+     {
+      "x": 350,
+      "n": 2
+     }
+    ],
+    "leftBlocks": 21,
+    "bodySize": 17,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 10,
+   "filled": [
+    1,
+    0.99,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0.96,
+    0.96
+   ],
+   "motion": {
+    "elements": 25,
+    "css": 7,
+    "transitions": 17,
+    "scripted": 1,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 8245,
+     "screens": 9.8,
+     "words": 460,
+     "img": 7,
+     "video": 0,
+     "canvas": 0,
+     "svg": 30,
+     "sections": 8,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 3,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=%2Fmedia%2Ftratamentos%2Fangela-dermat",
+      "image?url=%2Fmedia%2Ftratamentos%2Fangela-instru",
+      "image?url=%2Fmedia%2Fequipa%2Fangela-brazona.web"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Fisioterapia Dermatofuncional",
+     "words": 2,
+     "chars": 29,
+     "lines": 2,
+     "size": 35.1,
+     "vw": 9,
+     "font": "Bricolage Grotesque",
+     "weight": 500,
+     "tracking": -0.045,
+     "leading": 0.94,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.88,
+     "top": 196,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Fisioterapia Dermatofuncional",
+     "words": 2,
+     "lines": 2,
+     "size": 35.1,
+     "font": "Bricolage Grotesque"
+    },
+    "headings": [
+     {
+      "text": "Fisioterapia Dermatofuncional",
+      "words": 2,
+      "chars": 29,
+      "lines": 2,
+      "size": 35.1,
+      "vw": 9,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 0.94,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 196,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Situações mais frequentes",
+      "words": 3,
+      "chars": 25,
+      "lines": 2,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 1008,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "O que é a diástase abdominal",
+      "words": 6,
+      "chars": 28,
+      "lines": 2,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 2096,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Primeiro, avaliamos.",
+      "words": 2,
+      "chars": 20,
+      "lines": 1,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 3347,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Depois, o plano.",
+      "words": 3,
+      "chars": 16,
+      "lines": 1,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.82,
+      "top": 3495,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Tratamos, passo a passo.",
+      "words": 4,
+      "chars": 24,
+      "lines": 2,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.76,
+      "top": 3642,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Por fim, autonomia.",
+      "words": 3,
+      "chars": 19,
+      "lines": 1,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.7,
+      "top": 3821,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Angela Brazona",
+      "words": 2,
+      "chars": 14,
+      "lines": 1,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 4501,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Fisioterapia Musculoesquelética",
+      "words": 2,
+      "chars": 31,
+      "lines": 2,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 5774,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "Por onde",
+      "words": 2,
+      "chars": 8,
+      "lines": 1,
+      "size": 35.1,
+      "vw": 9,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 0.94,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 5966,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "começamos?",
+      "words": 1,
+      "chars": 10,
+      "lines": 1,
+      "size": 35.1,
+      "vw": 9,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 0.94,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 6713,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "fisio4you",
+      "words": 1,
+      "chars": 9,
+      "lines": 1,
+      "size": 85.8,
+      "vw": 22,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.04,
+      "leading": 0.78,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.96,
+      "top": 8090,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 12,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 3,
+     "centered": 3,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Public Sans",
+       "share": 0.85,
+       "mono": false
+      },
+      {
+       "family": "Bricolage Grotesque",
+       "share": 0.15,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      12,
+      14,
+      15,
+      17,
+      18,
+      20,
+      21,
+      32,
+      35,
+      86
+     ],
+     "sizeCount": 10,
+     "notLoaded": [],
+     "body": {
+      "font": "Public Sans",
+      "size": 17,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 8.1
+     },
+     "measureChars": 40,
+     "max": {
+      "size": 85.8,
+      "vw": 22,
+      "font": "Bricolage Grotesque",
+      "text": "fisioyou"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.08,
+     "smallText": 1
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#a9ced5",
+     "bodyBgHsl": {
+      "h": 190,
+      "s": 0.34,
+      "l": 0.75
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#ffffff",
+       "top": 8,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      },
+      {
+       "color": "#f4f8f9",
+       "top": 2000,
+       "hsl": {
+        "h": 192,
+        "s": 0.29,
+        "l": 0.97
+       }
+      },
+      {
+       "color": "#1d5a64",
+       "top": 5934,
+       "hsl": {
+        "h": 188,
+        "s": 0.55,
+        "l": 0.25
+       }
+      },
+      {
+       "color": "#e4f1f3",
+       "top": 6794,
+       "hsl": {
+        "h": 188,
+        "s": 0.38,
+        "l": 0.92
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#20282b",
+       "share": 0.6
+      },
+      {
+       "color": "#4e5053",
+       "share": 0.28
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.06
+      },
+      {
+       "color": "#6a7377",
+       "share": 0.02
+      },
+      {
+       "color": "#0d6b7a",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#25d366",
+      "hsl": {
+       "h": 142,
+       "s": 0.7,
+       "l": 0.49
+      },
+      "fg": "#05301a"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 11,
+     "inHero": 8,
+     "radius": "pill",
+     "height": 48,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Marcar consulta por WhatsApp",
+      "924 098 545",
+      "Ligar",
+      "WhatsApp",
+      "Aceitar"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 2,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 1,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 2,
+     "hairlineSamples": [
+      "div.mt-14.flex 342px",
+      "div.fixed.inset-x-0 390px"
+     ],
+     "outlinedBoxes": 1,
+     "dashed": 0,
+     "blurred": 2,
+     "roundedBoxes": 7,
+     "boxRadius": 24,
+     "squareMedia": 1,
+     "roundedMedia": 2,
+     "mediaRadius": 24,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.23
+     },
+     {
+      "type": "img",
+      "ratio": 0.08
+     }
+    ],
+    "nav": {
+     "links": 3,
+     "fixed": true,
+     "height": 80,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "bricolage grotesque",
+     "public sans"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 8245,
+    "margins": {
+     "left": 24,
+     "right": 24
+    },
+    "sections": [
+     {
+      "sel": "section.bg-white.pb-24",
+      "tag": "section",
+      "top": 88,
+      "height": 920,
+      "words": 26,
+      "media": 2,
+      "middle": 0,
+      "heading": {
+       "text": "Fisioterapia",
+       "size": 35,
+       "tag": "h1"
+      },
+      "left": 7,
+      "right": 7,
+      "textLeft": 24,
+      "textRight": 28,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#situacoes.bg-white.pb-24",
+      "tag": "section",
+      "top": 1008,
+      "height": 992,
+      "words": 50,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "frequentes",
+       "size": 32,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 24,
+      "textLeft": 24,
+      "textRight": 25,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#diastase.bg-mist.py-24",
+      "tag": "section",
+      "top": 2000,
+      "height": 1179,
+      "words": 79,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "O que é a diástase abdominal",
+       "size": 32,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 28,
+      "textLeft": 24,
+      "textRight": 35,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#como-funciona.py-24.md:py-36",
+      "tag": "section",
+      "top": 3179,
+      "height": 865,
+      "words": 64,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Primeiro, avaliamos.",
+       "size": 32,
+       "tag": "h3"
+      },
+      "left": 24,
+      "right": 26,
+      "textLeft": 24,
+      "textRight": 26,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#fisioterapeuta.py-24.md:py-36",
+      "tag": "section",
+      "top": 4044,
+      "height": 871,
+      "words": 31,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Angela Brazona",
+       "size": 32,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 49,
+      "textLeft": 24,
+      "textRight": 49,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#perguntas.bg-white.py-24",
+      "tag": "section",
+      "top": 4915,
+      "height": 819,
+      "words": 193,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 40,
+      "right": 42,
+      "textLeft": 40,
+      "textRight": 42,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.bg-white.pb-24",
+      "tag": "section",
+      "top": 5734,
+      "height": 201,
+      "words": 5,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Fisioterapia Musculoesquelética",
+       "size": 32,
+       "tag": "span"
+      },
+      "left": 24,
+      "right": 85,
+      "textLeft": 24,
+      "textRight": 85,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.on-dark.bg-panel",
+      "tag": "section",
+      "top": 5934,
+      "height": 844,
+      "words": 38,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Por onde",
+       "size": 35,
+       "tag": "p"
+      },
+      "left": 27,
+      "right": 27,
+      "textLeft": 30,
+      "textRight": 27,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.bg-white.pt-4",
+      "tag": "footer",
+      "top": 6778,
+      "height": 1459,
+      "words": 71,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Serviços",
+       "size": 15,
+       "tag": "h2"
+      },
+      "left": 23,
+      "right": 23,
+      "textLeft": 23,
+      "textRight": 23,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Fisioterapia Dermatofuncional",
+      "size": 35,
+      "top": 196,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 24,
+      "n": 14
+     },
+     {
+      "x": 40,
+      "n": 6
+     }
+    ],
+    "leftBlocks": 20,
+    "bodySize": 17,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "WARN",
+   "id": "hairline",
+   "width": 1440,
+   "message": "1 thin rule(s)/divider line(s): div.mt-14.flex 1320px",
+   "fix": "Delete. Separate with space, a tone change, or scale. Lines are only for real tables and form fields.",
+   "alsoAt": [
+    768
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "outlined-box",
+   "width": 1440,
+   "message": "1 box(es) drawn with a 1px outline.",
+   "fix": "Prefer a filled surface or no box.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "size-count",
+   "width": 1440,
+   "message": "11 different font sizes (12, 14, 15, 17, 18, 20, 24, 36, 68, 130, 317).",
+   "fix": "A page needs about five: display, heading, lead, body, small.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "WARN",
+   "id": "small-text",
+   "width": 1440,
+   "message": "1 text block(s) under 13px.",
+   "fix": "Nothing meant to be read goes below 13px.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "covered-text",
+   "width": 1440,
+   "message": "Large text lies under another element at some scroll position: \"Primeiro, avaliamos.\" (screen 4, 100% hidden); \"fisio4you\" (screen 9, 50% hidden)",
+   "fix": "Nothing may sit on top of a headline or statement. Move the picture, shorten the pinned run, or raise the text above it (z-index) and give it a ground.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "hairline",
+   "width": 390,
+   "message": "2 thin rule(s)/divider line(s): div.mt-14.flex 342px | div.fixed.inset-x-0 390px",
+   "fix": "Delete. Separate with space, a tone change, or scale. Lines are only for real tables and form fields."
+  },
+  {
+   "level": "WARN",
+   "id": "glass",
+   "width": 390,
+   "message": "2 backdrop-blur surfaces.",
+   "fix": "One blurred sticky bar at most; glass cards are a tell."
+  },
+  {
+   "level": "FAIL",
+   "id": "reduced-hidden",
+   "width": 1440,
+   "message": "With reduced motion requested, 2 text block(s) on the first screen stay invisible: \"Fisioterapia Musculoesquelética\", \"Fisioterapia Dermatofuncional\"",
+   "fix": "Put every hidden starting state inside @media (prefers-reduced-motion: no-preference); the reduced page is the finished page (references/motion.md §8)."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\v3-dermato\\desktop-fold.jpg",
+   "pages": [
+    "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\v3-dermato\\desktop-page-01.jpg",
+    "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\v3-dermato\\desktop-page-02.jpg",
+    "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\v3-dermato\\desktop-page-03.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\v3-dermato\\tablet-fold.jpg",
+   "pages": [
+    "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\v3-dermato\\tablet-page-01.jpg",
+    "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\v3-dermato\\tablet-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\v3-dermato\\mobile-fold.jpg",
+   "pages": [
+    "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\v3-dermato\\mobile-page-01.jpg",
+    "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\v3-dermato\\mobile-page-02.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

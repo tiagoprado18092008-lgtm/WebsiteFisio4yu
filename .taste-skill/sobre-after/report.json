@@ -1,0 +1,2136 @@
+{
+ "url": "http://localhost:3000/sobre",
+ "at": "2026-10-30T23:28:26.321Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 6,
+   "filled": [
+    1,
+    0.98,
+    1,
+    1,
+    1,
+    1
+   ],
+   "motion": {
+    "elements": 16,
+    "css": 3,
+    "transitions": 12,
+    "scripted": 1,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 5216,
+     "screens": 5.8,
+     "words": 385,
+     "img": 10,
+     "video": 0,
+     "canvas": 0,
+     "svg": 30,
+     "sections": 5,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 8,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=%2Fmedia%2Fequipa%2Fmario-e-angela.web",
+      "image?url=%2Fmedia%2Fequipa%2Fmario-barroso.webp",
+      "image?url=%2Fmedia%2Fequipa%2Fangela-brazona.web",
+      "image?url=%2Fmedia%2Finstalacoes%2Fginasio.webp&",
+      "image?url=%2Fmedia%2Finstalacoes%2Fsala-fisio4yo",
+      "image?url=%2Fmedia%2Finstalacoes%2Fcorredor-mura",
+      "image?url=%2Fmedia%2Finstalacoes%2Fsala-tratamen",
+      "image?url=%2Fmedia%2Finstalacoes%2Fcamisolas.web"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Fisio4you, centro de reabilitação em Portimão",
+     "words": 6,
+     "chars": 45,
+     "lines": 2,
+     "size": 60,
+     "vw": 4.2,
+     "font": "Bricolage Grotesque",
+     "weight": 400,
+     "tracking": -0.03,
+     "leading": 1.02,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.47,
+     "top": 275,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Fisio4you, centro de reabilitação em Portimão",
+     "words": 6,
+     "lines": 2,
+     "size": 60,
+     "font": "Bricolage Grotesque"
+    },
+    "headings": [
+     {
+      "text": "Fisio4you, centro de reabilitação em Portimão",
+      "words": 6,
+      "chars": 45,
+      "lines": 2,
+      "size": 60,
+      "vw": 4.2,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.03,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.47,
+      "top": 275,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "A clínica",
+      "words": 2,
+      "chars": 9,
+      "lines": 1,
+      "size": 44.8,
+      "vw": 3.1,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.06,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.36,
+      "top": 895,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "A Fisio4you trata lesões musculoesqueléticas e acompanha a recuperação pós-parto, com ecografia na avaliação e reabilitação no ginásio da clínica.",
+      "words": 20,
+      "chars": 146,
+      "lines": 3,
+      "size": 28,
+      "vw": 1.9,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.38,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.5,
+      "top": 895,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Equipa clínica",
+      "words": 2,
+      "chars": 14,
+      "lines": 1,
+      "size": 44.8,
+      "vw": 3.1,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.06,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.47,
+      "top": 1498,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Mário Barroso",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 28,
+      "vw": 1.9,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.26,
+      "top": 1667,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Angela Brazona",
+      "words": 2,
+      "chars": 14,
+      "lines": 1,
+      "size": 28,
+      "vw": 1.9,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.26,
+      "top": 1667,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Instalações",
+      "words": 1,
+      "chars": 11,
+      "lines": 1,
+      "size": 44.8,
+      "vw": 3.1,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.06,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.36,
+      "top": 2128,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Marque a sua consulta",
+      "words": 4,
+      "chars": 21,
+      "lines": 2,
+      "size": 60,
+      "vw": 4.2,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.03,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.35,
+      "top": 3653,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 8,
+     "maxLines": 3,
+     "over2Lines": 0,
+     "statements": 3,
+     "centered": 0,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Public Sans",
+       "share": 0.83,
+       "mono": false
+      },
+      {
+       "family": "Bricolage Grotesque",
+       "share": 0.17,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      12,
+      14,
+      15,
+      17,
+      18,
+      20,
+      21,
+      24,
+      28,
+      45,
+      60
+     ],
+     "sizeCount": 11,
+     "notLoaded": [],
+     "body": {
+      "font": "Public Sans",
+      "size": 17,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 7.6
+     },
+     "measureChars": 56,
+     "max": {
+      "size": 60,
+      "vw": 4.2,
+      "font": "Bricolage Grotesque",
+      "text": "Fisio4you, centro de reabilitação em Por"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.01,
+     "centerShare": 0.01,
+     "smallText": 2
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#a9ced5",
+     "bodyBgHsl": {
+      "h": 190,
+      "s": 0.34,
+      "l": 0.75
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#ffffff",
+       "top": 12,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      },
+      {
+       "color": "#f4f8f9",
+       "top": 783,
+       "hsl": {
+        "h": 192,
+        "s": 0.29,
+        "l": 0.97
+       }
+      },
+      {
+       "color": "#1d5a64",
+       "top": 3526,
+       "hsl": {
+        "h": 188,
+        "s": 0.55,
+        "l": 0.25
+       }
+      },
+      {
+       "color": "#e4f1f3",
+       "top": 4251,
+       "hsl": {
+        "h": 188,
+        "s": 0.38,
+        "l": 0.92
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#4e5053",
+       "share": 0.5
+      },
+      {
+       "color": "#20282b",
+       "share": 0.29
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.12
+      },
+      {
+       "color": "#0d6b7a",
+       "share": 0.06
+      },
+      {
+       "color": "#05301a",
+       "share": 0.03
+      }
+     ],
+     "button": {
+      "bg": "#25d366",
+      "hsl": {
+       "h": 142,
+       "s": 0.7,
+       "l": 0.49
+      },
+      "fg": "#05301a"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 6,
+     "inHero": 5,
+     "radius": "pill",
+     "height": 48,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Marcar consulta",
+      "Marcar consulta por WhatsApp",
+      "Aceitar",
+      "Recusar"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 3,
+     "shadowOverlay": 3,
+     "shadowSamples": [
+      "figure.grid.h-full → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "figure.grid.h-full → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.on-dark.rounded-[28px] → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0"
+     ],
+     "gradients": 0,
+     "scrims": 1,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 6,
+     "hairlineSamples": [
+      "ul.grid.border-t 1320px",
+      "li.flex.gap-4 440px",
+      "li.flex.gap-4 440px",
+      "li.flex.gap-4 440px",
+      "p.mt-10.hidden 1320px"
+     ],
+     "outlinedBoxes": 1,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 7,
+     "boxRadius": 30,
+     "squareMedia": 0,
+     "roundedMedia": 8,
+     "mediaRadius": 24,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.21
+     }
+    ],
+    "nav": {
+     "links": 9,
+     "fixed": true,
+     "height": 88,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "bricolage grotesque",
+     "public sans"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 5216,
+    "margins": {
+     "left": 60,
+     "right": 60
+    },
+    "sections": [
+     {
+      "sel": "section.bg-white.pb-16",
+      "tag": "section",
+      "top": 100,
+      "height": 683,
+      "words": 45,
+      "media": 1,
+      "middle": 70,
+      "heading": {
+       "text": "Fisio4you, centro de reabilitação em Portimão",
+       "size": 60,
+       "tag": "h1"
+      },
+      "left": 60,
+      "right": 60,
+      "textLeft": 60,
+      "textRight": 715,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.relative.py-20",
+      "tag": "section",
+      "top": 783,
+      "height": 603,
+      "words": 77,
+      "media": 0,
+      "middle": 102,
+      "heading": {
+       "text": "A clínica",
+       "size": 45,
+       "tag": "h2"
+      },
+      "left": 60,
+      "right": 93,
+      "textLeft": 60,
+      "textRight": 93,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#equipa.relative.py-20",
+      "tag": "section",
+      "top": 1386,
+      "height": 630,
+      "words": 43,
+      "media": 2,
+      "middle": 95,
+      "heading": {
+       "text": "Equipa clínica",
+       "size": 45,
+       "tag": "h2"
+      },
+      "left": 60,
+      "right": 90,
+      "textLeft": 60,
+      "textRight": 90,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#instalacoes.relative.py-20",
+      "tag": "section",
+      "top": 2016,
+      "height": 1414,
+      "words": 72,
+      "media": 5,
+      "middle": 0,
+      "heading": {
+       "text": "Instalações",
+       "size": 45,
+       "tag": "h2"
+      },
+      "left": 60,
+      "right": 60,
+      "textLeft": 60,
+      "textRight": 872,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.bg-white.py-16",
+      "tag": "section",
+      "top": 3430,
+      "height": 797,
+      "words": 63,
+      "media": 0,
+      "middle": 362,
+      "heading": {
+       "text": "Marque a sua consulta",
+       "size": 60,
+       "tag": "h2"
+      },
+      "left": 86,
+      "right": 109,
+      "textLeft": 86,
+      "textRight": 109,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.bg-white.px-2",
+      "tag": "footer",
+      "top": 4227,
+      "height": 977,
+      "words": 70,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Clínica",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 72,
+      "right": 150,
+      "textLeft": 72,
+      "textRight": 150,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Fisio4you, centro de reabilitação em Portimão",
+      "size": 60,
+      "top": 275,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 60,
+      "n": 7
+     },
+     {
+      "x": 116,
+      "n": 2
+     },
+     {
+      "x": 657,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 10,
+    "bodySize": 17,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0.12,
+    "voidBox": {
+     "x": 600,
+     "y": 720,
+     "w": 840,
+     "h": 180
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 7,
+   "filled": [
+    1,
+    0.97,
+    0.95,
+    1,
+    1,
+    1,
+    1
+   ],
+   "motion": {
+    "elements": 3,
+    "css": 3,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 6869,
+     "screens": 6.7,
+     "words": 359,
+     "img": 10,
+     "video": 0,
+     "canvas": 0,
+     "svg": 30,
+     "sections": 5,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 8,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=%2Fmedia%2Fequipa%2Fmario-e-angela.web",
+      "image?url=%2Fmedia%2Fequipa%2Fmario-barroso.webp",
+      "image?url=%2Fmedia%2Fequipa%2Fangela-brazona.web",
+      "image?url=%2Fmedia%2Finstalacoes%2Fginasio.webp&",
+      "image?url=%2Fmedia%2Finstalacoes%2Fsala-fisio4yo",
+      "image?url=%2Fmedia%2Finstalacoes%2Fcorredor-mura",
+      "image?url=%2Fmedia%2Finstalacoes%2Fsala-tratamen",
+      "image?url=%2Fmedia%2Finstalacoes%2Fcamisolas.web"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Fisio4you, centro de reabilitação em Portimão",
+     "words": 6,
+     "chars": 45,
+     "lines": 4,
+     "size": 45.5,
+     "vw": 5.9,
+     "font": "Bricolage Grotesque",
+     "weight": 400,
+     "tracking": -0.03,
+     "leading": 1.02,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.43,
+     "top": 218,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Fisio4you, centro de reabilitação em Portimão",
+     "words": 6,
+     "lines": 4,
+     "size": 45.5,
+     "font": "Bricolage Grotesque"
+    },
+    "headings": [
+     {
+      "text": "Fisio4you, centro de reabilitação em Portimão",
+      "words": 6,
+      "chars": 45,
+      "lines": 4,
+      "size": 45.5,
+      "vw": 5.9,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.03,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.43,
+      "top": 218,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "A clínica",
+      "words": 2,
+      "chars": 9,
+      "lines": 1,
+      "size": 36.2,
+      "vw": 4.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.06,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.33,
+      "top": 922,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "A Fisio4you trata lesões musculoesqueléticas e acompanha a recuperação pós-parto, com ecografia na avaliação e reabilitação no ginásio da clínica.",
+      "words": 20,
+      "chars": 146,
+      "lines": 6,
+      "size": 28,
+      "vw": 3.6,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.38,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.46,
+      "top": 922,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Equipa clínica",
+      "words": 2,
+      "chars": 14,
+      "lines": 1,
+      "size": 36.2,
+      "vw": 4.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.06,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 1826,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Mário Barroso",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 28,
+      "vw": 3.6,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.56,
+      "top": 1967,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Angela Brazona",
+      "words": 2,
+      "chars": 14,
+      "lines": 1,
+      "size": 28,
+      "vw": 3.6,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.56,
+      "top": 2260,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Instalações",
+      "words": 1,
+      "chars": 11,
+      "lines": 1,
+      "size": 36.2,
+      "vw": 4.7,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.06,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 2702,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Marque a sua consulta",
+      "words": 4,
+      "chars": 21,
+      "lines": 3,
+      "size": 45.5,
+      "vw": 5.9,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.03,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.27,
+      "top": 4838,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 8,
+     "maxLines": 6,
+     "over2Lines": 2,
+     "statements": 3,
+     "centered": 0,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Public Sans",
+       "share": 0.82,
+       "mono": false
+      },
+      {
+       "family": "Bricolage Grotesque",
+       "share": 0.18,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      12,
+      14,
+      15,
+      17,
+      18,
+      19,
+      20,
+      21,
+      24,
+      28,
+      36,
+      46
+     ],
+     "sizeCount": 12,
+     "notLoaded": [],
+     "body": {
+      "font": "Public Sans",
+      "size": 17,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 7.6
+     },
+     "measureChars": 35,
+     "max": {
+      "size": 45.5,
+      "vw": 5.9,
+      "font": "Bricolage Grotesque",
+      "text": "Fisio4you, centro de reabilitação em Por"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.01,
+     "centerShare": 0.01,
+     "smallText": 2
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#a9ced5",
+     "bodyBgHsl": {
+      "h": 190,
+      "s": 0.34,
+      "l": 0.75
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#ffffff",
+       "top": 10,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      },
+      {
+       "color": "#f4f8f9",
+       "top": 810,
+       "hsl": {
+        "h": 192,
+        "s": 0.29,
+        "l": 0.97
+       }
+      },
+      {
+       "color": "#1d5a64",
+       "top": 4747,
+       "hsl": {
+        "h": 188,
+        "s": 0.55,
+        "l": 0.25
+       }
+      },
+      {
+       "color": "#e4f1f3",
+       "top": 5472,
+       "hsl": {
+        "h": 188,
+        "s": 0.38,
+        "l": 0.92
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#4e5053",
+       "share": 0.5
+      },
+      {
+       "color": "#20282b",
+       "share": 0.29
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.12
+      },
+      {
+       "color": "#0d6b7a",
+       "share": 0.06
+      },
+      {
+       "color": "#05301a",
+       "share": 0.03
+      }
+     ],
+     "button": {
+      "bg": "#25d366",
+      "hsl": {
+       "h": 142,
+       "s": 0.7,
+       "l": 0.49
+      },
+      "fg": "#05301a"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 6,
+     "inHero": 5,
+     "radius": "pill",
+     "height": 48,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Marcar consulta",
+      "Marcar consulta por WhatsApp"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 3,
+     "shadowOverlay": 2,
+     "shadowSamples": [
+      "figure.grid.h-full → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "figure.grid.h-full → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.on-dark.rounded-[28px] → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0"
+     ],
+     "gradients": 0,
+     "scrims": 1,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 6,
+     "hairlineSamples": [
+      "ul.grid.border-t 684px",
+      "li.flex.gap-4 342px",
+      "li.flex.gap-4 342px",
+      "li.flex.gap-4 684px",
+      "p.mt-10.hidden 684px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 1,
+     "roundedBoxes": 6,
+     "boxRadius": 30,
+     "squareMedia": 0,
+     "roundedMedia": 6,
+     "mediaRadius": 24,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.08
+     }
+    ],
+    "nav": {
+     "links": 4,
+     "fixed": true,
+     "height": 88,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "bricolage grotesque",
+     "bricolage grotesque fallback",
+     "public sans",
+     "public sans fallback"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 6869,
+    "margins": {
+     "left": 42,
+     "right": 42
+    },
+    "sections": [
+     {
+      "sel": "section.bg-white.pb-16",
+      "tag": "section",
+      "top": 98,
+      "height": 712,
+      "words": 45,
+      "media": 1,
+      "middle": 75,
+      "heading": {
+       "text": "Fisio4you, centro de reabilitação em Portimão",
+       "size": 46,
+       "tag": "h1"
+      },
+      "left": 42,
+      "right": 42,
+      "textLeft": 42,
+      "textRight": 405,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.relative.py-20",
+      "tag": "section",
+      "top": 810,
+      "height": 903,
+      "words": 77,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "A clínica",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 42,
+      "right": 45,
+      "textLeft": 42,
+      "textRight": 45,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#equipa.relative.py-20",
+      "tag": "section",
+      "top": 1714,
+      "height": 876,
+      "words": 43,
+      "media": 2,
+      "middle": 7,
+      "heading": {
+       "text": "Equipa clínica",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 42,
+      "right": 111,
+      "textLeft": 42,
+      "textRight": 111,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#instalacoes.relative.py-20",
+      "tag": "section",
+      "top": 2590,
+      "height": 2061,
+      "words": 72,
+      "media": 5,
+      "middle": 0,
+      "heading": {
+       "text": "Instalações",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 42,
+      "right": 42,
+      "textLeft": 42,
+      "textRight": 163,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.bg-white.py-16",
+      "tag": "section",
+      "top": 4651,
+      "height": 797,
+      "words": 63,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Marque a sua consulta",
+       "size": 46,
+       "tag": "h2"
+      },
+      "left": 68,
+      "right": 91,
+      "textLeft": 68,
+      "textRight": 91,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.bg-white.px-2",
+      "tag": "footer",
+      "top": 5448,
+      "height": 1410,
+      "words": 70,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Clínica",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 54,
+      "right": 92,
+      "textLeft": 54,
+      "textRight": 136,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Fisio4you, centro de reabilitação em Portimão",
+      "size": 46,
+      "top": 218,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 42,
+      "n": 7
+     },
+     {
+      "x": 98,
+      "n": 2
+     },
+     {
+      "x": 374,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 10,
+    "bodySize": 17,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 10,
+   "filled": [
+    1,
+    1,
+    0.93,
+    1,
+    0.97,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "motion": {
+    "elements": 15,
+    "css": 3,
+    "transitions": 11,
+    "scripted": 1,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 7660,
+     "screens": 9.1,
+     "words": 363,
+     "img": 10,
+     "video": 0,
+     "canvas": 0,
+     "svg": 30,
+     "sections": 5,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 8,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "image?url=%2Fmedia%2Fequipa%2Fmario-e-angela.web",
+      "image?url=%2Fmedia%2Fequipa%2Fmario-barroso.webp",
+      "image?url=%2Fmedia%2Fequipa%2Fangela-brazona.web",
+      "image?url=%2Fmedia%2Finstalacoes%2Fginasio.webp&",
+      "image?url=%2Fmedia%2Finstalacoes%2Fsala-fisio4yo",
+      "image?url=%2Fmedia%2Finstalacoes%2Fcorredor-mura",
+      "image?url=%2Fmedia%2Finstalacoes%2Fsala-tratamen",
+      "image?url=%2Fmedia%2Finstalacoes%2Fcamisolas.web"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Fisio4you, centro de reabilitação em Portimão",
+     "words": 6,
+     "chars": 45,
+     "lines": 3,
+     "size": 35.2,
+     "vw": 9,
+     "font": "Bricolage Grotesque",
+     "weight": 400,
+     "tracking": -0.03,
+     "leading": 1.02,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.88,
+     "top": 204,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Fisio4you, centro de reabilitação em Portimão",
+     "words": 6,
+     "lines": 3,
+     "size": 35.2,
+     "font": "Bricolage Grotesque"
+    },
+    "headings": [
+     {
+      "text": "Fisio4you, centro de reabilitação em Portimão",
+      "words": 6,
+      "chars": 45,
+      "lines": 3,
+      "size": 35.2,
+      "vw": 9,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.03,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 204,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "A clínica",
+      "words": 2,
+      "chars": 9,
+      "lines": 1,
+      "size": 29.6,
+      "vw": 7.6,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.06,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 1195,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "A Fisio4you trata lesões musculoesqueléticas e acompanha a recuperação pós-parto, com ecografia na avaliação e reabilitação no ginásio da clínica.",
+      "words": 20,
+      "chars": 146,
+      "lines": 6,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.38,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 1250,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Equipa clínica",
+      "words": 2,
+      "chars": 14,
+      "lines": 1,
+      "size": 29.6,
+      "vw": 7.6,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.06,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 2188,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Mário Barroso",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.77,
+      "top": 2637,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Angela Brazona",
+      "words": 2,
+      "chars": 14,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Bricolage Grotesque",
+      "weight": 500,
+      "tracking": -0.025,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.77,
+      "top": 3232,
+      "tag": "p",
+      "kind": "statement"
+     },
+     {
+      "text": "Instalações",
+      "words": 1,
+      "chars": 11,
+      "lines": 1,
+      "size": 29.6,
+      "vw": 7.6,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.06,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 3599,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Marque a sua consulta",
+      "words": 4,
+      "chars": 21,
+      "lines": 2,
+      "size": 35.2,
+      "vw": 9,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.03,
+      "leading": 1.02,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.71,
+      "top": 5400,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Contactos",
+      "words": 1,
+      "chars": 9,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Bricolage Grotesque",
+      "weight": 400,
+      "tracking": -0.025,
+      "leading": 1.33,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.69,
+      "top": 5696,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 9,
+     "maxLines": 6,
+     "over2Lines": 1,
+     "statements": 4,
+     "centered": 0,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Public Sans",
+       "share": 0.82,
+       "mono": false
+      },
+      {
+       "family": "Bricolage Grotesque",
+       "share": 0.18,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      12,
+      14,
+      15,
+      17,
+      18,
+      21,
+      24,
+      30,
+      35
+     ],
+     "sizeCount": 9,
+     "notLoaded": [],
+     "body": {
+      "font": "Public Sans",
+      "size": 17,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 7.6
+     },
+     "measureChars": 39,
+     "max": {
+      "size": 35.2,
+      "vw": 9,
+      "font": "Bricolage Grotesque",
+      "text": "Fisio4you, centro de reabilitação em Por"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.01,
+     "centerShare": 0.01,
+     "smallText": 2
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#a9ced5",
+     "bodyBgHsl": {
+      "h": 190,
+      "s": 0.34,
+      "l": 0.75
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#ffffff",
+       "top": 8,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      },
+      {
+       "color": "#f4f8f9",
+       "top": 1115,
+       "hsl": {
+        "h": 192,
+        "s": 0.29,
+        "l": 0.97
+       }
+      },
+      {
+       "color": "#1d5a64",
+       "top": 5292,
+       "hsl": {
+        "h": 188,
+        "s": 0.55,
+        "l": 0.25
+       }
+      },
+      {
+       "color": "#e4f1f3",
+       "top": 6173,
+       "hsl": {
+        "h": 188,
+        "s": 0.38,
+        "l": 0.92
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#4e5053",
+       "share": 0.51
+      },
+      {
+       "color": "#20282b",
+       "share": 0.29
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.12
+      },
+      {
+       "color": "#0d6b7a",
+       "share": 0.05
+      },
+      {
+       "color": "#05301a",
+       "share": 0.02
+      }
+     ],
+     "button": {
+      "bg": "#25d366",
+      "hsl": {
+       "h": 142,
+       "s": 0.7,
+       "l": 0.49
+      },
+      "fg": "#05301a"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 8,
+     "inHero": 7,
+     "radius": "pill",
+     "height": 48,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Marcar consulta por WhatsApp",
+      "Ligar",
+      "WhatsApp",
+      "Aceitar",
+      "Recusar"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 3,
+     "shadowOverlay": 2,
+     "shadowSamples": [
+      "figure.grid.h-full → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "figure.grid.h-full → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+      "div.on-dark.rounded-[28px] → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0"
+     ],
+     "gradients": 0,
+     "scrims": 1,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 6,
+     "hairlineSamples": [
+      "ul.grid.border-t 342px",
+      "li.flex.gap-4 342px",
+      "li.flex.gap-4 342px",
+      "li.flex.gap-4 342px",
+      "div.mt-14.border-t 358px"
+     ],
+     "outlinedBoxes": 1,
+     "dashed": 0,
+     "blurred": 2,
+     "roundedBoxes": 7,
+     "boxRadius": 30,
+     "squareMedia": 0,
+     "roundedMedia": 4,
+     "mediaRadius": 22,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.23
+     }
+    ],
+    "nav": {
+     "links": 3,
+     "fixed": true,
+     "height": 80,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "bricolage grotesque",
+     "public sans"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 7660,
+    "margins": {
+     "left": 24,
+     "right": 24
+    },
+    "sections": [
+     {
+      "sel": "section.bg-white.pb-16",
+      "tag": "section",
+      "top": 88,
+      "height": 1027,
+      "words": 45,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Fisio4you, centro de reabilitação em Portimão",
+       "size": 35,
+       "tag": "h1"
+      },
+      "left": 24,
+      "right": 24,
+      "textLeft": 24,
+      "textRight": 47,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.relative.py-20",
+      "tag": "section",
+      "top": 1115,
+      "height": 994,
+      "words": 77,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "A clínica",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 27,
+      "textLeft": 24,
+      "textRight": 27,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#equipa.relative.py-20",
+      "tag": "section",
+      "top": 2108,
+      "height": 1410,
+      "words": 43,
+      "media": 2,
+      "middle": 0,
+      "heading": {
+       "text": "Equipa clínica",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 46,
+      "textLeft": 24,
+      "textRight": 46,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#instalacoes.relative.py-20",
+      "tag": "section",
+      "top": 3519,
+      "height": 1710,
+      "words": 72,
+      "media": 5,
+      "middle": 0,
+      "heading": {
+       "text": "Instalações",
+       "size": 30,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 24,
+      "textLeft": 24,
+      "textRight": 28,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.bg-white.py-16",
+      "tag": "section",
+      "top": 5228,
+      "height": 929,
+      "words": 52,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Marque a sua consulta",
+       "size": 35,
+       "tag": "h2"
+      },
+      "left": 56,
+      "right": 71,
+      "textLeft": 56,
+      "textRight": 71,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.bg-white.px-2",
+      "tag": "footer",
+      "top": 6157,
+      "height": 1495,
+      "words": 70,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Clínica",
+       "size": 18,
+       "tag": "h2"
+      },
+      "left": 32,
+      "right": 43,
+      "textLeft": 32,
+      "textRight": 43,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Fisio4you, centro de reabilitação em Portimão",
+      "size": 35,
+      "top": 204,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 24,
+      "n": 8
+     },
+     {
+      "x": 56,
+      "n": 2
+     }
+    ],
+    "leftBlocks": 10,
+    "bodySize": 17,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "FAIL",
+   "id": "shadow",
+   "width": 1440,
+   "message": "3 box-shadow(s) on elements at rest: figure.grid.h-full → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0 | figure.grid.h-full → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0 | div.on-dark.rounded-[28px] → rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0",
+   "fix": "Remove. Separate surfaces with a tone step or space. Shadows are for things that really float (menus, dialogs, sticky bars).",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "hairline",
+   "width": 1440,
+   "message": "6 thin rule(s)/divider line(s): ul.grid.border-t 1320px | li.flex.gap-4 440px | li.flex.gap-4 440px | li.flex.gap-4 440px",
+   "fix": "Delete. Separate with space, a tone change, or scale. Lines are only for real tables and form fields.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "outlined-box",
+   "width": 1440,
+   "message": "1 box(es) drawn with a 1px outline.",
+   "fix": "Prefer a filled surface or no box.",
+   "alsoAt": [
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "size-count",
+   "width": 1440,
+   "message": "11 different font sizes (12, 14, 15, 17, 18, 20, 21, 24, 28, 45, 60).",
+   "fix": "A page needs about five: display, heading, lead, body, small.",
+   "alsoAt": [
+    768
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "WARN",
+   "id": "small-text",
+   "width": 1440,
+   "message": "2 text block(s) under 13px.",
+   "fix": "Nothing meant to be read goes below 13px.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "focal-point",
+   "width": 1440,
+   "message": "The first screen has no dominant element: the largest type is 60px (4.2vw) and no single picture holds a third of the viewport.",
+   "fix": "Make one thing lead: the headline at display size, or one large picture. A grid of many small pictures is not one thing; in blind tests jurors marked a first screen without a headline down every time. On the strongest studied sites the largest type has a median of 8.4vw."
+  },
+  {
+   "level": "FAIL",
+   "id": "covered-text",
+   "width": 1440,
+   "message": "Large text lies under another element at some scroll position: \"Mário Barroso\" (screen 2, 100% hidden)",
+   "fix": "Nothing may sit on top of a headline or statement. Move the picture, shorten the pinned run, or raise the text above it (z-index) and give it a ground.",
+   "alsoAt": [
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 768,
+   "message": "2 headline(s) wrap past two lines at 768px: \"Fisio4you, centro de reabilitação em Portimão\" → 4 lines (6 words, 45.5px); \"Marque a sua consulta\" → 3 lines (4 words, 45.5px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 32px or less."
+  },
+  {
+   "level": "WARN",
+   "id": "statement-length",
+   "width": 768,
+   "message": "1 large-set statement(s) run past 3 lines at 768px: \"A Fisio4you trata lesões musculoesquelét…\" → 6 lines at 28px",
+   "fix": "A statement set large is about 30 words. Cut it, or set the rest as ordinary body text.",
+   "alsoAt": [
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 390,
+   "message": "1 headline(s) wrap past two lines at 390px: \"Fisio4you, centro de reabilitação em Portimão\" → 3 lines (6 words, 35.2px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 24px or less."
+  },
+  {
+   "level": "WARN",
+   "id": "glass",
+   "width": 390,
+   "message": "2 backdrop-blur surfaces.",
+   "fix": "One blurred sticky bar at most; glass cards are a tell."
+  },
+  {
+   "level": "FAIL",
+   "id": "reduced-hidden",
+   "width": 1440,
+   "message": "With reduced motion requested, 2 text block(s) on the first screen stay invisible: \"Fisioterapia Musculoesquelética\", \"Fisioterapia Dermatofuncional\"",
+   "fix": "Put every hidden starting state inside @media (prefers-reduced-motion: no-preference); the reduced page is the finished page (references/motion.md §8)."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\sobre-after\\desktop-fold.jpg",
+   "pages": [
+    "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\sobre-after\\desktop-page-01.jpg",
+    "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\sobre-after\\desktop-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\sobre-after\\tablet-fold.jpg",
+   "pages": [
+    "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\sobre-after\\tablet-page-01.jpg",
+    "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\sobre-after\\tablet-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\sobre-after\\mobile-fold.jpg",
+   "pages": [
+    "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\sobre-after\\mobile-page-01.jpg",
+    "C:\\Users\\Notpr\\OneDrive\\Ambiente de Trabalho\\Website fisio4you\\.taste-skill\\sobre-after\\mobile-page-02.jpg"
+   ],
+   "film": []
+  }
+ ]
+}
