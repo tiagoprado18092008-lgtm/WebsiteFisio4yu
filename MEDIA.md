@@ -38,7 +38,6 @@ Tudo o que aparece no site está registado em `content/media.ts`. Os originais e
 | `service-eco` | 4/5 | ✅ | Ideal: fisioterapeuta com sonda do ecógrafo, ecrã visível. | `/public/media/espaco/sala-avaliacao.webp` |
 | `service-gym` | 4/5 | ✅ | Ginásio de 100 m² em plano aberto. | `/public/media/espaco/ginasio-corredor.webp` |
 | `service-recovery` | 4/5 | ✅ | Banheira de gelo, vazia (cartão da crioterapia e visita à clínica). | `/public/media/tratamentos/banheira-gelo-vazia.webp` |
-| `slot-msk` | 3/4 | ✅ | Faixa no título da página da musculoesquelética: as mãos em terapia manual. | `/public/media/tratamentos/terapia-manual.webp` |
 | `wide-msk` | 3/4 | ✅ | Foto larga do topo da musculoesquelética (as mãos do Mário no utente, na marquesa). | `/public/media/tratamentos/tratamento-sala.webp` |
 | `wide-dermato` | 3/4 | ✅ | Foto do hero da dermatofuncional, inteira (3:4) ao lado do título: a Angela com os instrumentos em madeira. | `/public/media/tratamentos/angela-dermatofuncional.webp` |
 | `team-mario` | 4/5 | ✅ | Retrato do Mário. | `/public/media/equipa/mario-barroso.webp` |

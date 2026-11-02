@@ -195,17 +195,8 @@ const items: MediaItem[] = [
     // Foto alta (9:16): o recorte assenta em baixo, na banheira, com um pouco da luz azul do teto
     position: "50% 80%",
   },
-  // Páginas de serviço: só fotos de tratamentos (a pedido do cliente, nada de fotos do ginásio no topo). A faixa dentro
-  // do título é um recorte baixo e largo (decorativo); a foto larga logo abaixo é outra cena do mesmo serviço, a 2:1.
-  {
-    id: "slot-msk",
-    type: "image",
-    src: photo.manualTherapy,
-    ratio: "3/4",
-    alt: { pt: "Mãos do fisioterapeuta em terapia manual", en: "The physiotherapist's hands during manual therapy" },
-    brief: "Faixa no título da página da musculoesquelética: as mãos em terapia manual.",
-    position: "50% 84%",
-  },
+  // Páginas de serviço: só fotos de tratamentos (a pedido do cliente, nada de fotos do ginásio no topo). Sem foto
+  // dentro do título (saiu a pedido do cliente); a foto larga logo abaixo do título é a 2:1.
   {
     id: "wide-msk",
     type: "image",

@@ -139,25 +139,6 @@ p, li, dd, blockquote { text-wrap: pretty; }
     line-height: 1.18;
     letter-spacing: -0.02em;
   }
-  /* Foto em faixa dentro do título, da altura das maiúsculas; em telemóvel desce para a sua própria linha */
-  .t-slot {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 2.2em;
-    margin-block: 0.14em 0.1em;
-    border-radius: 0.16em;
-    overflow: hidden;
-  }
-  @media (min-width: 640px) {
-    .t-slot {
-      display: inline-block;
-      width: 2.3em;
-      height: 0.72em;
-      margin: 0 0.04em;
-      vertical-align: baseline;
-    }
-  }
   .container-x {
     width: 100%;
     max-width: 1480px;
@@ -242,6 +223,21 @@ p, li, dd, blockquote { text-wrap: pretty; }
   to { opacity: 1; transform: none; }
 }
 .bm-swap { animation: swap-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+/* Tratamento por zona (components/ZoneGuide.tsx): ao trocar de zona, a linha entre as fases desenha-se de uma fase
+   para a seguinte (na vertical em telemóvel, na horizontal a partir de 768 px) */
+@keyframes zone-draw-y { from { transform: scaleY(0); } }
+@keyframes zone-draw-x { from { transform: scaleX(0); } }
+@media (prefers-reduced-motion: no-preference) {
+  .zone-track {
+    transform-origin: top left;
+    animation: zone-draw-y 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(0.12s + var(--d, 0) * 0.22s);
+  }
+  @media (min-width: 768px) {
+    .zone-track { animation-name: zone-draw-x; }
+  }
+}
 
 /* Esquema da diástase: os músculos e a linha alba deslizam entre fases */
 .dx-move { transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), fill 0.6s ease; }

@@ -54,12 +54,9 @@ export type ServiceExplainer = {
 export type ServicePageCopy = {
   /** Frase curta por baixo do título (o `heroSub`, mais longo, fica para a home). */
   lead: string;
-  /**
-   * Foto de um tratamento em faixa dentro do título; outra foto do serviço abre larga logo abaixo (`heroWide`).
-   * Sem `heroSlot`, a `heroWide` (vertical, 3:4) aparece inteira, sem recorte, ao lado do título.
-   */
-  heroSlot?: string;
+  /** Foto do serviço no topo: larga (2:1) por baixo do título ou, com `heroBeside`, vertical (3:4) e inteira ao lado dele. */
   heroWide: string;
+  heroBeside?: boolean;
   /** Foto 4:5 por baixo da introdução das situações (quando a página tem poucas fotos). */
   conditionsPhoto?: string;
   /** Mostra as duas áreas da clínica em painéis com foto (texto em `servicePage.areas`), a seguir às situações. */
@@ -219,34 +216,54 @@ export const pt = {
       text: "Respondemos às mensagens durante o horário da clínica.",
       hoursLabel: "Horário",
     },
+    /**
+     * Tratamento por zona do corpo, na página da musculoesquelética (components/ZoneGuide.tsx), da cabeça aos pés.
+     * `steps`: o que acontece em cada uma das `phases` (avaliação, tratamento, alta). Uma zona com `service` de outro
+     * serviço (o abdómen) não abre painel: leva à página desse serviço.
+     */
     bodyMap: {
-      title: "Onde sente dor?",
-      intro: "Selecione uma zona para ver as situações que acompanhamos com mais frequência. Pode descrever o seu caso por WhatsApp antes da consulta.",
+      title: "Como tratamos cada zona",
+      intro: "Escolha uma zona para ver como decorrem a avaliação, o tratamento e a alta. A indicação para tratamento é confirmada na consulta.",
       listLabel: "Zonas do corpo",
       commonLabel: "Situações frequentes",
-      talk: "Descrever o meu caso por WhatsApp",
-      see: "Ver o tratamento",
+      talk: "Descrever o meu caso",
+      phases: ["Avaliação", "Tratamento", "Alta"],
       regions: [
         {
           id: "cervical", label: "Pescoço",
           title: "Pescoço e cervical",
-          text: "Dor e rigidez cervical e dores de cabeça de origem cervical, muitas vezes associadas a posturas mantidas, como o trabalho ao computador.",
+          text: "Dor e rigidez no pescoço, dores de cabeça de origem cervical ou dor que desce para o braço, muitas vezes ligadas a posturas mantidas, como o trabalho ao computador.",
+          steps: [
+            "Mobilidade do pescoço e dos ombros, postura de trabalho e, se a dor desce para o braço, testes neurológicos.",
+            "Terapia manual e exercícios de mobilidade e de força para a cervical e a zona dorsal.",
+            "Exercícios para manter em casa e ajustes à rotina, como a posição de trabalho.",
+          ],
           common: ["Cervicalgia", "Torcicolo", "Dor irradiada para o braço"],
           service: "msk", waTopic: "dor no pescoço",
         },
         {
           id: "ombro", label: "Ombro",
           title: "Ombro",
-          text: "Dor ao elevar o braço, perda de força ou instabilidade. A ecografia permite observar o estado dos tendões.",
+          text: "Dor ao elevar o braço, perda de força ou instabilidade, e reabilitação depois de uma cirurgia ao ombro.",
+          steps: [
+            "Testes de movimento e de força e, quando indicado, ecografia para observar os tendões.",
+            "Terapia manual e exercício com carga progressiva para os músculos do ombro e da omoplata.",
+            "Retoma por fases dos gestos acima da cabeça, no desporto ou no trabalho.",
+          ],
           common: ["Tendinopatia da coifa dos rotadores", "Ombro congelado", "Pós-operatório"],
-          service: "msk", anchor: "ecografia", waTopic: "dor no ombro",
+          service: "msk", waTopic: "dor no ombro",
         },
         {
           id: "coluna", label: "Costas",
           title: "Costas e coluna",
-          text: "Dor lombar ou dorsal, aguda ou persistente. O tratamento combina terapia manual e exercício para recuperar a mobilidade e a força.",
+          text: "Dor lombar ou dorsal, recente ou persistente, por vezes com dor que desce para a perna.",
+          steps: [
+            "História da dor, testes de movimento e, se a dor desce para a perna, testes neurológicos.",
+            "Terapia manual e exercício para recuperar a mobilidade e a força do tronco.",
+            "Um plano de exercício para continuar, em casa ou no ginásio.",
+          ],
           common: ["Lombalgia", "Hérnia discal", "Ciática"],
-          service: "msk", anchor: "ginasio", waTopic: "dor nas costas",
+          service: "msk", waTopic: "dor nas costas",
         },
         {
           id: "abdomen", label: "Abdómen",
@@ -258,25 +275,40 @@ export const pt = {
         {
           id: "anca", label: "Anca",
           title: "Anca",
-          text: "Dor na anca ou na virilha ao caminhar, correr ou subir escadas, e reabilitação após prótese da anca.",
+          text: "Dor na anca ou na virilha ao caminhar, correr ou subir escadas, e reabilitação depois de uma prótese da anca.",
+          steps: [
+            "Mobilidade da anca, força dos glúteos e observação da marcha ou da corrida.",
+            "Terapia manual e exercício de força e de controlo da anca e do tronco, no ginásio.",
+            "Aumento progressivo da carga até à marcha, à corrida ou ao desporto.",
+          ],
           common: ["Tendinopatia glútea", "Pubalgia", "Prótese da anca"],
-          service: "msk", anchor: "ginasio", waTopic: "dor na anca",
+          service: "msk", waTopic: "dor na anca",
         },
         {
           id: "joelho", label: "Joelho",
           title: "Joelho",
-          text: "Lesões desportivas, dor ao correr ou agachar e reabilitação após cirurgia, até ao regresso ao treino.",
+          text: "Lesões desportivas, dor ao correr ou agachar e reabilitação depois de uma cirurgia, como a do ligamento cruzado.",
+          steps: [
+            "Testes de estabilidade, de força e de movimento e, quando indicado, ecografia.",
+            "Terapia manual e exercício supervisionado no ginásio, com carga progressiva.",
+            "Testes físicos e critérios definidos antes de voltar ao treino e à competição.",
+          ],
           common: ["Ligamento cruzado (LCA)", "Menisco", "Tendinopatia rotuliana"],
-          service: "msk", anchor: "ginasio", waTopic: "dor no joelho",
+          service: "msk", waTopic: "dor no joelho",
         },
         {
           id: "tornozelo", label: "Tornozelo",
           title: "Tornozelo e pé",
           text: "Entorses recorrentes ou mal recuperadas, dor no tendão de Aquiles ou na planta do pé.",
+          steps: [
+            "Testes de estabilidade e de equilíbrio e, quando indicado, ecografia dos ligamentos e do tendão.",
+            "Terapia manual e exercício de força, de equilíbrio e de controlo do pé e da perna.",
+            "Saltos, corrida e mudanças de direção, por fases, antes de voltar ao desporto.",
+          ],
           common: ["Entorse", "Tendinopatia de Aquiles", "Fascite plantar"],
           service: "msk", waTopic: "dor no tornozelo/pé",
         },
-      ] as { id: string; label: string; title: string; text: string; common: string[]; service: ServiceKey; anchor?: string; waTopic: string }[],
+      ] as { id: string; label: string; title: string; text: string; steps?: string[]; common: string[]; service: ServiceKey; waTopic: string }[],
       recovery: {
         title: "Recuperação entre treinos",
         text: "Banheira de gelo e sauna para quem treina com regularidade.",
@@ -597,7 +629,6 @@ export const pt = {
       related: ["dermato"],
       page: {
         lead: "Lesões desportivas, dor e reabilitação depois de uma cirurgia, com o fisioterapeuta Mário Barroso.",
-        heroSlot: "slot-msk",
         heroWide: "wide-msk",
         relatedPhoto: "related-msk",
         areas: true,
@@ -725,6 +756,7 @@ export const pt = {
       page: {
         lead: "Recuperação pós-parto, diástase abdominal e cicatrizes, com a fisioterapeuta Angela Brazona.",
         heroWide: "wide-dermato",
+        heroBeside: true,
         conditionsPhoto: "strip-angela",
         relatedPhoto: "related-dermato",
         person: {

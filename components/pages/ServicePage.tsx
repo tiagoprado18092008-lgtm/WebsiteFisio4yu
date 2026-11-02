@@ -1,21 +1,21 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Plus } from "lucide-react";
 import { getDict } from "@/content";
-import { media, videoFor } from "@/content/media";
+import { videoFor } from "@/content/media";
 import { href, serviceKeys, type Locale, type ServiceKey } from "@/lib/routes";
 import { waLink, waMessages } from "@/lib/whatsapp";
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from "@/lib/seo";
 import { cn } from "@/lib/cn";
 import { Breadcrumbs } from "../PageHero";
 import { Media } from "../Media";
-import { btn, CallButton, WhatsAppButton } from "../Buttons";
+import { btn, WhatsAppButton } from "../Buttons";
 import { WhatsAppIcon } from "../Icon";
 import { JsonLd } from "../JsonLd";
 import { VideoButton } from "../VideoCard";
 import { DiastasisExplorer } from "../DiastasisExplorer";
 import { RevealOnScroll } from "../RevealOnScroll";
 import { ServiceAreas } from "../ServiceAreas";
+import { ZoneGuide, type Zone } from "../ZoneGuide";
 
 type Row = { main: string; sub: string; action?: { href: string; label: string; wa?: string } };
 
@@ -53,7 +53,7 @@ const stairs = ["lg:col-start-1", "lg:col-start-3", "lg:col-start-5", "lg:col-st
 
 /**
  * Página de cada serviço, curta e feita de fotos dos tratamentos:
- * o nome em cartaz com uma foto do serviço no lugar de uma palavra → outra foto do serviço, larga → situações →
+ * o nome em cartaz e uma frase → uma foto do serviço, larga → (musculoesquelética) o tratamento zona a zona · (dermatofuncional) as situações →
  * (com `page.areas`) as duas áreas da clínica em painéis com foto → (musculoesquelética) os três recursos, só com foto, nome e uma linha · (dermatofuncional) o esquema da diástase →
  * o percurso em quatro frases → quem acompanha → perguntas fechadas →
  * o outro serviço.
@@ -71,14 +71,6 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
     { name: t.nav.services, href: href(locale, "services") },
     { name: s.name, href: url },
   ];
-  const [titleFirst, ...titleRest] = s.heroTitle.split(" ");
-  const slot = p.heroSlot ? media[p.heroSlot] : undefined;
-  const actions = (
-    <>
-      <WhatsAppButton message={wa} location={`servico-${service}`} label={t.common.whatsappCta} />
-      <CallButton location={`servico-${service}`} label={t.common.phoneDisplay} note={t.common.phoneNote} />
-    </>
-  );
   const specialist = t.team.find((m) => m.media === s.specialist);
   const modules = s.modules ?? [];
   const videoLabels = { play: t.common.watchVideo, close: t.common.close };
@@ -87,22 +79,26 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
   const stepsTone = s.explainer ? "bg-white" : "bg-mist";
   const personTone = s.explainer ? "bg-mist" : "bg-white";
 
-  // Tabela das situações: as zonas do corpo (musculoesquelética) ou as `conditions` do serviço (dermatofuncional);
-  // cada linha abre o WhatsApp, e as zonas de outro serviço levam à página dele.
-  const rows: Row[] = s.bodyMap
-    ? t.home.bodyMap.regions.map((r) => ({
-        main: r.label,
-        sub: r.common.join(", "),
-        action:
-          r.service === service
-            ? { href: waLink(msg.problem(r.waTopic)), label: sp.write, wa: `servico-${service}-zona-${r.id}` }
-            : { href: href(locale, `service:${r.service}`), label: sp.seeService },
-      }))
-    : (s.conditions ?? []).map((c) => ({
-        main: c.label,
-        sub: c.common.join(", "),
-        action: { href: waLink(msg.problem(c.waTopic)), label: sp.write, wa: `servico-${service}-zona-${c.id}` },
-      }));
+  // Musculoesquelética: o tratamento por zona do corpo; cada zona abre o WhatsApp, e a de outro serviço leva à página dele
+  const bm = t.home.bodyMap;
+  const zones: Zone[] = bm.regions.map((r) => ({
+    id: r.id,
+    label: r.label,
+    title: r.title,
+    text: r.text,
+    steps: r.steps ?? [],
+    common: r.common,
+    ...(r.service === service
+      ? { wa: { href: waLink(msg.problem(r.waTopic)), location: `servico-${service}-zona-${r.id}` } }
+      : { other: { href: href(locale, `service:${r.service}`), service: sp.areas.items[r.service].name } }),
+  }));
+
+  // Dermatofuncional: a tabela das `conditions`; cada linha abre o WhatsApp
+  const rows: Row[] = (s.conditions ?? []).map((c) => ({
+    main: c.label,
+    sub: c.common.join(", "),
+    action: { href: waLink(msg.problem(c.waTopic)), label: sp.write, wa: `servico-${service}-zona-${c.id}` },
+  }));
   const conditionList = (
     <ul>
       {rows.map((row, i) => (
@@ -146,27 +142,20 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
       />
       <RevealOnScroll />
 
-      {/* O nome em cartaz, com uma foto do serviço no lugar de uma palavra; outra foto do serviço abre larga por baixo.
-          Sem foto no título (dermatofuncional), a foto do serviço fica inteira, sem recorte nem deriva: por baixo dos
-          botões em telemóvel e, a partir de 1024 px, numa coluna à direita, com o título assente no fundo da foto. */}
+      {/* O nome em cartaz e uma frase; a foto do serviço abre larga por baixo. Com `heroBeside` (dermatofuncional), a
+          foto fica inteira, sem recorte nem deriva: por baixo da frase em telemóvel e, a partir de 1024 px, numa coluna
+          à direita, com o título assente no fundo da foto. Sem botões no topo: o contacto fica no header e na barra fixa. */}
       <section className="bg-white pb-24 pt-6 md:pb-36 md:pt-10">
-        {slot ? (
+        {!p.heroBeside ? (
           <div className="container-x">
             <div className="svc-in">
               <Breadcrumbs crumbs={crumbs} />
               <h1 className="t-poster mt-10 md:mt-16" style={{ "--i": 1 } as React.CSSProperties}>
-                {titleFirst}{" "}
-                {slot.src && (
-                  <span aria-hidden className="t-slot bg-ice">
-                    <Image src={slot.src} alt="" fill priority sizes="(min-width: 640px) 320px, 100vw" className="object-cover" style={{ objectPosition: slot.position }} />
-                  </span>
-                )}{" "}
-                {titleRest.join(" ")}
+                {s.heroTitle}
               </h1>
-              <div className="mt-8 grid gap-8 md:mt-12 lg:grid-cols-12 lg:items-end lg:gap-x-6" style={{ "--i": 2 } as React.CSSProperties}>
-                <p className="max-w-[34rem] text-lg leading-relaxed text-ink md:text-xl lg:col-span-7">{p.lead}</p>
-                <div className="flex flex-wrap gap-3 lg:col-span-5 lg:justify-end">{actions}</div>
-              </div>
+              <p className="mt-8 max-w-[34rem] text-lg leading-relaxed text-ink md:mt-12 md:text-xl" style={{ "--i": 2 } as React.CSSProperties}>
+                {p.lead}
+              </p>
             </div>
             <div className="svc-shutter relative mt-12 aspect-[4/3] overflow-hidden rounded-[var(--radius-img)] bg-ice md:mt-16 md:aspect-[2/1]">
               <div className="svc-settle absolute inset-0">
@@ -184,7 +173,6 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
               <div className="mt-10 md:mt-16 lg:mt-auto lg:pt-16 lg:[container-type:inline-size]" style={{ "--i": 1 } as React.CSSProperties}>
                 <h1 className="t-poster lg:text-[min(11.5cqi,9.25rem)]">{s.heroTitle}</h1>
                 <p className="mt-8 max-w-[34rem] text-lg leading-relaxed text-ink md:mt-10 md:text-xl">{p.lead}</p>
-                <div className="mt-8 flex flex-wrap gap-3">{actions}</div>
               </div>
             </div>
             <div className="svc-shutter relative aspect-[3/4] w-full overflow-hidden rounded-[var(--radius-img)] bg-ice sm:max-w-[28rem] lg:col-span-4 lg:max-w-none">
@@ -196,22 +184,27 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
         )}
       </section>
 
-      {/* Situações. Com o mapa do corpo (musculoesquelética): título e introdução à esquerda, a tabela das zonas à
-          direita. Com foto (dermatofuncional): a foto à esquerda, da altura do bloco, e à direita o título e a mesma
-          tabela; em telemóvel, título → foto → tabela. */}
-      <section id="situacoes" aria-labelledby="situacoes-title" className="bg-white pb-24 md:pb-36">
+      {/* Situações. Com o mapa do corpo (musculoesquelética): o tratamento zona a zona, numa faixa mist, com o título e
+          a introdução por cima. Com foto (dermatofuncional): a foto à esquerda, da altura do bloco, e à direita o título
+          e a tabela das situações; em telemóvel, título → foto → tabela. */}
+      <section
+        id="situacoes"
+        aria-labelledby="situacoes-title"
+        className={cn(s.bodyMap ? "bg-mist py-24 md:py-36" : "bg-white pb-24 md:pb-36")}
+      >
         {s.bodyMap ? (
-          <div className="container-x grid gap-10 lg:grid-cols-12 lg:gap-x-6">
-            <div className="lg:col-span-5">
-              <h2 id="situacoes-title" data-reveal className="t-display">
-                <span className="block">{conditionsTitle.slice(0, -1).join(" ")}</span>
-                <span className="block">{conditionsTitle.at(-1)}</span>
+          <div className="container-x">
+            <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-x-6">
+              <h2 id="situacoes-title" data-reveal className="t-display lg:col-span-6">
+                {bm.title}
               </h2>
-              <p data-reveal className="mt-6 max-w-[34ch] text-lg leading-relaxed text-ink">
-                {s.forWho.intro}
+              <p data-reveal className="max-w-[38ch] text-lg leading-relaxed text-ink lg:col-span-4 lg:col-start-9">
+                {bm.intro}
               </p>
             </div>
-            <div className="lg:col-span-7 lg:col-start-6 lg:pt-3">{conditionList}</div>
+            <div data-reveal className="mt-12 md:mt-16">
+              <ZoneGuide zones={zones} phases={bm.phases} listLabel={bm.listLabel} commonLabel={bm.commonLabel} talk={bm.talk} />
+            </div>
           </div>
         ) : (
           // A foto é mais alta do que o texto: a sobra vai para a 2.ª linha, e a tabela fica logo a seguir à introdução
@@ -238,9 +231,10 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
         )}
       </section>
 
-      {/* As duas áreas da clínica: painéis com foto, um aberto e o outro fechado; tocar no fechado troca-os */}
+      {/* As duas áreas da clínica: painéis com foto, um aberto e o outro fechado; tocar no fechado troca-os.
+          Vem a seguir à faixa mist do tratamento por zona, por isso tem espaço em cima. */}
       {p.areas && (
-        <section id="areas" aria-labelledby="areas-title" className="bg-white pb-24 md:pb-36">
+        <section id="areas" aria-labelledby="areas-title" className={cn("bg-white pb-24 md:pb-36", s.bodyMap && "pt-24 md:pt-36")}>
           <div className="container-x">
             <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-x-6">
               <h2 id="areas-title" data-reveal className="t-display lg:col-span-6">
