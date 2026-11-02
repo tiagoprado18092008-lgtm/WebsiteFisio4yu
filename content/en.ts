@@ -323,13 +323,13 @@ export const en: Dict = {
       media: "team-mario",
       name: "Mário Barroso",
       role: "Founder and physiotherapist",
-      focus: "Musculoskeletal injuries, rehabilitation and sports performance. 16 years of clinical experience. [[Professional registration no. and relevant training]]",
+      focus: "Founded Fisio4you to support musculoskeletal injuries and athletes' recovery from day one through to a full return to activity. Has 16 years of clinical experience in rehabilitation and sports performance, using ultrasound and ultrasound-guided techniques in assessment and treatment. [[Professional registration no. and relevant training]]",
     },
     {
       media: "team-angela",
       name: "Angela Brazona",
       role: "Physiotherapist",
-      focus: "Dermatofunctional physiotherapy and women's health, during pregnancy and after childbirth, covering both functional and aesthetic aspects. [[Professional registration no. and relevant training]]",
+      focus: "Focuses on dermatofunctional physiotherapy and women's health, supporting pregnancy and the postpartum period, and treating abdominal diastasis, scars, lymphatic drainage and lipoedema. Follows each case from the initial assessment to independence, with a plan reviewed throughout treatment. [[Professional registration no. and relevant training]]",
     },
   ],
 

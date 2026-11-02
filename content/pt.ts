@@ -462,13 +462,13 @@ export const pt = {
       media: "team-mario",
       name: "Mário Barroso",
       role: "Fundador e fisioterapeuta",
-      focus: "Lesões musculoesqueléticas, reabilitação e performance desportiva. Tem 16 anos de experiência clínica. [[Cédula profissional n.º e formação relevante]]",
+      focus: "Fundou a Fisio4you para acompanhar lesões musculoesqueléticas e a recuperação de desportistas do primeiro dia ao regresso à atividade. Tem 16 anos de experiência clínica em reabilitação e performance desportiva, com recurso a ecografia e técnicas ecoguiadas na avaliação e no tratamento. [[Cédula profissional n.º e formação relevante]]",
     },
     {
       media: "team-angela",
       name: "Angela Brazona",
       role: "Fisioterapeuta",
-      focus: "Fisioterapia dermatofuncional e saúde da mulher, durante a gravidez e no pós-parto, nas vertentes funcional e estética. [[Cédula profissional n.º e formação relevante]]",
+      focus: "Dedica-se à fisioterapia dermatofuncional e à saúde da mulher, com acompanhamento na gravidez e no pós-parto e intervenção em diástase abdominal, cicatrizes, drenagem linfática e lipedema. Acompanha cada caso da avaliação inicial à autonomia, com um plano revisto ao longo do tratamento. [[Cédula profissional n.º e formação relevante]]",
     },
   ],
 
