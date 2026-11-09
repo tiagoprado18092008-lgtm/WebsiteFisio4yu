@@ -54,7 +54,7 @@ export function ServicesPage({ locale }: { locale: Locale }) {
               // Sem recursos próprios (dermatofuncional): a lista mostra as situações acompanhadas, para as duas linhas terem o mesmo peso
               includes={
                 t.services[k].modules?.map((m) => ({ label: m.title, text: m.summary, href: href(locale, `service:${k}`, m.noChapter ? undefined : m.id) })) ??
-                t.services[k].forWho.items.map((it) => ({ label: it.title, text: it.text, href: href(locale, `service:${k}`, "situacoes") }))
+                t.services[k].forWho.items.map((it) => ({ label: it.title, text: it.text, href: href(locale, `service:${k}`, it.anchor ?? "situacoes") }))
               }
             />
           ))}

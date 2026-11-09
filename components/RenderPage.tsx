@@ -1,8 +1,9 @@
 import { notFound } from "next/navigation";
 import { getDict } from "@/content";
-import { resolve, type Locale, type ServiceKey } from "@/lib/routes";
+import { resolve, type ConsultKey, type Locale, type ServiceKey } from "@/lib/routes";
 import { waMessages } from "@/lib/whatsapp";
 import { SiteShell } from "./SiteShell";
+import { ConsultationPage, ConsultationsPage } from "./pages/ConsultationPages";
 import { HomePage } from "./pages/HomePage";
 import { ServicePage } from "./pages/ServicePage";
 import { AboutPage, ContactPage, LegalPage, ServicesPage } from "./pages/OtherPages";
@@ -19,7 +20,12 @@ export function RenderPage({ locale, slug }: { locale: Locale; slug?: string[] }
     const key = page.slice(8) as ServiceKey;
     waMessage = wa.service(t.services[key].name);
     body = <ServicePage locale={locale} service={key} />;
-  } else if (page === "home") body = <HomePage locale={locale} />;
+  } else if (page.startsWith("consult:")) {
+    const key = page.slice(8) as ConsultKey;
+    waMessage = wa.service(t.consultations.items[key].name);
+    body = <ConsultationPage locale={locale} consult={key} />;
+  } else if (page === "consultations") body = <ConsultationsPage locale={locale} />;
+  else if (page === "home") body = <HomePage locale={locale} />;
   else if (page === "services") body = <ServicesPage locale={locale} />;
   else if (page === "about") body = <AboutPage locale={locale} />;
   else if (page === "contact") body = <ContactPage locale={locale} />;

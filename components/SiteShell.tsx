@@ -1,6 +1,6 @@
 import { getDict } from "@/content";
 import { media } from "@/content/media";
-import { href, otherLocale, serviceKeys, type Locale, type PageKey, type ServiceKey } from "@/lib/routes";
+import { consultKeys, href, otherLocale, serviceKeys, type Locale, type PageKey, type ServiceKey } from "@/lib/routes";
 import { clinicJsonLd } from "@/lib/seo";
 import { Header } from "./Header";
 import { Logo } from "./Logo";
@@ -38,6 +38,11 @@ export function SiteShell({ locale, page, waMessage, children }: { locale: Local
                   photo: { src: media[menuPhoto[k]].src, position: media[menuPhoto[k]].position },
                 })),
               ],
+            },
+            consultations: {
+              label: t.nav.consultations,
+              href: href(locale, "consultations"),
+              children: consultKeys.map((k) => ({ label: t.consultations.items[k].name, href: href(locale, `consult:${k}`) })),
             },
             about: { label: t.nav.about, href: href(locale, "about") },
             contact: { label: t.nav.contact, href: href(locale, "contact") },

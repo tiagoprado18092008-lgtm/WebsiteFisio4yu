@@ -7,6 +7,7 @@ import { href, type Locale, type PageKey } from "./routes";
 export function pageMeta(locale: Locale, page: PageKey): { title: string; description: string } {
   const t = getDict(locale);
   if (page.startsWith("service:")) return t.services[page.slice(8) as keyof Dict["services"]].meta;
+  if (page.startsWith("consult:")) return t.consultations.items[page.slice(8) as keyof Dict["consultations"]["items"]].meta;
   return t.meta[page as keyof Dict["meta"]];
 }
 

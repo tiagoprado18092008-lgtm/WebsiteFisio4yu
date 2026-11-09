@@ -4,10 +4,15 @@ export const locales: Locale[] = ["pt", "en"];
 export const serviceKeys = ["msk", "dermato"] as const;
 export type ServiceKey = (typeof serviceKeys)[number];
 
+export const consultKeys = ["pilates", "psychology", "physiatry", "osteopathy"] as const;
+export type ConsultKey = (typeof consultKeys)[number];
+
 export type PageKey =
   | "home"
   | "services"
   | `service:${ServiceKey}`
+  | "consultations"
+  | `consult:${ConsultKey}`
   | "about"
   | "contact"
   | "privacy"
@@ -20,6 +25,11 @@ const slugs: Record<Locale, Record<PageKey, string>> = {
     services: "servicos",
     "service:msk": "servicos/fisioterapia-musculoesqueletica",
     "service:dermato": "servicos/fisioterapia-dermatofuncional",
+    consultations: "consultas",
+    "consult:pilates": "consultas/pilates-clinico",
+    "consult:psychology": "consultas/psicologia",
+    "consult:physiatry": "consultas/fisiatria",
+    "consult:osteopathy": "consultas/osteopatia",
     about: "sobre",
     contact: "contactos",
     privacy: "privacidade",
@@ -31,6 +41,11 @@ const slugs: Record<Locale, Record<PageKey, string>> = {
     services: "services",
     "service:msk": "services/musculoskeletal-physiotherapy",
     "service:dermato": "services/dermatofunctional-physiotherapy",
+    consultations: "consultations",
+    "consult:pilates": "consultations/clinical-pilates",
+    "consult:psychology": "consultations/psychology",
+    "consult:physiatry": "consultations/physical-medicine",
+    "consult:osteopathy": "consultations/osteopathy",
     about: "about",
     contact: "contact",
     privacy: "privacy",

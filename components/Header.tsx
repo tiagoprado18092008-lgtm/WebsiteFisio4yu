@@ -24,7 +24,7 @@ type Props = {
    *  (`logoOverlay`) e os links numa pílula branca; ao descer volta a ser a barra branca. */
   overlay?: boolean;
   logoOverlay?: React.ReactNode;
-  links: { home: NavLink; services: NavLink & { children: NavLink[] }; about: NavLink; contact: NavLink };
+  links: { home: NavLink; services: NavLink & { children: NavLink[] }; consultations: NavLink & { children: NavLink[] }; about: NavLink; contact: NavLink };
   /** Língua atual (só texto) e link para a outra língua. */
   lang: { current: string; other: string; href: string; label: string; hrefLang: string };
   labels: { book: string; open: string; close: string; phoneNote: string; phone: string; homeAria: string; nav: string; newWindow: string };
@@ -64,7 +64,7 @@ export function Header({ homeHref, logo, overlay, logoOverlay, links, lang, labe
   const barRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
-  // Página atual: correspondência exata; "Serviços" também fica ativo nas páginas de cada serviço
+  // Página atual: correspondência exata; "Fisioterapia" e "Consultas" também ficam ativos nas páginas de cada área
   const current = (href: string, section = false) =>
     pathname === href || (section && href !== "/" && pathname.startsWith(`${href}/`)) ? ("page" as const) : undefined;
 
@@ -122,7 +122,7 @@ export function Header({ homeHref, logo, overlay, logoOverlay, links, lang, labe
   const clear = !!overlay && !scrolled && !open;
   const pill = "bg-white shadow-[0_10px_30px_-14px_rgba(6,40,46,.55)]";
   const navCls = "text-[15px] font-medium text-ink hover:text-teal-strong aria-[current=page]:text-teal-strong";
-  const mobileLinks = [links.home, links.services, links.about, links.contact];
+  const mobileLinks: (NavLink & { children?: NavLink[] })[] = [links.home, links.services, links.consultations, links.about, links.contact];
   // Ordem de entrada em cascata das linhas do menu mobile
   let row = 0;
   const stagger = () => ({ "--i": row++ }) as React.CSSProperties;
@@ -173,27 +173,29 @@ export function Header({ homeHref, logo, overlay, logoOverlay, links, lang, labe
             <Link href={links.home.href} aria-current={current(links.home.href)} className={navCls}>
               {links.home.label}
             </Link>
-            <div className="group relative">
-              <Link href={links.services.href} aria-current={current(links.services.href, true)} className={cn(navCls, "inline-flex items-center gap-1")}>
-                {links.services.label}
-                <ChevronDown className="size-3.5 transition-transform group-focus-within:rotate-180 group-hover:rotate-180" aria-hidden />
-              </Link>
-              <div className="invisible absolute left-1/2 top-full w-80 -translate-x-1/2 pt-5 opacity-0 transition-all group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
-                <ul className="rounded-[20px] bg-white p-2 shadow-[0_20px_40px_-16px_rgba(14,76,87,.3)] ring-1 ring-line">
-                  {links.services.children.map((c) => (
-                    <li key={c.href}>
-                      <Link
-                        href={c.href}
-                        aria-current={current(c.href)}
-                        className="block rounded-xl px-4 py-3 text-[15px] text-ink hover:bg-mist hover:text-teal-strong aria-[current=page]:bg-mist aria-[current=page]:text-teal-strong"
-                      >
-                        {c.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+            {[links.services, links.consultations].map((menu) => (
+              <div key={menu.href} className="group relative">
+                <Link href={menu.href} aria-current={current(menu.href, true)} className={cn(navCls, "inline-flex items-center gap-1")}>
+                  {menu.label}
+                  <ChevronDown className="size-3.5 transition-transform group-focus-within:rotate-180 group-hover:rotate-180" aria-hidden />
+                </Link>
+                <div className="invisible absolute left-1/2 top-full w-80 -translate-x-1/2 pt-5 opacity-0 transition-all group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                  <ul className="rounded-[20px] bg-white p-2 shadow-[0_20px_40px_-16px_rgba(14,76,87,.3)] ring-1 ring-line">
+                    {menu.children.map((c) => (
+                      <li key={c.href}>
+                        <Link
+                          href={c.href}
+                          aria-current={current(c.href)}
+                          className="block rounded-xl px-4 py-3 text-[15px] text-ink hover:bg-mist hover:text-teal-strong aria-[current=page]:bg-mist aria-[current=page]:text-teal-strong"
+                        >
+                          {c.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </div>
+            ))}
             <Link href={links.about.href} aria-current={current(links.about.href)} className={navCls}>
               {links.about.label}
             </Link>
@@ -259,7 +261,7 @@ export function Header({ homeHref, logo, overlay, logoOverlay, links, lang, labe
               <li key={l.href} className="border-b border-line last:border-0">
                 <Link
                   href={l.href}
-                  aria-current={current(l.href, l === links.services)}
+                  aria-current={current(l.href, !!l.children)}
                   onClick={() => setOpen(false)}
                   style={stagger()}
                   className="menu-row group flex min-h-[clamp(50px,7.6dvh,64px)] items-center justify-between gap-4 font-display text-[1.75rem] leading-none tracking-[-0.02em] text-ink transition-colors active:text-teal-strong aria-[current=page]:text-teal-strong [@media(max-height:620px)]:text-2xl"
@@ -267,16 +269,16 @@ export function Header({ homeHref, logo, overlay, logoOverlay, links, lang, labe
                   {l.label}
                   {currentDot}
                 </Link>
-                {l === links.services && (
+                {l.children && (
                   <ul className="-mx-1.5 -mt-1 mb-3 grid gap-1 sm:grid-cols-2">
-                    {links.services.children.map((c) => (
+                    {l.children.map((c) => (
                       <li key={c.href}>
                         <Link
                           href={c.href}
                           aria-current={current(c.href)}
                           onClick={() => setOpen(false)}
                           style={stagger()}
-                          className="menu-row group flex items-center gap-3 rounded-2xl p-1.5 text-[15px] font-medium leading-snug text-ink transition-colors hover:bg-mist active:bg-mist active:text-teal-strong aria-[current=page]:text-teal-strong"
+                          className="menu-row group flex min-h-11 items-center gap-3 rounded-2xl p-1.5 text-[15px] font-medium leading-snug text-ink transition-colors hover:bg-mist active:bg-mist active:text-teal-strong aria-[current=page]:text-teal-strong"
                         >
                           {c.photo?.src && (
                             // Sempre mais larga do que alta: no recorte 5:4 os rostos do mural ficam de fora

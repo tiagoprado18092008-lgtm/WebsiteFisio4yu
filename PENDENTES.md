@@ -25,7 +25,7 @@ Tudo o que no site aparece como `[[ ]]` (ou tem um comentário `[[ ]]` no códig
 | 12 | **Equipa:** no site estão **Mário Barroso** e **Angela Brazona** (ambos "CEO e fisioterapeuta", como nas entrevistas em vídeo). Confirmar a grafia "Angela" (sem acento, como no vídeo e na pasta de fotos) e se há mais profissionais a mostrar | `pt.ts`/`en.ts` → `team` |
 | 13 | **Técnicas ecoguiadas** que o Mário faz (EPI? neuromodulação percutânea? punção seca?) + 2–3 linhas cada | `services.msk.modules[0].items` |
 | 14 | **Redação do aviso** sobre ecografia em fisioterapia | `services.msk.modules[0].note` |
-| 15 | **Âmbito da Dermatofuncional:** pós-operatório de cirurgia plástica/estética? Edema/drenagem linfática? | `services.dermato` |
+| 15 | ~~Âmbito da Dermatofuncional~~ — **definido pelo cliente (09/11/2026)**: pós-parto, drenagem linfática (pré-parto, pós-parto e pós-operatório), cicatrizes, lipedema, body contouring, gordura localizada/celulite/flacidez, massagem terapêutica (costas) e massagem facial. Já no site (ver #51) | — |
 | 16 | **"O mesmo fisioterapeuta do início ao fim"** — é verdade? | `home.why.items[3]` |
 | 17 | **Precisa de prescrição médica?** (FAQ Musculoesquelética) | `services.msk.faq[0]` |
 | 18 | **Pós-parto:** validar resposta "Quando posso começar?" | `services.dermato.faq[0]` |
@@ -46,7 +46,7 @@ Tudo o que no site aparece como `[[ ]]` (ou tem um comentário `[[ ]]` no códig
 | 33 | **Cédula profissional** (Ordem dos Fisioterapeutas) e **formação relevante** do Mário e da Angela. Aparecem nos cartões da equipa assim que preenchidas | `pt.ts`/`en.ts` → `team[].focus` |
 | 34 | **Cargo:** os dois aparecem como "Fisioterapeuta e CEO" (como nas entrevistas). Preferem outra designação (ex.: sócio-gerente, direção clínica) ou só "Fisioterapeuta"? | `team[].role` |
 | 35 | **Divisão das áreas:** o site diz que a musculoesquelética "é a área de Mário Barroso" e a dermatofuncional "é a área de Angela Brazona" (home, páginas de serviço). Confirmar (liga-se ao #30) | `home.featured.intro`, `services.*.distinct.text` |
-| 36 | **Gravidez:** o perfil da Angela refere acompanhamento durante a gravidez (dito no vídeo), mas a página do serviço só fala do pós-parto. Há acompanhamento na gravidez? Se sim, acrescentar ao serviço | `team[1].focus`, `services.dermato` |
+| 36 | ~~Gravidez~~ — **confirmado (09/11/2026)**: drenagem linfática no pré-parto. Já na página da dermatofuncional | — |
 | 37 | ~~Pressoterapia~~ — **já descrita na página da musculoesquelética** (painel da crioterapia), porque aparece na foto da home, no vídeo "Circuito de recuperação" e na página Sobre. Validar a descrição (ver #43) | `services.msk.modules[3].points` |
 | 38 | **Processo clínico:** as fases de cada serviço (avaliação → plano → tratamento e exercício → autonomia) e os princípios da página Sobre ("Avaliação antes do tratamento", "Exercício supervisionado", "Reavaliação regular") descrevem a prática habitual. Confirmar que correspondem ao que fazem | `services.*.how`, `about.values` |
 | 39 | **Exercício supervisionado "por fisioterapeutas":** além do Mário e da Angela, há outros profissionais no ginásio? | `services.msk.modules[2].text` |
@@ -62,10 +62,19 @@ Tudo o que no site aparece como `[[ ]]` (ou tem um comentário `[[ ]]` no códig
 | 44 | **Crioterapia, em falta:** temperatura da água e duração da imersão (não publicadas; entram na fase "Durante" quando confirmadas) | `services.msk.modules[3].panel.session[1]` |
 | 45 | **Foto da pressoterapia:** o utente aparece reconhecível no painel da crioterapia. **Confirmar que há consentimento** para o uso no site | `content/media.ts` → `strip-pressotherapy` |
 | 46 | **Terapia manual, capítulo novo (a validar com o Mário):** descrição e as três técnicas | `services.msk.modules[1]` |
-| 47 | **Dermatofuncional, capítulos novos (a validar com a Angela):** "Recuperação pós-parto", "Cicatrizes e aderências" e "Ecografia e exercício orientado" | `services.dermato.page.chapters` |
+| 47 | ~~Dermatofuncional, capítulos antigos~~ — substituídos a 09/11/2026 pelos tratamentos enviados pelo cliente (ver #51) | — |
 | 48 | **Instrumentos em madeira:** a Angela aparece com eles nas fotos, mas o site não diz para que servem. É maderoterapia? Em que casos a usa? Se fizer parte do serviço, acrescentar | `services.dermato.page.chapters` |
 | 49 | **Fotos da dermatofuncional:** só há fotos da Angela a posar com os instrumentos, e nenhuma de um tratamento. Pedir 3 ou 4 fotos em sessão (avaliação do abdómen, cicatriz, exercício), com consentimento | `content/media.ts` → `dermato-tools`, `strip-angela` |
 | 50 | **Foto da ecografia:** o capítulo «Ecografia e técnicas ecoguiadas» saiu da página da musculoesquelética a pedido do cliente, porque a foto da sala não servia. Pedir uma foto com a sonda e o ecrã visíveis; quando chegar, tirar `noChapter` e trocar a foto | `services.msk.modules[0].noChapter`, `content/media.ts` → `service-eco` |
+
+### Dermatofuncional com os tratamentos do cliente (09/11/2026): pontos a validar
+
+| # | Pendente | Onde alterar |
+|---|---|---|
+| 51 | **Textos do cliente publicados com pequenos ajustes:** «Clínica Fisio4You» → «Fisio4you»; sem pontos de exclamação nos títulos (tom do site); as frases finais «Marque a sua avaliação…» deram lugar ao botão de marcação; alguns títulos encurtados (ex.: «Pós-operatório: drenagem linfática e cicatrizes»). Confirmar com a Angela | `services.dermato.page.care` |
+| 52 | **Fotos da dermatofuncional:** continuam a faltar fotos de tratamentos. No lipedema está a foto dos instrumentos em madeira e no body contouring a sala de avaliação. Pedir fotos de drenagem linfática, massagem e de um tratamento de estética corporal (com consentimento) | `care.*.mediaId`, `content/media.ts` |
+| 53 | **Aparatologia:** que equipamentos usam no lipedema e na estética corporal? (o texto do cliente não os nomeia) | `care.lipedema.steps`, `care.body` |
+| 54 | **Perguntas frequentes da dermatofuncional:** continuam só sobre pós-parto e diástase. Querem perguntas sobre drenagem, lipedema ou estética (ex.: n.º de sessões, se a drenagem pode ser feita em qualquer fase da gravidez)? | `services.dermato.faq` |
 
 ## 🟢 Técnico
 
@@ -79,7 +88,7 @@ Tudo o que no site aparece como `[[ ]]` (ou tem um comentário `[[ ]]` no códig
 
 ## ✅ Decisões registadas
 
-- **Especialidades "Em breve"** (Fisiatria, Osteopatia, Pilates Clínico, Psicologia): retiradas do site por agora. O texto continua em `content/pt.ts` / `en.ts` (`comingSoon`) para reativar quando abrirem.
+- **Consultas** (Pilates Clínico, Psicologia, Fisiatria, Osteopatia): páginas em `/consultas`, com texto genérico. A confirmar com o cliente: os nomes das quatro, se já se podem marcar, os profissionais e o texto clínico e as técnicas de cada consulta. São páginas só de texto, sem fotos, a pedido do cliente.
 - **16 anos de experiência:** são do Mário.
 - **Hero sem vídeo** (pedido do cliente): foto de tratamento. Os vídeos (entrevistas do Mário e da Angela, testemunho do Pedro Senra, circuito de recuperação) estão na home, na página Sobre e nas páginas de serviço, e só tocam quando se carrega no play. Na home, a antiga secção de vídeos deu lugar à "A clínica no Instagram" (4 posts que abrem no Instagram); as entrevistas passaram para os cartões da equipa.
 - **Fotos com o mural de jogadores famosos em destaque** ficam de fora (direitos de imagem). Ver `MEDIA.md`.

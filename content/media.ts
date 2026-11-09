@@ -352,7 +352,7 @@ const videoList: VideoItem[] = [
   {
     id: "video-circuito",
     src: "/media/video/circuito-recuperacao.mp4",
-    poster: "/media/video/circuito-recuperacao.webp",
+    poster: "/media/video/circuito-recuperacao-capa.webp", // fotograma 4K do original (banheira de gelo, 27,6 s), sem a marca de água
     duration: "0:48",
     name: { pt: "Circuito de recuperação", en: "Recovery circuit" },
     caption: { pt: "Treino, pressoterapia e banheira de gelo", en: "Training, compression boots and ice bath" },

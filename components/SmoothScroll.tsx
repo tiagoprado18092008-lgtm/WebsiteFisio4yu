@@ -6,8 +6,12 @@ import Lenis from "lenis";
 
 /** Distância ao topo ao saltar para uma âncora (igual ao `scroll-padding-top` de globals.css). */
 const ANCHOR_OFFSET = 96;
-/** Posição de scroll da âncora, medida na página real (não no estado interno do Lenis). */
-const anchorTop = (el: HTMLElement) => el.getBoundingClientRect().top + window.scrollY - ANCHOR_OFFSET;
+/**
+ * Posição de scroll da âncora, medida na página real (não no estado interno do Lenis). Soma o `scroll-margin-top`
+ * do destino, como o salto nativo (ex.: os tratamentos da dermatofuncional, com o índice preso por baixo do header).
+ */
+const anchorTop = (el: HTMLElement) =>
+  el.getBoundingClientRect().top + window.scrollY - ANCHOR_OFFSET - (parseFloat(getComputedStyle(el).scrollMarginTop) || 0);
 
 /**
  * Scroll suave com inércia (Lenis): a página abranda devagar depois de parar a roda do rato.

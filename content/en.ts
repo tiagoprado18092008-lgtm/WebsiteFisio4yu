@@ -38,7 +38,7 @@ export const en: Dict = {
     video: "Video",
     watchVideo: "Watch video",
   },
-  nav: { home: "Home", services: "Services", about: "About", contact: "Contact", comingSoon: "Coming soon" },
+  nav: { home: "Home", services: "Physiotherapy", consultations: "Consultations", about: "About", contact: "Contact", comingSoon: "Coming soon" },
   wa: {
     general: "Hello, I'd like to book an appointment at Fisio4you.",
     service: "Hello, I'd like to book a {s} appointment.",
@@ -79,6 +79,10 @@ export const en: Dict = {
       title: "Physiotherapy Services in Portimão | Fisio4you",
       description:
         "Musculoskeletal and dermatofunctional physiotherapy in Portimão: sports injuries, pain, rehab after surgery, postnatal care and diastasis recti.",
+    },
+    consultations: {
+      title: "Consultations in Portimão: Clinical Pilates, Psychology, Physical Medicine and Osteopathy | Fisio4you",
+      description: "Clinical Pilates, Psychology, Physical Medicine and Osteopathy consultations at Fisio4you in Portimão. See what each one treats and book your appointment.",
     },
     comingSoon: {
       title: "Coming soon: Physical Medicine, Osteopathy, Clinical Pilates and Psychology | Fisio4you",
@@ -347,6 +351,8 @@ export const en: Dict = {
     seeService: "See the service",
     meetTeam: "Meet the team",
     onThisPage: "On this page",
+    howNav: "How it works",
+    faqNav: "FAQs",
     areas: {
       title: "Two areas, one clinic",
       intro: "Each area has its own lead physiotherapist. Choose one to see what it treats.",
@@ -362,8 +368,8 @@ export const en: Dict = {
         },
         dermato: {
           name: "Dermatofunctional",
-          what: "The abdominal wall, pelvic floor and scars, with a particular focus on postnatal recovery.",
-          treats: ["Postnatal recovery", "Diastasis recti", "Scars and adhesions"],
+          what: "Health and aesthetics: postnatal care, lymphatic drainage, post-surgery care, lipoedema and body contouring.",
+          treats: ["Postnatal and diastasis", "Lymphatic drainage", "Post-surgery and scars", "Lipoedema", "Body aesthetics"],
           by: "With physiotherapist Angela Brazona",
           mediaId: "service-dermato",
         },
@@ -390,7 +396,6 @@ export const en: Dict = {
         { icon: "clock", text: "Mário Barroso, 16 years' experience" },
       ],
       specialist: "team-mario",
-      bodyMap: true,
       forWho: {
         title: "Most common conditions",
         intro: "We treat athletes, physically active people and anyone with pain or restricted movement in daily life. Whether treatment is indicated is confirmed at the assessment.",
@@ -548,6 +553,84 @@ export const en: Dict = {
       ],
       related: ["dermato"],
       page: {
+        treatments: {
+          techniques: {
+            id: "tecnicas", nav: "Techniques",
+            title: "Treatment techniques",
+            intro: "Minimally invasive and non-invasive techniques, used alongside an individual physiotherapy plan.",
+            mediaId: "service-msk",
+            usesLabel: "Used for",
+            items: [
+              {
+                id: "epte", name: "EPTE", full: "Ultrasound-guided percutaneous therapeutic electro-puncture",
+                text: "A low-intensity electrical current, applied through a very fine needle guided by ultrasound straight to the injury, stimulates tissue regeneration, especially in tendons.",
+                uses: ["Achilles tendon", "Patellar tendinopathy", "Tennis elbow"],
+              },
+              {
+                id: "mesoterapia", name: "Mesotherapy",
+                text: "Micro-injections of small amounts of therapeutic substances into the area being treated, to relieve pain, reduce inflammation and help tissue recover.",
+                uses: ["Muscle pain", "Tendinopathies", "Contractures", "Inflammation"],
+              },
+              {
+                id: "neuromodulacao", name: "Ultrasound-guided percutaneous neuromodulation",
+                text: "Low-frequency electrical stimulation through very fine needles, guided by ultrasound, on specific peripheral nerves, to reduce pain and improve muscle activation.",
+                uses: ["Chronic pain", "Neuropathic pain", "Neuromuscular dysfunction"],
+              },
+              {
+                id: "fotobiomodulacao", name: "Photobiomodulation",
+                text: "Low-intensity light, by laser or LED, that acts at cellular level to relieve pain, reduce inflammation and support recovery. Painless and non-invasive.",
+                uses: ["Muscle injuries", "Tendinopathies", "Joint pain", "Soft tissue"],
+              },
+            ],
+            note: "Techniques are performed by qualified professionals and adapted to each person's clinical condition. Suitability is confirmed at assessment.",
+          },
+          recovery: {
+            id: "recovery", nav: "Recovery session",
+            title: "Recovery session",
+            text: "Letting the body recover is as important as training. A Recovery session brings recovery techniques together in time set aside for rest, to ease fatigue and prepare the body for the next session.",
+            mediaId: "service-recovery",
+            // Vídeo do circuito de recuperação no lugar da foto da banheira (pedido do utilizador, 09/11)
+            video: "video-circuito",
+            secondMediaId: "strip-pressotherapy",
+            plansTitle: "Choose your session",
+            plans: [
+              { name: "Recovery Start", parts: ["botas", "gelo"] },
+              { name: "Recovery Active", parts: ["botas", "massagem"] },
+              { name: "Recovery Plus", parts: ["massagem", "botas", "gelo"] },
+              { name: "Recovery Elite", parts: ["ativa", "botas", "gelo", "massagem"] },
+            ],
+            partsTitle: "What it can include",
+            parts: [
+              { key: "botas", title: "Compression boots", text: "Sequential pneumatic compression that supports circulation and leaves the legs feeling lighter." },
+              { key: "gelo", title: "Ice bath", text: "Cold-water immersion that can temporarily reduce muscle soreness and fatigue." },
+              { key: "massagem", title: "Sports massage", text: "Eases muscle tension, improves mobility and prepares the muscles for effort." },
+              { key: "ativa", title: "Active recovery", text: "Light exercise, cycling or mobility work to boost circulation and ease stiffness." },
+            ],
+            benefitsTitle: "Benefits",
+            benefits: ["Less muscle fatigue", "Less muscle tension", "Better circulation", "Post-training recovery", "Physical and mental relaxation", "Ready for what's next"],
+            waTopic: "Recovery session",
+            cta: "Book a Recovery session",
+          },
+          sport: {
+            id: "desporto", nav: "Sport",
+            title: "Testing and prevention in sport",
+            intro: "For athletes who want to return safely or reduce the risk of another injury.",
+            items: [
+              {
+                id: "isocinetica", title: "Isokinetic assessment",
+                text: "Specialised equipment measures muscle strength, power and endurance at a constant speed, and compares both limbs.",
+                points: ["Identifies imbalances and asymmetries", "Tracks rehab progress", "Helps decide the return to sport"],
+                mediaId: "athletes",
+              },
+              {
+                id: "prevencao", title: "Injury prevention training",
+                text: "An individual plan that considers the sport, injury history, playing position and each athlete's needs.",
+                points: ["Corrects imbalances and strength deficits", "Improves physical performance", "With isokinetic testing when needed"],
+                mediaId: "gym",
+              },
+            ],
+          },
+        },
         lead: "Sports injuries, pain and rehab after surgery, with physiotherapist Mário Barroso.",
         heroWide: "wide-msk",
         relatedPhoto: "related-msk",
@@ -567,19 +650,19 @@ export const en: Dict = {
     },
     dermato: {
       name: "Dermatofunctional Physiotherapy",
-      short: "Postnatal recovery, diastasis recti and scar treatment, including C-section scars.",
+      short: "Postnatal recovery, lymphatic drainage, post-surgery and scar care, lipoedema, body contouring and therapeutic massage.",
       mediaId: "service-dermato",
       meta: {
-        title: "Postnatal & Diastasis Physiotherapy in Portimão | Fisio4you",
+        title: "Dermatofunctional Physiotherapy in Portimão | Fisio4you",
         description:
-          "Dermatofunctional physiotherapy in Portimão: postnatal recovery, diastasis recti and C-section scars, with physiotherapist Angela Brazona.",
+          "Dermatofunctional physiotherapy in Portimão: postnatal care and diastasis recti, lymphatic drainage, post-surgery and scar care, lipoedema and body contouring, with physiotherapist Angela Brazona.",
       },
       heroTitle: "Dermatofunctional Physiotherapy",
-      heroSub: "Assessment and treatment of the abdominal wall, pelvic floor and scars, with a particular focus on postnatal recovery and diastasis recti.",
+      heroSub: "Health and aesthetics in balance: postnatal recovery, lymphatic drainage, post-surgery and scar care, lipoedema and body contouring, always starting from an individual assessment.",
       facts: [
         { icon: "baby", text: "Postnatal care and diastasis recti" },
-        { icon: "sparkles", text: "Scars and adhesions" },
-        { icon: "scan", text: "Ultrasound to track progress" },
+        { icon: "flower", text: "Manual lymphatic drainage" },
+        { icon: "sparkles", text: "Post-surgery and scar care" },
         { icon: "heart", text: "Angela Brazona, physiotherapist" },
       ],
       specialist: "team-angela",
@@ -615,22 +698,16 @@ export const en: Dict = {
       },
       forWho: {
         title: "Most common conditions",
-        intro: "We mainly see women after childbirth, however long ago the birth was.",
+        intro: "Every treatment starts with an individual assessment that identifies each person's needs and goals.",
         items: [
-          { icon: "baby", title: "Postnatal recovery", text: "Abdominal wall, posture and a gradual return to physical activity." },
-          { icon: "target", title: "Diastasis recti", text: "Assessment of the gap and a specific exercise plan." },
-          { icon: "sparkles", title: "Scars and adhesions", text: "Including C-section scars, once healed." },
-          { icon: "stethoscope", title: "After plastic/cosmetic surgery", text: "[[to confirm]]" },
-          { icon: "flower", title: "Swelling and lymphatic drainage", text: "[[to confirm]]" },
+          { icon: "baby", title: "Postnatal abdominal rehabilitation", text: "Diastasis recti, abdominal strength and tone, posture and the pelvic floor.", anchor: "pos-parto" },
+          { icon: "flower", title: "Manual lymphatic drainage", text: "During pregnancy, after birth and for swelling and fluid retention.", anchor: "drenagem" },
+          { icon: "stethoscope", title: "Post-surgery and scars", text: "Lymphatic drainage and scar treatment after surgery.", anchor: "pos-operatorio" },
+          { icon: "heart", title: "Lipoedema protocol", text: "Drainage, soft-tissue techniques and devices to ease discomfort.", anchor: "lipedema" },
+          { icon: "sparkles", title: "Body contouring", text: "Body shape, localised fat, cellulite and skin laxity.", anchor: "remodelacao" },
+          { icon: "activity", title: "Therapeutic and facial massage", text: "Muscle tension in the back and facial relaxation.", anchor: "massagem-terapeutica" },
         ],
       },
-      conditions: [
-        { id: "pos-parto", label: "Postnatal", common: ["Abdominal wall", "Pelvic floor", "Posture", "Return to physical activity"], waTopic: "a postnatal recovery concern" },
-        { id: "abdomen", label: "Abdomen", common: ["Diastasis recti", "Abdominal weakness"], waTopic: "a diastasis recti concern" },
-        { id: "cicatrizes", label: "Scars", common: ["C-section scar", "Adhesions", "Altered sensation"], waTopic: "a question about a scar" },
-        { id: "estetica", label: "Cosmetic surgery", common: ["After plastic/cosmetic surgery"], waTopic: "[[to confirm]]" },
-        { id: "edema", label: "Swelling", common: ["Lymphatic drainage"], waTopic: "[[to confirm]]" },
-      ],
       how: {
         title: "How your care works",
         intro: "The plan starts from where you are now, and each stage is explained before it begins.",
@@ -638,33 +715,33 @@ export const en: Dict = {
           {
             title: "Assessment",
             line: "First, we assess.",
-            text: "Clinical history and assessment of the abdominal wall, with ultrasound when indicated.",
-            details: ["Pregnancy, birth, any previous surgery and current symptoms", "Assessment of your abdominal wall, posture and breathing"],
+            text: "An individual assessment of the changes, needs and goals of each person.",
+            details: ["Clinical history: pregnancy, birth, surgery and current symptoms", "Assessment of the tissues, abdominal wall and posture, depending on the treatment"],
           },
           {
             title: "Plan",
             line: "Then, the plan.",
-            text: "Realistic goals, adapted to your stage and your routine.",
-            details: ["The plan starts from your situation, whether weeks, months or years after birth", "Exercises that fit into your day"],
+            text: "Techniques are chosen according to the assessment and your goals.",
+            details: ["Techniques chosen according to the assessment and your goals", "After surgery, it respects the healing stage and the medical team's advice"],
           },
           {
             title: "Treatment",
             line: "We treat, step by step.",
-            text: "Manual techniques and guided exercise, with each step explained.",
-            details: ["Breathing, posture and activation of the deep core and pelvic floor", "Progressive strengthening of the abdominal wall", "Manual techniques, including for scars and adhesions"],
+            text: "Manual techniques, lymphatic drainage, therapeutic exercise and devices, when appropriate.",
+            details: ["Manual techniques, lymphatic drainage and therapeutic exercise", "Devices, when the assessment supports them", "Regular reassessment to adjust the plan"],
           },
           {
             title: "Independence",
             line: "Finally, independence.",
-            text: "Home exercises and support as you return to physical exercise.",
-            details: ["Home exercises, explained and reviewed in your sessions", "A gradual return to exercise, running or sport"],
+            text: "Exercises and self-care to continue at home.",
+            details: ["Exercises and self-care to continue at home, explained in your sessions", "A safe return to physical activity and daily tasks"],
           },
         ],
       },
       distinct: {
         title: "Who treats you",
-        text: "Dermatofunctional physiotherapy is led by Angela Brazona, a physiotherapist who works in women's health during pregnancy and after childbirth.",
-        points: ["Ultrasound to assess and monitor the abdominal wall", "Guided exercise in the rehabilitation gym", "An exercise plan to continue at home"],
+        text: "Dermatofunctional physiotherapy is led by Angela Brazona, a physiotherapist who works in women's health and in care that brings health and aesthetics together.",
+        points: ["An individual assessment before every plan", "Manual techniques, lymphatic drainage and devices", "Guided exercise and a home plan"],
       },
       duration: {
         title: "Duration and frequency",
@@ -679,73 +756,467 @@ export const en: Dict = {
         { q: "What is the first assessment like?", a: "It starts with a conversation about your clinical history and goals, followed by a physical assessment explained step by step." },
       ],
       related: ["msk"],
-      includes: {
-        title: "What your care includes",
-        intro: "From postnatal recovery to scars, each area has its own assessment and plan.",
-      },
       page: {
-        lead: "Postnatal recovery, diastasis recti and scars, with physiotherapist Angela Brazona.",
+        lead: "Postnatal care, lymphatic drainage, lipoedema and body aesthetics, with physiotherapist Angela Brazona.",
         heroWide: "wide-dermato",
         heroBeside: true,
-        conditionsPhoto: "strip-angela",
         relatedPhoto: "related-dermato",
+        areas: true,
         about: {
-          statement: ["", "Dermatofunctional physiotherapy", " assesses and treats the abdominal wall, pelvic floor and scars, with a particular focus on postnatal recovery."],
+          statement: ["", "Dermatofunctional physiotherapy", " brings health and aesthetics together: it restores how your body works and also cares for how it looks and feels."],
           text: [
-            "The plan starts from your situation, whether weeks, months or years after giving birth, and each stage is explained before it begins.",
-            "The first assessment starts with a conversation about your clinical history and goals, followed by a physical assessment explained step by step.",
+            "Every body is different. That's why each treatment starts with an individual assessment that identifies each person's needs and goals and sets the most suitable plan.",
+            "We believe aesthetics should go hand in hand with health and well-being, from postnatal care to recovery after surgery, from lipoedema to body contouring.",
           ],
-          listTitle: "How we work",
-          list: [
-            { title: "Manual techniques", text: "Including for scars and adhesions." },
-            { title: "Guided exercise", text: "At the clinic and in the rehabilitation gym, with progressive strengthening." },
-            { title: "Ultrasound", text: "To assess and monitor the abdominal wall, when indicated." },
-            { title: "Home plan", text: "Exercises explained and reviewed in your sessions." },
+          listTitle: "What we treat",
+        },
+        care: {
+          nav: "Treatments",
+          title: "Our treatments",
+          intro: "Choose a treatment to see what it involves, its benefits and how it can help.",
+          listLabel: "Dermatofunctional physiotherapy treatments",
+          moreLabel: "Read more",
+          lessLabel: "Show less",
+          items: [
+            {
+              id: "pos-parto",
+              label: "Postnatal",
+              title: "Postnatal abdominal rehabilitation",
+              tagline: "Health, recovery and aesthetics in harmony.",
+              summary: "After birth, the abdominal muscles, skin, posture and pelvic floor may show changes that deserve specialised care. Recovery brings together two dimensions: health and aesthetics.",
+              groups: {
+                title: "What we aim for",
+                items: [
+                  {
+                    label: "Health",
+                    intro: "Restoring abdominal function and balance.",
+                    points: [
+                      "Improve the strength and function of the abdominal muscles",
+                      "Work on diastasis recti",
+                      "Restore trunk stability and control",
+                      "Improve posture and the management of abdominal pressure",
+                      "Help the abdominal muscles and pelvic floor work together",
+                      "Return safely to physical activity and daily tasks",
+                    ],
+                  },
+                  {
+                    label: "Aesthetics",
+                    intro: "Restoring harmony and body confidence.",
+                    points: [
+                      "The firmness and tone of the abdominal muscles",
+                      "The shape and appearance of the abdomen",
+                      "Posture and body silhouette",
+                      "Body image and self-confidence",
+                    ],
+                  },
+                ],
+              },
+              note: "Aesthetic results depend on several factors, including individual characteristics, the changes caused by pregnancy and how the tissues recover.",
+              more: [
+                {
+                  title: "Why the abdomen changes",
+                  text: [
+                    "During pregnancy, the abdominal muscles adapt to make room for the baby. These changes can lead to diastasis recti (separation of the rectus abdominis muscles), loss of muscle strength, postural changes and less trunk stability.",
+                    "Better muscle function and tone can contribute to a firmer, more defined abdomen, with a positive effect on body image and self-esteem.",
+                  ],
+                },
+                {
+                  title: "Personalised care, from the inside out",
+                  text: [
+                    "Every woman is different. That's why care starts with an individual assessment that identifies muscular and functional changes and sets each patient's goals. The plan may combine therapeutic exercise, physiotherapy techniques and specific strategies for abdominal recovery.",
+                  ],
+                },
+                {
+                  title: "Caring for your health is caring for your beauty",
+                  text: [
+                    "Recovering doesn't only mean getting back to how you looked before pregnancy. It means feeling well, regaining how your body works, improving self-esteem and moving with confidence again.",
+                  ],
+                },
+              ],
+              wa: { topic: "postnatal abdominal rehabilitation", cta: "Ask about postnatal rehabilitation" },
+            },
+            {
+              id: "drenagem",
+              label: "Lymphatic drainage",
+              title: "Manual lymphatic drainage",
+              tagline: "Health, lightness and well-being for your body.",
+              summary: "Gentle, slow and rhythmic movements that stimulate the flow of lymph and help reduce fluid build-up in the tissues, swelling and heaviness.",
+              options: {
+                title: "During pregnancy and after birth",
+                items: [
+                  {
+                    label: "Pregnancy",
+                    title: "During pregnancy",
+                    tagline: "More comfort, lightness and well-being.",
+                    text: "Hormonal and circulatory changes can encourage fluid retention, with swelling in the legs, feet and ankles. With movements adapted to pregnancy, drainage can help reduce swelling and relieve heavy legs.",
+                  },
+                  {
+                    label: "After birth",
+                    title: "After birth",
+                    tagline: "Comfort and lightness during recovery.",
+                    text: "After birth, the body goes through several hormonal and circulatory changes, and fluid can build up. When indicated, drainage can help ease swelling and bring more comfort and lightness.",
+                  },
+                ],
+              },
+              groups: {
+                title: "Benefits",
+                items: [
+                  {
+                    label: "For health",
+                    points: [
+                      "Helps reduce swelling and fluid retention",
+                      "Supports lymphatic circulation",
+                      "Relieves heavy, swollen legs",
+                      "Can be important in recovery after certain surgeries, when clinically indicated",
+                      "Improves comfort and mobility when there is swelling",
+                    ],
+                  },
+                  {
+                    label: "For aesthetics",
+                    points: [
+                      "Reduces swelling and the feeling of volume caused by fluid build-up",
+                      "Contributes to a less swollen appearance",
+                      "Can improve comfort and a feeling of lightness",
+                      "Complements some aesthetic and post-surgery care programmes, when appropriate",
+                    ],
+                  },
+                ],
+              },
+              more: [
+                {
+                  title: "The lymphatic system",
+                  text: [
+                    "The lymphatic system is essential for fluid balance and for the body to work well. When fluid builds up in the tissues or doesn't circulate easily, swelling, heaviness and discomfort can appear.",
+                  ],
+                },
+                {
+                  title: "A personalised approach",
+                  text: [
+                    "We use lymphatic drainage as part of a personalised approach, based on each person's needs and goals. During pregnancy, each treatment is carried out by qualified professionals, respecting each woman's needs and the progress of the pregnancy.",
+                  ],
+                },
+              ],
+              wa: { topic: "lymphatic drainage", cta: "Ask about lymphatic drainage" },
+            },
+            {
+              id: "pos-operatorio",
+              label: "Post-surgery",
+              title: "After surgery: drainage and scars",
+              tagline: "Careful, safe and balanced recovery.",
+              summary: "After surgery, swelling, tightness and tissue changes can appear. We combine manual lymphatic drainage and scar treatment, according to each patient's needs.",
+              groups: {
+                title: "What we work on",
+                items: [
+                  {
+                    label: "Lymphatic drainage",
+                    intro: "A gentle technique that helps control fluid build-up in the tissues. It can help to:",
+                    points: [
+                      "Reduce swelling",
+                      "Ease tightness and discomfort",
+                      "Improve tissue comfort",
+                      "Support recovery after surgery",
+                    ],
+                  },
+                  {
+                    label: "Scars",
+                    intro: "A scar can show changes in texture, elasticity, sensation and mobility. We aim to:",
+                    points: [
+                      "Improve tissue elasticity and mobility",
+                      "Reduce adhesions and scar restrictions",
+                      "Improve flexibility of the treated area",
+                      "Support better scar quality and appearance",
+                    ],
+                  },
+                ],
+              },
+              more: [
+                {
+                  title: "Health and aesthetics in balance",
+                  text: [
+                    "Recovery after surgery isn't only about appearance. Restoring function, mobility and tissue comfort is essential, while also supporting how the treated area looks as it heals.",
+                    "Each treatment is personalised, respecting the type of surgery, the healing stage and the medical team's advice.",
+                  ],
+                },
+              ],
+              wa: { topic: "post-surgery physiotherapy", cta: "Ask about post-surgery care" },
+            },
+            {
+              id: "lipedema",
+              label: "Lipoedema",
+              title: "Lipoedema protocol",
+              tagline: "Care for your legs. Ease the discomfort. Regain your well-being.",
+              summary: "Lipoedema is a chronic condition of the fatty tissue, with a disproportionate build-up of fat, mainly in the legs. The protocol combines therapeutic techniques to manage symptoms and improve comfort and quality of life.",
+              steps: {
+                title: "What the protocol involves",
+                items: [
+                  { title: "Manual lymphatic drainage", text: "Gentle, specific movements that help control swelling and ease heaviness in the legs." },
+                  { title: "Soft-tissue techniques", text: "Manual techniques adapted to tissue sensitivity, to improve comfort and mobility and ease tightness." },
+                  { title: "Devices", text: "Equipment chosen according to the assessment, complementing the manual work when appropriate." },
+                ],
+              },
+              groups: {
+                title: "Care can help to",
+                items: [
+                  {
+                    label: "Benefits",
+                    points: [
+                      "Ease heaviness and tiredness in the legs",
+                      "Reduce swelling, when present",
+                      "Improve comfort and mobility",
+                      "Reduce tightness and discomfort in the tissues",
+                      "Complement the management of lipoedema symptoms",
+                      "Improve well-being and body image",
+                    ],
+                  },
+                ],
+              },
+              more: [
+                {
+                  title: "What lipoedema is",
+                  text: [
+                    "Lipoedema is a chronic condition of the fatty tissue, with a disproportionate and usually symmetrical build-up of fat, mainly in the legs and sometimes in the arms. It is often associated with pain, tenderness to touch, heaviness, easy bruising and physical discomfort.",
+                  ],
+                },
+                {
+                  title: "Personalised care for every woman",
+                  text: [
+                    "Lipoedema shows up differently in each person. That's why we always start with an individual assessment, considering sensitivity, symptoms, tissue characteristics and each patient's needs. Our aim is specialised, respectful care adapted to each stage of the condition.",
+                  ],
+                },
+                {
+                  title: "Caring for your health is caring for yourself",
+                  text: [
+                    "Living with lipoedema doesn't mean accepting pain, discomfort or limitations as an inevitable part of daily life. We want to help you feel better, with an approach that brings together physiotherapy, well-being and personalised care.",
+                  ],
+                },
+              ],
+              wa: { topic: "lipoedema", cta: "Ask about the lipoedema protocol" },
+            },
+            {
+              id: "remodelacao",
+              label: "Body contouring",
+              title: "Body contouring",
+              tagline: "Enhance your shape. Care for your body. Feel good in yourself.",
+              summary: "Non-invasive aesthetic techniques and treatments to improve body shape, skin firmness and skin quality, in a personalised way.",
+              groups: {
+                title: "Benefits",
+                items: [
+                  {
+                    label: "Benefits",
+                    points: [
+                      { title: "Body shape", text: "Helps define and balance certain areas of the body." },
+                      { title: "Skin firmness", text: "Can contribute to a firmer, more toned appearance." },
+                      { title: "Cellulite", text: "Some techniques can help improve the look of uneven skin." },
+                      { title: "Skin texture", text: "Supports a more even, cared-for appearance." },
+                      { title: "Well-being and self-esteem", text: "Helps you feel more comfortable and confident with your body image." },
+                    ],
+                  },
+                ],
+              },
+              chips: {
+                title: "Areas that can be treated",
+                intro: "Depending on the assessment and the techniques used.",
+                items: ["Abdomen", "Waist and flanks", "Thighs", "Buttocks", "Arms"],
+              },
+              more: [
+                {
+                  title: "Treatment adapted to you",
+                  text: [
+                    "Every body is different. That's why we start with an individual assessment to identify each patient's needs and set the most suitable treatment plan. The aim is a natural aesthetic improvement that respects health, body characteristics and each person's expectations.",
+                  ],
+                },
+              ],
+              wa: { topic: "body contouring", cta: "Ask about body contouring" },
+            },
+            {
+              id: "gordura-celulite-flacidez",
+              label: "Fat, cellulite and laxity",
+              title: "Personalised treatment",
+              tagline: "Localised fat, cellulite and skin laxity: treatment designed for you.",
+              summary: "No two treatments are the same. We create individual body-contouring plans, choosing the techniques best suited to each patient's needs and goals.",
+              options: {
+                title: "What you'd like to treat",
+                items: [
+                  {
+                    label: "Localised fat",
+                    title: "Localised fat",
+                    tagline: "Enhance body shape and balance.",
+                    text: "Localised fat can persist in certain areas of the body, even with a balanced diet and regular physical activity. Treatment can help to:",
+                    points: ["Improve body shape", "Work on areas with localised fat", "Create a more balanced appearance", "Complement a healthy diet and physical activity"],
+                  },
+                  {
+                    label: "Cellulite",
+                    title: "Cellulite",
+                    tagline: "Smoother, more even-looking skin.",
+                    text: "Cellulite is a change in the skin's surface that creates irregularities and the familiar \"orange peel\" look. We aim to:",
+                    points: ["Improve the look of the skin", "Reduce the appearance of cellulite", "Improve skin texture and evenness", "Support better local circulation", "Improve tissue comfort and quality"],
+                  },
+                  {
+                    label: "Skin laxity",
+                    title: "Skin laxity",
+                    tagline: "More firmness, tone and definition.",
+                    text: "Skin laxity can come with ageing, weight changes, pregnancy or reduced tissue elasticity. Treatment can help to:",
+                    points: ["Improve skin firmness and appearance", "Stimulate tissue tone, depending on the technique used", "Improve body appearance and definition", "Create a more balanced silhouette"],
+                  },
+                ],
+              },
+              more: [
+                {
+                  title: "Every body is different",
+                  text: [
+                    "Every body is different and deserves specific care. Localised fat, cellulite and skin laxity are changes that can affect body shape, skin firmness and self-esteem. Treatments are chosen according to the individual assessment.",
+                  ],
+                },
+              ],
+              wa: { topic: "personalised body treatment (localised fat, cellulite or skin laxity)", cta: "Ask about personalised treatment" },
+            },
+            {
+              id: "massagem-terapeutica",
+              label: "Therapeutic massage",
+              title: "Therapeutic back massage",
+              tagline: "Ease muscle tension. Regain comfort and well-being.",
+              summary: "Stress, poor posture and repetitive movements can cause tension, stiffness and discomfort in the back. Therapeutic massage uses strokes and pressures adapted to each person to ease tension and promote relaxation.",
+              groups: {
+                title: "Benefits and who it's for",
+                items: [
+                  {
+                    label: "Benefits",
+                    points: [
+                      { title: "Less muscle tension", text: "Helps reduce knots and muscle overload." },
+                      { title: "Pain relief", text: "Can reduce muscle discomfort in the back." },
+                      { title: "Mobility", text: "Reduces stiffness and makes movement easier." },
+                      { title: "Relaxation", text: "Eases built-up tension." },
+                      { title: "Physical and emotional well-being", text: "A sense of calm that helps relieve stress." },
+                      { title: "Body awareness", text: "Helps you notice tension and look after your posture." },
+                    ],
+                  },
+                  {
+                    label: "Who it's for",
+                    intro: "It can help people with:",
+                    points: [
+                      "Neck, upper or lower back muscle tension",
+                      "Discomfort from long periods in the same posture",
+                      "Muscle overload from work or physical activity",
+                      "Stiffness and a heavy feeling in the back",
+                      "Stress and built-up muscle tension",
+                    ],
+                  },
+                ],
+              },
+              more: [
+                {
+                  title: "Look after your back",
+                  text: [
+                    "Well-being starts with a balanced body. With an individual approach and suitable therapeutic techniques, we help ease muscle tension and restore comfort in your daily life.",
+                  ],
+                },
+              ],
+              wa: { topic: "therapeutic massage", cta: "Ask about therapeutic massage" },
+            },
+            {
+              id: "massagem-facial",
+              label: "Facial massage",
+              title: "Facial massage",
+              tagline: "Care for your face. Enhance your beauty. Awaken your well-being.",
+              summary: "Gentle, specific movements that promote relaxation, stimulate local circulation and leave the skin feeling fresh. It is personalised, respecting the characteristics of each skin.",
+              groups: {
+                title: "Benefits",
+                items: [
+                  {
+                    label: "Aesthetic",
+                    points: [
+                      { title: "Radiance", text: "A fresher, revitalised look." },
+                      { title: "Local circulation", text: "Supports surface blood circulation." },
+                      { title: "Less puffiness", text: "Can help reduce mild swelling of the face." },
+                      { title: "Skin appearance", text: "A healthier, cared-for look." },
+                      { title: "Facial muscles", text: "Eases tension from facial expressions." },
+                      { title: "Rested skin", text: "A fresher, revitalised appearance." },
+                    ],
+                  },
+                  {
+                    label: "Well-being",
+                    points: [
+                      "Reduces facial tension and tiredness",
+                      "Promotes physical and mental relaxation",
+                      "Offers a moment of calm and self-care",
+                      "Eases tension in the jaw, forehead and face",
+                      "Contributes to an overall sense of well-being",
+                    ],
+                  },
+                ],
+              },
+              more: [
+                {
+                  title: "A moment just for you",
+                  text: [
+                    "The face is one of the places where stress, tiredness and daily tension show most. Caring for your beauty is also caring for your health and emotional balance: facial massage is an invitation to slow down, relax and take some time for yourself.",
+                  ],
+                },
+              ],
+              wa: { topic: "facial massage", cta: "Ask about facial massage" },
+            },
           ],
         },
-        chapters: [
-          {
-            id: "pos-parto",
-            nav: "Postnatal",
-            title: "Postnatal recovery",
-            text: "Pregnancy and birth change the abdominal wall, the pelvic floor and posture. Your care assesses these changes and guides a gradual return to physical activity, at the pace of your recovery.",
-            points: [
-              { title: "Breathing and posture", text: "The starting point of the work, before effort increases." },
-              { title: "Deep core and pelvic floor", text: "Activation and progressive strengthening." },
-              { title: "Exercises for daily life", text: "Fitted to your routine, to continue at home." },
-              { title: "Return to exercise", text: "A gradual return to exercise, running or sport." },
-            ],
-            note: "When to start depends on the type of birth, how your recovery has gone and your doctor's advice.",
-          },
-          {
-            id: "cicatrizes",
-            nav: "Scars",
-            title: "Scars and adhesions",
-            text: "Once the scar has closed and healed, physiotherapy works on the mobility of the skin and surrounding tissue. It may be indicated when the scar pulls, feels stuck or has altered sensation.",
-            mediaId: "dermato-tools",
-            points: [
-              { title: "C-section scar", text: "Can be assessed and treated long after giving birth." },
-              { title: "Adhesions", text: "When the skin and the tissue beneath lose mobility against each other." },
-              { title: "Altered sensation", text: "Areas of the scar with more or less sensitivity to touch." },
-              { title: "Manual techniques", text: "Applied by the physiotherapist and adapted to the state of the scar." },
-            ],
-          },
-          {
-            id: "ecografia",
-            nav: "Ultrasound and exercise",
-            title: "Ultrasound and guided exercise",
-            text: "Ultrasound, when indicated, helps measure the gap between the muscles and monitor the abdominal wall. Exercise is guided at the clinic and in the rehabilitation gym, and continues at home with a plan of your own.",
-            mediaId: "service-eco",
-            points: [
-              { title: "Objective assessment", text: "Progress is recorded throughout your care." },
-              { title: "Progressive strengthening", text: "Effort increases as the abdominal wall responds." },
-              { title: "Independence", text: "Home exercises, explained and reviewed in your sessions." },
-            ],
-          },
-        ],
         person: {
-          bio: "is a physiotherapist and leads dermatofunctional physiotherapy at Fisio4you, focusing on women's health during pregnancy and after childbirth.",
+          bio: "is a physiotherapist and leads dermatofunctional physiotherapy at Fisio4you, focusing on women's health during pregnancy and after childbirth and on care that brings health and aesthetics together.",
         },
+      },
+    },
+  },
+
+  consultations: {
+    title: "Consultations",
+    sub: "Clinical Pilates, Psychology, Physical Medicine and Osteopathy. See what each consultation treats and choose the one you need.",
+    available: "Available consultations",
+    others: "Other consultations",
+    items: {
+      pilates: {
+        name: "Clinical Pilates",
+        short: "Exercise led by health professionals to improve movement control, strength and posture.",
+        lead: "Clinical Pilates adapts the principles of the Pilates method to each person's health needs, to improve movement control, strength and posture.",
+        sections: [
+          { title: "What Clinical Pilates is", text: ["It is a form of exercise led by health professionals. It starts from the Pilates method, but exercises are chosen and adjusted according to each person's health, goals and progress.", "The work focuses on breathing, trunk control, mobility and strength, with attention to the quality of each movement."] },
+          { title: "When it can help", list: ["Low back and neck pain", "Postural changes", "Reduced strength, mobility or balance", "Continuing exercise after rehabilitation", "Pregnancy and the postnatal period, where appropriate"] },
+          { title: "How it works", text: ["It starts by understanding your clinical history, your limitations and what you want to achieve. Suitable exercises are then set, and they progress as you gain control and confidence in your movement."] },
+          { title: "Clinical Pilates and rehabilitation", text: ["It can complement rehabilitation or help maintain your progress once it ends. If you have an injury or health condition, bring any tests or medical reports you have, so the exercise can be adjusted to your situation."] },
+        ],
+        meta: { title: "Clinical Pilates in Portimão | Fisio4you", description: "Clinical Pilates in Portimão: exercise led by health professionals to improve movement control, strength and posture." },
+      },
+      psychology: {
+        name: "Psychology",
+        short: "Psychological assessment and support, in a confidential space where you are listened to.",
+        lead: "A Psychology consultation helps you understand and deal with emotional, behavioural and relationship difficulties, in a confidential space where you are listened to.",
+        sections: [
+          { title: "What a Psychology consultation is", text: ["It is a space to talk about what worries you or causes you distress, with the support of a psychology professional. The aim is to better understand what is happening and find ways of dealing with it.", "You don't need to be in crisis to seek help. Many people come during a period of change, or when a difficulty starts to affect their daily life."] },
+          { title: "When it can help", list: ["Anxiety and stress", "Changes in mood", "Coping with persistent pain", "Adjusting to an injury and returning to sport", "Life changes and difficult times"] },
+          { title: "What to expect", text: ["The first consultations explore what brought you, get to know your history and set goals. From there, support is tailored to you and your situation."] },
+          { title: "Pain, injury and psychological wellbeing", text: ["Pain and injury can affect sleep, mood, motivation and confidence in moving or competing again. Paying attention to these aspects can be an important part of recovery."] },
+        ],
+        meta: { title: "Psychology Consultation in Portimão | Fisio4you", description: "Psychology consultation in Portimão: assessment and support for situations such as anxiety, stress, persistent pain or adjusting to an injury." },
+      },
+      physiatry: {
+        name: "Physical Medicine",
+        short: "A medical consultation in physical medicine and rehabilitation, for diagnosis and guidance of your rehabilitation plan.",
+        lead: "Physical Medicine and Rehabilitation is the medical speciality that assesses and guides people with pain or with limited mobility and function caused by illness or injury.",
+        sections: [
+          { title: "What Physical Medicine is", text: ["It is a medical speciality focused on preventing, diagnosing and treating conditions that affect movement and functional ability.", "The aim is to reduce pain, restore function and help each person reach the greatest possible independence in daily life, at work and in sport."] },
+          { title: "When to seek this consultation", list: ["Spine and joint pain", "Muscle, tendon and sports injuries", "Rehabilitation after surgery or a fracture", "Limited mobility and function", "After-effects of neurological conditions"] },
+          { title: "What to expect", text: ["The consultation includes your clinical history and a physical examination, and further tests may be needed. Based on this assessment, the doctor guides the diagnosis and explains the appropriate treatment options. If you have tests or medical reports, bring them with you."] },
+          { title: "Physical medicine and physiotherapy", text: ["The physical medicine doctor assesses and guides rehabilitation. The physiotherapist delivers physiotherapy using manual techniques, exercise and other resources. Where indicated, the two can complement each other in the same recovery."] },
+        ],
+        meta: { title: "Physical Medicine Consultation in Portimão | Fisio4you", description: "Physical Medicine consultation in Portimão: medical assessment of pain, injuries and limited mobility, for diagnosis and rehabilitation guidance." },
+      },
+      osteopathy: {
+        name: "Osteopathy",
+        short: "A hands-on approach focused on the mobility of joints and tissues.",
+        lead: "Osteopathy is a hands-on approach that assesses how the body's different structures move and relate to each other, and works on areas where mobility is restricted.",
+        sections: [
+          { title: "What Osteopathy is", text: ["It looks at the body as a whole: a limitation in one area can influence how others move. The assessment is therefore not limited to where you feel discomfort.", "Treatment uses manual techniques on the joints, muscles and other tissues."] },
+          { title: "When it can help", list: ["Low back and neck pain", "Muscle tension", "Joint stiffness and limited movement", "Discomfort linked to posture or repetitive strain"] },
+          { title: "What to expect", text: ["The consultation starts with your clinical history and a movement assessment. Techniques are chosen for each person and explained before they are applied. If you have tests or medical reports, bring them with you."] },
+          { title: "When to see a doctor first", text: ["If the pain began after trauma, is severe or getting worse, or comes with fever, loss of strength or changes in sensation, seek a medical assessment first."] },
+        ],
+        meta: { title: "Osteopathy Consultation in Portimão | Fisio4you", description: "Osteopathy consultation in Portimão: a hands-on approach focused on the mobility of joints and tissues, for situations such as low back and neck pain." },
       },
     },
   },
@@ -804,7 +1275,7 @@ export const en: Dict = {
 
   footer: {
     tagline: "Physiotherapy clinic and rehabilitation centre in Portimão.",
-    services: "Services",
+    services: "Physiotherapy",
     clinic: "Clinic",
     contacts: "Contact",
     team: "Team",

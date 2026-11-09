@@ -16,6 +16,8 @@ import { RevealOnScroll } from "../RevealOnScroll";
 import { ServiceAreas } from "../ServiceAreas";
 import { ChapterBlock, RecoveryPanel, ServiceAbout } from "../ServiceChapters";
 import { ZoneGuide, type Zone } from "../ZoneGuide";
+import { TreatmentBlocks } from "../TreatmentBlocks";
+import { CareGuide } from "../CareGuide";
 
 type Row = { main: string; sub: string; action?: { href: string; label: string; wa?: string } };
 
@@ -75,10 +77,22 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
   const chapters: (ServiceChapter | ServiceModule)[] = p.chapters ?? s.modules?.filter((m) => !m.noChapter) ?? [];
   const conditionsTitle = s.forWho.title.split(" ");
   // Índice do topo: os capítulos, pela ordem da página (a diástase vem antes deles)
-  const links = [
-    ...(s.explainer ? [{ href: "#diastase", label: s.explainer.nav }] : []),
-    ...chapters.map((c) => ({ href: `#${c.id}`, label: c.nav })),
-  ];
+  const tr = p.treatments;
+  const care = p.care;
+  const diastasisLink = s.explainer ? [{ href: "#diastase", label: s.explainer.nav }] : [];
+  const links = care
+    ? [
+        ...diastasisLink,
+        { href: "#tratamentos", label: care.nav },
+        { href: "#como-funciona", label: sp.howNav },
+        ...(s.faq.length > 0 ? [{ href: "#perguntas", label: sp.faqNav }] : []),
+      ]
+    : [
+        ...diastasisLink,
+        ...(tr
+          ? [tr.techniques, tr.recovery, tr.sport].map((b) => ({ href: `#${b.id}`, label: b.nav }))
+          : chapters.map((c) => ({ href: `#${c.id}`, label: c.nav }))),
+      ];
 
   // Musculoesquelética: o tratamento por zona do corpo; cada zona abre o WhatsApp, e a de outro serviço leva à página dele
   const bm = t.home.bodyMap;
@@ -131,6 +145,59 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
         ),
     };
   });
+
+  // As duas áreas da clínica: painéis com foto, um aberto e o outro fechado; tocar no fechado troca-os.
+  // Na musculoesquelética vem a seguir à faixa mist do tratamento por zona (por isso tem espaço em cima); na
+  // dermatofuncional (`care`) vem depois do guia dos tratamentos, para não os adiar.
+  const areasSection = p.areas && (
+    <section id="areas" aria-labelledby="areas-title" className={cn("bg-white pb-24 md:pb-36", s.bodyMap && "pt-24 md:pt-36")}>
+      <div className="container-x">
+        <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-x-6">
+          <h2 id="areas-title" data-reveal className="t-display lg:col-span-6">
+            {sp.areas.title}
+          </h2>
+          <p data-reveal className="max-w-[38ch] text-lg leading-relaxed text-ink lg:col-span-4 lg:col-start-9">
+            {sp.areas.intro}
+          </p>
+        </div>
+        <div data-reveal className="mt-12 md:mt-16">
+          <ServiceAreas areas={areas} initial={serviceKeys.indexOf(service)} eyebrow={sp.areas.eyebrow} treatsLabel={sp.areas.treats} />
+        </div>
+      </div>
+    </section>
+  );
+
+  // Dermatofuncional: o esquema da diástase por fases e, por baixo, como é avaliada
+  const diastasis = s.explainer && (
+    <section id="diastase" aria-labelledby="diastase-title" className="bg-mist py-24 md:py-36">
+      <div className="container-x">
+        <DiastasisExplorer
+          stages={s.explainer.stages}
+          stagesLabel={s.explainer.stagesLabel}
+          legend={s.explainer.legend}
+          header={
+            <div>
+              <h2 id="diastase-title" className="t-display">
+                {s.explainer.title}
+              </h2>
+              <p className="mt-6 max-w-[40ch] text-lg leading-relaxed text-ink">{s.explainer.intro}</p>
+            </div>
+          }
+        />
+        <div data-reveal className="mt-16 md:mt-24">
+          <h3 className="t-statement">{s.explainer.assessTitle}</h3>
+          <ul className="mt-8 grid gap-6 md:grid-cols-3 md:gap-8">
+            {s.explainer.assess.map((a) => (
+              <li key={a} className="flex gap-3">
+                <Check aria-hidden className="mt-1 size-5 shrink-0 text-teal" strokeWidth={2.25} />
+                <p className="leading-relaxed text-ink">{a}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
 
   return (
     <>
@@ -197,6 +264,7 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
       {/* Situações. Com o mapa do corpo (musculoesquelética): o tratamento zona a zona, numa faixa mist, com o título e
           a introdução por cima. Com foto (dermatofuncional): a foto à esquerda, da altura do bloco, e à direita o título
           e a tabela das situações; em telemóvel, título → foto → tabela. */}
+      {(s.bodyMap || rows.length > 0) && (
       <section
         id="situacoes"
         aria-labelledby="situacoes-title"
@@ -240,61 +308,40 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
           </div>
         )}
       </section>
+      )}
 
-      {/* As duas áreas da clínica: painéis com foto, um aberto e o outro fechado; tocar no fechado troca-os.
-          Vem a seguir à faixa mist do tratamento por zona, por isso tem espaço em cima. */}
-      {p.areas && (
-        <section id="areas" aria-labelledby="areas-title" className={cn("bg-white pb-24 md:pb-36", s.bodyMap && "pt-24 md:pt-36")}>
+      {!care && areasSection}
+
+      {/* Dermatofuncional: o esquema da diástase por fases e, por baixo, como é avaliada (antes do guia dos tratamentos) */}
+      {diastasis}
+
+      {/* Os capítulos do serviço: foto e texto, com os lados a alternar; o capítulo com `panel` (a crioterapia) vai num painel teal */}
+      {/* Musculoesquelética: os tratamentos enviados pelo cliente, em três blocos, no lugar dos capítulos */}
+      {tr && <TreatmentBlocks data={tr} locale={locale} waMessage={msg.service(tr.recovery.waTopic)} waLocation={`servico-${service}-recovery`} />}
+
+      {/* Dermatofuncional: os tratamentos enviados pelo cliente, em blocos, com o esquema da diástase a seguir ao pós-parto */}
+      {/* Dermatofuncional: os tratamentos enviados pelo cliente, num guia interativo (índice e painel, como o tratamento
+          por zona da musculoesquelética). Fundo branco com o painel mist, porque o esquema da diástase, antes, é mist. */}
+      {care && (
+        <section id="tratamentos" aria-labelledby="tratamentos-title" className="bg-white py-24 md:py-36">
           <div className="container-x">
             <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-x-6">
-              <h2 id="areas-title" data-reveal className="t-display lg:col-span-6">
-                {sp.areas.title}
+              <h2 id="tratamentos-title" data-reveal className="t-display lg:col-span-6">
+                {care.title}
               </h2>
               <p data-reveal className="max-w-[38ch] text-lg leading-relaxed text-ink lg:col-span-4 lg:col-start-9">
-                {sp.areas.intro}
+                {care.intro}
               </p>
             </div>
             <div data-reveal className="mt-12 md:mt-16">
-              <ServiceAreas areas={areas} initial={serviceKeys.indexOf(service)} eyebrow={sp.areas.eyebrow} treatsLabel={sp.areas.treats} />
+              <CareGuide guide={care} service={service} waTemplate={t.wa.service} />
             </div>
           </div>
         </section>
       )}
+      {care && areasSection}
 
-      {/* Dermatofuncional: o esquema da diástase por fases e, por baixo, como é avaliada */}
-      {s.explainer && (
-        <section id="diastase" aria-labelledby="diastase-title" className="bg-mist py-24 md:py-36">
-          <div className="container-x">
-            <DiastasisExplorer
-              stages={s.explainer.stages}
-              stagesLabel={s.explainer.stagesLabel}
-              legend={s.explainer.legend}
-              header={
-                <div>
-                  <h2 id="diastase-title" className="t-display">
-                    {s.explainer.title}
-                  </h2>
-                  <p className="mt-6 max-w-[40ch] text-lg leading-relaxed text-ink">{s.explainer.intro}</p>
-                </div>
-              }
-            />
-            <div data-reveal className="mt-16 md:mt-24">
-              <h3 className="t-statement">{s.explainer.assessTitle}</h3>
-              <ul className="mt-8 grid gap-6 md:grid-cols-3 md:gap-8">
-                {s.explainer.assess.map((a) => (
-                  <li key={a} className="flex gap-3">
-                    <Check aria-hidden className="mt-1 size-5 shrink-0 text-teal" strokeWidth={2.25} />
-                    <p className="leading-relaxed text-ink">{a}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Os capítulos do serviço: foto e texto, com os lados a alternar; o capítulo com `panel` (a crioterapia) vai num painel teal */}
-      {s.includes && chapters.length > 0 && (
+      {!tr && !care && s.includes && chapters.length > 0 && (
         <section id="espaco" aria-labelledby="espaco-title" className={cn("bg-white pb-24 md:pb-36", s.explainer && "pt-24 md:pt-36")}>
           <div className="container-x">
             <h2 id="espaco-title" data-reveal className="t-statement text-muted">

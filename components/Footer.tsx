@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { site, isPending } from "@/content/site";
 import { getDict } from "@/content";
-import { href, serviceKeys, type Locale } from "@/lib/routes";
+import { consultKeys, href, serviceKeys, type Locale } from "@/lib/routes";
 import { waLink, waMessages } from "@/lib/whatsapp";
 import { Logo } from "./Logo";
 import { Wordmark } from "./Wordmark";
@@ -111,6 +111,20 @@ export function Footer({ locale }: { locale: Locale }) {
                 <li key={k}>
                   <Link href={href(locale, `service:${k}`)} className={link}>
                     {t.services[k].name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <h2 className={`${h} mt-5`}>
+              <Link href={href(locale, "consultations")} className="transition-colors hover:text-teal-dark">
+                {t.nav.consultations}
+              </Link>
+            </h2>
+            <ul className={`space-y-1 text-sm leading-snug md:space-y-1.5 ${tap}`}>
+              {consultKeys.map((k) => (
+                <li key={k}>
+                  <Link href={href(locale, `consult:${k}`)} className={link}>
+                    {t.consultations.items[k].name}
                   </Link>
                 </li>
               ))}

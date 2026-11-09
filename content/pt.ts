@@ -8,7 +8,8 @@ export type IconName =
   | "shield" | "repeat" | "target" | "eye" | "trending" | "users" | "building" | "sparkles"
   | "footprints" | "clipboard" | "stethoscope" | "brain" | "flower" | "clock" | "mappin";
 
-type Item = { icon: IconName; title: string; text: string };
+/** `anchor`: secção da página do serviço para onde o item leva na página Fisioterapia (por omissão, `situacoes`). */
+type Item = { icon: IconName; title: string; text: string; anchor?: string };
 type Faq = { q: string; a: string };
 type LegalSection = { h: string; p: string[] };
 
@@ -21,6 +22,75 @@ export type ServiceChapter = {
   mediaId?: string;
   points: { icon?: IconName; title: string; text: string }[];
   note?: string;
+};
+
+/**
+ * Tratamentos de uma página de serviço em três blocos (components/TreatmentBlocks.tsx):
+ * técnicas (foto fixa + lista com filetes) → sessões Recovery (painel teal com os planos) → desempenho desportivo (dois cartões com foto).
+ * `nav`: nome curto no índice do topo da página.
+ */
+export type TreatmentBlocks = {
+  techniques: {
+    id: string; nav: string; title: string; intro: string; mediaId: string;
+    usesLabel: string;
+    items: { id: string; name: string; full?: string; text: string; uses: string[] }[];
+    note: string;
+  };
+  recovery: {
+    id: string; nav: string; title: string; text: string; mediaId: string; secondMediaId: string;
+    /** Vídeo (id em content/media.ts) no lugar da primeira foto: capa com play, abre com som. */
+    video?: string;
+    plansTitle: string;
+    /** `parts`: as chaves de `parts` incluídas no plano, pela ordem da sessão. */
+    plans: { name: string; parts: string[] }[];
+    partsTitle: string;
+    parts: { key: string; title: string; text: string }[];
+    benefitsTitle: string;
+    benefits: string[];
+    waTopic: string;
+    cta: string;
+  };
+  sport: {
+    id: string; nav: string; title: string; intro: string;
+    items: { id: string; title: string; text: string; points: string[]; mediaId: string }[];
+  };
+};
+
+/** Item de uma lista: só texto, ou com um rótulo a negrito por cima. */
+export type CarePoint = string | { title: string; text: string };
+
+/**
+ * Um tratamento no guia da dermatofuncional (components/CareGuide.tsx), com o texto do cliente organizado por camadas:
+ * à vista o `summary` e o essencial; `more` fica em «Saber mais».
+ * - `steps`: as fases de um protocolo, ligadas por uma linha (como as fases do tratamento por zona da musculoesquelética).
+ * - `options`: variantes do tratamento, escolhidas num seletor (ex.: pré-parto / pós-parto).
+ * - `groups`: listas alternativas, escolhidas num seletor quando há mais de uma (ex.: saúde / estética).
+ * - `wa`: `topic` completa `wa.service` ("…marcar uma consulta de {s}.").
+ */
+export type CareGuideItem = {
+  id: string;
+  label: string;
+  title: string;
+  tagline: string;
+  summary: string;
+  steps?: { title: string; items: { title: string; text: string }[] };
+  options?: { title: string; items: { label: string; title: string; tagline?: string; text: string; points?: string[] }[] };
+  groups?: { title: string; items: { label: string; intro?: string; points: CarePoint[] }[] };
+  chips?: { title: string; intro?: string; items: string[] };
+  note?: string;
+  more: { title: string; text: string[] }[];
+  wa: { topic: string; cta: string };
+};
+
+/** Guia dos tratamentos da dermatofuncional: índice dos tratamentos e um painel que troca (como `ZoneGuide`). */
+export type CareGuide = {
+  nav: string;
+  title: string;
+  intro: string;
+  listLabel: string;
+  moreLabel: string;
+  lessLabel: string;
+  items: CareGuideItem[];
 };
 
 /** Recurso incluído num serviço (ex.: ecografia, ginásio, recuperação): também aparece na home e em Serviços, com o `summary`. */
@@ -94,6 +164,10 @@ export type ServicePageCopy = {
   };
   /** Capítulos da página quando o serviço não tem `modules` (dermatofuncional). */
   chapters?: ServiceChapter[];
+  /** Tratamentos da musculoesquelética (texto do cliente), em três blocos: substitui os capítulos (components/TreatmentBlocks.tsx). */
+  treatments?: TreatmentBlocks;
+  /** Tratamentos da dermatofuncional (texto do cliente), num guia interativo: substitui os capítulos (components/CareGuide.tsx). */
+  care?: CareGuide;
   /** Foto de um tratamento deste serviço no cartão «Também na Fisio4you», no fim da página do outro serviço. */
   relatedPhoto: string;
   /** Biografia do fisioterapeuta responsável: o nome vem de `team`, por isso `bio` começa logo a seguir ao nome. */
@@ -131,6 +205,9 @@ export type ServiceContent = {
   page: ServicePageCopy;
 };
 
+/** Bloco de texto de uma página de consulta: parágrafos e/ou lista. */
+export type ConsultSection = { title: string; text?: string[]; list?: string[] };
+
 export const pt = {
   locale: "pt" as Locale,
   htmlLang: "pt-PT",
@@ -167,7 +244,7 @@ export const pt = {
     video: "Vídeo",
     watchVideo: "Ver vídeo",
   },
-  nav: { home: "Início", services: "Serviços", about: "Sobre", contact: "Contactos", comingSoon: "Em breve" },
+  nav: { home: "Início", services: "Fisioterapia", consultations: "Consultas", about: "Sobre", contact: "Contactos", comingSoon: "Em breve" },
   wa: {
     general: "Olá, gostava de marcar uma consulta na Fisio4you.",
     service: "Olá, gostava de marcar uma consulta de {s}.",
@@ -209,6 +286,10 @@ export const pt = {
       title: "Serviços de Fisioterapia em Portimão | Fisio4you",
       description:
         "Fisioterapia musculoesquelética e dermatofuncional em Portimão: lesões desportivas, dor, reabilitação após cirurgia, pós-parto e diástase abdominal.",
+    },
+    consultations: {
+      title: "Consultas em Portimão: Pilates Clínico, Psicologia, Fisiatria e Osteopatia | Fisio4you",
+      description: "Consultas de Pilates Clínico, Psicologia, Fisiatria e Osteopatia na Fisio4you, em Portimão. Saiba o que trata cada uma e marque a sua consulta.",
     },
     comingSoon: {
       title: "Em breve: Fisiatria, Osteopatia, Pilates Clínico e Psicologia | Fisio4you",
@@ -487,6 +568,9 @@ export const pt = {
     seeService: "Ver o serviço",
     meetTeam: "Conhecer a equipa",
     onThisPage: "Nesta página",
+    /** Nomes curtos no índice do topo das páginas de serviço com guia de tratamentos. */
+    howNav: "Como decorre",
+    faqNav: "Perguntas",
     /** As duas áreas em painéis com foto (components/ServiceAreas.tsx), nas páginas com `page.areas`. */
     areas: {
       title: "Duas áreas, uma clínica",
@@ -503,8 +587,8 @@ export const pt = {
         },
         dermato: {
           name: "Dermatofuncional",
-          what: "Parede abdominal, pavimento pélvico e cicatrizes, com particular atenção ao pós-parto.",
-          treats: ["Recuperação pós-parto", "Diástase abdominal", "Cicatrizes e aderências"],
+          what: "Saúde e estética: pós-parto, drenagem linfática, pós-operatório, lipedema e remodelação corporal.",
+          treats: ["Pós-parto e diástase", "Drenagem linfática", "Pós-operatório e cicatrizes", "Lipedema", "Estética corporal"],
           by: "Com a fisioterapeuta Angela Brazona",
           mediaId: "service-dermato",
         },
@@ -531,7 +615,6 @@ export const pt = {
         { icon: "clock", text: "Mário Barroso, 16 anos de experiência" },
       ],
       specialist: "team-mario",
-      bodyMap: true,
       forWho: {
         title: "Situações mais frequentes",
         intro: "Acompanhamos atletas, pessoas fisicamente ativas e quem tem dor ou limitação de movimento no dia a dia. A indicação para tratamento é confirmada na avaliação.",
@@ -692,6 +775,85 @@ export const pt = {
       ],
       related: ["dermato"],
       page: {
+        // Tratamentos enviados pelo cliente (09/11/2026), em três blocos (components/TreatmentBlocks.tsx)
+        treatments: {
+          techniques: {
+            id: "tecnicas", nav: "Técnicas",
+            title: "Técnicas de tratamento",
+            intro: "Técnicas minimamente invasivas e não invasivas, usadas como complemento num plano de fisioterapia individual.",
+            mediaId: "service-msk",
+            usesLabel: "Usada em",
+            items: [
+              {
+                id: "epte", name: "EPTE", full: "Eletropuntura Percutânea Terapêutica Ecoguiada",
+                text: "Uma corrente elétrica de baixa intensidade, aplicada com uma agulha muito fina guiada por ecografia diretamente na lesão, estimula a regeneração dos tecidos, sobretudo dos tendões.",
+                uses: ["Tendão de Aquiles", "Tendinopatia rotuliana", "Cotovelo de tenista"],
+              },
+              {
+                id: "mesoterapia", name: "Mesoterapia",
+                text: "Microinjeções de pequenas quantidades de substâncias terapêuticas na zona a tratar, para aliviar a dor, reduzir a inflamação e ajudar a recuperar os tecidos.",
+                uses: ["Dores musculares", "Tendinopatias", "Contraturas", "Inflamação"],
+              },
+              {
+                id: "neuromodulacao", name: "Neuromodulação Percutânea Ecoguiada",
+                text: "Estímulos elétricos de baixa frequência, com agulhas muito finas e orientação ecográfica, sobre nervos periféricos específicos, para diminuir a dor e melhorar a ativação muscular.",
+                uses: ["Dor crónica", "Dor neuropática", "Disfunções neuromusculares"],
+              },
+              {
+                id: "fotobiomodulacao", name: "Fotobiomodulação",
+                text: "Luz de baixa intensidade, por laser ou LED, que atua a nível celular para aliviar a dor, reduzir a inflamação e estimular a recuperação. É indolor e não invasiva.",
+                uses: ["Lesões musculares", "Tendinopatias", "Dores articulares", "Tecidos moles"],
+              },
+            ],
+            note: "As técnicas são realizadas por profissionais habilitados e adaptadas à condição clínica de cada pessoa. A indicação é confirmada na avaliação.",
+          },
+          recovery: {
+            id: "recovery", nav: "Sessão Recovery",
+            title: "Sessão Recovery",
+            text: "Tão importante como treinar é deixar o corpo recuperar. A Sessão Recovery junta técnicas de recuperação num momento dedicado ao descanso, para aliviar a fadiga e preparar o corpo para o próximo treino.",
+            mediaId: "service-recovery",
+            // Vídeo do circuito de recuperação no lugar da foto da banheira (pedido do utilizador, 09/11)
+            video: "video-circuito",
+            secondMediaId: "strip-pressotherapy",
+            plansTitle: "Escolha a sessão",
+            plans: [
+              { name: "Recovery Start", parts: ["botas", "gelo"] },
+              { name: "Recovery Active", parts: ["botas", "massagem"] },
+              { name: "Recovery Plus", parts: ["massagem", "botas", "gelo"] },
+              { name: "Recovery Elite", parts: ["ativa", "botas", "gelo", "massagem"] },
+            ],
+            partsTitle: "O que pode incluir",
+            parts: [
+              { key: "botas", title: "Botas de compressão", text: "Compressão pneumática sequencial que ajuda a circulação e deixa as pernas mais leves." },
+              { key: "gelo", title: "Banheira de gelo", text: "Imersão em água fria que pode reduzir temporariamente a dor muscular e a fadiga." },
+              { key: "massagem", title: "Massagem desportiva", text: "Alivia a tensão muscular, melhora a mobilidade e prepara o músculo para o esforço." },
+              { key: "ativa", title: "Recuperação ativa", text: "Exercício leve, bicicleta ou mobilidade para estimular a circulação e aliviar a rigidez." },
+            ],
+            benefitsTitle: "Benefícios",
+            benefits: ["Menos fadiga muscular", "Menos tensão muscular", "Melhor circulação", "Recuperação pós-treino", "Relaxamento físico e mental", "Preparação para novos desafios"],
+            waTopic: "Sessão Recovery",
+            cta: "Marcar uma Sessão Recovery",
+          },
+          sport: {
+            id: "desporto", nav: "Desporto",
+            title: "Avaliação e prevenção no desporto",
+            intro: "Para atletas que querem regressar com segurança ou reduzir o risco de nova lesão.",
+            items: [
+              {
+                id: "isocinetica", title: "Avaliação Isocinética",
+                text: "Um equipamento especializado mede a força, a potência e a resistência dos músculos a velocidade constante, e compara os dois membros.",
+                points: ["Identifica desequilíbrios e assimetrias", "Acompanha a evolução da reabilitação", "Ajuda a decidir o regresso ao desporto"],
+                mediaId: "athletes",
+              },
+              {
+                id: "prevencao", title: "Treino de Prevenção de Lesões",
+                text: "Um plano individual que tem em conta a modalidade, o histórico de lesões, a posição em campo e as necessidades de cada atleta.",
+                points: ["Corrige desequilíbrios e défices de força", "Melhora o desempenho físico", "Com avaliação isocinética, quando necessária"],
+                mediaId: "gym",
+              },
+            ],
+          },
+        },
         lead: "Lesões desportivas, dor e reabilitação depois de uma cirurgia, com o fisioterapeuta Mário Barroso.",
         heroWide: "wide-msk",
         relatedPhoto: "related-msk",
@@ -711,23 +873,23 @@ export const pt = {
     },
     dermato: {
       name: "Fisioterapia Dermatofuncional",
-      short: "Recuperação pós-parto, diástase abdominal e tratamento de cicatrizes, incluindo a cicatriz de cesariana.",
+      short: "Recuperação pós-parto, drenagem linfática, pós-operatório e cicatrizes, lipedema, remodelação corporal e massagem terapêutica.",
       mediaId: "service-dermato",
       meta: {
-        title: "Fisioterapia Pós-Parto e Diástase em Portimão | Fisio4you",
+        title: "Fisioterapia Dermatofuncional em Portimão | Fisio4you",
         description:
-          "Fisioterapia dermatofuncional em Portimão: recuperação pós-parto, diástase abdominal e cicatriz de cesariana, com a fisioterapeuta Angela Brazona.",
+          "Fisioterapia dermatofuncional em Portimão: pós-parto e diástase abdominal, drenagem linfática, pós-operatório e cicatrizes, lipedema e remodelação corporal, com a fisioterapeuta Angela Brazona.",
       },
       heroTitle: "Fisioterapia Dermatofuncional",
-      heroSub: "Avaliação e tratamento da parede abdominal, do pavimento pélvico e das cicatrizes, com particular atenção ao pós-parto e à diástase abdominal.",
+      heroSub: "Saúde e estética em equilíbrio: recuperação pós-parto, drenagem linfática, pós-operatório e cicatrizes, lipedema e remodelação corporal, sempre a partir de uma avaliação individual.",
       facts: [
         { icon: "baby", text: "Pós-parto e diástase abdominal" },
-        { icon: "sparkles", text: "Cicatrizes e aderências" },
-        { icon: "scan", text: "Ecografia para acompanhar a evolução" },
+        { icon: "flower", text: "Drenagem linfática manual" },
+        { icon: "sparkles", text: "Pós-operatório e cicatrizes" },
         { icon: "heart", text: "Angela Brazona, fisioterapeuta" },
       ],
       specialist: "team-angela",
-      // [[validar com a Angela: texto do esquema da diástase, "Como avaliamos" e lista de sinais]]
+      // [[validar com a Angela: texto do esquema da diástase e "Como avaliamos"]]
       explainer: {
         nav: "A diástase",
         title: "O que é a diástase abdominal",
@@ -760,22 +922,16 @@ export const pt = {
       },
       forWho: {
         title: "Situações mais frequentes",
-        intro: "Acompanhamos sobretudo mulheres no pós-parto, independentemente do tempo que passou desde o parto.",
+        intro: "Cada tratamento começa por uma avaliação individualizada, que identifica as necessidades e os objetivos de cada pessoa.",
         items: [
-          { icon: "baby", title: "Recuperação pós-parto", text: "Parede abdominal, postura e regresso gradual à atividade física." },
-          { icon: "target", title: "Diástase abdominal", text: "Avaliação da separação e plano de exercício específico." },
-          { icon: "sparkles", title: "Cicatrizes e aderências", text: "Incluindo a cicatriz de cesariana, depois de cicatrizada." },
-          { icon: "stethoscope", title: "Pós-operatório de cirurgia plástica/estética", text: "[[confirmar]]" },
-          { icon: "flower", title: "Edema e drenagem linfática", text: "[[confirmar]]" },
+          { icon: "baby", title: "Reabilitação abdominal pós-parto", text: "Diástase abdominal, força e tónus do abdómen, postura e pavimento pélvico.", anchor: "pos-parto" },
+          { icon: "flower", title: "Drenagem linfática manual", text: "Na gravidez, no pós-parto e em situações de edema e retenção de líquidos.", anchor: "drenagem" },
+          { icon: "stethoscope", title: "Pós-operatório e cicatrizes", text: "Drenagem linfática e tratamento de cicatrizes depois de uma cirurgia.", anchor: "pos-operatorio" },
+          { icon: "heart", title: "Protocolo lipedema", text: "Drenagem, manobras dos tecidos e aparatologia para aliviar o desconforto.", anchor: "lipedema" },
+          { icon: "sparkles", title: "Remodelação corporal", text: "Contorno corporal, gordura localizada, celulite e flacidez.", anchor: "remodelacao" },
+          { icon: "activity", title: "Massagem terapêutica e facial", text: "Tensão muscular nas costas e relaxamento do rosto.", anchor: "massagem-terapeutica" },
         ],
       },
-      conditions: [
-        { id: "pos-parto", label: "Pós-parto", common: ["Parede abdominal", "Pavimento pélvico", "Postura", "Regresso à atividade física"], waTopic: "uma questão de recuperação pós-parto" },
-        { id: "abdomen", label: "Abdómen", common: ["Diástase abdominal", "Fraqueza abdominal"], waTopic: "uma questão de diástase abdominal" },
-        { id: "cicatrizes", label: "Cicatrizes", common: ["Cicatriz de cesariana", "Aderências", "Sensibilidade alterada"], waTopic: "uma questão sobre uma cicatriz" },
-        { id: "estetica", label: "Cirurgia estética", common: ["Pós-operatório de cirurgia plástica/estética"], waTopic: "[[confirmar]]" },
-        { id: "edema", label: "Edema", common: ["Drenagem linfática"], waTopic: "[[confirmar]]" },
-      ],
       how: {
         title: "Como decorre o acompanhamento",
         intro: "O plano parte da sua situação atual e cada fase é explicada antes de começar.",
@@ -784,33 +940,33 @@ export const pt = {
           {
             title: "Avaliação",
             line: "Primeiro, avaliamos.",
-            text: "História clínica e avaliação da parede abdominal, com ecografia quando indicado.",
-            details: ["Gravidez, parto, cirurgias anteriores e sintomas atuais", "Avaliação da parede abdominal, da postura e da respiração"],
+            text: "Avaliação individualizada das alterações, das necessidades e dos objetivos de cada pessoa.",
+            details: ["História clínica: gravidez, parto, cirurgias e sintomas atuais", "Avaliação dos tecidos, da parede abdominal e da postura, conforme o tratamento"],
           },
           {
             title: "Plano",
             line: "Depois, o plano.",
-            text: "Objetivos realistas, adaptados à fase em que se encontra e à sua rotina.",
-            details: ["O plano parte da sua situação, seja semanas, meses ou anos após o parto", "Exercícios compatíveis com o seu dia a dia"],
+            text: "As técnicas são escolhidas de acordo com a avaliação e os seus objetivos.",
+            details: ["Técnicas escolhidas de acordo com a avaliação e os objetivos", "No pós-operatório, respeita a fase de cicatrização e as indicações da equipa médica"],
           },
           {
             title: "Tratamento",
             line: "Tratamos, passo a passo.",
-            text: "Técnicas manuais e exercício orientado, com cada passo explicado.",
-            details: ["Respiração, postura e ativação do abdómen profundo e do pavimento pélvico", "Fortalecimento progressivo da parede abdominal", "Técnicas manuais, incluindo para cicatrizes e aderências"],
+            text: "Técnicas manuais, drenagem linfática, exercício terapêutico e aparatologia, quando adequada.",
+            details: ["Técnicas manuais, drenagem linfática e exercício terapêutico", "Aparatologia, quando adequada à avaliação", "Reavaliação regular para ajustar o plano"],
           },
           {
             title: "Autonomia",
             line: "Por fim, autonomia.",
-            text: "Exercícios para casa e acompanhamento no regresso ao exercício físico.",
-            details: ["Exercícios para casa, explicados e revistos nas sessões", "Regresso gradual ao exercício, à corrida ou ao desporto"],
+            text: "Exercícios e cuidados para continuar em casa.",
+            details: ["Exercícios e cuidados para continuar em casa, explicados nas sessões", "Regresso seguro à atividade física e às tarefas do dia a dia"],
           },
         ],
       },
       distinct: {
         title: "Quem acompanha o tratamento",
-        text: "A fisioterapia dermatofuncional é a área de Angela Brazona, fisioterapeuta dedicada à saúde da mulher na gravidez e no pós-parto.",
-        points: ["Ecografia para avaliar e acompanhar a parede abdominal", "Exercício orientado no ginásio de reabilitação", "Plano de exercícios para continuar em casa"],
+        text: "A fisioterapia dermatofuncional é a área de Angela Brazona, fisioterapeuta dedicada à saúde da mulher e aos cuidados que unem saúde e estética.",
+        points: ["Avaliação individualizada antes de cada plano", "Técnicas manuais, drenagem linfática e aparatologia", "Exercício orientado e plano para casa"],
       },
       duration: {
         title: "Duração e frequência",
@@ -825,74 +981,471 @@ export const pt = {
         { q: "Como é a primeira avaliação?", a: "Começa por uma conversa sobre a sua história clínica e os seus objetivos, seguida de uma avaliação física explicada passo a passo." },
       ],
       related: ["msk"],
-      includes: {
-        title: "O que inclui o acompanhamento",
-        intro: "Do pós-parto às cicatrizes, cada área tem a sua avaliação e o seu plano.",
-      },
       page: {
-        lead: "Recuperação pós-parto, diástase abdominal e cicatrizes, com a fisioterapeuta Angela Brazona.",
+        lead: "Pós-parto, drenagem linfática, lipedema e estética corporal, com a fisioterapeuta Angela Brazona.",
         heroWide: "wide-dermato",
         heroBeside: true,
-        conditionsPhoto: "strip-angela",
         relatedPhoto: "related-dermato",
+        areas: true,
         about: {
-          statement: ["A ", "fisioterapia dermatofuncional", " avalia e trata a parede abdominal, o pavimento pélvico e as cicatrizes, com particular atenção ao pós-parto."],
+          statement: ["A ", "fisioterapia dermatofuncional", " une saúde e estética: recupera a função do corpo e cuida também da sua aparência e bem-estar."],
           text: [
-            "O plano parte da sua situação, seja semanas, meses ou anos depois do parto, e cada fase é explicada antes de começar.",
-            "A primeira avaliação começa por uma conversa sobre a sua história clínica e os seus objetivos, seguida de uma avaliação física explicada passo a passo.",
+            "Cada corpo é único. Por isso, cada tratamento começa por uma avaliação individualizada, que identifica as necessidades e os objetivos de cada pessoa e define o plano mais adequado.",
+            "Acreditamos que a estética deve caminhar lado a lado com a saúde e o bem-estar, do pós-parto ao pós-operatório, do lipedema à remodelação corporal.",
           ],
-          listTitle: "Como trabalhamos",
-          list: [
-            { title: "Técnicas manuais", text: "Incluindo para cicatrizes e aderências." },
-            { title: "Exercício orientado", text: "Na clínica e no ginásio de reabilitação, com fortalecimento progressivo." },
-            { title: "Ecografia", text: "Para avaliar e acompanhar a parede abdominal, quando indicada." },
-            { title: "Plano para casa", text: "Exercícios explicados e revistos nas sessões." },
+          listTitle: "O que tratamos",
+        },
+        // Tratamentos enviados pelo cliente (09/11/2026), num guia interativo (components/CareGuide.tsx):
+        // à vista só o essencial de cada um; o resto do texto do cliente fica em «Saber mais».
+        care: {
+          nav: "Tratamentos",
+          title: "Os tratamentos",
+          intro: "Escolha um tratamento para ver o que inclui, os benefícios e como pode ajudar.",
+          listLabel: "Tratamentos de fisioterapia dermatofuncional",
+          moreLabel: "Saber mais",
+          lessLabel: "Mostrar menos",
+          items: [
+            {
+              id: "pos-parto",
+              label: "Pós-parto",
+              title: "Reabilitação abdominal pós-parto",
+              tagline: "Saúde, recuperação e estética em harmonia.",
+              summary: "Após o parto, a musculatura abdominal, a pele, a postura e o pavimento pélvico podem apresentar alterações que merecem cuidados especializados. A recuperação integra duas dimensões: a saúde e a estética.",
+              groups: {
+                title: "O que procuramos",
+                items: [
+                  {
+                    label: "Saúde",
+                    intro: "Recuperar a função e o equilíbrio abdominal.",
+                    points: [
+                      "Melhorar a força e a função da musculatura abdominal",
+                      "Trabalhar a diástase abdominal",
+                      "Recuperar a estabilidade e o controlo do tronco",
+                      "Melhorar a postura e a gestão das pressões abdominais",
+                      "Integrar a musculatura abdominal e o pavimento pélvico",
+                      "Regressar com segurança à atividade física e às tarefas do dia a dia",
+                    ],
+                  },
+                  {
+                    label: "Estética",
+                    intro: "Recuperar a harmonia e a confiança corporal.",
+                    points: [
+                      "A firmeza e o tónus da musculatura abdominal",
+                      "O contorno e a aparência da região abdominal",
+                      "A postura e a silhueta corporal",
+                      "A perceção da imagem corporal e a autoconfiança",
+                    ],
+                  },
+                ],
+              },
+              note: "Os resultados estéticos dependem de vários fatores, nomeadamente das características individuais, das alterações provocadas pela gravidez e da recuperação dos tecidos.",
+              more: [
+                {
+                  title: "Porque é que o abdómen muda",
+                  text: [
+                    "Durante a gravidez, os músculos abdominais adaptam-se para permitir o crescimento do bebé. Estas alterações podem provocar diástase abdominal (afastamento dos músculos retos abdominais), diminuição da força muscular, alterações posturais e menor estabilidade do tronco.",
+                    "A melhoria da função e do tónus muscular pode contribuir para uma maior firmeza e definição da região abdominal, com impacto positivo na imagem corporal e na autoestima.",
+                  ],
+                },
+                {
+                  title: "Um tratamento personalizado, de dentro para fora",
+                  text: [
+                    "Cada mulher é única. Por isso, iniciamos o acompanhamento com uma avaliação individualizada, identificando as alterações musculares e funcionais e definindo os objetivos de cada paciente. O plano pode integrar exercícios terapêuticos, técnicas de fisioterapia e estratégias específicas para a recuperação abdominal.",
+                  ],
+                },
+                {
+                  title: "Cuidar da saúde também é cuidar da beleza",
+                  text: [
+                    "Recuperar não significa apenas voltar à aparência anterior à gravidez. Significa sentir-se bem, recuperar a funcionalidade do corpo, melhorar a autoestima e voltar a ter confiança nos seus movimentos.",
+                  ],
+                },
+              ],
+              wa: { topic: "reabilitação abdominal pós-parto", cta: "Perguntar pela reabilitação pós-parto" },
+            },
+            {
+              id: "drenagem",
+              label: "Drenagem linfática",
+              title: "Drenagem linfática manual",
+              tagline: "Saúde, leveza e bem-estar para o seu corpo.",
+              summary: "Movimentos suaves, lentos e ritmados que estimulam o fluxo da linfa e ajudam a reduzir a acumulação de líquidos nos tecidos, o inchaço e a sensação de peso.",
+              options: {
+                title: "Na gravidez e depois do parto",
+                items: [
+                  {
+                    label: "Pré-parto",
+                    title: "Durante a gravidez",
+                    tagline: "Mais conforto, leveza e bem-estar.",
+                    text: "As alterações hormonais e circulatórias podem favorecer a retenção de líquidos, com inchaço nas pernas, pés e tornozelos. Com movimentos adaptados à gravidez, a drenagem pode ajudar a reduzir o edema e aliviar a sensação de pernas pesadas.",
+                  },
+                  {
+                    label: "Pós-parto",
+                    title: "Depois do parto",
+                    tagline: "Conforto e leveza na fase de recuperação.",
+                    text: "Após o parto, o organismo passa por diversas alterações hormonais e circulatórias e pode existir acumulação de líquidos. Quando indicada, a drenagem pode ajudar a aliviar o edema e dar uma maior sensação de conforto e leveza.",
+                  },
+                ],
+              },
+              groups: {
+                title: "Benefícios",
+                items: [
+                  {
+                    label: "Na saúde",
+                    points: [
+                      "Ajuda a reduzir o edema e a retenção de líquidos",
+                      "Favorece a circulação linfática",
+                      "Alivia a sensação de pernas pesadas e inchadas",
+                      "Pode ser importante na recuperação de determinadas cirurgias, quando clinicamente indicada",
+                      "Melhora o conforto e a mobilidade em situações de edema",
+                    ],
+                  },
+                  {
+                    label: "Na estética",
+                    points: [
+                      "Diminui o inchaço e a sensação de volume associados à acumulação de líquidos",
+                      "Contribui para uma aparência corporal menos edemaciada",
+                      "Pode melhorar o conforto e a sensação de leveza corporal",
+                      "Complementa alguns programas de cuidados estéticos e de recuperação pós-operatória, quando adequados",
+                    ],
+                  },
+                ],
+              },
+              more: [
+                {
+                  title: "O sistema linfático",
+                  text: [
+                    "O sistema linfático é essencial para o equilíbrio dos líquidos e para o bom funcionamento do organismo. Quando existe acumulação de líquidos nos tecidos ou dificuldade na sua circulação, podem surgir inchaço, sensação de peso e desconforto.",
+                  ],
+                },
+                {
+                  title: "Uma abordagem personalizada",
+                  text: [
+                    "Utilizamos a drenagem linfática como parte de uma abordagem personalizada, tendo em conta as necessidades e os objetivos de cada pessoa. Na gravidez, cada tratamento é realizado por profissionais qualificados, respeitando as necessidades de cada grávida e a evolução da gestação.",
+                  ],
+                },
+              ],
+              wa: { topic: "drenagem linfática", cta: "Perguntar pela drenagem linfática" },
+            },
+            {
+              id: "pos-operatorio",
+              label: "Pós-operatório",
+              title: "Pós-operatório: drenagem e cicatrizes",
+              tagline: "Uma recuperação cuidada, segura e harmoniosa.",
+              summary: "Depois de uma cirurgia podem surgir edema, sensação de tensão e alterações dos tecidos. Combinamos drenagem linfática manual e tratamento de cicatrizes, de acordo com as necessidades de cada paciente.",
+              groups: {
+                title: "O que trabalhamos",
+                items: [
+                  {
+                    label: "Drenagem linfática",
+                    intro: "Uma técnica suave que ajuda a controlar a acumulação de líquidos nos tecidos. Pode contribuir para:",
+                    points: [
+                      "Reduzir o edema e o inchaço",
+                      "Aliviar a sensação de tensão e desconforto",
+                      "Melhorar o conforto dos tecidos",
+                      "Apoiar o processo de recuperação pós-cirúrgica",
+                    ],
+                  },
+                  {
+                    label: "Cicatrizes",
+                    intro: "A cicatriz pode apresentar alterações de textura, elasticidade, sensibilidade e mobilidade. Procuramos:",
+                    points: [
+                      "Melhorar a elasticidade e a mobilidade dos tecidos",
+                      "Diminuir aderências e restrições cicatriciais",
+                      "Melhorar a flexibilidade da região intervencionada",
+                      "Promover uma melhor qualidade e aparência da cicatriz",
+                    ],
+                  },
+                ],
+              },
+              more: [
+                {
+                  title: "Saúde e estética em equilíbrio",
+                  text: [
+                    "A recuperação pós-operatória não passa apenas pela aparência exterior. É fundamental recuperar a funcionalidade, a mobilidade e o conforto dos tecidos, promovendo também uma evolução estética da região intervencionada.",
+                    "Cada tratamento é personalizado, respeitando o tipo de cirurgia, a fase de cicatrização e as indicações da equipa médica.",
+                  ],
+                },
+              ],
+              wa: { topic: "fisioterapia no pós-operatório", cta: "Perguntar pelo pós-operatório" },
+            },
+            {
+              id: "lipedema",
+              label: "Lipedema",
+              title: "Protocolo lipedema",
+              tagline: "Cuide das suas pernas. Alivie o desconforto. Recupere o seu bem-estar.",
+              summary: "O lipedema é uma doença crónica do tecido adiposo, com uma acumulação desproporcional de gordura, sobretudo nas pernas. O protocolo combina técnicas terapêuticas para controlar os sintomas e melhorar o conforto e a qualidade de vida.",
+              steps: {
+                title: "Em que consiste o protocolo",
+                items: [
+                  { title: "Drenagem linfática manual", text: "Movimentos suaves e específicos que ajudam a controlar o edema e a aliviar a sensação de peso e inchaço nas pernas." },
+                  { title: "Manobras dos tecidos", text: "Técnicas manuais adaptadas à sensibilidade dos tecidos, para melhorar o conforto e a mobilidade e aliviar a tensão." },
+                  { title: "Aparatologia", text: "Equipamentos escolhidos de acordo com a avaliação, que complementam a intervenção manual quando adequados." },
+                ],
+              },
+              groups: {
+                title: "O acompanhamento pode ajudar a",
+                items: [
+                  {
+                    label: "Benefícios",
+                    points: [
+                      "Aliviar a sensação de peso e cansaço nas pernas",
+                      "Reduzir o edema, quando presente",
+                      "Melhorar o conforto e a mobilidade",
+                      "Diminuir a tensão e o desconforto nos tecidos",
+                      "Complementar a gestão dos sintomas do lipedema",
+                      "Melhorar o bem-estar e a relação com a imagem corporal",
+                    ],
+                  },
+                ],
+              },
+              more: [
+                {
+                  title: "O que é o lipedema",
+                  text: [
+                    "O lipedema é uma doença crónica do tecido adiposo, caracterizada por uma acumulação desproporcional e geralmente simétrica de gordura, sobretudo nas pernas e, por vezes, nos braços. Está frequentemente associado a dor, sensibilidade ao toque, sensação de peso, facilidade em desenvolver hematomas e desconforto físico.",
+                  ],
+                },
+                {
+                  title: "Um tratamento personalizado para cada mulher",
+                  text: [
+                    "O lipedema manifesta-se de forma diferente em cada pessoa. Por isso, iniciamos sempre com uma avaliação individualizada, considerando o grau de sensibilidade, os sintomas, as características dos tecidos e as necessidades de cada paciente. O objetivo é um acompanhamento especializado, respeitador e adaptado a cada fase da condição.",
+                  ],
+                },
+                {
+                  title: "Cuidar da saúde é também cuidar de si",
+                  text: [
+                    "Viver com lipedema não significa ter de aceitar a dor, o desconforto ou as limitações como parte inevitável do dia a dia. Queremos ajudá-la a sentir-se melhor, com uma abordagem que une fisioterapia, bem-estar e cuidados personalizados.",
+                  ],
+                },
+              ],
+              wa: { topic: "lipedema", cta: "Perguntar pelo protocolo lipedema" },
+            },
+            {
+              id: "remodelacao",
+              label: "Remodelação corporal",
+              title: "Body contouring: remodelação corporal",
+              tagline: "Valorize as suas formas. Cuide do seu corpo. Sinta-se bem consigo.",
+              summary: "Técnicas e tratamentos estéticos não invasivos para melhorar o contorno corporal, a firmeza e a qualidade da pele, de forma personalizada.",
+              groups: {
+                title: "Benefícios",
+                items: [
+                  {
+                    label: "Benefícios",
+                    points: [
+                      { title: "Contorno corporal", text: "Ajuda a definir e harmonizar determinadas zonas do corpo." },
+                      { title: "Firmeza da pele", text: "Pode contribuir para uma aparência mais firme e tonificada." },
+                      { title: "Aparência da celulite", text: "Determinadas técnicas podem ajudar a melhorar o aspeto da pele com irregularidades." },
+                      { title: "Textura da pele", text: "Promove uma aparência mais uniforme e cuidada." },
+                      { title: "Bem-estar e autoestima", text: "Ajuda a sentir-se mais confortável e confiante com a sua imagem corporal." },
+                    ],
+                  },
+                ],
+              },
+              chips: {
+                title: "Zonas que podem ser tratadas",
+                intro: "Dependendo da avaliação e das técnicas utilizadas.",
+                items: ["Abdómen", "Cintura e flancos", "Coxas", "Glúteos", "Braços"],
+              },
+              more: [
+                {
+                  title: "Um tratamento adaptado a si",
+                  text: [
+                    "Cada corpo é único. Por isso, começamos com uma avaliação individualizada para identificar as necessidades de cada paciente e definir o plano de tratamento mais adequado. O objetivo é uma melhoria estética natural, que respeita a saúde, as características corporais e as expectativas de cada pessoa.",
+                  ],
+                },
+              ],
+              wa: { topic: "remodelação corporal", cta: "Perguntar pela remodelação corporal" },
+            },
+            {
+              id: "gordura-celulite-flacidez",
+              label: "Gordura, celulite e flacidez",
+              title: "Tratamento personalizado",
+              tagline: "Gordura localizada, celulite e flacidez: um tratamento pensado para si.",
+              summary: "Não existem tratamentos iguais para todas as pessoas. Desenvolvemos planos de remodelação corporal individualizados, com as técnicas mais adequadas às necessidades e aos objetivos de cada paciente.",
+              options: {
+                title: "O que quer tratar",
+                items: [
+                  {
+                    label: "Gordura localizada",
+                    title: "Gordura localizada",
+                    tagline: "Valorize o contorno e a harmonia corporal.",
+                    text: "A gordura localizada pode persistir em determinadas regiões do corpo, mesmo com uma alimentação equilibrada e atividade física regular. Os tratamentos podem ajudar a:",
+                    points: ["Melhorar o contorno corporal", "Trabalhar zonas com acumulação de gordura localizada", "Promover uma aparência mais harmoniosa", "Complementar a alimentação e a atividade física"],
+                  },
+                  {
+                    label: "Celulite",
+                    title: "Celulite",
+                    tagline: "Uma pele com aspeto mais uniforme e cuidado.",
+                    text: "A celulite caracteriza-se por alterações na superfície da pele, que criam irregularidades e o conhecido aspeto de «casca de laranja». Procuramos:",
+                    points: ["Melhorar o aspeto da pele", "Atenuar a aparência da celulite", "Melhorar a textura e a uniformidade cutânea", "Promover uma melhor circulação local", "Melhorar o conforto e a qualidade dos tecidos"],
+                  },
+                  {
+                    label: "Flacidez",
+                    title: "Flacidez",
+                    tagline: "Mais firmeza, tonicidade e definição corporal.",
+                    text: "A flacidez pode surgir com o envelhecimento, alterações de peso, a gravidez ou a diminuição da elasticidade dos tecidos. Os tratamentos podem contribuir para:",
+                    points: ["Melhorar a firmeza e o aspeto da pele", "Estimular a tonicidade dos tecidos, conforme a técnica utilizada", "Melhorar a aparência e a definição corporal", "Promover uma silhueta mais harmoniosa"],
+                  },
+                ],
+              },
+              more: [
+                {
+                  title: "Cada corpo é único",
+                  text: [
+                    "Cada corpo é único e merece cuidados específicos. A gordura localizada, a celulite e a flacidez são alterações corporais que podem afetar a silhueta, a firmeza da pele e a autoestima. Os tratamentos são selecionados de acordo com a avaliação individual.",
+                  ],
+                },
+              ],
+              wa: { topic: "tratamento personalizado (gordura localizada, celulite ou flacidez)", cta: "Perguntar pelo tratamento personalizado" },
+            },
+            {
+              id: "massagem-terapeutica",
+              label: "Massagem terapêutica",
+              title: "Massagem terapêutica: costas",
+              tagline: "Alivie a tensão muscular. Recupere o conforto e o bem-estar.",
+              summary: "O stress, as más posturas e os movimentos repetitivos podem provocar tensão, rigidez e desconforto nas costas. A massagem terapêutica usa manobras e pressões adaptadas a cada pessoa para aliviar a tensão e promover o relaxamento.",
+              groups: {
+                title: "Benefícios e indicações",
+                items: [
+                  {
+                    label: "Benefícios",
+                    points: [
+                      { title: "Alívio da tensão muscular", text: "Ajuda a reduzir contraturas e sobrecargas musculares." },
+                      { title: "Alívio da dor", text: "Pode diminuir o desconforto muscular nas costas." },
+                      { title: "Mobilidade", text: "Reduz a sensação de rigidez e facilita os movimentos." },
+                      { title: "Relaxamento", text: "Reduz a sensação de tensão acumulada." },
+                      { title: "Bem-estar físico e emocional", text: "Uma sensação de tranquilidade que ajuda a aliviar o stress." },
+                      { title: "Consciência corporal", text: "Ajuda a reconhecer zonas de tensão e a cuidar da postura." },
+                    ],
+                  },
+                  {
+                    label: "Para quem é indicada",
+                    intro: "Pode ser benéfica para quem tem:",
+                    points: [
+                      "Tensão muscular cervical, dorsal ou lombar",
+                      "Desconforto associado a posturas prolongadas",
+                      "Sobrecarga muscular provocada pelo trabalho ou pela atividade física",
+                      "Rigidez e sensação de costas pesadas",
+                      "Stress e tensão muscular acumulada",
+                    ],
+                  },
+                ],
+              },
+              more: [
+                {
+                  title: "Cuide das suas costas",
+                  text: [
+                    "O bem-estar começa com o equilíbrio do corpo. Com uma abordagem individualizada e técnicas terapêuticas adequadas, ajudamos a aliviar a tensão muscular e a recuperar o conforto no seu dia a dia.",
+                  ],
+                },
+              ],
+              wa: { topic: "massagem terapêutica", cta: "Perguntar pela massagem terapêutica" },
+            },
+            {
+              id: "massagem-facial",
+              label: "Massagem facial",
+              title: "Massagem facial",
+              tagline: "Cuide do seu rosto. Realce a sua beleza. Desperte o seu bem-estar.",
+              summary: "Movimentos suaves e específicos que promovem o relaxamento, estimulam a circulação local e dão à pele uma sensação de frescura. É feita de forma personalizada, respeitando as características de cada pele.",
+              groups: {
+                title: "Benefícios",
+                items: [
+                  {
+                    label: "Estéticos",
+                    points: [
+                      { title: "Luminosidade", text: "Um aspeto mais fresco e revitalizado." },
+                      { title: "Circulação local", text: "Favorece a circulação sanguínea superficial." },
+                      { title: "Descongestionamento", text: "Pode ajudar a reduzir o inchaço ligeiro do rosto." },
+                      { title: "Aspeto da pele", text: "Uma aparência mais cuidada e saudável." },
+                      { title: "Músculos faciais", text: "Alivia tensões associadas às expressões faciais." },
+                      { title: "Pele descansada", text: "Uma aparência mais fresca e revitalizada." },
+                    ],
+                  },
+                  {
+                    label: "Bem-estar",
+                    points: [
+                      "Reduz a sensação de tensão e cansaço facial",
+                      "Promove o relaxamento físico e mental",
+                      "Proporciona momentos de tranquilidade e autocuidado",
+                      "Alivia a tensão acumulada na mandíbula, na testa e no rosto",
+                      "Contribui para uma sensação geral de bem-estar",
+                    ],
+                  },
+                ],
+              },
+              more: [
+                {
+                  title: "Um momento só para si",
+                  text: [
+                    "O rosto é uma das zonas onde mais se refletem o stress, o cansaço e a tensão do dia a dia. Cuidar da beleza também é cuidar da saúde e do equilíbrio emocional: a massagem facial é um convite para abrandar, relaxar e dedicar algum tempo a si.",
+                  ],
+                },
+              ],
+              wa: { topic: "massagem facial", cta: "Perguntar pela massagem facial" },
+            },
           ],
         },
-        // [[validar com a Angela: texto dos três capítulos]]
-        chapters: [
-          {
-            id: "pos-parto",
-            nav: "Pós-parto",
-            title: "Recuperação pós-parto",
-            text: "A gravidez e o parto alteram a parede abdominal, o pavimento pélvico e a postura. O acompanhamento avalia estas alterações e orienta o regresso gradual à atividade física, ao ritmo da sua recuperação.",
-            points: [
-              { title: "Respiração e postura", text: "O ponto de partida do trabalho, antes de aumentar o esforço." },
-              { title: "Abdómen profundo e pavimento pélvico", text: "Ativação e fortalecimento progressivo." },
-              { title: "Exercícios para o dia a dia", text: "Compatíveis com a sua rotina, para continuar em casa." },
-              { title: "Regresso ao exercício", text: "Regresso gradual ao exercício, à corrida ou ao desporto." },
-            ],
-            note: "O momento para começar depende do tipo de parto, da forma como decorreu a recuperação e da indicação do seu médico.",
-          },
-          {
-            id: "cicatrizes",
-            nav: "Cicatrizes",
-            title: "Cicatrizes e aderências",
-            text: "Depois de a cicatriz estar fechada e cicatrizada, a fisioterapia trabalha a mobilidade da pele e dos tecidos à volta. Pode ser indicada quando a cicatriz repuxa, parece aderente ou tem a sensibilidade alterada.",
-            mediaId: "dermato-tools",
-            points: [
-              { title: "Cicatriz de cesariana", text: "Pode ser avaliada e tratada muito tempo depois do parto." },
-              { title: "Aderências", text: "Quando a pele e os tecidos por baixo perdem mobilidade entre si." },
-              { title: "Sensibilidade alterada", text: "Zonas da cicatriz com mais ou menos sensibilidade ao toque." },
-              { title: "Técnicas manuais", text: "Aplicadas pela fisioterapeuta e adaptadas ao estado da cicatriz." },
-            ],
-          },
-          {
-            id: "ecografia",
-            nav: "Ecografia e exercício",
-            title: "Ecografia e exercício orientado",
-            text: "A ecografia, quando indicada, ajuda a medir a separação dos músculos e a acompanhar a evolução da parede abdominal. O exercício é orientado na clínica e no ginásio de reabilitação, e continua em casa com um plano próprio.",
-            mediaId: "service-eco",
-            points: [
-              { title: "Avaliação objetiva", text: "A evolução é registada ao longo do acompanhamento." },
-              { title: "Fortalecimento progressivo", text: "O esforço aumenta à medida que a parede abdominal responde." },
-              { title: "Autonomia", text: "Exercícios para casa, explicados e revistos nas sessões." },
-            ],
-          },
-        ],
         person: {
-          bio: "é fisioterapeuta e a responsável pela fisioterapia dermatofuncional na Fisio4you, dedicada à saúde da mulher durante a gravidez e no pós-parto.",
+          bio: "é fisioterapeuta e a responsável pela fisioterapia dermatofuncional na Fisio4you, dedicada à saúde da mulher na gravidez e no pós-parto e aos cuidados que unem saúde e estética.",
         },
+      },
+    },
+  },
+
+  // Consultas: páginas só de texto (a pedido do cliente, ref. estrutura AlfraClinic), sem fotos, nomes de profissionais,
+  // preços nem técnicas específicas por confirmar.
+  consultations: {
+    title: "Consultas",
+    sub: "Pilates Clínico, Psicologia, Fisiatria e Osteopatia. Conheça o que trata cada consulta e escolha a que procura.",
+    available: "Consultas disponíveis",
+    others: "Outras consultas",
+    items: {
+      pilates: {
+        name: "Pilates Clínico",
+        short: "Exercício orientado por profissionais de saúde, para melhorar o controlo do movimento, a força e a postura.",
+        lead: "O Pilates Clínico adapta os princípios do método Pilates às necessidades de saúde de cada pessoa, para melhorar o controlo do movimento, a força e a postura.",
+        sections: [
+          { title: "O que é o Pilates Clínico", text: ["É uma forma de exercício orientada por profissionais de saúde. Parte do método Pilates, mas os exercícios são escolhidos e ajustados em função do estado de saúde, dos objetivos e da evolução de cada pessoa.", "O trabalho incide sobre a respiração, o controlo do tronco, a mobilidade e a força, com atenção à qualidade de cada movimento."] },
+          { title: "Em que situações pode ajudar", list: ["Dor lombar e cervical", "Alterações da postura", "Falta de força, mobilidade ou equilíbrio", "Continuação do exercício após a reabilitação", "Gravidez e pós-parto, com a devida indicação"] },
+          { title: "Como funciona", text: ["O acompanhamento começa por perceber a sua história clínica, as suas limitações e o que pretende alcançar. A partir daí, são definidos os exercícios adequados, que evoluem à medida que ganha controlo e confiança no movimento."] },
+          { title: "Pilates Clínico e reabilitação", text: ["Pode complementar um processo de reabilitação ou ajudar a manter os ganhos depois de este terminar. Se tem uma lesão ou um problema de saúde, leve os exames ou relatórios médicos que tiver, para que o exercício seja ajustado à sua situação."] },
+        ],
+        meta: { title: "Pilates Clínico em Portimão | Fisio4you", description: "Pilates Clínico em Portimão: exercício orientado por profissionais de saúde para melhorar o controlo do movimento, a força e a postura." },
+      },
+      psychology: {
+        name: "Psicologia",
+        short: "Avaliação e acompanhamento psicológico, num espaço de escuta e confidencialidade.",
+        lead: "A consulta de Psicologia ajuda a compreender e a lidar com dificuldades emocionais, comportamentais e relacionais, num espaço de escuta e confidencialidade.",
+        sections: [
+          { title: "O que é a consulta de Psicologia", text: ["É um espaço para falar sobre o que a preocupa ou a faz sofrer, com o apoio de um profissional de psicologia. O objetivo é compreender melhor o que está a acontecer e encontrar formas de lidar com a situação.", "Não é preciso estar em crise para procurar ajuda. Muitas pessoas procuram a consulta numa fase de mudança ou quando sentem que uma dificuldade começa a afetar o seu dia a dia."] },
+          { title: "Em que situações pode ajudar", list: ["Ansiedade e stress", "Alterações do humor", "Dificuldades em lidar com a dor persistente", "Adaptação a uma lesão e regresso ao desporto", "Mudanças e momentos difíceis da vida"] },
+          { title: "Como decorre", text: ["As primeiras consultas servem para perceber o que motiva a procura de ajuda, conhecer a sua história e definir objetivos. A partir daí, o acompanhamento é ajustado a cada pessoa e à sua situação."] },
+          { title: "Dor, lesão e bem-estar psicológico", text: ["A dor e as lesões podem ter impacto no sono, no humor, na motivação e na confiança em voltar a mexer-se ou a competir. Dar atenção a estes aspetos pode ser uma parte importante da recuperação."] },
+        ],
+        meta: { title: "Consulta de Psicologia em Portimão | Fisio4you", description: "Consulta de Psicologia em Portimão: avaliação e acompanhamento em situações como ansiedade, stress, dor persistente ou adaptação a uma lesão." },
+      },
+      physiatry: {
+        name: "Fisiatria",
+        short: "Consulta médica de medicina física e de reabilitação, para diagnóstico e orientação do plano de reabilitação.",
+        lead: "A Fisiatria, ou Medicina Física e de Reabilitação, é a especialidade médica que avalia e orienta pessoas com dor ou com limitações da mobilidade e da função, causadas por doença ou lesão.",
+        sections: [
+          { title: "O que é a Fisiatria", text: ["É uma especialidade médica centrada na prevenção, no diagnóstico e no tratamento de situações que afetam o movimento e a capacidade funcional.", "O objetivo é reduzir a dor, recuperar a função e ajudar cada pessoa a alcançar a maior autonomia possível nas atividades do dia a dia, no trabalho e no desporto."] },
+          { title: "Quando procurar esta consulta", list: ["Dor na coluna e nas articulações", "Lesões musculares, dos tendões e desportivas", "Reabilitação após cirurgia ou fratura", "Limitações da mobilidade e da função", "Sequelas de doença neurológica"] },
+          { title: "Como decorre a consulta", text: ["A consulta inclui a história clínica e o exame físico, e pode ser necessário pedir exames complementares. Com base nesta avaliação, o médico orienta o diagnóstico e explica as opções de tratamento indicadas. Se tiver exames ou relatórios médicos, leve-os consigo."] },
+          { title: "Fisiatria e fisioterapia", text: ["O fisiatra é o médico que avalia e orienta a reabilitação. O fisioterapeuta aplica a intervenção de fisioterapia com técnicas manuais, exercício e outros recursos. Quando há indicação, as duas áreas podem complementar-se no mesmo processo de recuperação."] },
+        ],
+        meta: { title: "Consulta de Fisiatria em Portimão | Fisio4you", description: "Consulta de Fisiatria em Portimão: avaliação médica de dor, lesões e limitações da mobilidade, para diagnóstico e orientação da reabilitação." },
+      },
+      osteopathy: {
+        name: "Osteopatia",
+        short: "Abordagem manual centrada na mobilidade das articulações e dos tecidos.",
+        lead: "A Osteopatia é uma abordagem manual que avalia a forma como as diferentes estruturas do corpo se movem e se relacionam, e atua nas zonas com restrição de mobilidade.",
+        sections: [
+          { title: "O que é a Osteopatia", text: ["Parte da observação do corpo no seu conjunto: uma limitação numa zona pode influenciar a forma como outras se movem. Por isso, a avaliação não se limita ao local onde sente desconforto.", "A intervenção recorre a técnicas manuais sobre as articulações, os músculos e os outros tecidos."] },
+          { title: "Em que situações pode ajudar", list: ["Dor lombar e cervical", "Tensão muscular", "Rigidez e limitação do movimento articular", "Desconforto ligado à postura ou a esforços repetidos"] },
+          { title: "Como decorre a consulta", text: ["A consulta começa pela história clínica e pela avaliação do movimento. As técnicas são escolhidas em função de cada pessoa e explicadas antes de serem aplicadas. Se tiver exames ou relatórios médicos, leve-os consigo."] },
+          { title: "Quando falar primeiro com o médico", text: ["Se a dor surgiu depois de um traumatismo, é intensa ou está a agravar-se, ou se vem acompanhada de febre, perda de força ou alterações da sensibilidade, procure primeiro uma avaliação médica."] },
+        ],
+        meta: { title: "Consulta de Osteopatia em Portimão | Fisio4you", description: "Consulta de Osteopatia em Portimão: abordagem manual centrada na mobilidade das articulações e dos tecidos, em situações como dor lombar e cervical." },
       },
     },
   },
@@ -953,7 +1506,7 @@ export const pt = {
 
   footer: {
     tagline: "Clínica de fisioterapia e centro de reabilitação em Portimão.",
-    services: "Serviços",
+    services: "Fisioterapia",
     clinic: "Clínica",
     contacts: "Contactos",
     team: "Equipa",
