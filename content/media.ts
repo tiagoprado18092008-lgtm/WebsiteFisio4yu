@@ -438,8 +438,9 @@ export function instagramFor(locale: Locale): InstagramPostData[] {
 }
 
 /**
- * Imagem de partilha (1200×630): a folha branca sobre a moldura teal, com o logótipo a cores ao centro (pedido do
- * utilizador, 10/11/2026). O logótipo cabe no quadrado central de 630 px, que é o que o WhatsApp mostra nas
- * pré-visualizações pequenas (a capa antiga, com o logótipo à esquerda, ficava só com os braços do Mário).
+ * Imagem de partilha (1200×630, PNG): fundo branco com o logótipo a cores ao centro (pedido do utilizador,
+ * 10/11/2026). O logótipo ocupa 600 px do quadrado central de 630 px, que é o que o WhatsApp mostra nas
+ * pré-visualizações pequenas; em PNG para não esborratar as letras finas. Ao trocar a imagem, mudar o nome do
+ * ficheiro: o WhatsApp e o Facebook guardam a pré-visualização pelo URL.
  */
-export const ogCover: string | null = "/media/og-cover-logo.jpg";
+export const ogCover: string | null = "/media/og-capa.png";
