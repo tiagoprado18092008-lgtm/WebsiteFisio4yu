@@ -235,15 +235,16 @@ const items: MediaItem[] = [
     position: "50% 46%",
   },
   {
-    // Painel da musculoesquelética na secção das duas áreas (a «Foto hero» com o mural teal). O Mário está à esquerda:
-    // o foco a 28% segue-o nos recortes estreitos.
+    // Painel da musculoesquelética na secção das duas áreas, no lugar da «Foto hero» (1672×941), que ficava mole no
+    // recorte alto (pedido do utilizador, 10/11/2026): recorte apertado da IMG_7622 (x 0–2570, y 1428–4855 do original
+    // 4284×5712), da cabeça do Mário aos pés, exportado a 1800×2400 em WebP 88. O foco a 40% / 35% mantém a cara e as mãos.
     id: "area-msk",
     type: "image",
-    src: photo.heroTreatment,
-    ratio: "16/9",
+    src: "/media/tratamentos/mario-tratamento-marquesa.webp",
+    ratio: "3/4",
     alt: { pt: "Mário Barroso, fisioterapeuta, a fazer terapia manual na perna de um utente deitado na marquesa", en: "Mário Barroso, physiotherapist, giving manual therapy to the leg of a patient lying on the couch" },
     brief: "Musculoesquelética nas duas áreas: o Mário a tratar um utente, mural teal.",
-    position: "28% 30%",
+    position: "40% 35%",
   },
   // Cartões «Também na Fisio4you» (fim das páginas de serviço): exportados em alta qualidade a partir dos originais
   // (2000×2667, WebP 88) e servidos a qualidade 90, porque a «Foto hero» (1672×941) ficava mole no recorte do cartão.
