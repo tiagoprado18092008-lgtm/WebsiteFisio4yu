@@ -7,6 +7,7 @@ import { cn } from "@/lib/cn";
 import { WhatsAppButton } from "./Buttons";
 import { Media } from "./Media";
 import { VideoButton } from "./VideoCard";
+import { ScrollWords } from "./ScrollWords";
 
 /**
  * Lista com visto: título e uma frase; em duas colunas a partir de 640 px, e com um número ímpar de itens o último
@@ -29,27 +30,28 @@ function CheckList({ items, onDark }: { items: { title: string; text: string }[]
 }
 
 /**
- * O que é o serviço, logo a seguir à foto do topo: uma frase grande com o nome a teal e, por baixo, os parágrafos e o
- * índice da página à esquerda e a lista com visto à direita.
+ * O que é o serviço, logo a seguir à foto do topo: a frase grande (nome a teal) à esquerda, que acende palavra a
+ * palavra ao descer (components/ScrollWords.tsx), e os parágrafos e o índice da página à direita, alinhados pela base.
+ * (A lista «O que tratamos» por baixo saiu a pedido do cliente, 10/11/2026: o guia dos tratamentos já a mostra.)
  */
-export function ServiceAbout({ statement, text, listTitle, list, links, linksLabel }: {
+export function ServiceAbout({ statement, text, links, linksLabel }: {
   statement: [string, string, string];
   text: string[];
-  listTitle: string;
-  list: { title: string; text: string }[];
   links: { href: string; label: string }[];
   linksLabel: string;
 }) {
   return (
     <section id="sobre-o-servico" aria-labelledby="sobre-title" className="bg-white pb-24 md:pb-36">
       <div className="container-x">
-        <h2 id="sobre-title" data-reveal className="t-display max-w-[26ch]">
-          {statement[0]}
-          <span className="text-teal-strong">{statement[1]}</span>
-          {statement[2]}
-        </h2>
-        <div className="mt-12 grid gap-12 md:mt-20 lg:grid-cols-12 lg:gap-x-6">
-          <div data-reveal className="lg:col-span-5">
+        <div className="grid gap-10 md:gap-12 lg:grid-cols-12 lg:items-end lg:gap-x-6">
+          <div data-reveal className="lg:col-span-7">
+            <ScrollWords
+              id="sobre-title"
+              className="t-display"
+              parts={[{ text: statement[0] }, { text: statement[1], accent: true }, { text: statement[2] }]}
+            />
+          </div>
+          <div data-reveal style={{ "--d": 1 } as React.CSSProperties} className="lg:col-span-4 lg:col-start-9">
             {text.map((p) => (
               <p key={p} className="mt-5 max-w-[46ch] text-lg leading-relaxed text-ink first:mt-0">
                 {p}
@@ -67,12 +69,6 @@ export function ServiceAbout({ statement, text, listTitle, list, links, linksLab
                 ))}
               </ul>
             </nav>
-          </div>
-          <div data-reveal style={{ "--d": 1 } as React.CSSProperties} className="lg:col-span-6 lg:col-start-7">
-            <h3 className="t-statement">{listTitle}</h3>
-            <div className="mt-8">
-              <CheckList items={list} />
-            </div>
           </div>
         </div>
       </div>

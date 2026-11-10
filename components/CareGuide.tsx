@@ -1,12 +1,10 @@
 "use client";
 
-import { useEffect, useId, useState } from "react";
-import { Check, ChevronDown } from "lucide-react";
+import { useEffect, useId, useRef, useState } from "react";
+import { ArrowRight, Check, ChevronDown } from "lucide-react";
 import type { CareGuide as Guide, CareGuideItem, CarePoint } from "@/content/pt";
-import { waLink } from "@/lib/whatsapp";
 import { cn } from "@/lib/cn";
 import { btn } from "./Buttons";
-import { WhatsAppIcon } from "./Icon";
 
 // O mesmo índice do tratamento por zona (ZoneGuide): pílulas em telemóvel e tablet; a partir de 1024 px, uma lista em
 // letra grande (um pouco mais pequena, porque há nomes de tratamentos longos).
@@ -67,10 +65,10 @@ function Points({ points, cols }: { points: CarePoint[]; cols?: boolean }) {
 
 /**
  * O painel de um tratamento, por camadas: título e uma frase → as fases do protocolo (ligadas por uma linha) ou as
- * variantes num seletor → os benefícios (com seletor quando há mais de um grupo) → as zonas → o WhatsApp e «Saber mais»,
+ * variantes num seletor → os benefícios (com seletor quando há mais de um grupo) → as zonas → «Saber mais»,
  * que abre o resto do texto do cliente. Os seletores voltam ao início ao trocar de tratamento (`key` no painel).
  */
-function Panel({ t, labels, wa }: { t: CareGuideItem; labels: { more: string; less: string }; wa: { message: string; location: string } }) {
+function Panel({ t, labels }: { t: CareGuideItem; labels: { more: string; less: string } }) {
   const uid = useId();
   const [opt, setOpt] = useState(0);
   const [grp, setGrp] = useState(0);
@@ -166,18 +164,14 @@ function Panel({ t, labels, wa }: { t: CareGuideItem; labels: { more: string; le
 
       {t.note && <p className="mt-8 max-w-[60ch] text-[15px] leading-relaxed text-muted">{t.note}</p>}
 
-      <div className="mt-12 flex flex-wrap items-center gap-3">
-        <a href={waLink(wa.message)} target="_blank" rel="noopener noreferrer" data-track="whatsapp" data-location={wa.location} className={btn.whatsapp}>
-          <WhatsAppIcon className="size-5 shrink-0" />
-          {t.wa.cta}
-        </a>
-        {t.more.length > 0 && (
+      {t.more.length > 0 && (
+        <div className="mt-12">
           <button type="button" aria-expanded={more} aria-controls={`${uid}-more`} onClick={() => setMore((m) => !m)} className={cn(btn.outline, "group")}>
             {more ? labels.less : labels.more}
             <ChevronDown aria-hidden className={cn("size-4 shrink-0 transition-transform duration-300", more && "rotate-180")} />
           </button>
-        )}
-      </div>
+        </div>
+      )}
 
       {/* «Saber mais»: o resto do texto do cliente, que abre por baixo */}
       <div
@@ -213,27 +207,52 @@ function Panel({ t, labels, wa }: { t: CareGuideItem; labels: { more: string; le
  * 1024 px: índice à esquerda (3 de 12 colunas) e painel à direita.
  * Ligações com `#id` de um tratamento (ex.: da página Fisioterapia) abrem esse tratamento e trazem o guia ao ecrã.
  */
-export function CareGuide({ guide, service, waTemplate }: { guide: Guide; service: string; waTemplate: string }) {
+export function CareGuide({ guide }: { guide: Guide }) {
   const [open, setOpen] = useState(0);
   const t = guide.items[open];
+  const next = guide.items[(open + 1) % guide.items.length];
+  const panelRef = useRef<HTMLDivElement>(null);
+  const smooth = () => (window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth");
 
   useEffect(() => {
-    const fromHash = (scroll: boolean) => {
-      const i = guide.items.findIndex((x) => x.id === decodeURIComponent(location.hash.slice(1)));
-      if (i < 0) return;
+    const show = (i: number, scroll: boolean, behavior: ScrollBehavior = "auto") => {
       setOpen(i);
       const sec = document.getElementById("tratamentos");
-      if (scroll && sec) window.scrollTo({ top: sec.getBoundingClientRect().top + window.scrollY - 96 });
+      if (scroll && sec) window.scrollTo({ top: sec.getBoundingClientRect().top + window.scrollY - 96, behavior });
+    };
+    const fromHash = () => {
+      const i = guide.items.findIndex((x) => x.id === decodeURIComponent(location.hash.slice(1)));
+      if (i >= 0) show(i, true);
+    };
+    // Ligações na mesma página (ex.: «O que tratamos»): abrem o tratamento e descem até ao guia a deslizar, mesmo
+    // quando o `#id` já está na barra de endereço (aí o browser não dispara `hashchange`)
+    const onClick = (e: MouseEvent) => {
+      const a = (e.target as Element | null)?.closest?.("a[href^='#']");
+      if (!a || e.metaKey || e.ctrlKey || e.shiftKey) return;
+      const id = decodeURIComponent(a.getAttribute("href")!.slice(1));
+      const i = guide.items.findIndex((x) => x.id === id);
+      if (i < 0) return;
+      e.preventDefault();
+      history.replaceState(null, "", `#${id}`);
+      show(i, true, smooth());
     };
     // Na chegada à página, espera um frame para o layout assentar antes de medir
-    const frame = requestAnimationFrame(() => fromHash(true));
-    const onHash = () => fromHash(true);
-    window.addEventListener("hashchange", onHash);
+    const frame = requestAnimationFrame(fromHash);
+    window.addEventListener("hashchange", fromHash);
+    document.addEventListener("click", onClick);
     return () => {
       cancelAnimationFrame(frame);
-      window.removeEventListener("hashchange", onHash);
+      window.removeEventListener("hashchange", fromHash);
+      document.removeEventListener("click", onClick);
     };
   }, [guide.items]);
+
+  // «A seguir»: abre o tratamento seguinte e, se o topo do painel já saiu do ecrã, sobe até ele
+  const goNext = () => {
+    setOpen((o) => (o + 1) % guide.items.length);
+    const top = panelRef.current?.getBoundingClientRect().top ?? 0;
+    if (top < 80) window.scrollTo({ top: top + window.scrollY - 112, behavior: smooth() });
+  };
 
   return (
     <div className="grid gap-8 md:gap-10 lg:grid-cols-12 lg:gap-x-6">
@@ -266,13 +285,24 @@ export function CareGuide({ guide, service, waTemplate }: { guide: Guide; servic
         ))}
       </ul>
 
-      <div id="care-panel" aria-live="polite" className="rounded-[28px] bg-mist p-6 sm:p-8 md:p-10 lg:col-span-9 lg:col-start-4 xl:p-14">
-        <Panel
-          key={t.id}
-          t={t}
-          labels={{ more: guide.moreLabel, less: guide.lessLabel }}
-          wa={{ message: waTemplate.replace("{s}", t.wa.topic), location: `servico-${service}-${t.id}` }}
-        />
+      <div ref={panelRef} className="scroll-mt-28 rounded-[28px] bg-mist p-6 sm:p-8 md:p-10 lg:col-span-9 lg:col-start-4 xl:p-14">
+        <div id="care-panel" aria-live="polite">
+          <Panel key={t.id} t={t} labels={{ more: guide.moreLabel, less: guide.lessLabel }} />
+        </div>
+        {/* O tratamento seguinte, para se percorrer o guia sem voltar ao índice */}
+        <div className="mt-12 flex justify-end border-t border-line pt-6 md:mt-14 md:pt-8">
+          <button
+            type="button"
+            onClick={goNext}
+            aria-controls="care-panel"
+            className="card-hover group inline-flex min-h-11 items-center gap-3 text-right font-display text-[clamp(1.15rem,1rem+0.5vw,1.5rem)] leading-tight tracking-[-0.015em] text-teal-strong"
+          >
+            <span className="card-title">{guide.nextLabel.replace("{t}", next.label)}</span>
+            <span aria-hidden className="flex size-11 shrink-0 items-center justify-center rounded-full bg-teal-strong text-white transition-[background-color,translate] duration-300 group-hover:translate-x-1 group-hover:bg-teal-dark">
+              <ArrowRight className="size-5" />
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   );

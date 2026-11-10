@@ -146,6 +146,16 @@ const items: MediaItem[] = [
     position: "50% 50%",
   },
   {
+    // Foto das «Técnicas de tratamento» da musculoesquelética, enviada pelo cliente a 10/11/2026 (3024×4032, exportada a 1800×2400).
+    id: "techniques-msk",
+    type: "image",
+    src: "/media/tratamentos/mario-terapia-coxa.webp",
+    ratio: "3/4",
+    alt: { pt: "Mário Barroso, fisioterapeuta, a fazer terapia manual na coxa de um utente", en: "Mário Barroso, physiotherapist, giving manual therapy to a patient's thigh" },
+    brief: "Técnicas de tratamento: o Mário a fazer terapia manual na coxa.",
+    position: "50% 40%",
+  },
+  {
     // Cartão da musculoesquelética (home e Serviços): o antigo hero. Foto vertical recortada na horizontal; com o foco a
     // 55% da altura, em 16:9, 3:2 e 5:4 a faixa fica entre o rosto e as mãos do Mário e os rostos do mural (17% de cima)
     // ficam sempre de fora.
@@ -352,7 +362,7 @@ const videoList: VideoItem[] = [
   {
     id: "video-circuito",
     src: "/media/video/circuito-recuperacao.mp4",
-    poster: "/media/video/circuito-recuperacao-capa.webp", // fotograma 4K do original (banheira de gelo, 27,6 s), sem a marca de água
+    poster: "/media/video/circuito-recuperacao-capa-passadeira.webp", // capa enviada pelo cliente (Fotos/capa video circuito de recuperacao.png), início do vídeo
     duration: "0:48",
     name: { pt: "Circuito de recuperação", en: "Recovery circuit" },
     caption: { pt: "Treino, pressoterapia e banheira de gelo", en: "Training, compression boots and ice bath" },

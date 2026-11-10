@@ -49,8 +49,12 @@ export type TreatmentBlocks = {
     benefits: string[];
     waTopic: string;
     cta: string;
+    /** Seletor das sessões (components/RecoveryPlanner.tsx): `{p}` é a sessão escolhida, `{n}` quantas técnicas tem e `{t}` o total. */
+    planner: { cta: string; summary: string; included: string; excluded: string };
   };
   sport: {
+    /** Fora do site enquanto não houver fotos que mostrem de facto a avaliação isocinética e o treino de prevenção. */
+    hidden?: boolean;
     id: string; nav: string; title: string; intro: string;
     items: { id: string; title: string; text: string; points: string[]; mediaId: string }[];
   };
@@ -79,7 +83,6 @@ export type CareGuideItem = {
   chips?: { title: string; intro?: string; items: string[] };
   note?: string;
   more: { title: string; text: string[] }[];
-  wa: { topic: string; cta: string };
 };
 
 /** Guia dos tratamentos da dermatofuncional: índice dos tratamentos e um painel que troca (como `ZoneGuide`). */
@@ -90,6 +93,8 @@ export type CareGuide = {
   listLabel: string;
   moreLabel: string;
   lessLabel: string;
+  /** Botão no fim do painel para o tratamento seguinte: `{t}` é o nome dele. */
+  nextLabel: string;
   items: CareGuideItem[];
 };
 
@@ -131,6 +136,8 @@ type Step = { title: string; line: string; text: string; details?: string[]; use
  * `stages` tem sempre 3 fases, por esta ordem: antes da gravidez, na gravidez, depois do parto (o desenho segue a ordem).
  */
 export type ServiceExplainer = {
+  /** Fora da página (a secção e o chip «A diástase» do índice), sem perder o texto. */
+  hidden?: boolean;
   nav: string;
   title: string;
   intro: string;
@@ -154,13 +161,11 @@ export type ServicePageCopy = {
   areas?: boolean;
   /**
    * O que é o serviço, logo a seguir à foto do topo: `statement` é uma frase grande em três partes (a do meio a teal),
-   * `text` os parágrafos e `list` a lista com visto (sem `list`, usa `forWho.items`).
+   * e `text` os parágrafos (a lista «O que tratamos» saiu a pedido do cliente, 10/11/2026).
    */
-  about: {
+  about?: {
     statement: [string, string, string];
     text: string[];
-    listTitle: string;
-    list?: { title: string; text: string }[];
   };
   /** Capítulos da página quando o serviço não tem `modules` (dermatofuncional). */
   chapters?: ServiceChapter[];
@@ -168,8 +173,6 @@ export type ServicePageCopy = {
   treatments?: TreatmentBlocks;
   /** Tratamentos da dermatofuncional (texto do cliente), num guia interativo: substitui os capítulos (components/CareGuide.tsx). */
   care?: CareGuide;
-  /** Foto de um tratamento deste serviço no cartão «Também na Fisio4you», no fim da página do outro serviço. */
-  relatedPhoto: string;
   /** Biografia do fisioterapeuta responsável: o nome vem de `team`, por isso `bio` começa logo a seguir ao nome. */
   person: { bio: string };
 };
@@ -201,7 +204,6 @@ export type ServiceContent = {
   modules?: ServiceModule[];
   duration: { title: string; text: string };
   faq: Faq[];
-  related: ServiceKey[];
   page: ServicePageCopy;
 };
 
@@ -562,7 +564,6 @@ export const pt = {
 
   servicePage: {
     faq: "Perguntas frequentes",
-    related: "Também na Fisio4you",
     /** Ação de cada zona na tabela de situações (abre o WhatsApp com a zona escrita). */
     write: "Descrever",
     seeService: "Ver o serviço",
@@ -575,7 +576,6 @@ export const pt = {
     areas: {
       title: "Duas áreas, uma clínica",
       intro: "Cada área tem o seu fisioterapeuta responsável. Escolha uma para ver o que trata.",
-      eyebrow: "Fisioterapia",
       treats: "O que trata",
       items: <Record<ServiceKey, { name: string; what: string; treats: string[]; by: string; mediaId: string }>>{
         msk: {
@@ -773,7 +773,6 @@ export const pt = {
         { q: "Posso usar o ginásio, a banheira de gelo ou a sauna sem fazer fisioterapia?", a: "[[confirmar com o Mário: ginásio, gelo e sauna sem fisioterapia?]]" },
         { q: "O que devo levar para a primeira consulta?", a: "Roupa confortável, que permita observar e mobilizar a zona a tratar, e os exames ou relatórios médicos que tiver." },
       ],
-      related: ["dermato"],
       page: {
         // Tratamentos enviados pelo cliente (09/11/2026), em três blocos (components/TreatmentBlocks.tsx)
         treatments: {
@@ -781,7 +780,7 @@ export const pt = {
             id: "tecnicas", nav: "Técnicas",
             title: "Técnicas de tratamento",
             intro: "Técnicas minimamente invasivas e não invasivas, usadas como complemento num plano de fisioterapia individual.",
-            mediaId: "service-msk",
+            mediaId: "techniques-msk",
             usesLabel: "Usada em",
             items: [
               {
@@ -833,8 +832,11 @@ export const pt = {
             benefits: ["Menos fadiga muscular", "Menos tensão muscular", "Melhor circulação", "Recuperação pós-treino", "Relaxamento físico e mental", "Preparação para novos desafios"],
             waTopic: "Sessão Recovery",
             cta: "Marcar uma Sessão Recovery",
+            planner: { cta: "Marcar a {p}", summary: "{n} de {t} incluídas na {p}", included: "incluída", excluded: "não incluída nesta sessão" },
           },
+          // Escondida a 10/11/2026: as fotos (atletas, ginásio vazio) não mostram estes serviços. Volta com fotos próprias.
           sport: {
+            hidden: true,
             id: "desporto", nav: "Desporto",
             title: "Avaliação e prevenção no desporto",
             intro: "Para atletas que querem regressar com segurança ou reduzir o risco de nova lesão.",
@@ -856,16 +858,7 @@ export const pt = {
         },
         lead: "Lesões desportivas, dor e reabilitação depois de uma cirurgia, com o fisioterapeuta Mário Barroso.",
         heroWide: "wide-msk",
-        relatedPhoto: "related-msk",
         areas: true,
-        about: {
-          statement: ["A ", "fisioterapia musculoesquelética", " avalia e trata lesões e dor em músculos, tendões, articulações e coluna."],
-          text: [
-            "Cada tratamento começa por uma avaliação individual: história clínica, testes de movimento e, quando indicado, ecografia. A partir daí definimos um plano que junta terapia manual, exercício supervisionado e recuperação, revisto consigo ao longo do processo.",
-            "Acompanhamos atletas, pessoas fisicamente ativas e quem tem dor ou limitação de movimento no dia a dia. A indicação para tratamento é confirmada na avaliação.",
-          ],
-          listTitle: "O que tratamos",
-        },
         person: {
           bio: "é fisioterapeuta há 16 anos e dirige a Fisio4you. É o responsável pela fisioterapia musculoesquelética, das lesões desportivas à reabilitação depois de uma cirurgia.",
         },
@@ -890,7 +883,9 @@ export const pt = {
       ],
       specialist: "team-angela",
       // [[validar com a Angela: texto do esquema da diástase e "Como avaliamos"]]
+      // Escondida a 10/11/2026 a pedido do cliente («tira esta secção»); volta tirando `hidden`.
       explainer: {
+        hidden: true,
         nav: "A diástase",
         title: "O que é a diástase abdominal",
         intro: "A diástase abdominal é o afastamento dos dois músculos retos do abdómen ao longo da linha média. Selecione uma fase para ver como evolui.",
@@ -980,12 +975,10 @@ export const pt = {
         { q: "A cicatriz de cesariana pode ser tratada?", a: "Depois de a cicatriz estar fechada e cicatrizada, a fisioterapia trabalha a mobilidade da pele e dos tecidos à volta. Pode ser indicada quando a cicatriz repuxa, parece aderente ou tem a sensibilidade alterada." }, // [[validar com a Angela]]
         { q: "Como é a primeira avaliação?", a: "Começa por uma conversa sobre a sua história clínica e os seus objetivos, seguida de uma avaliação física explicada passo a passo." },
       ],
-      related: ["msk"],
       page: {
         lead: "Pós-parto, drenagem linfática, lipedema e estética corporal, com a fisioterapeuta Angela Brazona.",
         heroWide: "wide-dermato",
         heroBeside: true,
-        relatedPhoto: "related-dermato",
         areas: true,
         about: {
           statement: ["A ", "fisioterapia dermatofuncional", " une saúde e estética: recupera a função do corpo e cuida também da sua aparência e bem-estar."],
@@ -993,7 +986,6 @@ export const pt = {
             "Cada corpo é único. Por isso, cada tratamento começa por uma avaliação individualizada, que identifica as necessidades e os objetivos de cada pessoa e define o plano mais adequado.",
             "Acreditamos que a estética deve caminhar lado a lado com a saúde e o bem-estar, do pós-parto ao pós-operatório, do lipedema à remodelação corporal.",
           ],
-          listTitle: "O que tratamos",
         },
         // Tratamentos enviados pelo cliente (09/11/2026), num guia interativo (components/CareGuide.tsx):
         // à vista só o essencial de cada um; o resto do texto do cliente fica em «Saber mais».
@@ -1004,6 +996,7 @@ export const pt = {
           listLabel: "Tratamentos de fisioterapia dermatofuncional",
           moreLabel: "Saber mais",
           lessLabel: "Mostrar menos",
+          nextLabel: "A seguir: {t}",
           items: [
             {
               id: "pos-parto",
@@ -1060,7 +1053,6 @@ export const pt = {
                   ],
                 },
               ],
-              wa: { topic: "reabilitação abdominal pós-parto", cta: "Perguntar pela reabilitação pós-parto" },
             },
             {
               id: "drenagem",
@@ -1123,7 +1115,6 @@ export const pt = {
                   ],
                 },
               ],
-              wa: { topic: "drenagem linfática", cta: "Perguntar pela drenagem linfática" },
             },
             {
               id: "pos-operatorio",
@@ -1165,7 +1156,6 @@ export const pt = {
                   ],
                 },
               ],
-              wa: { topic: "fisioterapia no pós-operatório", cta: "Perguntar pelo pós-operatório" },
             },
             {
               id: "lipedema",
@@ -1217,7 +1207,6 @@ export const pt = {
                   ],
                 },
               ],
-              wa: { topic: "lipedema", cta: "Perguntar pelo protocolo lipedema" },
             },
             {
               id: "remodelacao",
@@ -1253,7 +1242,6 @@ export const pt = {
                   ],
                 },
               ],
-              wa: { topic: "remodelação corporal", cta: "Perguntar pela remodelação corporal" },
             },
             {
               id: "gordura-celulite-flacidez",
@@ -1295,7 +1283,6 @@ export const pt = {
                   ],
                 },
               ],
-              wa: { topic: "tratamento personalizado (gordura localizada, celulite ou flacidez)", cta: "Perguntar pelo tratamento personalizado" },
             },
             {
               id: "massagem-terapeutica",
@@ -1338,7 +1325,6 @@ export const pt = {
                   ],
                 },
               ],
-              wa: { topic: "massagem terapêutica", cta: "Perguntar pela massagem terapêutica" },
             },
             {
               id: "massagem-facial",
@@ -1380,7 +1366,6 @@ export const pt = {
                   ],
                 },
               ],
-              wa: { topic: "massagem facial", cta: "Perguntar pela massagem facial" },
             },
           ],
         },

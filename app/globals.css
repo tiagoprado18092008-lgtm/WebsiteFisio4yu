@@ -248,6 +248,51 @@ body:has(.menu-open) .mobile-bar { opacity: 0; }
 .bm-swap { animation: swap-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both; }
 
 /*
+ * Seguir o scroll (components/ScrollSpy.tsx). Tudo depende de `data-spy-ready`, que só existe com JavaScript: sem ele,
+ * o conteúdo fica todo à vista e com a cor normal.
+ * - Técnicas: o índice marca a técnica que está a ser lida e, a partir de 1024 px com rato, as outras esbatem (a 55%,
+ *   para se continuarem a ler).
+ * - Percurso: as frases começam a cinza (`muted`, AA sobre mist) e acendem para `ink` ao passar o meio do ecrã; a
+ *   última acende para `teal-strong`.
+ */
+.spy-chip { transition: background-color 0.35s ease, color 0.35s ease; }
+.spy-chip:hover { background-color: #d2e8ec; }
+[data-spy-ready] .spy-chip[data-active] { background-color: var(--f4y-teal-strong); color: #fff; }
+@media (min-width: 1024px) and (hover: hover) {
+  [data-spy-ready] .spy-item { transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+  [data-spy-ready] .spy-item:not([data-active]) { opacity: 0.55; }
+  [data-spy-ready] .spy-item:not([data-active]):hover { opacity: 0.85; }
+}
+[data-spy-ready] .spy-line { transition: color 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+[data-spy-ready] [data-spy]:not([data-seen]) .spy-line { color: var(--f4y-muted); }
+@media (prefers-reduced-motion: reduce) {
+  .spy-chip, [data-spy-ready] .spy-item, [data-spy-ready] .spy-line { transition: none; }
+}
+
+/*
+ * Frase que acende (components/ScrollWords.tsx): só com `data-words-ready`, posto por JavaScript quando o movimento é
+ * permitido. As palavras por acender ficam a `muted` (AA sobre branco); a parte destacada acende para `teal-strong`.
+ */
+[data-words-ready] [data-w] { color: var(--f4y-muted); transition: color 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+[data-words-ready] [data-w][data-lit] { color: var(--f4y-ink); }
+.word-accent, [data-words-ready] .word-accent[data-lit] { color: var(--f4y-teal-strong); }
+[data-words-ready] .word-accent:not([data-lit]) { color: var(--f4y-muted); }
+
+/* Perguntas: a resposta abre e fecha a deslizar onde o browser sabe animar até `auto`; nos outros abre de uma vez */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (interpolate-size: allow-keywords) {
+    .faq-item { interpolate-size: allow-keywords; }
+    .faq-item::details-content {
+      block-size: 0;
+      overflow: clip;
+      transition: block-size 0.45s cubic-bezier(0.22, 1, 0.36, 1), content-visibility 0.45s allow-discrete;
+    }
+    .faq-item[open]::details-content { block-size: auto; }
+  }
+  .faq-item[open] > p { animation: swap-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both; }
+}
+
+/*
  * Cartões ao passar o cursor, o mesmo gesto em todo o site. `.card-hover` marca o que reage; dentro dele, ou por si só,
  * `.card-lift` levanta o cartão da folha, `.card-photo` aproxima a foto devagar, `.card-icon` faz o mesmo a um desenho e
  * `.card-title` (em texto inline) ganha o teal com um sublinhado que se desenha da esquerda para a direita.

@@ -346,7 +346,6 @@ export const en: Dict = {
 
   servicePage: {
     faq: "Frequently asked questions",
-    related: "Also at Fisio4you",
     write: "Describe",
     seeService: "See the service",
     meetTeam: "Meet the team",
@@ -356,7 +355,6 @@ export const en: Dict = {
     areas: {
       title: "Two areas, one clinic",
       intro: "Each area has its own lead physiotherapist. Choose one to see what it treats.",
-      eyebrow: "Physiotherapy",
       treats: "What it treats",
       items: {
         msk: {
@@ -551,14 +549,13 @@ export const en: Dict = {
         { q: "Can I use the gym, ice bath or sauna without physiotherapy?", a: "[[confirm with Mário: gym, ice bath and sauna without physiotherapy?]]" },
         { q: "What should I bring to my first appointment?", a: "Comfortable clothing that lets us see and move the area being treated, and any scans or medical reports you have." },
       ],
-      related: ["dermato"],
       page: {
         treatments: {
           techniques: {
             id: "tecnicas", nav: "Techniques",
             title: "Treatment techniques",
             intro: "Minimally invasive and non-invasive techniques, used alongside an individual physiotherapy plan.",
-            mediaId: "service-msk",
+            mediaId: "techniques-msk",
             usesLabel: "Used for",
             items: [
               {
@@ -610,8 +607,10 @@ export const en: Dict = {
             benefits: ["Less muscle fatigue", "Less muscle tension", "Better circulation", "Post-training recovery", "Physical and mental relaxation", "Ready for what's next"],
             waTopic: "Recovery session",
             cta: "Book a Recovery session",
+            planner: { cta: "Book {p}", summary: "{n} of {t} included in {p}", included: "included", excluded: "not included in this session" },
           },
           sport: {
+            hidden: true,
             id: "desporto", nav: "Sport",
             title: "Testing and prevention in sport",
             intro: "For athletes who want to return safely or reduce the risk of another injury.",
@@ -633,16 +632,7 @@ export const en: Dict = {
         },
         lead: "Sports injuries, pain and rehab after surgery, with physiotherapist Mário Barroso.",
         heroWide: "wide-msk",
-        relatedPhoto: "related-msk",
         areas: true,
-        about: {
-          statement: ["", "Musculoskeletal physiotherapy", " assesses and treats injuries and pain in the muscles, tendons, joints and spine."],
-          text: [
-            "Every treatment starts with an individual assessment: clinical history, movement testing and, when indicated, ultrasound. From there we set a plan that combines manual therapy, supervised exercise and recovery, reviewed with you as you progress.",
-            "We see athletes, physically active people and anyone with pain or limited movement in daily life. Whether treatment is indicated is confirmed at the assessment.",
-          ],
-          listTitle: "What we treat",
-        },
         person: {
           bio: "has been a physiotherapist for 16 years and runs Fisio4you. He leads musculoskeletal physiotherapy, from sports injuries to rehab after surgery.",
         },
@@ -666,7 +656,9 @@ export const en: Dict = {
         { icon: "heart", text: "Angela Brazona, physiotherapist" },
       ],
       specialist: "team-angela",
+      // Escondida a 10/11/2026 a pedido do cliente («tira esta secção»); volta tirando `hidden`.
       explainer: {
+        hidden: true,
         nav: "Diastasis",
         title: "What is diastasis recti?",
         intro: "Diastasis recti is a separation of the two rectus abdominis muscles along the midline of the abdomen. Select a stage to see how it develops.",
@@ -755,12 +747,10 @@ export const en: Dict = {
         { q: "Can a C-section scar be treated?", a: "Once the scar has closed and healed, physiotherapy works on the mobility of the skin and surrounding tissue. It may be indicated when the scar pulls, feels stuck or has altered sensation." },
         { q: "What is the first assessment like?", a: "It starts with a conversation about your clinical history and goals, followed by a physical assessment explained step by step." },
       ],
-      related: ["msk"],
       page: {
         lead: "Postnatal care, lymphatic drainage, lipoedema and body aesthetics, with physiotherapist Angela Brazona.",
         heroWide: "wide-dermato",
         heroBeside: true,
-        relatedPhoto: "related-dermato",
         areas: true,
         about: {
           statement: ["", "Dermatofunctional physiotherapy", " brings health and aesthetics together: it restores how your body works and also cares for how it looks and feels."],
@@ -768,7 +758,6 @@ export const en: Dict = {
             "Every body is different. That's why each treatment starts with an individual assessment that identifies each person's needs and goals and sets the most suitable plan.",
             "We believe aesthetics should go hand in hand with health and well-being, from postnatal care to recovery after surgery, from lipoedema to body contouring.",
           ],
-          listTitle: "What we treat",
         },
         care: {
           nav: "Treatments",
@@ -777,6 +766,7 @@ export const en: Dict = {
           listLabel: "Dermatofunctional physiotherapy treatments",
           moreLabel: "Read more",
           lessLabel: "Show less",
+          nextLabel: "Next: {t}",
           items: [
             {
               id: "pos-parto",
@@ -833,7 +823,6 @@ export const en: Dict = {
                   ],
                 },
               ],
-              wa: { topic: "postnatal abdominal rehabilitation", cta: "Ask about postnatal rehabilitation" },
             },
             {
               id: "drenagem",
@@ -896,7 +885,6 @@ export const en: Dict = {
                   ],
                 },
               ],
-              wa: { topic: "lymphatic drainage", cta: "Ask about lymphatic drainage" },
             },
             {
               id: "pos-operatorio",
@@ -938,7 +926,6 @@ export const en: Dict = {
                   ],
                 },
               ],
-              wa: { topic: "post-surgery physiotherapy", cta: "Ask about post-surgery care" },
             },
             {
               id: "lipedema",
@@ -990,7 +977,6 @@ export const en: Dict = {
                   ],
                 },
               ],
-              wa: { topic: "lipoedema", cta: "Ask about the lipoedema protocol" },
             },
             {
               id: "remodelacao",
@@ -1026,7 +1012,6 @@ export const en: Dict = {
                   ],
                 },
               ],
-              wa: { topic: "body contouring", cta: "Ask about body contouring" },
             },
             {
               id: "gordura-celulite-flacidez",
@@ -1068,7 +1053,6 @@ export const en: Dict = {
                   ],
                 },
               ],
-              wa: { topic: "personalised body treatment (localised fat, cellulite or skin laxity)", cta: "Ask about personalised treatment" },
             },
             {
               id: "massagem-terapeutica",
@@ -1111,7 +1095,6 @@ export const en: Dict = {
                   ],
                 },
               ],
-              wa: { topic: "therapeutic massage", cta: "Ask about therapeutic massage" },
             },
             {
               id: "massagem-facial",
@@ -1153,7 +1136,6 @@ export const en: Dict = {
                   ],
                 },
               ],
-              wa: { topic: "facial massage", cta: "Ask about facial massage" },
             },
           ],
         },

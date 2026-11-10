@@ -18,6 +18,7 @@ import { ChapterBlock, RecoveryPanel, ServiceAbout } from "../ServiceChapters";
 import { ZoneGuide, type Zone } from "../ZoneGuide";
 import { TreatmentBlocks } from "../TreatmentBlocks";
 import { CareGuide } from "../CareGuide";
+import { ScrollSpy } from "../ScrollSpy";
 
 type Row = { main: string; sub: string; action?: { href: string; label: string; wa?: string } };
 
@@ -56,9 +57,8 @@ const stairs = ["lg:col-start-1", "lg:col-start-3", "lg:col-start-5", "lg:col-st
 /**
  * Página de cada serviço, completa e feita de fotos dos tratamentos:
  * o nome em cartaz e uma frase → uma foto do serviço, larga → o que é o serviço →
- * (musculoesquelética) o tratamento zona a zona · (dermatofuncional) as situações e o esquema da diástase →
- * (com `page.areas`) as duas áreas da clínica em painéis com foto → os capítulos do serviço (a crioterapia num painel teal) →
- * o percurso em quatro frases → quem acompanha → perguntas fechadas → o outro serviço.
+ * (musculoesquelética) os blocos dos tratamentos · (dermatofuncional) as situações, o esquema da diástase e o guia →
+ * (com `page.areas`) as duas áreas da clínica em painéis com foto → o percurso em quatro frases → quem acompanha → perguntas fechadas → o outro serviço.
  */
 export function ServicePage({ locale, service }: { locale: Locale; service: ServiceKey }) {
   const t = getDict(locale);
@@ -79,7 +79,9 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
   // Índice do topo: os capítulos, pela ordem da página (a diástase vem antes deles)
   const tr = p.treatments;
   const care = p.care;
-  const diastasisLink = s.explainer ? [{ href: "#diastase", label: s.explainer.nav }] : [];
+  // O esquema da diástase (dermatofuncional) pode estar escondido com `explainer.hidden`
+  const explainer = s.explainer?.hidden ? undefined : s.explainer;
+  const diastasisLink = explainer ? [{ href: "#diastase", label: explainer.nav }] : [];
   const links = care
     ? [
         ...diastasisLink,
@@ -90,7 +92,7 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
     : [
         ...diastasisLink,
         ...(tr
-          ? [tr.techniques, tr.recovery, tr.sport].map((b) => ({ href: `#${b.id}`, label: b.nav }))
+          ? [tr.techniques, tr.recovery, ...(tr.sport.hidden ? [] : [tr.sport])].map((b) => ({ href: `#${b.id}`, label: b.nav }))
           : chapters.map((c) => ({ href: `#${c.id}`, label: c.nav }))),
       ];
 
@@ -133,7 +135,7 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
       what: a.what,
       treats: a.treats,
       by: a.by,
-      photo: <Media key={k} id={a.mediaId} locale={locale} cover sizes="(min-width: 1480px) 900px, (min-width: 1024px) 64vw, 100vw" />,
+      photo: <Media key={k} id={a.mediaId} locale={locale} cover quality={90} sizes="(min-width: 1480px) 520px, (min-width: 1280px) 36vw, 100vw" />,
       action:
         k === service ? (
           <WhatsAppButton key={k} message={wa} location={`servico-${service}-areas`} label={t.common.whatsappCta} />
@@ -147,10 +149,9 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
   });
 
   // As duas áreas da clínica: painéis com foto, um aberto e o outro fechado; tocar no fechado troca-os.
-  // Na musculoesquelética vem a seguir à faixa mist do tratamento por zona (por isso tem espaço em cima); na
-  // dermatofuncional (`care`) vem depois do guia dos tratamentos, para não os adiar.
+  // Fecha a página, logo a seguir às perguntas (que já dão o espaço de cima).
   const areasSection = p.areas && (
-    <section id="areas" aria-labelledby="areas-title" className={cn("bg-white pb-24 md:pb-36", s.bodyMap && "pt-24 md:pt-36")}>
+    <section id="areas" aria-labelledby="areas-title" className="bg-white pb-24 md:pb-36">
       <div className="container-x">
         <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-x-6">
           <h2 id="areas-title" data-reveal className="t-display lg:col-span-6">
@@ -161,33 +162,33 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
           </p>
         </div>
         <div data-reveal className="mt-12 md:mt-16">
-          <ServiceAreas areas={areas} initial={serviceKeys.indexOf(service)} eyebrow={sp.areas.eyebrow} treatsLabel={sp.areas.treats} />
+          <ServiceAreas areas={areas} initial={serviceKeys.indexOf(service)} treatsLabel={sp.areas.treats} />
         </div>
       </div>
     </section>
   );
 
   // Dermatofuncional: o esquema da diástase por fases e, por baixo, como é avaliada
-  const diastasis = s.explainer && (
+  const diastasis = explainer && (
     <section id="diastase" aria-labelledby="diastase-title" className="bg-mist py-24 md:py-36">
       <div className="container-x">
         <DiastasisExplorer
-          stages={s.explainer.stages}
-          stagesLabel={s.explainer.stagesLabel}
-          legend={s.explainer.legend}
+          stages={explainer.stages}
+          stagesLabel={explainer.stagesLabel}
+          legend={explainer.legend}
           header={
             <div>
               <h2 id="diastase-title" className="t-display">
-                {s.explainer.title}
+                {explainer.title}
               </h2>
-              <p className="mt-6 max-w-[40ch] text-lg leading-relaxed text-ink">{s.explainer.intro}</p>
+              <p className="mt-6 max-w-[40ch] text-lg leading-relaxed text-ink">{explainer.intro}</p>
             </div>
           }
         />
         <div data-reveal className="mt-16 md:mt-24">
-          <h3 className="t-statement">{s.explainer.assessTitle}</h3>
+          <h3 className="t-statement">{explainer.assessTitle}</h3>
           <ul className="mt-8 grid gap-6 md:grid-cols-3 md:gap-8">
-            {s.explainer.assess.map((a) => (
+            {explainer.assess.map((a) => (
               <li key={a} className="flex gap-3">
                 <Check aria-hidden className="mt-1 size-5 shrink-0 text-teal" strokeWidth={2.25} />
                 <p className="leading-relaxed text-ink">{a}</p>
@@ -252,14 +253,15 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
         )}
       </section>
 
-      <ServiceAbout
-        statement={p.about.statement}
-        text={p.about.text}
-        listTitle={p.about.listTitle}
-        list={p.about.list ?? s.forWho.items}
-        links={links}
-        linksLabel={sp.onThisPage}
-      />
+      {/* A musculoesquelética já não tem esta secção (retirada a pedido do cliente, 10/11/2026) */}
+      {p.about && (
+        <ServiceAbout
+          statement={p.about.statement}
+          text={p.about.text}
+          links={links}
+          linksLabel={sp.onThisPage}
+        />
+      )}
 
       {/* Situações. Com o mapa do corpo (musculoesquelética): o tratamento zona a zona, numa faixa mist, com o título e
           a introdução por cima. Com foto (dermatofuncional): a foto à esquerda, da altura do bloco, e à direita o título
@@ -310,20 +312,20 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
       </section>
       )}
 
-      {!care && areasSection}
-
       {/* Dermatofuncional: o esquema da diástase por fases e, por baixo, como é avaliada (antes do guia dos tratamentos) */}
       {diastasis}
 
       {/* Os capítulos do serviço: foto e texto, com os lados a alternar; o capítulo com `panel` (a crioterapia) vai num painel teal */}
       {/* Musculoesquelética: os tratamentos enviados pelo cliente, em três blocos, no lugar dos capítulos */}
-      {tr && <TreatmentBlocks data={tr} locale={locale} waMessage={msg.service(tr.recovery.waTopic)} waLocation={`servico-${service}-recovery`} />}
+      {tr && <TreatmentBlocks data={tr} locale={locale} waLocation={`servico-${service}-recovery`} />}
 
       {/* Dermatofuncional: os tratamentos enviados pelo cliente, em blocos, com o esquema da diástase a seguir ao pós-parto */}
       {/* Dermatofuncional: os tratamentos enviados pelo cliente, num guia interativo (índice e painel, como o tratamento
           por zona da musculoesquelética). Fundo branco com o painel mist, porque o esquema da diástase, antes, é mist. */}
       {care && (
-        <section id="tratamentos" aria-labelledby="tratamentos-title" className="bg-white py-24 md:py-36">
+        // Branco: sem a diástase (mist) antes, vem logo a seguir a «Sobre o serviço», também branca, e o espaço de cima
+        // já é o dessa secção
+        <section id="tratamentos" aria-labelledby="tratamentos-title" className={cn("bg-white pb-24 md:pb-36", (explainer || !p.about) && "pt-24 md:pt-36")}>
           <div className="container-x">
             <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-x-6">
               <h2 id="tratamentos-title" data-reveal className="t-display lg:col-span-6">
@@ -334,15 +336,13 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
               </p>
             </div>
             <div data-reveal className="mt-12 md:mt-16">
-              <CareGuide guide={care} service={service} waTemplate={t.wa.service} />
+              <CareGuide guide={care} />
             </div>
           </div>
         </section>
       )}
-      {care && areasSection}
-
       {!tr && !care && s.includes && chapters.length > 0 && (
-        <section id="espaco" aria-labelledby="espaco-title" className={cn("bg-white pb-24 md:pb-36", s.explainer && "pt-24 md:pt-36")}>
+        <section id="espaco" aria-labelledby="espaco-title" className={cn("bg-white pb-24 md:pb-36", explainer && "pt-24 md:pt-36")}>
           <div className="container-x">
             <h2 id="espaco-title" data-reveal className="t-statement text-muted">
               {s.includes.title}
@@ -363,7 +363,8 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
         </section>
       )}
 
-      {/* Percurso: uma frase por fase, em escada, com a explicação e o que inclui; a duração fica no canto livre da escada */}
+      {/* Percurso: uma frase por fase, em escada, com a explicação e o que inclui; a duração fica no canto livre da escada.
+          As frases começam esbatidas e acendem uma a uma ao passar o meio do ecrã (a última fica a teal). */}
       <section id="como-funciona" aria-labelledby="percurso-title" className="bg-mist py-24 md:py-36">
         <div className="container-x">
           <h2 id="percurso-title" data-reveal className="t-statement text-muted">
@@ -374,16 +375,17 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
               {s.how.intro}
             </p>
           )}
-          <div className="mt-12 grid gap-12 md:mt-20 md:gap-14 lg:grid-cols-12 lg:gap-x-6">
+          <ScrollSpy mode="seen" className="spy-steps mt-12 grid gap-12 md:mt-20 md:gap-14 lg:grid-cols-12 lg:gap-x-6">
             <ol className="contents">
               {s.how.steps.map((st, i) => (
                 <li
                   key={st.title}
                   data-reveal
+                  data-spy
                   style={{ "--d": i, paddingInlineStart: `calc(${i} * 6vw)` } as React.CSSProperties}
                   className={cn("lg:col-end-13 lg:!ps-0", stairs[i])}
                 >
-                  <h3 className={cn("t-display", i === s.how.steps.length - 1 && "text-teal-strong")}>{st.line}</h3>
+                  <h3 className={cn("t-display spy-line", i === s.how.steps.length - 1 && "spy-line-last text-teal-strong")}>{st.line}</h3>
                   {st.details ? (
                     <ul className="mt-4 max-w-[46ch] space-y-2">
                       {st.details.map((d) => (
@@ -405,7 +407,7 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
                 <p className="mt-2 max-w-[42ch] leading-relaxed text-grey">{s.duration.text}</p>
               </div>
             )}
-          </div>
+          </ScrollSpy>
         </div>
       </section>
 
@@ -441,7 +443,7 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
             </h2>
             <div data-reveal className="space-y-2 lg:col-span-8">
               {s.faq.map((f) => (
-                <details key={f.q} className="group rounded-[18px] transition-colors open:bg-mist hover:bg-mist">
+                <details key={f.q} className="faq-item group rounded-[18px] transition-colors open:bg-mist hover:bg-mist">
                   <summary className="flex min-h-14 cursor-pointer items-center justify-between gap-6 px-4 py-4 md:px-6">
                     <span className="font-display text-xl leading-snug tracking-[-0.015em] text-ink md:text-2xl">{f.q}</span>
                     <Plus aria-hidden className="size-6 shrink-0 text-teal-strong transition-transform duration-300 group-open:rotate-45" />
@@ -454,53 +456,9 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
         </section>
       )}
 
-      {/* O outro serviço: um cartão com a foto de um tratamento dessa área, o nome e o que trata.
-          Telemóvel: foto 4:5 em cima, texto no teal por baixo. A partir de 768 px: texto à esquerda e a foto à direita,
-          vertical (5 de 12 colunas), para se ver a cena inteira (as fotos são 3:4). */}
-      <section aria-labelledby="related-title" className="bg-white pb-24 md:pb-36">
-        <div className="container-x">
-          <h2 id="related-title" data-reveal className="t-statement text-muted">
-            {sp.related}
-          </h2>
-          {s.related.map((k) => {
-            const r = t.services[k];
-            const a = sp.areas.items[k];
-            return (
-              // `data-reveal` num invólucro: no próprio cartão, a transição da entrada ganharia à de levantar
-              <div key={k} data-reveal className="mt-8 md:mt-10">
-                <Link
-                  href={href(locale, `service:${k}`)}
-                  className="on-dark card-hover card-lift group grid overflow-hidden rounded-[var(--radius-img)] bg-panel text-white md:grid-cols-12"
-                >
-                  <div className="card-photo relative aspect-[4/5] overflow-hidden md:order-2 md:col-span-5 md:aspect-auto md:min-h-[30rem] lg:min-h-[40rem]">
-                    <Media id={r.page.relatedPhoto} locale={locale} cover quality={90} sizes="(min-width: 1480px) 580px, (min-width: 768px) 42vw, 100vw" />
-                  </div>
-                  <div className="flex flex-col justify-end p-6 md:col-span-7 md:p-10 lg:p-12">
-                    <h3 className="font-display text-[clamp(2rem,1.2rem+2vw,3rem)] leading-[1.02] tracking-[-0.03em]">
-                      <span className="card-title">{r.name}</span>
-                    </h3>
-                    <p className="mt-5 max-w-[34ch] text-lg leading-relaxed text-white/90">{a.what}</p>
-                    <ul className="mt-6 flex flex-wrap gap-2">
-                      {a.treats.map((item) => (
-                        <li key={item} className="rounded-full bg-white/15 px-3.5 py-1.5 text-[15px]">
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-                      <span className={cn(btn.onPanel, "group-hover:bg-white group-hover:text-teal-dark")}>
-                        {sp.seeService}
-                        <ArrowRight aria-hidden className="size-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
-                      </span>
-                      <span className="text-[15px] text-white/85">{a.by}</span>
-                    </div>
-                  </div>
-                </Link>
-              </div>
-            );
-          })}
-        </div>
-      </section>
+      {/* As duas áreas fecham a página, nas duas especialidades: o painel da outra leva à sua página. Substituíram o
+          cartão «Também na Fisio4you» (pedido do cliente, 10/11/2026). */}
+      {areasSection}
     </>
   );
 }
