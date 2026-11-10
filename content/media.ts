@@ -437,5 +437,9 @@ export function instagramFor(locale: Locale): InstagramPostData[] {
   }));
 }
 
-/** Imagem de partilha (1200×630): terapia manual sobre o mural teal, com o logótipo branco. */
-export const ogCover: string | null = "/media/og-cover.jpg";
+/**
+ * Imagem de partilha (1200×630): a folha branca sobre a moldura teal, com o logótipo a cores ao centro (pedido do
+ * utilizador, 10/11/2026). O logótipo cabe no quadrado central de 630 px, que é o que o WhatsApp mostra nas
+ * pré-visualizações pequenas (a capa antiga, com o logótipo à esquerda, ficava só com os braços do Mário).
+ */
+export const ogCover: string | null = "/media/og-cover-logo.jpg";

@@ -28,7 +28,7 @@ Tudo o que aparece no site está registado em \`content/media.ts\`. Os originais
 | id | rácio | feito | o que mostra / o que falta | ficheiro |
 |---|---|---|---|---|
 ${photos.join("\n")}
-| \`og-cover\` | 1200×630 | ${ogCover ? "✅" : "⬜"} | Imagem de partilha nas redes sociais (terapia manual + logótipo branco). | ${ogCover ? `\`/public${ogCover}\`` : "—"} |
+| \`og-cover\` | 1200×630 | ${ogCover ? "✅" : "⬜"} | Imagem de partilha nas redes sociais (logótipo a cores ao centro, sobre a moldura teal). | ${ogCover ? `\`/public${ogCover}\`` : "—"} |
 
 ## Vídeos
 

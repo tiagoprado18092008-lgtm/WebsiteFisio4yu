@@ -56,7 +56,7 @@ Tudo o que aparece no site está registado em `content/media.ts`. Os originais e
 | `strip-gym` | 3/4 | ✅ | Faixa de fotos da home. | `/public/media/espaco/ginasio-kettlebells.webp` |
 | `eco-photo` | 4/5 | ⬜ | Fisioterapeuta com a sonda do ecógrafo, ecrã visível (substitui a sala de avaliação em service-eco). | — |
 | `recovery-sauna` | 4/5 | ⬜ | Sauna. | — |
-| `og-cover` | 1200×630 | ✅ | Imagem de partilha nas redes sociais (terapia manual + logótipo branco). | `/public/media/og-cover.jpg` |
+| `og-cover` | 1200×630 | ✅ | Imagem de partilha nas redes sociais (logótipo a cores ao centro, sobre a moldura teal). | `/public/media/og-cover-logo.jpg` |
 
 ## Vídeos
 
