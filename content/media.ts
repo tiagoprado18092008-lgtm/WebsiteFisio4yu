@@ -132,7 +132,7 @@ const items: MediaItem[] = [
     type: "image",
     src: photo.duo,
     ratio: "4/5",
-    alt: { pt: "Mário Barroso, fundador e fisioterapeuta, e Angela Brazona, fisioterapeuta da Fisio4you", en: "Mário Barroso, founder and physiotherapist, and Angela Brazona, physiotherapist at Fisio4you" },
+    alt: { pt: "Mário Barroso, fisioterapeuta, e Angela Brazona, terapeuta corporal, fundadores da Fisio4you", en: "Mário Barroso, physiotherapist, and Angela Brazona, body therapist, founders of Fisio4you" },
     brief: "O Mário e a Angela juntos.",
     position: "50% 30%",
   },
@@ -172,7 +172,7 @@ const items: MediaItem[] = [
     type: "image",
     src: photo.angelaDermato,
     ratio: "4/5",
-    alt: { pt: "Angela Brazona, fisioterapeuta, com instrumentos de massagem em madeira", en: "Angela Brazona, physiotherapist, holding wooden massage tools" },
+    alt: { pt: "Angela Brazona, terapeuta corporal, com instrumentos de massagem em madeira", en: "Angela Brazona, body therapist, holding wooden massage tools" },
     brief: "Fisioterapeuta da área dermatofuncional.",
     position: "50% 30%",
   },
@@ -266,7 +266,7 @@ const items: MediaItem[] = [
     type: "image",
     src: "/media/tratamentos/cartao-dermatofuncional.webp",
     ratio: "3/4",
-    alt: { pt: "Angela Brazona, fisioterapeuta, a mostrar instrumentos de massagem em madeira", en: "Angela Brazona, physiotherapist, showing wooden massage tools" },
+    alt: { pt: "Angela Brazona, terapeuta corporal, a mostrar instrumentos de massagem em madeira", en: "Angela Brazona, body therapist, showing wooden massage tools" },
     brief: "Cartão da dermatofuncional no fim da página da musculoesquelética.",
     position: "50% 28%",
   },
@@ -275,7 +275,7 @@ const items: MediaItem[] = [
     type: "image",
     src: photo.angelaDermato,
     ratio: "3/4",
-    alt: { pt: "Angela Brazona, fisioterapeuta, com instrumentos de massagem em madeira", en: "Angela Brazona, physiotherapist, holding wooden massage tools" },
+    alt: { pt: "Angela Brazona, terapeuta corporal, com instrumentos de massagem em madeira", en: "Angela Brazona, body therapist, holding wooden massage tools" },
     brief: "Foto do hero da dermatofuncional, inteira (3:4) ao lado do título: a Angela com os instrumentos em madeira.",
   },
   {
@@ -443,4 +443,4 @@ export function instagramFor(locale: Locale): InstagramPostData[] {
  * pré-visualizações pequenas; em PNG para não esborratar as letras finas. Ao trocar a imagem, mudar o nome do
  * ficheiro: o WhatsApp e o Facebook guardam a pré-visualização pelo URL.
  */
-export const ogCover: string | null = "/media/og-capa.png";
+export const ogCover: string | null = "/media/og-capa-rp.png";

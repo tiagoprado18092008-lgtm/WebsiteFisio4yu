@@ -8,7 +8,7 @@ Tudo o que no site aparece como `[[ ]]` (ou tem um comentário `[[ ]]` no códig
 |---|---|---|
 | 1 | ~~Morada~~ — **confirmada pelo cliente (02/11/2026): Rua Francisco Alvo, loja 11, 8500-759 Portimão** (já era o valor no site; é o perfil/mapa do Google que está errado — *R. José Mendes Furtado 13-3*). **Falta corrigir no perfil Google** para o NAP ficar igual em todo o lado; o site não precisa de mudar. | `content/site.ts` → `address` (já correto) |
 | 2 | **Horário e dias:** briefing 9h–19h; perfis online Seg–Sex 9h–18h30. Abre ao sábado? | `content/site.ts` → `hours`; tabela em Contactos assume sábado e domingo encerrados |
-| 3 | **N.º de registo ERS** e **n.º de licença** de funcionamento | `content/site.ts` → `ers`, `license` |
+| 3 | ~~N.º de registo ERS~~ **E138746**, recebido a 13/11/2026 (o cliente chamou-lhe «licença da ERS»; está no rodapé como registo ERS). Falta o **n.º de licença** de funcionamento, se for diferente | `content/site.ts` → `license` |
 | 4 | **Coordenadas GPS** exatas (lat/long) | `content/site.ts` → `geo` |
 | 5 | **Logótipo em SVG vetorial** (opcional — já está a ser usado o PNG enviado; o SVG fica mais nítido) | `public/brand/logo.png` → `components/Logo.tsx` |
 
@@ -43,7 +43,7 @@ Tudo o que no site aparece como `[[ ]]` (ou tem um comentário `[[ ]]` no códig
 
 | # | Pendente | Onde alterar |
 |---|---|---|
-| 33 | **Cédula profissional** (Ordem dos Fisioterapeutas) e **formação relevante** do Mário e da Angela. Aparecem nos cartões da equipa assim que preenchidas | `pt.ts`/`en.ts` → `team[].focus` |
+| 33 | ~~Cédula profissional do Mário~~ **n.º 8541**, já no cartão dele (13/11/2026). Falta a **formação relevante** do Mário e da Angela (a Angela é terapeuta corporal, sem cédula de fisioterapeuta). Aparece nos cartões da equipa assim que preenchida | `pt.ts`/`en.ts` → `team[].focus` |
 | 34 | **Cargo:** os dois aparecem como "Fisioterapeuta e CEO" (como nas entrevistas). Preferem outra designação (ex.: sócio-gerente, direção clínica) ou só "Fisioterapeuta"? | `team[].role` |
 | 35 | **Divisão das áreas:** o site diz que a musculoesquelética "é a área de Mário Barroso" e a dermatofuncional "é a área de Angela Brazona" (home, páginas de serviço). Confirmar (liga-se ao #30) | `home.featured.intro`, `services.*.distinct.text` |
 | 36 | ~~Gravidez~~ — **confirmado (09/11/2026)**: drenagem linfática no pré-parto. Já na página da dermatofuncional | — |

@@ -3,10 +3,10 @@
 
 export const site = {
   name: "Fisio4you",
-  tagline: "Centro de Reabilitação",
+  tagline: "Clínica de Fisioterapia",
   legalName: "Fisio4you, Lda",
   nif: "514 628 847",
-  ers: "[[n.º registo ERS]]",
+  ers: "E138746", // enviado pelo cliente (13/11/2026) como «licença da ERS»; formato de n.º de registo ERS
   license: "[[n.º licença]]",
   url: "https://fisio4you.pt",
   phone: "924 098 545",

@@ -30,8 +30,10 @@ export function CtaTriad({ locale, waMessage, location = "cta-final", withMap = 
     <section aria-labelledby="cta-title" data-hide-fab className="bg-white py-16 md:py-24">
       <div className="container-x">
         <div className="relative">
-          <div className="on-dark relative min-h-[420px] overflow-hidden rounded-[30px] bg-panel md:min-h-[480px] md:w-[78%]">
-            <div className="relative flex min-h-[420px] flex-col justify-center p-8 text-white md:min-h-[480px] md:max-w-[60%] md:p-14">
+          {/* Em telemóvel o painel mede o texto (antes ficava com 420 px e o título a boiar no meio); o fundo extra é o
+              espaço onde o cartão encosta */}
+          <div className="on-dark relative overflow-hidden rounded-[30px] bg-panel md:min-h-[480px] md:w-[78%]">
+            <div className="relative flex flex-col justify-center px-6 pb-20 pt-10 text-white sm:p-8 sm:pb-20 md:min-h-[480px] md:max-w-[60%] md:p-14">
               <h2 id="cta-title" className="t-h1">
                 {c.title}
               </h2>
@@ -43,7 +45,7 @@ export function CtaTriad({ locale, waMessage, location = "cta-final", withMap = 
             waMessage={waMessage}
             location={location}
             withAddress
-            className="relative -mt-10 mx-3 ring-[10px] ring-white md:absolute md:right-0 md:top-1/2 md:mx-0 md:mt-0 md:w-[400px] md:-translate-y-1/2"
+            className="relative -mt-10 ring-[10px] ring-white sm:mx-3 md:absolute md:right-0 md:top-1/2 md:mx-0 md:mt-0 md:w-[400px] md:-translate-y-1/2"
           />
         </div>
         {withMap ? (

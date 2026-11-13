@@ -280,7 +280,7 @@ export const pt = {
   },
   meta: {
     home: {
-      title: "Fisioterapia em Portimão | Fisio4you, Centro de Reabilitação",
+      title: "Clínica de Fisioterapia em Portimão | Fisio4you",
       description:
         "Clínica de fisioterapia em Portimão: lesões musculoesqueléticas, reabilitação desportiva e pós-parto. Ecografia e ginásio de reabilitação com 100 m².",
     },
@@ -299,7 +299,7 @@ export const pt = {
     },
     about: {
       title: "Sobre a Fisio4you | Clínica de Fisioterapia em Portimão",
-      description: "Clínica de fisioterapia em Portimão dirigida pelo fisioterapeuta Mário Barroso, com Angela Brazona na fisioterapia dermatofuncional. Conheça a equipa, a forma de trabalhar e as instalações.",
+      description: "Clínica de fisioterapia em Portimão fundada pelo fisioterapeuta Mário Barroso e pela terapeuta corporal Angela Brazona, responsável pela área dermatofuncional. Conheça a equipa, a forma de trabalhar e as instalações.",
     },
     contact: {
       title: "Contactos e Horário | Fisio4you Portimão",
@@ -312,7 +312,7 @@ export const pt = {
 
   home: {
     hero: {
-      eyebrow: "Centro de Reabilitação · Portimão",
+      eyebrow: "Clínica de Fisioterapia · Portimão",
       // Frase escolhida pelo cliente (30/10/2026); "Fisioterapia em Portimão" abre a frase de baixo
       lines: ["Fisioterapia", "feita para si"],
       sub: "Fisioterapia em Portimão para lesões musculoesqueléticas e recuperação pós-parto, com ecografia e ginásio de reabilitação na própria clínica.",
@@ -545,13 +545,13 @@ export const pt = {
       media: "team-mario",
       name: "Mário Barroso",
       role: "Fundador e fisioterapeuta",
-      focus: "Fundou a Fisio4you para acompanhar lesões musculoesqueléticas e a recuperação de desportistas do primeiro dia ao regresso à atividade. Tem 16 anos de experiência clínica em reabilitação e performance desportiva, com recurso a ecografia e técnicas ecoguiadas na avaliação e no tratamento. [[Cédula profissional n.º e formação relevante]]",
+      focus: "Fundou a Fisio4you com a Angela Brazona para acompanhar lesões musculoesqueléticas e a recuperação de desportistas do primeiro dia ao regresso à atividade. Tem 16 anos de experiência clínica em reabilitação e performance desportiva, com recurso a ecografia e técnicas ecoguiadas na avaliação e no tratamento. Cédula profissional n.º 8541. [[formação relevante]]",
     },
     {
       media: "team-angela",
       name: "Angela Brazona",
-      role: "Fisioterapeuta",
-      focus: "Dedica-se à fisioterapia dermatofuncional e à saúde da mulher, com acompanhamento na gravidez e no pós-parto e intervenção em diástase abdominal, cicatrizes, drenagem linfática e lipedema. Acompanha cada caso da avaliação inicial à autonomia, com um plano revisto ao longo do tratamento. [[Cédula profissional n.º e formação relevante]]",
+      role: "Fundadora e terapeuta corporal",
+      focus: "Dedica-se à área dermatofuncional e à saúde da mulher, com acompanhamento na gravidez e no pós-parto e intervenção em diástase abdominal, cicatrizes, drenagem linfática e lipedema. Acompanha cada caso da avaliação inicial à autonomia, com um plano revisto ao longo do tratamento. [[formação relevante]]",
     },
   ],
 
@@ -575,7 +575,7 @@ export const pt = {
     /** As duas áreas em painéis com foto (components/ServiceAreas.tsx), nas páginas com `page.areas`. */
     areas: {
       title: "Duas áreas, uma clínica",
-      intro: "Cada área tem o seu fisioterapeuta responsável. Escolha uma para ver o que trata.",
+      intro: "Cada área tem o seu responsável. Escolha uma para ver o que trata.",
       treats: "O que trata",
       items: <Record<ServiceKey, { name: string; what: string; treats: string[]; by: string; mediaId: string }>>{
         msk: {
@@ -589,7 +589,7 @@ export const pt = {
           name: "Dermatofuncional",
           what: "Saúde e estética: pós-parto, drenagem linfática, pós-operatório, lipedema e remodelação corporal.",
           treats: ["Pós-parto e diástase", "Drenagem linfática", "Pós-operatório e cicatrizes", "Lipedema", "Estética corporal"],
-          by: "Com a fisioterapeuta Angela Brazona",
+          by: "Com a terapeuta corporal Angela Brazona",
           mediaId: "service-dermato",
         },
       },
@@ -871,7 +871,7 @@ export const pt = {
       meta: {
         title: "Fisioterapia Dermatofuncional em Portimão | Fisio4you",
         description:
-          "Fisioterapia dermatofuncional em Portimão: pós-parto e diástase abdominal, drenagem linfática, pós-operatório e cicatrizes, lipedema e remodelação corporal, com a fisioterapeuta Angela Brazona.",
+          "Fisioterapia dermatofuncional em Portimão: pós-parto e diástase abdominal, drenagem linfática, pós-operatório e cicatrizes, lipedema e remodelação corporal, com a terapeuta corporal Angela Brazona.",
       },
       heroTitle: "Fisioterapia Dermatofuncional",
       heroSub: "Saúde e estética em equilíbrio: recuperação pós-parto, drenagem linfática, pós-operatório e cicatrizes, lipedema e remodelação corporal, sempre a partir de uma avaliação individual.",
@@ -879,7 +879,7 @@ export const pt = {
         { icon: "baby", text: "Pós-parto e diástase abdominal" },
         { icon: "flower", text: "Drenagem linfática manual" },
         { icon: "sparkles", text: "Pós-operatório e cicatrizes" },
-        { icon: "heart", text: "Angela Brazona, fisioterapeuta" },
+        { icon: "heart", text: "Angela Brazona, terapeuta corporal" },
       ],
       specialist: "team-angela",
       // [[validar com a Angela: texto do esquema da diástase e "Como avaliamos"]]
@@ -960,7 +960,7 @@ export const pt = {
       },
       distinct: {
         title: "Quem acompanha o tratamento",
-        text: "A fisioterapia dermatofuncional é a área de Angela Brazona, fisioterapeuta dedicada à saúde da mulher e aos cuidados que unem saúde e estética.",
+        text: "A fisioterapia dermatofuncional é a área de Angela Brazona, terapeuta corporal dedicada à saúde da mulher e aos cuidados que unem saúde e estética.",
         points: ["Avaliação individualizada antes de cada plano", "Técnicas manuais, drenagem linfática e aparatologia", "Exercício orientado e plano para casa"],
       },
       duration: {
@@ -976,7 +976,7 @@ export const pt = {
         { q: "Como é a primeira avaliação?", a: "Começa por uma conversa sobre a sua história clínica e os seus objetivos, seguida de uma avaliação física explicada passo a passo." },
       ],
       page: {
-        lead: "Pós-parto, drenagem linfática, lipedema e estética corporal, com a fisioterapeuta Angela Brazona.",
+        lead: "Pós-parto, drenagem linfática, lipedema e estética corporal, com a terapeuta corporal Angela Brazona.",
         heroWide: "wide-dermato",
         heroBeside: true,
         areas: true,
@@ -1370,7 +1370,7 @@ export const pt = {
           ],
         },
         person: {
-          bio: "é fisioterapeuta e a responsável pela fisioterapia dermatofuncional na Fisio4you, dedicada à saúde da mulher na gravidez e no pós-parto e aos cuidados que unem saúde e estética.",
+          bio: "é terapeuta corporal, fundadora da Fisio4you e a responsável pela área dermatofuncional, dedicada à saúde da mulher na gravidez e no pós-parto e aos cuidados que unem saúde e estética.",
         },
       },
     },
@@ -1450,8 +1450,8 @@ export const pt = {
 
   about: {
     eyebrow: "Sobre nós",
-    title: "Fisio4you, centro de reabilitação em Portimão",
-    sub: "Clínica de fisioterapia dirigida pelo fisioterapeuta Mário Barroso, com duas áreas de intervenção: fisioterapia musculoesquelética, com o Mário, e fisioterapia dermatofuncional, com a fisioterapeuta Angela Brazona.",
+    title: "Fisio4you, clínica de fisioterapia em Portimão",
+    sub: "Clínica de fisioterapia fundada por Mário Barroso, fisioterapeuta, e Angela Brazona, terapeuta corporal, com duas áreas de intervenção: fisioterapia musculoesquelética, com o Mário, e fisioterapia dermatofuncional, com a Angela.",
     storyTitle: "A nossa história",
     story: ["[[Pedir ao Mário o texto da história da clínica.]]"],
     // Descrição factual da clínica e da forma de trabalhar (substitui a missão e os valores genéricos).
@@ -1490,7 +1490,7 @@ export const pt = {
   },
 
   footer: {
-    tagline: "Clínica de fisioterapia e centro de reabilitação em Portimão.",
+    tagline: "Clínica de fisioterapia em Portimão.",
     services: "Fisioterapia",
     clinic: "Clínica",
     contacts: "Contactos",

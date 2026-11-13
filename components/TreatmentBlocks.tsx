@@ -29,7 +29,7 @@ export function TreatmentBlocks({ data, locale, waLocation }: { data: Blocks; lo
       {/* 1. Técnicas: o título e a introdução por cima; depois, a foto presa ao topo com o índice das técnicas e, à
           direita, as técnicas. A partir de 1024 px, a técnica que está a ser lida acende (as outras esbatem) e o índice
           acompanha-a; tocar no índice leva à técnica (components/ScrollSpy.tsx). */}
-      <section id={tq.id} aria-labelledby={`${tq.id}-title`} className="bg-white pb-24 md:pb-36">
+      <section id={tq.id} aria-labelledby={`${tq.id}-title`} className="bg-white pb-20 md:pb-36">
         <div className="container-x">
           <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-x-6">
             <h2 id={`${tq.id}-title`} data-reveal className="t-display lg:col-span-6">
@@ -85,7 +85,7 @@ export function TreatmentBlocks({ data, locale, waLocation }: { data: Blocks; lo
       </section>
 
       {/* 2. Sessão Recovery */}
-      <section aria-labelledby={`${rc.id}-title`} className="bg-white pb-24 md:pb-36">
+      <section aria-labelledby={`${rc.id}-title`} className="bg-white pb-20 md:pb-36">
         <div className="container-x">
           <article id={rc.id} data-reveal className="on-dark rounded-[28px] bg-panel p-3 text-white md:rounded-[34px]">
             <div className="grid gap-3 lg:grid-cols-12">
@@ -134,7 +134,7 @@ export function TreatmentBlocks({ data, locale, waLocation }: { data: Blocks; lo
 
       {/* 3. Desporto (escondido com `hidden` enquanto não houver fotos próprias) */}
       {!sport.hidden && (
-      <section id={sport.id} aria-labelledby={`${sport.id}-title`} className="bg-white pb-24 md:pb-36">
+      <section id={sport.id} aria-labelledby={`${sport.id}-title`} className="bg-white pb-20 md:pb-36">
         <div className="container-x">
           <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-x-6">
             <h2 id={`${sport.id}-title`} data-reveal className="t-display lg:col-span-6">

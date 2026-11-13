@@ -1,8 +1,7 @@
-import { Phone } from "lucide-react";
 import { site } from "@/content/site";
 import { waLink } from "@/lib/whatsapp";
 import type { Dict } from "@/content/pt";
-import { WhatsAppIcon } from "./Icon";
+import { PhoneIcon, WhatsAppIcon } from "./Icon";
 import { FloatingWhatsApp } from "./FloatingWhatsApp";
 
 type Props = { waMessage: string; callLabel: string; waLabel: string; chat: Dict["chat"] };
@@ -18,7 +17,7 @@ export function StickyMobileBar({ waMessage, callLabel, waLabel, chat }: Props) 
           data-location="sticky"
           className="flex min-h-12 items-center justify-center gap-2 rounded-[var(--radius-btn)] border border-teal-dark/30 font-semibold text-teal-dark"
         >
-          <Phone className="size-[18px]" aria-hidden />
+          <PhoneIcon className="size-[18px]" />
           {callLabel}
         </a>
         <a

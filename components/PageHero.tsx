@@ -10,7 +10,9 @@ export function Breadcrumbs({ crumbs, onDark }: { crumbs: Crumb[]; onDark?: bool
     <nav aria-label="Breadcrumb">
       <ol className={cn("flex flex-wrap items-center gap-1.5 text-sm", onDark ? "text-white/80" : "text-muted")}>
         {crumbs.map((c, i) => (
-          <li key={c.href} className="flex items-center gap-1.5">
+          // Com três níveis, em telemóvel o último (a página atual, que o H1 logo abaixo já diz) sai: assim o caminho
+          // cabe numa linha em vez de partir a meio
+          <li key={c.href} className={cn("flex items-center gap-1.5", crumbs.length > 2 && i === crumbs.length - 1 && "max-sm:hidden")}>
             {i > 0 && <ChevronRight className="size-3.5" aria-hidden />}
             {i < crumbs.length - 1 ? (
               <Link href={c.href} className={cn("inline-flex min-h-11 items-center md:min-h-8", onDark ? "hover:text-white" : "hover:text-teal-strong")}>

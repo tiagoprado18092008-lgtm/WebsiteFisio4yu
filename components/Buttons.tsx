@@ -1,12 +1,13 @@
-import { Phone } from "lucide-react";
 import Link from "next/link";
 import { site } from "@/content/site";
 import { waLink } from "@/lib/whatsapp";
 import { cn } from "@/lib/cn";
-import { WhatsAppIcon } from "./Icon";
+import { PhoneIcon, WhatsAppIcon } from "./Icon";
 
+// Em telemóvel, menos folga lateral: "Marcar consulta por WhatsApp" cabe numa linha dentro dos painéis. Onde não cabe
+// (ecrãs de 320 px, a etiqueta inglesa, mais longa), parte em duas linhas equilibradas e centradas
 const base =
-  "inline-flex items-center justify-center gap-2.5 rounded-[var(--radius-btn)] px-5 py-3 text-[15px] font-semibold leading-none transition-colors duration-200 min-h-12";
+  "inline-flex items-center justify-center gap-2 rounded-[var(--radius-btn)] px-4 py-3 sm:gap-2.5 sm:px-5 text-[15px] font-semibold leading-tight text-center text-balance transition-colors duration-200 min-h-12";
 
 export const btn = {
   whatsapp: cn(base, "bg-whatsapp text-[#05301a] hover:bg-[#1fc15c]"),
@@ -41,7 +42,7 @@ type CallProps = { location: string; label?: string; className?: string; variant
 export function CallButton({ location, label, className, variant = "outline", note }: CallProps) {
   return (
     <a href={site.phoneHref} data-track="phone" data-location={location} className={cn(btn[variant], className)} title={note}>
-      <Phone className="size-[18px] shrink-0" aria-hidden />
+      <PhoneIcon className="size-[18px] shrink-0" />
       {label ?? site.phone}
     </a>
   );

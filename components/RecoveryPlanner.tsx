@@ -64,7 +64,8 @@ export function RecoveryPlanner({ plans, parts, plansTitle, partsTitle, labels, 
                     {on && <Check className="size-3.5" strokeWidth={3} />}
                   </span>
                 </span>
-                <span className={cn("mt-4 block border-t pt-4 sm:mt-5 sm:pt-5", on ? "border-line" : "border-white/15")}>
+                {/* Em telemóvel, só o nome: o que entra em cada sessão já se vê em «O que pode incluir», logo abaixo */}
+                <span className={cn("mt-5 hidden border-t pt-5 sm:block", on ? "border-line" : "border-white/15")}>
                   <span className="block space-y-2 sm:space-y-2.5">
                     {pl.parts.map((k) => (
                       <span key={k} className="flex gap-2 text-[14px] leading-snug sm:gap-2.5 sm:text-[15px]">

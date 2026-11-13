@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { Clock, Mail, MapPin } from "lucide-react";
 import { site, isPending } from "@/content/site";
 import { getDict } from "@/content";
 import { consultKeys, href, serviceKeys, type Locale } from "@/lib/routes";
 import { waLink, waMessages } from "@/lib/whatsapp";
 import { Logo } from "./Logo";
 import { Wordmark } from "./Wordmark";
-import { FacebookIcon, GoogleIcon, InstagramIcon, WhatsAppIcon } from "./Icon";
+import { FacebookIcon, GoogleIcon, InstagramIcon, PhoneIcon, WhatsAppIcon } from "./Icon";
 import { CookieSettingsLink } from "./Consent";
 
 export function Footer({ locale }: { locale: Locale }) {
@@ -149,7 +149,7 @@ export function Footer({ locale }: { locale: Locale }) {
               </p>
               <p>
                 <a href={site.phoneHref} data-track="phone" data-location="footer" className="gap-2.5 tabular-nums transition-colors hover:text-teal-dark">
-                  <Phone aria-hidden strokeWidth={1.75} className={icon} />
+                  <PhoneIcon className={icon} />
                   {t.common.phoneDisplay}
                 </a>
                 <span className="block pl-[26px] text-[11px]">{t.common.phoneNote}</span>
@@ -191,7 +191,8 @@ export function Footer({ locale }: { locale: Locale }) {
               title={f.complaints}
               className="mt-3 gap-0.5 whitespace-nowrap text-xs font-semibold text-ink transition-colors hover:text-teal-dark"
             >
-              <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-white">Livro de</span>
+              {/* 56 px: o "Livro de" cabe dentro do círculo, sem tocar no aro */}
+              <span className="flex size-14 shrink-0 items-center justify-center rounded-full bg-white">Livro de</span>
               Reclamações
               <span className="sr-only" lang={locale}>
                 {t.common.newWindow}

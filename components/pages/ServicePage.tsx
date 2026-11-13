@@ -151,7 +151,7 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
   // As duas áreas da clínica: painéis com foto, um aberto e o outro fechado; tocar no fechado troca-os.
   // Fecha a página, logo a seguir às perguntas (que já dão o espaço de cima).
   const areasSection = p.areas && (
-    <section id="areas" aria-labelledby="areas-title" className="bg-white pb-24 md:pb-36">
+    <section id="areas" aria-labelledby="areas-title" className="bg-white pb-20 md:pb-36">
       <div className="container-x">
         <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-x-6">
           <h2 id="areas-title" data-reveal className="t-display lg:col-span-6">
@@ -170,7 +170,7 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
 
   // Dermatofuncional: o esquema da diástase por fases e, por baixo, como é avaliada
   const diastasis = explainer && (
-    <section id="diastase" aria-labelledby="diastase-title" className="bg-mist py-24 md:py-36">
+    <section id="diastase" aria-labelledby="diastase-title" className="bg-mist py-20 md:py-36">
       <div className="container-x">
         <DiastasisExplorer
           stages={explainer.stages}
@@ -270,7 +270,7 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
       <section
         id="situacoes"
         aria-labelledby="situacoes-title"
-        className={cn(s.bodyMap ? "bg-mist py-24 md:py-36" : "bg-white pb-24 md:pb-36")}
+        className={cn(s.bodyMap ? "bg-mist py-20 md:py-36" : "bg-white pb-20 md:pb-36")}
       >
         {s.bodyMap ? (
           <div className="container-x">
@@ -325,7 +325,7 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
       {care && (
         // Branco: sem a diástase (mist) antes, vem logo a seguir a «Sobre o serviço», também branca, e o espaço de cima
         // já é o dessa secção
-        <section id="tratamentos" aria-labelledby="tratamentos-title" className={cn("bg-white pb-24 md:pb-36", (explainer || !p.about) && "pt-24 md:pt-36")}>
+        <section id="tratamentos" aria-labelledby="tratamentos-title" className={cn("bg-white pb-20 md:pb-36", (explainer || !p.about) && "pt-20 md:pt-36")}>
           <div className="container-x">
             <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-x-6">
               <h2 id="tratamentos-title" data-reveal className="t-display lg:col-span-6">
@@ -342,7 +342,7 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
         </section>
       )}
       {!tr && !care && s.includes && chapters.length > 0 && (
-        <section id="espaco" aria-labelledby="espaco-title" className={cn("bg-white pb-24 md:pb-36", explainer && "pt-24 md:pt-36")}>
+        <section id="espaco" aria-labelledby="espaco-title" className={cn("bg-white pb-20 md:pb-36", explainer && "pt-20 md:pt-36")}>
           <div className="container-x">
             <h2 id="espaco-title" data-reveal className="t-statement text-muted">
               {s.includes.title}
@@ -365,7 +365,7 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
 
       {/* Percurso: uma frase por fase, em escada, com a explicação e o que inclui; a duração fica no canto livre da escada.
           As frases começam esbatidas e acendem uma a uma ao passar o meio do ecrã (a última fica a teal). */}
-      <section id="como-funciona" aria-labelledby="percurso-title" className="bg-mist py-24 md:py-36">
+      <section id="como-funciona" aria-labelledby="percurso-title" className="bg-mist py-20 md:py-36">
         <div className="container-x">
           <h2 id="percurso-title" data-reveal className="t-statement text-muted">
             {s.how.title}
@@ -382,8 +382,9 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
                   key={st.title}
                   data-reveal
                   data-spy
-                  style={{ "--d": i, paddingInlineStart: `calc(${i} * 6vw)` } as React.CSSProperties}
-                  className={cn("lg:col-end-13 lg:!ps-0", stairs[i])}
+                  // Em telemóvel a escada desce em degraus de 3vw (a 6vw, o último degrau ficava com a lista apertada)
+                  style={{ "--d": i, "--step": i } as React.CSSProperties}
+                  className={cn("ps-[calc(var(--step)*3vw)] sm:ps-[calc(var(--step)*6vw)] lg:col-end-13 lg:!ps-0", stairs[i])}
                 >
                   <h3 className={cn("t-display spy-line", i === s.how.steps.length - 1 && "spy-line-last text-teal-strong")}>{st.line}</h3>
                   {st.details ? (
@@ -413,7 +414,7 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
 
       {/* Quem acompanha: o retrato grande e, ao lado, o nome e uma frase */}
       {specialist && (
-        <section id="fisioterapeuta" aria-labelledby="pessoa-title" className="bg-white py-24 md:py-36">
+        <section id="fisioterapeuta" aria-labelledby="pessoa-title" className="bg-white py-20 md:py-36">
           <div className="container-x grid items-center gap-10 sm:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:grid-cols-12 lg:gap-x-6">
             <div data-reveal className="relative aspect-[4/5] w-[75%] overflow-hidden rounded-[var(--radius-img)] bg-ice sm:w-full lg:col-span-4 lg:col-start-2">
               <Media id={specialist.media} locale={locale} cover sizes="(min-width: 1024px) 30vw, (min-width: 640px) 40vw, 75vw" />
@@ -436,19 +437,20 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
 
       {/* Perguntas: só as perguntas à vista; a resposta abre ao tocar */}
       {s.faq.length > 0 && (
-        <section id="perguntas" aria-labelledby="faq-title" className="bg-white py-24 md:py-36">
+        <section id="perguntas" aria-labelledby="faq-title" className="bg-white py-20 md:py-36">
           <div className="container-x grid gap-10 lg:grid-cols-12 lg:gap-x-6">
             <h2 id="faq-title" data-reveal className="t-statement text-muted lg:col-span-4">
               {sp.faq}
             </h2>
             <div data-reveal className="space-y-2 lg:col-span-8">
               {s.faq.map((f) => (
-                <details key={f.q} className="faq-item group rounded-[18px] transition-colors open:bg-mist hover:bg-mist">
-                  <summary className="flex min-h-14 cursor-pointer items-center justify-between gap-6 px-4 py-4 md:px-6">
+                // Em telemóvel o fundo sai 12 px para fora, para as perguntas alinharem com o título
+                <details key={f.q} className="faq-item group -mx-3 rounded-[18px] transition-colors open:bg-mist hover:bg-mist md:mx-0">
+                  <summary className="flex min-h-14 cursor-pointer items-center justify-between gap-4 px-3 py-4 md:gap-6 md:px-6">
                     <span className="font-display text-xl leading-snug tracking-[-0.015em] text-ink md:text-2xl">{f.q}</span>
                     <Plus aria-hidden className="size-6 shrink-0 text-teal-strong transition-transform duration-300 group-open:rotate-45" />
                   </summary>
-                  <p className="max-w-[60ch] px-4 pb-6 leading-relaxed text-ink md:px-6">{f.a}</p>
+                  <p className="max-w-[60ch] px-3 pb-6 leading-relaxed text-ink md:px-6">{f.a}</p>
                 </details>
               ))}
             </div>

@@ -4,11 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Phone } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { isPending, site } from "@/content/site";
 import { cn } from "@/lib/cn";
 import { WhatsAppButton } from "./Buttons";
-import { FacebookIcon, InstagramIcon } from "./Icon";
+import { FacebookIcon, InstagramIcon, PhoneIcon } from "./Icon";
 
 // Redes no menu mobile: só as que já têm URL confirmado (como no rodapé)
 const social = [
@@ -216,9 +216,12 @@ export function Header({ homeHref, logo, overlay, logoOverlay, links, lang, labe
               data-location="header"
               title={labels.phoneNote}
               // Só a partir de 1440 px: abaixo disso não cabe na coluna da direita com os links ao centro
-              className="hidden min-h-11 items-center gap-2 whitespace-nowrap px-2 text-sm font-semibold text-ink hover:text-teal-strong min-[1440px]:inline-flex"
+              className="group/phone hidden min-h-11 items-center gap-2.5 whitespace-nowrap pl-1 pr-2 text-sm font-semibold tabular-nums text-ink hover:text-teal-strong min-[1440px]:inline-flex"
             >
-              <Phone className="size-4" aria-hidden />
+              {/* Auscultador cheio num círculo `ice`, que passa a teal ao passar o cursor */}
+              <span className="flex size-8 items-center justify-center rounded-full bg-ice text-teal-strong transition-colors duration-200 group-hover/phone:bg-teal-strong group-hover/phone:text-white">
+                <PhoneIcon className="size-4" />
+              </span>
               {labels.phone}
             </a>
             <span className="hidden md:block">
@@ -331,7 +334,7 @@ export function Header({ homeHref, logo, overlay, logoOverlay, links, lang, labe
               data-location="menu-mobile"
               className="flex min-h-11 items-center justify-center gap-2 rounded-[var(--radius-btn)] border border-teal-dark/25 bg-white text-sm font-semibold text-teal-dark"
             >
-              <Phone className="size-4" aria-hidden />
+              <PhoneIcon className="size-4" />
               {labels.phone}
             </a>
             <p className="text-center text-[11px] leading-tight text-grey">{labels.phoneNote}</p>

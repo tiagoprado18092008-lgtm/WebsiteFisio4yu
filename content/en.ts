@@ -71,7 +71,7 @@ export const en: Dict = {
   },
   meta: {
     home: {
-      title: "Physiotherapy in Portimão | Fisio4you, Rehabilitation Centre",
+      title: "Physiotherapy Clinic in Portimão | Fisio4you",
       description:
         "Physiotherapy clinic in Portimão: musculoskeletal injuries, sports rehabilitation and postnatal care. Ultrasound and a 100 m² rehabilitation gym.",
     },
@@ -90,7 +90,7 @@ export const en: Dict = {
     },
     about: {
       title: "About Fisio4you | Physiotherapy Clinic in Portimão",
-      description: "Physiotherapy clinic in Portimão run by physiotherapist Mário Barroso, with Angela Brazona in dermatofunctional physiotherapy. Meet the team, see how we work and view the facilities.",
+      description: "Physiotherapy clinic in Portimão founded by physiotherapist Mário Barroso and body therapist Angela Brazona, who leads the dermatofunctional area. Meet the team, see how we work and view the facilities.",
     },
     contact: {
       title: "Contact & Opening Hours | Fisio4you Portimão",
@@ -103,7 +103,7 @@ export const en: Dict = {
 
   home: {
     hero: {
-      eyebrow: "Rehabilitation Centre · Portimão",
+      eyebrow: "Physiotherapy Clinic · Portimão",
       lines: ["Physiotherapy", "made for you"],
       sub: "Physiotherapy in Portimão for musculoskeletal injuries and postnatal recovery, with ultrasound and a rehabilitation gym on site.",
     },
@@ -327,13 +327,13 @@ export const en: Dict = {
       media: "team-mario",
       name: "Mário Barroso",
       role: "Founder and physiotherapist",
-      focus: "Founded Fisio4you to support musculoskeletal injuries and athletes' recovery from day one through to a full return to activity. Has 16 years of clinical experience in rehabilitation and sports performance, using ultrasound and ultrasound-guided techniques in assessment and treatment. [[Professional registration no. and relevant training]]",
+      focus: "Founded Fisio4you with Angela Brazona to support musculoskeletal injuries and athletes' recovery from day one through to a full return to activity. Has 16 years of clinical experience in rehabilitation and sports performance, using ultrasound and ultrasound-guided techniques in assessment and treatment. Professional registration no. 8541. [[relevant training]]",
     },
     {
       media: "team-angela",
       name: "Angela Brazona",
-      role: "Physiotherapist",
-      focus: "Focuses on dermatofunctional physiotherapy and women's health, supporting pregnancy and the postpartum period, and treating abdominal diastasis, scars, lymphatic drainage and lipoedema. Follows each case from the initial assessment to independence, with a plan reviewed throughout treatment. [[Professional registration no. and relevant training]]",
+      role: "Founder and body therapist",
+      focus: "Focuses on dermatofunctional care and women's health, supporting pregnancy and the postpartum period, and treating abdominal diastasis, scars, lymphatic drainage and lipoedema. Follows each case from the initial assessment to independence, with a plan reviewed throughout treatment. [[relevant training]]",
     },
   ],
 
@@ -354,7 +354,7 @@ export const en: Dict = {
     faqNav: "FAQs",
     areas: {
       title: "Two areas, one clinic",
-      intro: "Each area has its own lead physiotherapist. Choose one to see what it treats.",
+      intro: "Each area has its own lead. Choose one to see what it treats.",
       treats: "What it treats",
       items: {
         msk: {
@@ -368,7 +368,7 @@ export const en: Dict = {
           name: "Dermatofunctional",
           what: "Health and aesthetics: postnatal care, lymphatic drainage, post-surgery care, lipoedema and body contouring.",
           treats: ["Postnatal and diastasis", "Lymphatic drainage", "Post-surgery and scars", "Lipoedema", "Body aesthetics"],
-          by: "With physiotherapist Angela Brazona",
+          by: "With body therapist Angela Brazona",
           mediaId: "service-dermato",
         },
       },
@@ -645,7 +645,7 @@ export const en: Dict = {
       meta: {
         title: "Dermatofunctional Physiotherapy in Portimão | Fisio4you",
         description:
-          "Dermatofunctional physiotherapy in Portimão: postnatal care and diastasis recti, lymphatic drainage, post-surgery and scar care, lipoedema and body contouring, with physiotherapist Angela Brazona.",
+          "Dermatofunctional physiotherapy in Portimão: postnatal care and diastasis recti, lymphatic drainage, post-surgery and scar care, lipoedema and body contouring, with body therapist Angela Brazona.",
       },
       heroTitle: "Dermatofunctional Physiotherapy",
       heroSub: "Health and aesthetics in balance: postnatal recovery, lymphatic drainage, post-surgery and scar care, lipoedema and body contouring, always starting from an individual assessment.",
@@ -653,7 +653,7 @@ export const en: Dict = {
         { icon: "baby", text: "Postnatal care and diastasis recti" },
         { icon: "flower", text: "Manual lymphatic drainage" },
         { icon: "sparkles", text: "Post-surgery and scar care" },
-        { icon: "heart", text: "Angela Brazona, physiotherapist" },
+        { icon: "heart", text: "Angela Brazona, body therapist" },
       ],
       specialist: "team-angela",
       // Escondida a 10/11/2026 a pedido do cliente («tira esta secção»); volta tirando `hidden`.
@@ -732,7 +732,7 @@ export const en: Dict = {
       },
       distinct: {
         title: "Who treats you",
-        text: "Dermatofunctional physiotherapy is led by Angela Brazona, a physiotherapist who works in women's health and in care that brings health and aesthetics together.",
+        text: "Dermatofunctional physiotherapy is led by Angela Brazona, a body therapist who works in women's health and in care that brings health and aesthetics together.",
         points: ["An individual assessment before every plan", "Manual techniques, lymphatic drainage and devices", "Guided exercise and a home plan"],
       },
       duration: {
@@ -748,7 +748,7 @@ export const en: Dict = {
         { q: "What is the first assessment like?", a: "It starts with a conversation about your clinical history and goals, followed by a physical assessment explained step by step." },
       ],
       page: {
-        lead: "Postnatal care, lymphatic drainage, lipoedema and body aesthetics, with physiotherapist Angela Brazona.",
+        lead: "Postnatal care, lymphatic drainage, lipoedema and body aesthetics, with body therapist Angela Brazona.",
         heroWide: "wide-dermato",
         heroBeside: true,
         areas: true,
@@ -1140,7 +1140,7 @@ export const en: Dict = {
           ],
         },
         person: {
-          bio: "is a physiotherapist and leads dermatofunctional physiotherapy at Fisio4you, focusing on women's health during pregnancy and after childbirth and on care that brings health and aesthetics together.",
+          bio: "is a body therapist, a founder of Fisio4you and leads the dermatofunctional area, focusing on women's health during pregnancy and after childbirth and on care that brings health and aesthetics together.",
         },
       },
     },
@@ -1218,8 +1218,8 @@ export const en: Dict = {
 
   about: {
     eyebrow: "About us",
-    title: "Fisio4you, rehabilitation centre in Portimão",
-    sub: "A physiotherapy clinic run by physiotherapist Mário Barroso, with two areas of practice: musculoskeletal physiotherapy, with Mário, and dermatofunctional physiotherapy, with physiotherapist Angela Brazona.",
+    title: "Fisio4you, physiotherapy clinic in Portimão",
+    sub: "A physiotherapy clinic founded by Mário Barroso, physiotherapist, and Angela Brazona, body therapist, with two areas of practice: musculoskeletal physiotherapy, with Mário, and dermatofunctional physiotherapy, with Angela.",
     storyTitle: "Our story",
     story: ["[[Ask Mário for the clinic's story.]]"],
     missionTitle: "The clinic",
@@ -1256,7 +1256,7 @@ export const en: Dict = {
   },
 
   footer: {
-    tagline: "Physiotherapy clinic and rehabilitation centre in Portimão.",
+    tagline: "Physiotherapy clinic in Portimão.",
     services: "Physiotherapy",
     clinic: "Clinic",
     contacts: "Contact",

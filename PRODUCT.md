@@ -14,7 +14,7 @@ web
 
 ## Product Purpose
 
-Website da **Fisio4you — Centro de Reabilitação**, clínica de fisioterapia em Portimão (Algarve), feito pela agência AlphaScale AI. O objetivo é transformar visitantes em contactos: **WhatsApp é a conversão principal e o telefone a secundária**. Sucesso = mais avaliações marcadas por WhatsApp/telefone, com tracking por localização do clique (`data-track` / `data-location` → GTM).
+Website da **Fisio4you**, clínica de fisioterapia (o cliente pediu, a 13/11/2026, que não se apresente como "centro de recuperação" nem "centro de reabilitação") em Portimão (Algarve), feito pela agência AlphaScale AI. O objetivo é transformar visitantes em contactos: **WhatsApp é a conversão principal e o telefone a secundária**. Sucesso = mais avaliações marcadas por WhatsApp/telefone, com tracking por localização do clique (`data-track` / `data-location` → GTM).
 
 ## Positioning
 
@@ -48,15 +48,17 @@ A proposta combina um lado **desportivo/de performance** com um lado **estético
 
 ## Brand Commitments
 
-- Nome comercial **Fisio4you**; logótipo "fisio4you · Centro de Reabilitação" com o "4" em fita teal (`public/brand/logo.png`; vetorial ainda por receber). Entidade legal Fisio4you, Lda, NIF 514 628 847.
-- Contacto principal e fundador: **Mário**, fisioterapeuta, com **16 anos de experiência** (a experiência é dele, não da clínica).
+- Nome comercial **Fisio4you**; logótipo oficial "fisio4you · Rehab & Performance" com o "4" em fita teal, recebido a 13/11/2026 (`public/brand/logo.png`, gerado por `scripts/logo.mjs`; vetorial ainda por receber). Entidade legal Fisio4you, Lda, NIF 514 628 847.
+- Contacto principal e fundador: **Mário**, fisioterapeuta, com **16 anos de experiência** (a experiência é dele, não da clínica), cédula profissional n.º 8541.
+- **Angela Brazona** é também fundadora e é **terapeuta corporal**, não fisioterapeuta (pedido do cliente, 13/11/2026): nunca lhe chamar fisioterapeuta.
+- Registo na ERS: **E138746** (enviado pelo cliente como «licença da ERS»).
 - Voz: profissional e próxima, em **português europeu** ("equipa", "marcar consulta", "telemóvel", "utente"), nunca português do Brasil; inglês britânico na versão EN ("physiotherapy", "ice bath", "postnatal").
 - O cliente pediu um site **clínico, claro e não escuro**, com credibilidade profissional, que não pareça genérico nem feito por IA.
 - Rodapé com "Desenvolvido por AlphaScale AI".
 
 ## Evidence on Hand
 
-- Logótipo: `public/brand/logo.png` (+ `logo-white.png`, `logo-original.png`).
+- Logótipo: `public/brand/logo.png` (+ `logo-white.png`; origem `logo-original.jpg`).
 - Dados do briefing: NIF, telefone/WhatsApp 924 098 545, email fisio4youportimao@gmail.com, Facebook.
 - **Ainda não existem (não inventar):** fotografias e vídeos reais (ver `MEDIA.md`), avaliações Google (nota, número e textos), nomes e funções da equipa, biografia do Mário, história da clínica, número de pacientes, prémios.
 

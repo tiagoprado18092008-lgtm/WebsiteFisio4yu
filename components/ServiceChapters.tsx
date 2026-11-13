@@ -41,7 +41,7 @@ export function ServiceAbout({ statement, text, links, linksLabel }: {
   linksLabel: string;
 }) {
   return (
-    <section id="sobre-o-servico" aria-labelledby="sobre-title" className="bg-white pb-24 md:pb-36">
+    <section id="sobre-o-servico" aria-labelledby="sobre-title" className="bg-white pb-20 md:pb-36">
       <div className="container-x">
         <div className="grid gap-10 md:gap-12 lg:grid-cols-12 lg:items-end lg:gap-x-6">
           <div data-reveal className="lg:col-span-7">

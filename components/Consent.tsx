@@ -65,15 +65,17 @@ function CookieBanner({ t, set }: { t: BannerText; set: (c: "granted" | "denied"
       role="dialog"
       aria-live="polite"
       aria-label="Cookies"
-      className="fixed inset-x-3 bottom-[84px] z-[60] mx-auto max-w-xl rounded-[var(--radius-img)] border border-line bg-white p-5 text-ink shadow-[0_20px_50px_-12px_rgba(14,76,87,.3)] md:bottom-6 md:left-6 md:right-auto"
+      // Em telemóvel, compacto e logo acima da barra fixa (texto a 13 px, botões lado a lado a toda a largura): antes
+      // tapava um terço do primeiro ecrã
+      className="fixed inset-x-2 bottom-[calc(72px+env(safe-area-inset-bottom))] z-[60] mx-auto max-w-xl rounded-[20px] border border-line bg-white p-3.5 text-ink shadow-[0_20px_50px_-12px_rgba(14,76,87,.3)] md:bottom-6 md:left-6 md:right-auto md:rounded-[var(--radius-img)] md:p-5"
     >
-      <p className="text-sm leading-relaxed text-grey">
+      <p className="text-[13px] leading-snug text-grey md:text-sm md:leading-relaxed">
         {t.text}{" "}
         <Link href={t.href} className="underline underline-offset-2 text-teal-dark">
           {t.more}
         </Link>
       </p>
-      <div className="mt-4 flex gap-3">
+      <div className="mt-3 grid grid-cols-2 gap-2 md:mt-4 md:flex md:gap-3">
         <button type="button" onClick={() => set("granted")} className={btn.teal + " min-h-11 py-2.5"}>
           {t.accept}
         </button>
