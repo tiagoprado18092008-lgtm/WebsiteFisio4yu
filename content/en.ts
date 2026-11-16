@@ -559,7 +559,7 @@ export const en: Dict = {
             usesLabel: "Used for",
             items: [
               {
-                id: "epte", name: "EPTE", full: "Ultrasound-guided percutaneous therapeutic electro-puncture",
+                id: "epte", name: "EPTE", mediaId: "technique-epte", full: "Ultrasound-guided percutaneous therapeutic electro-puncture",
                 text: "A low-intensity electrical current, applied through a very fine needle guided by ultrasound straight to the injury, stimulates tissue regeneration, especially in tendons.",
                 uses: ["Achilles tendon", "Patellar tendinopathy", "Tennis elbow"],
               },
@@ -569,12 +569,12 @@ export const en: Dict = {
                 uses: ["Muscle pain", "Tendinopathies", "Contractures", "Inflammation"],
               },
               {
-                id: "neuromodulacao", name: "Ultrasound-guided percutaneous neuromodulation",
+                id: "neuromodulacao", name: "Ultrasound-guided percutaneous neuromodulation", mediaId: "technique-neuromodulacao",
                 text: "Low-frequency electrical stimulation through very fine needles, guided by ultrasound, on specific peripheral nerves, to reduce pain and improve muscle activation.",
                 uses: ["Chronic pain", "Neuropathic pain", "Neuromuscular dysfunction"],
               },
               {
-                id: "fotobiomodulacao", name: "Photobiomodulation",
+                id: "fotobiomodulacao", name: "Photobiomodulation", mediaId: "technique-fotobiomodulacao",
                 text: "Low-intensity light, by laser or LED, that acts at cellular level to relieve pain, reduce inflammation and support recovery. Painless and non-invasive.",
                 uses: ["Muscle injuries", "Tendinopathies", "Joint pain", "Soft tissue"],
               },
@@ -1282,7 +1282,7 @@ export const en: Dict = {
   },
 
   legal: {
-    updated: "Last updated: October 2026",
+    updated: "Last updated: November 2026",
     privacy: {
       title: "Privacy Policy",
       sections: [
@@ -1300,7 +1300,7 @@ export const en: Dict = {
         { h: "Intellectual property", p: ["Texts, images, logo and other content belong to Fisio4you, Lda or are used with permission, and may not be reproduced without consent."] },
         { h: "Liability", p: ["We aim to keep information accurate and up to date but cannot guarantee it is error-free. Treatment outcomes depend on each person and their clinical situation."] },
         { h: "External links", p: ["The site links to third-party services (WhatsApp, Google Maps, social networks), whose policies are the responsibility of their operators."] },
-        { h: "Governing law", p: ["Portuguese law applies. Consumers may use the Electronic Complaints Book or an alternative dispute resolution body."] },
+        { h: "Governing law", p: ["Portuguese law applies. Consumers may use the Electronic Complaints Book or the Algarve Consumer Arbitration Centre (www.consumoalgarve.pt), the competent alternative dispute resolution body. More information at the Consumer Portal (www.consumidor.gov.pt)."] },
       ],
     },
     cookies: {

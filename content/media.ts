@@ -155,6 +155,34 @@ const items: MediaItem[] = [
     brief: "Técnicas de tratamento: o Mário a fazer terapia manual na coxa.",
     position: "50% 40%",
   },
+  // Fotos por técnica (sessão nova do Mário, 16/11/2026): a foto presa ao topo troca com a técnica que está a ser lida
+  {
+    id: "technique-epte",
+    type: "image",
+    src: "/media/tratamentos/mario-epte-ecografia.webp",
+    ratio: "3/4",
+    alt: { pt: "Mário Barroso a observar no ecógrafo o tendão de um utente, com a sonda no joelho", en: "Mário Barroso checking a patient's tendon on the ultrasound screen, probe on the knee" },
+    brief: "EPTE: o Mário a guiar-se pela ecografia.",
+    position: "40% 50%",
+  },
+  {
+    id: "technique-neuromodulacao",
+    type: "image",
+    src: "/media/tratamentos/mario-neuromodulacao-ecoguiada.webp",
+    ratio: "3/4",
+    alt: { pt: "Mário Barroso com a sonda do ecógrafo na perna de um utente, a acompanhar a imagem no ecrã", en: "Mário Barroso holding the ultrasound probe on a patient's leg while watching the screen" },
+    brief: "Neuromodulação ecoguiada: sonda e ecrã do ecógrafo.",
+    position: "45% 50%",
+  },
+  {
+    id: "technique-fotobiomodulacao",
+    type: "image",
+    src: "/media/tratamentos/fotobiomodulacao-joelho.webp",
+    ratio: "3/4",
+    alt: { pt: "Aparelho de fotobiomodulação com luz vermelha colocado no joelho de um utente", en: "Photobiomodulation device with red light strapped to a patient's knee" },
+    brief: "Fotobiomodulação: luz vermelha no joelho.",
+    position: "50% 55%",
+  },
   {
     // Cartão da musculoesquelética (home e Serviços): o antigo hero. Foto vertical recortada na horizontal; com o foco a
     // 55% da altura, em 16:9, 3:2 e 5:4 a faixa fica entre o rosto e as mãos do Mário e os rostos do mural (17% de cima)

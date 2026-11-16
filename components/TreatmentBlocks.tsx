@@ -53,7 +53,12 @@ export function TreatmentBlocks({ data, locale, waLocation }: { data: Blocks; lo
                 </ul>
               </nav>
               <div className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-img)] bg-ice sm:max-w-[28rem] lg:mt-6 lg:aspect-auto lg:h-[min(calc(100svh-15rem),42rem)] lg:max-w-none">
-                <Media id={tq.mediaId} locale={locale} cover sizes="(min-width: 1480px) 560px, (min-width: 1024px) 38vw, (min-width: 640px) 448px, 100vw" />
+                {/* Uma foto por técnica, empilhadas: fica à vista a da técnica ativa (sem JavaScript, só a primeira) */}
+                {tq.items.map((it, i) => (
+                  <div key={it.id} data-spy-photo={it.id} className={`spy-photo absolute inset-0${i === 0 ? " is-first" : ""}`}>
+                    <Media id={it.mediaId ?? tq.mediaId} locale={locale} cover sizes="(min-width: 1480px) 560px, (min-width: 1024px) 38vw, (min-width: 640px) 448px, 100vw" />
+                  </div>
+                ))}
               </div>
             </div>
             <div className="lg:col-span-6 lg:col-start-7">

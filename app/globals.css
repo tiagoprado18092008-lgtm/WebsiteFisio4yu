@@ -255,6 +255,9 @@ body:has(.menu-open) .mobile-bar { opacity: 0; }
  * - Percurso: as frases começam a cinza (`muted`, AA sobre mist) e acendem para `ink` ao passar o meio do ecrã; a
  *   última acende para `teal-strong`.
  */
+.spy-photo { opacity: 0; transition: opacity 0.6s ease; }
+.spy-photo.is-first, [data-spy-ready] .spy-photo[data-active] { opacity: 1; }
+[data-spy-ready] .spy-photo.is-first:not([data-active]) { opacity: 0; }
 .spy-chip { transition: background-color 0.35s ease, color 0.35s ease; }
 .spy-chip:hover { background-color: #d2e8ec; }
 [data-spy-ready] .spy-chip[data-active] { background-color: var(--f4y-teal-strong); color: #fff; }

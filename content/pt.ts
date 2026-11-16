@@ -33,7 +33,7 @@ export type TreatmentBlocks = {
   techniques: {
     id: string; nav: string; title: string; intro: string; mediaId: string;
     usesLabel: string;
-    items: { id: string; name: string; full?: string; text: string; uses: string[] }[];
+    items: { id: string; name: string; full?: string; text: string; uses: string[]; mediaId?: string }[];
     note: string;
   };
   recovery: {
@@ -786,7 +786,7 @@ export const pt = {
             usesLabel: "Usada em",
             items: [
               {
-                id: "epte", name: "EPTE", full: "Eletropuntura Percutânea Terapêutica Ecoguiada",
+                id: "epte", name: "EPTE", mediaId: "technique-epte", full: "Eletropuntura Percutânea Terapêutica Ecoguiada",
                 text: "Uma corrente elétrica de baixa intensidade, aplicada com uma agulha muito fina guiada por ecografia diretamente na lesão, estimula a regeneração dos tecidos, sobretudo dos tendões.",
                 uses: ["Tendão de Aquiles", "Tendinopatia rotuliana", "Cotovelo de tenista"],
               },
@@ -796,12 +796,12 @@ export const pt = {
                 uses: ["Dores musculares", "Tendinopatias", "Contraturas", "Inflamação"],
               },
               {
-                id: "neuromodulacao", name: "Neuromodulação Percutânea Ecoguiada",
+                id: "neuromodulacao", name: "Neuromodulação Percutânea Ecoguiada", mediaId: "technique-neuromodulacao",
                 text: "Estímulos elétricos de baixa frequência, com agulhas muito finas e orientação ecográfica, sobre nervos periféricos específicos, para diminuir a dor e melhorar a ativação muscular.",
                 uses: ["Dor crónica", "Dor neuropática", "Disfunções neuromusculares"],
               },
               {
-                id: "fotobiomodulacao", name: "Fotobiomodulação",
+                id: "fotobiomodulacao", name: "Fotobiomodulação", mediaId: "technique-fotobiomodulacao",
                 text: "Luz de baixa intensidade, por laser ou LED, que atua a nível celular para aliviar a dor, reduzir a inflamação e estimular a recuperação. É indolor e não invasiva.",
                 uses: ["Lesões musculares", "Tendinopatias", "Dores articulares", "Tecidos moles"],
               },
@@ -1518,7 +1518,7 @@ export const pt = {
   },
 
   legal: {
-    updated: "Última atualização: outubro de 2026",
+    updated: "Última atualização: novembro de 2026",
     privacy: {
       title: "Política de Privacidade",
       sections: [
@@ -1536,7 +1536,7 @@ export const pt = {
         { h: "Propriedade intelectual", p: ["Os textos, imagens, logótipo e restantes conteúdos pertencem à Fisio4you, Lda ou são usados com autorização, não podendo ser reproduzidos sem consentimento."] },
         { h: "Responsabilidade", p: ["Procuramos manter a informação atualizada e correta, mas não garantimos a ausência de erros. Os resultados de qualquer tratamento dependem de cada pessoa e da sua situação clínica."] },
         { h: "Ligações externas", p: ["O site contém ligações para serviços de terceiros (WhatsApp, Google Maps, redes sociais), cujas políticas são da responsabilidade dos respetivos operadores."] },
-        { h: "Lei aplicável", p: ["Aplica-se a lei portuguesa. Em caso de litígio, o consumidor pode recorrer ao Livro de Reclamações Eletrónico ou a uma entidade de resolução alternativa de litígios."] },
+        { h: "Lei aplicável", p: ["Aplica-se a lei portuguesa. Em caso de litígio, o consumidor pode recorrer ao Livro de Reclamações Eletrónico ou ao Centro de Arbitragem de Conflitos de Consumo do Algarve (www.consumoalgarve.pt), entidade de resolução alternativa de litígios competente. Mais informação no Portal do Consumidor (www.consumidor.gov.pt)."] },
       ] as LegalSection[],
     },
     cookies: {

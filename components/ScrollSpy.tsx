@@ -18,10 +18,12 @@ export function ScrollSpy({ mode = "active", className, children }: { mode?: "ac
     const items = [...root.querySelectorAll<HTMLElement>("[data-spy]")];
     if (items.length === 0) return;
     const links = [...root.querySelectorAll<HTMLElement>("[data-spy-link]")];
+    const photos = [...root.querySelectorAll<HTMLElement>("[data-spy-photo]")];
     root.dataset.spyReady = "";
 
     const setActive = (el: HTMLElement) => {
       for (const it of items) it.toggleAttribute("data-active", it === el);
+      for (const p of photos) p.toggleAttribute("data-active", p.dataset.spyPhoto === el.id);
       for (const l of links) {
         const on = l.dataset.spyLink === el.id;
         l.toggleAttribute("data-active", on);
