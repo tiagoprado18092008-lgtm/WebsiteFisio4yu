@@ -3,13 +3,16 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { ArrowRight, Check, ChevronDown } from "lucide-react";
 import type { CareGuide as Guide, CareGuideItem, CarePoint } from "@/content/pt";
+import Image from "next/image";
+import { media } from "@/content/media";
+import type { Locale } from "@/lib/routes";
 import { cn } from "@/lib/cn";
 import { btn } from "./Buttons";
 
 // O mesmo índice do tratamento por zona (ZoneGuide): pílulas em telemóvel e tablet; a partir de 1024 px, uma lista em
 // letra grande (um pouco mais pequena, porque há nomes de tratamentos longos).
 const item =
-  "inline-flex min-h-11 items-center gap-2 rounded-full px-4 text-[15px] font-semibold transition-colors lg:min-h-0 lg:w-full lg:rounded-none lg:px-0 lg:py-1.5 lg:text-left lg:font-display lg:text-[clamp(1.35rem,0.6rem+1.2vw,2rem)] lg:font-normal lg:leading-[1.15] lg:tracking-[-0.025em]";
+  "inline-flex min-h-12 w-full items-center gap-2 rounded-[16px] px-4 py-2 text-left leading-tight text-[15px] font-semibold transition-colors lg:min-h-0 lg:w-full lg:rounded-none lg:px-0 lg:py-1.5 lg:text-left lg:font-display lg:text-[clamp(1.35rem,0.6rem+1.2vw,2rem)] lg:font-normal lg:leading-[1.15] lg:tracking-[-0.025em]";
 
 /** Seletor segmentado (como as fases do esquema da diástase): uma pílula por opção, a escolhida a teal. */
 function Segmented({ label, options, value, onChange, controls }: {
@@ -68,7 +71,7 @@ function Points({ points, cols }: { points: CarePoint[]; cols?: boolean }) {
  * variantes num seletor → os benefícios (com seletor quando há mais de um grupo) → as zonas → «Saber mais»,
  * que abre o resto do texto do cliente. Os seletores voltam ao início ao trocar de tratamento (`key` no painel).
  */
-function Panel({ t, labels }: { t: CareGuideItem; labels: { more: string; less: string } }) {
+function Panel({ t, labels, locale }: { t: CareGuideItem; labels: { more: string; less: string }; locale: Locale }) {
   const uid = useId();
   const [opt, setOpt] = useState(0);
   const [grp, setGrp] = useState(0);
@@ -77,12 +80,31 @@ function Panel({ t, labels }: { t: CareGuideItem; labels: { more: string; less: 
   const g = t.groups?.items[grp];
   const steps = t.steps?.items ?? [];
   const last = steps.length - 1;
+  // Foto do tratamento (content/media.ts, id `care-<id do tratamento>`), ao lado do título a partir de 768 px
+  const photo = media[`care-${t.id}`];
 
   return (
     <div className="bm-swap">
-      <h3 className="font-display text-[clamp(2rem,1.3rem+2.4vw,3.6rem)] leading-[1.02] tracking-[-0.032em] text-ink">{t.title}</h3>
-      <p className="mt-4 text-lg font-medium leading-snug text-teal-strong">{t.tagline}</p>
-      <p className="mt-5 max-w-[56ch] text-lg leading-relaxed text-ink md:text-xl md:leading-relaxed">{t.summary}</p>
+      <div className={cn(photo?.src && "grid gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,15rem)] md:gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(0,18rem)]")}>
+        <div>
+          <h3 className="font-display text-[clamp(2rem,1.3rem+2.4vw,3.6rem)] leading-[1.02] tracking-[-0.032em] text-ink">{t.title}</h3>
+          <p className="mt-4 text-lg font-medium leading-snug text-teal-strong">{t.tagline}</p>
+          <p className="mt-5 max-w-[56ch] text-lg leading-relaxed text-ink md:text-xl md:leading-relaxed">{t.summary}</p>
+        </div>
+        {photo?.src && (
+          <div className="relative aspect-[4/3] overflow-hidden rounded-[20px] bg-ice md:order-none md:aspect-[3/4]">
+            <Image
+              src={photo.src}
+              alt={photo.alt[locale]}
+              fill
+              quality={90}
+              sizes="(min-width: 1280px) 18rem, (min-width: 768px) 15rem, 100vw"
+              className="object-cover"
+              style={photo.position ? { objectPosition: photo.position } : undefined}
+            />
+          </div>
+        )}
+      </div>
 
       {/* Fases do protocolo, ligadas por uma linha: na vertical em telemóvel, lado a lado a partir de 768 px */}
       {t.steps && (
@@ -207,7 +229,7 @@ function Panel({ t, labels }: { t: CareGuideItem; labels: { more: string; less: 
  * 1024 px: índice à esquerda (3 de 12 colunas) e painel à direita.
  * Ligações com `#id` de um tratamento (ex.: da página Fisioterapia) abrem esse tratamento e trazem o guia ao ecrã.
  */
-export function CareGuide({ guide }: { guide: Guide }) {
+export function CareGuide({ guide, locale }: { guide: Guide; locale: Locale }) {
   const [open, setOpen] = useState(0);
   const t = guide.items[open];
   const next = guide.items[(open + 1) % guide.items.length];
@@ -256,9 +278,9 @@ export function CareGuide({ guide }: { guide: Guide }) {
 
   return (
     <div className="grid gap-8 md:gap-10 lg:grid-cols-12 lg:gap-x-6">
-      <ul aria-label={guide.listLabel} className="flex flex-wrap gap-2 lg:sticky lg:top-28 lg:col-span-3 lg:flex-col lg:gap-1 lg:self-start lg:pt-2">
+      <ul aria-label={guide.listLabel} className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:sticky lg:top-28 lg:col-span-3 lg:flex lg:flex-col lg:gap-1 lg:self-start lg:pt-2">
         {guide.items.map((x, i) => (
-          <li key={x.id}>
+          <li key={x.id} className="flex">
             <button
               type="button"
               aria-pressed={i === open}
@@ -287,7 +309,7 @@ export function CareGuide({ guide }: { guide: Guide }) {
 
       <div ref={panelRef} className="scroll-mt-28 rounded-[28px] bg-mist p-6 sm:p-8 md:p-10 lg:col-span-9 lg:col-start-4 xl:p-14">
         <div id="care-panel" aria-live="polite">
-          <Panel key={t.id} t={t} labels={{ more: guide.moreLabel, less: guide.lessLabel }} />
+          <Panel key={t.id} t={t} locale={locale} labels={{ more: guide.moreLabel, less: guide.lessLabel }} />
         </div>
         {/* O tratamento seguinte, para se percorrer o guia sem voltar ao índice */}
         <div className="mt-12 flex justify-end border-t border-line pt-6 md:mt-14 md:pt-8">

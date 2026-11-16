@@ -34,20 +34,18 @@ function CheckList({ items, onDark }: { items: { title: string; text: string }[]
  * palavra ao descer (components/ScrollWords.tsx), e os parágrafos e o índice da página à direita, alinhados pela base.
  * (A lista «O que tratamos» por baixo saiu a pedido do cliente, 10/11/2026: o guia dos tratamentos já a mostra.)
  */
-export function ServiceAbout({ statement, text, links, linksLabel }: {
+export function ServiceAbout({ statement, text }: {
   statement: [string, string, string];
   text: string[];
-  links: { href: string; label: string }[];
-  linksLabel: string;
 }) {
   return (
-    <section id="sobre-o-servico" aria-labelledby="sobre-title" className="bg-white pb-20 md:pb-36">
+    <section id="sobre-o-servico" aria-labelledby="sobre-title" className="bg-white py-20 md:py-32">
       <div className="container-x">
         <div className="grid gap-10 md:gap-12 lg:grid-cols-12 lg:items-end lg:gap-x-6">
           <div data-reveal className="lg:col-span-7">
             <ScrollWords
               id="sobre-title"
-              className="t-display"
+              className="t-h1"
               parts={[{ text: statement[0] }, { text: statement[1], accent: true }, { text: statement[2] }]}
             />
           </div>
@@ -57,18 +55,6 @@ export function ServiceAbout({ statement, text, links, linksLabel }: {
                 {p}
               </p>
             ))}
-            <nav aria-label={linksLabel} className="mt-8">
-              <p className="text-[15px] font-medium text-muted">{linksLabel}</p>
-              <ul className="mt-3 flex flex-wrap gap-2">
-                {links.map((l) => (
-                  <li key={l.href}>
-                    <a href={l.href} className="inline-flex min-h-11 items-center rounded-full bg-ice px-4 text-[15px] font-semibold text-teal-dark transition-colors hover:bg-[#d3e8ec]">
-                      {l.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
           </div>
         </div>
       </div>

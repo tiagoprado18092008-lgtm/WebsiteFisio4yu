@@ -171,6 +171,8 @@ export type ServicePageCopy = {
   chapters?: ServiceChapter[];
   /** Tratamentos da musculoesquelética (texto do cliente), em três blocos: substitui os capítulos (components/TreatmentBlocks.tsx). */
   treatments?: TreatmentBlocks;
+  /** Galeria de fotos de tratamentos (ids de content/media.ts), a seguir aos tratamentos. */
+  gallery?: { nav: string; title: string; intro: string; ids: string[] };
   /** Tratamentos da dermatofuncional (texto do cliente), num guia interativo: substitui os capítulos (components/CareGuide.tsx). */
   care?: CareGuide;
   /** Biografia do fisioterapeuta responsável: o nome vem de `team`, por isso `bio` começa logo a seguir ao nome. */

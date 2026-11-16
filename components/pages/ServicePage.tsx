@@ -18,7 +18,6 @@ import { ChapterBlock, RecoveryPanel, ServiceAbout } from "../ServiceChapters";
 import { ZoneGuide, type Zone } from "../ZoneGuide";
 import { TreatmentBlocks } from "../TreatmentBlocks";
 import { CareGuide } from "../CareGuide";
-import { ScrollSpy } from "../ScrollSpy";
 
 type Row = { main: string; sub: string; action?: { href: string; label: string; wa?: string } };
 
@@ -52,7 +51,6 @@ function ConditionRow({ row }: { row: Row }) {
 }
 
 /** Escada de frases do percurso: cada fase começa duas colunas mais à direita. */
-const stairs = ["lg:col-start-1", "lg:col-start-3", "lg:col-start-5", "lg:col-start-7"];
 
 /**
  * Página de cada serviço, completa e feita de fotos dos tratamentos:
@@ -82,19 +80,18 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
   // O esquema da diástase (dermatofuncional) pode estar escondido com `explainer.hidden`
   const explainer = s.explainer?.hidden ? undefined : s.explainer;
   const diastasisLink = explainer ? [{ href: "#diastase", label: explainer.nav }] : [];
-  const links = care
-    ? [
-        ...diastasisLink,
-        { href: "#tratamentos", label: care.nav },
-        { href: "#como-funciona", label: sp.howNav },
-        ...(s.faq.length > 0 ? [{ href: "#perguntas", label: sp.faqNav }] : []),
-      ]
-    : [
-        ...diastasisLink,
-        ...(tr
-          ? [tr.techniques, tr.recovery, ...(tr.sport.hidden ? [] : [tr.sport])].map((b) => ({ href: `#${b.id}`, label: b.nav }))
-          : chapters.map((c) => ({ href: `#${c.id}`, label: c.nav }))),
-      ];
+  // O mesmo índice nas duas páginas: o que se trata → como decorre → quem acompanha → perguntas
+  const links = [
+    ...diastasisLink,
+    ...(care
+      ? [{ href: "#tratamentos", label: care.nav }, ...(p.gallery ? [{ href: "#galeria", label: p.gallery.nav }] : [])]
+      : tr
+        ? [tr.techniques, tr.recovery, ...(tr.sport.hidden ? [] : [tr.sport])].map((b) => ({ href: `#${b.id}`, label: b.nav }))
+        : chapters.map((c) => ({ href: `#${c.id}`, label: c.nav }))),
+    { href: "#como-funciona", label: sp.howNav },
+    ...(specialist ? [{ href: "#fisioterapeuta", label: specialist.name.split(" ")[0] }] : []),
+    ...(s.faq.length > 0 ? [{ href: "#perguntas", label: sp.faqNav }] : []),
+  ];
 
   // Musculoesquelética: o tratamento por zona do corpo; cada zona abre o WhatsApp, e a de outro serviço leva à página dele
   const bm = t.home.bodyMap;
@@ -258,8 +255,6 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
         <ServiceAbout
           statement={p.about.statement}
           text={p.about.text}
-          links={links}
-          linksLabel={sp.onThisPage}
         />
       )}
 
@@ -336,8 +331,30 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
               </p>
             </div>
             <div data-reveal className="mt-12 md:mt-16">
-              <CareGuide guide={care} />
+              <CareGuide guide={care} locale={locale} />
             </div>
+          </div>
+        </section>
+      )}
+      {/* Galeria de tratamentos (dermatofuncional): quatro fotos verticais alinhadas, 2 × 2 em telemóvel */}
+      {p.gallery && (
+        <section id="galeria" aria-labelledby="galeria-title" className="bg-white pb-20 md:pb-36">
+          <div className="container-x">
+            <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-x-6">
+              <h2 id="galeria-title" data-reveal className="t-display lg:col-span-6">
+                {p.gallery.title}
+              </h2>
+              <p data-reveal className="max-w-[38ch] text-lg leading-relaxed text-ink lg:col-span-4 lg:col-start-9">
+                {p.gallery.intro}
+              </p>
+            </div>
+            <ul className="mt-12 grid grid-cols-2 gap-3 md:mt-16 md:gap-5 lg:grid-cols-4">
+              {p.gallery.ids.map((id, i) => (
+                <li key={id} data-reveal style={{ "--d": i } as React.CSSProperties} className="relative aspect-[3/4] overflow-hidden rounded-[var(--radius-img)] bg-ice">
+                  <Media id={id} locale={locale} cover quality={90} sizes="(min-width: 1024px) 25vw, 50vw" />
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       )}
@@ -363,52 +380,65 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
         </section>
       )}
 
-      {/* Percurso: uma frase por fase, em escada, com a explicação e o que inclui; a duração fica no canto livre da escada.
-          As frases começam esbatidas e acendem uma a uma ao passar o meio do ecrã (a última fica a teal). */}
+      {/* Percurso: quatro passos numerados em cartões alinhados (1 coluna em telemóvel, 2 em tablet, 4 no desktop);
+          o último a teal. A duração fecha a secção numa faixa a toda a largura. */}
       <section id="como-funciona" aria-labelledby="percurso-title" className="bg-mist py-20 md:py-36">
         <div className="container-x">
-          <h2 id="percurso-title" data-reveal className="t-statement text-muted">
-            {s.how.title}
-          </h2>
-          {s.how.intro && (
-            <p data-reveal className="mt-3 max-w-[52ch] leading-relaxed text-grey">
-              {s.how.intro}
-            </p>
-          )}
-          <ScrollSpy mode="seen" className="spy-steps mt-12 grid gap-12 md:mt-20 md:gap-14 lg:grid-cols-12 lg:gap-x-6">
-            <ol className="contents">
-              {s.how.steps.map((st, i) => (
+          <div className="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-x-6">
+            <h2 id="percurso-title" data-reveal className="t-display lg:col-span-6">
+              {s.how.title}
+            </h2>
+            {s.how.intro && (
+              <p data-reveal className="max-w-[38ch] text-lg leading-relaxed text-ink lg:col-span-4 lg:col-start-9">
+                {s.how.intro}
+              </p>
+            )}
+          </div>
+          <ol className="mt-12 grid gap-4 md:mt-16 md:grid-cols-2 md:gap-5 lg:grid-cols-4">
+            {s.how.steps.map((st, i) => {
+              const last = i === s.how.steps.length - 1;
+              return (
                 <li
                   key={st.title}
                   data-reveal
-                  data-spy
-                  // Em telemóvel a escada desce em degraus de 3vw (a 6vw, o último degrau ficava com a lista apertada)
-                  style={{ "--d": i, "--step": i } as React.CSSProperties}
-                  className={cn("ps-[calc(var(--step)*3vw)] sm:ps-[calc(var(--step)*6vw)] lg:col-end-13 lg:!ps-0", stairs[i])}
+                  style={{ "--d": i } as React.CSSProperties}
+                  className={cn("flex flex-col rounded-[24px] p-6 md:p-7", last ? "on-dark bg-teal-strong text-white" : "bg-white")}
                 >
-                  <h3 className={cn("t-display spy-line", i === s.how.steps.length - 1 && "spy-line-last text-teal-strong")}>{st.line}</h3>
+                  <div className="flex items-center gap-3">
+                    <span
+                      aria-hidden
+                      className={cn(
+                        "flex size-10 shrink-0 items-center justify-center rounded-full font-display text-lg font-medium tabular-nums",
+                        last ? "bg-white text-teal-strong" : "bg-ice text-teal-strong",
+                      )}
+                    >
+                      {i + 1}
+                    </span>
+                    <span className={cn("text-[13px] font-semibold uppercase tracking-[0.08em]", last ? "text-white/80" : "text-muted")}>{st.title}</span>
+                  </div>
+                  <h3 className={cn("mt-6 font-display text-[1.65rem] leading-[1.08] tracking-[-0.02em] md:text-[1.85rem] lg:min-h-[2.16em]", !last && "text-ink")}>{st.line}</h3>
                   {st.details ? (
-                    <ul className="mt-4 max-w-[46ch] space-y-2">
+                    <ul className="mt-5 space-y-2.5">
                       {st.details.map((d) => (
-                        <li key={d} className="flex gap-3 text-lg leading-relaxed text-ink">
-                          <Check aria-hidden className="mt-1.5 size-[18px] shrink-0 text-teal" strokeWidth={2.25} />
+                        <li key={d} className={cn("flex gap-2.5 leading-relaxed", last ? "text-white/90" : "text-ink")}>
+                          <Check aria-hidden className={cn("mt-1 size-[17px] shrink-0", last ? "text-white" : "text-teal")} strokeWidth={2.25} />
                           {d}
                         </li>
                       ))}
                     </ul>
                   ) : (
-                    <p className="mt-3 max-w-[42ch] text-lg leading-relaxed text-ink">{st.text}</p>
+                    <p className={cn("mt-4 leading-relaxed", last ? "text-white/90" : "text-ink")}>{st.text}</p>
                   )}
                 </li>
-              ))}
-            </ol>
-            {s.duration.text && (
-              <div data-reveal className="lg:col-span-5 lg:col-start-1 lg:row-start-4 lg:self-end">
-                <h3 className="t-h3">{s.duration.title}</h3>
-                <p className="mt-2 max-w-[42ch] leading-relaxed text-grey">{s.duration.text}</p>
-              </div>
-            )}
-          </ScrollSpy>
+              );
+            })}
+          </ol>
+          {s.duration.text && (
+            <div data-reveal className="mt-4 flex flex-col gap-2 rounded-[24px] border border-line bg-white/60 p-6 md:mt-5 md:flex-row md:items-baseline md:gap-10 md:p-7">
+              <h3 className="t-h3 shrink-0">{s.duration.title}</h3>
+              <p className="max-w-[70ch] leading-relaxed text-grey">{s.duration.text}</p>
+            </div>
+          )}
         </div>
       </section>
 
@@ -439,7 +469,7 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
       {s.faq.length > 0 && (
         <section id="perguntas" aria-labelledby="faq-title" className="bg-white py-20 md:py-36">
           <div className="container-x grid gap-10 lg:grid-cols-12 lg:gap-x-6">
-            <h2 id="faq-title" data-reveal className="t-statement text-muted lg:col-span-4">
+            <h2 id="faq-title" data-reveal className="t-display lg:col-span-4">
               {sp.faq}
             </h2>
             <div data-reveal className="space-y-2 lg:col-span-8">

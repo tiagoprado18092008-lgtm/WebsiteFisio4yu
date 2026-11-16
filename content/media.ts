@@ -180,11 +180,12 @@ const items: MediaItem[] = [
     // Não há (ainda) foto da ecografia: entra a sala de avaliação, onde ela acontece.
     id: "service-eco",
     type: "image",
-    src: space.assessmentRoom,
-    ratio: "4/5",
-    alt: { pt: "Sala de avaliação da Fisio4you, com marquesa e equipamento", en: "Fisio4you assessment room, with a couch and equipment" },
-    brief: "Ideal: fisioterapeuta com sonda do ecógrafo, ecrã visível.",
-    position: "50% 60%",
+    // Foto da sessão de 16/11/2026 (IMG_8445, recortada para deixar o mural de jogadores de fora)
+    src: "/media/tratamentos/ecografia.webp",
+    ratio: "3/4",
+    alt: { pt: "Mário Barroso a fazer uma ecografia ao joelho de um utente, com a imagem no ecrã do ecógrafo", en: "Mário Barroso performing an ultrasound scan of a patient's knee, with the image on the scanner screen" },
+    brief: "Mário com a sonda do ecógrafo, ecrã visível (IMG_8445).",
+    position: "50% 45%",
   },
   {
     id: "service-gym",
@@ -273,9 +274,10 @@ const items: MediaItem[] = [
   {
     id: "wide-dermato",
     type: "image",
-    src: photo.angelaDermato,
+    src: "/media/tratamentos/dermato-vacuo.webp", // IMG_8349 (16/11/2026): a terapeuta com o aparelho de sucção, o tratamento que melhor mostra o serviço
     ratio: "3/4",
-    alt: { pt: "Angela Brazona, terapeuta corporal, com instrumentos de massagem em madeira", en: "Angela Brazona, body therapist, holding wooden massage tools" },
+    position: "50% 45%",
+    alt: { pt: "Terapeuta da Fisio4you a aplicar um aparelho de sucção numa utente deitada na marquesa", en: "Fisio4you therapist applying a suction device to a patient lying on the couch" },
     brief: "Foto do hero da dermatofuncional, inteira (3:4) ao lado do título: a Angela com os instrumentos em madeira.",
   },
   {
@@ -312,6 +314,25 @@ const items: MediaItem[] = [
     ratio: "3/4",
     alt: { pt: p.pt, en: p.en },
     brief: "Faixa de fotos da home.",
+  })),
+  // Dermatofuncional: sessão fotográfica de 16/11/2026 (Fotos/Angela, IMG_80xx–83xx), uma foto por tratamento no guia
+  // (CareGuide) (o topo usa a IMG_8349). Exportadas a 1800 px de largura máx., WebP 86.
+  ...[
+    { id: "care-pos-parto", file: "dermato-pos-parto", pos: "50% 45%", pt: "Terapeuta a trabalhar a parede abdominal de uma utente deitada na marquesa", en: "Therapist working on the abdominal wall of a patient lying on the couch" },
+    { id: "care-drenagem", file: "dermato-drenagem", pos: "50% 55%", pt: "Drenagem linfática manual na perna de uma utente", en: "Manual lymphatic drainage on a patient's leg" },
+    { id: "care-pos-operatorio", file: "dermato-pos-operatorio", pos: "50% 55%", pt: "Técnica manual suave no abdómen de uma utente", en: "Gentle manual technique on a patient's abdomen" },
+    { id: "care-lipedema", file: "dermato-manual", pos: "50% 50%", pt: "Manobras manuais com luvas na perna de uma utente", en: "Gloved manual techniques on a patient's leg" },
+    { id: "care-remodelacao", file: "dermato-madeira", pos: "50% 55%", pt: "Terapeuta a usar um instrumento de madeira na perna de uma utente", en: "Therapist using a wooden tool on a patient's leg" },
+    { id: "care-gordura-celulite-flacidez", file: "dermato-aparelho", pos: "50% 55%", pt: "Aparelho de tratamento dermatofuncional aplicado na coxa de uma utente", en: "Dermatofunctional treatment device applied to a patient's thigh" },
+    { id: "care-massagem-terapeutica", file: "dermato-massagem", pos: "50% 50%", pt: "Massagem terapêutica nas costas de uma utente", en: "Therapeutic massage on a patient's back" },
+  ].map<MediaItem>((p) => ({
+    id: p.id,
+    type: "image",
+    src: `/media/tratamentos/${p.file}.webp`,
+    ratio: "3/4",
+    position: p.pos,
+    alt: { pt: p.pt, en: p.en },
+    brief: "Dermatofuncional (sessão de 16/11/2026).",
   })),
   // Ainda em falta (não aparecem no site enquanto `src` for null)
   {
