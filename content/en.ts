@@ -632,6 +632,7 @@ export const en: Dict = {
         },
         lead: "Sports injuries, pain and rehab after surgery, with physiotherapist Mário Barroso.",
         heroWide: "wide-msk",
+        heroBeside: true,
         areas: true,
         person: {
           bio: "has been a physiotherapist for 16 years and runs Fisio4you. He leads musculoskeletal physiotherapy, from sports injuries to rehab after surgery.",

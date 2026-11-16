@@ -232,11 +232,15 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
             </div>
           </div>
         ) : (
-          <div className="container-x grid gap-12 md:gap-16 lg:grid-cols-12 lg:gap-x-6">
+          <div className="container-x">
+           <div className="svc-in">
+             <Breadcrumbs crumbs={crumbs} />
+           </div>
+           {/* Título e foto centrados um com o outro na vertical (pedido do utilizador, 16/11) */}
+           <div className="mt-10 grid gap-12 md:mt-12 md:gap-16 lg:grid-cols-12 lg:items-center lg:gap-x-12">
             <div className="svc-in flex flex-col lg:col-span-8">
-              <Breadcrumbs crumbs={crumbs} />
               {/* O título mede-se pela coluna (cqi), para a palavra mais longa caber inteira ao lado da foto */}
-              <div className="mt-10 md:mt-16 lg:mt-auto lg:pt-16 lg:[container-type:inline-size]" style={{ "--i": 1 } as React.CSSProperties}>
+              <div className="lg:[container-type:inline-size]" style={{ "--i": 1 } as React.CSSProperties}>
                 <h1 className="t-poster lg:text-[min(11.5cqi,9.25rem)]">{s.heroTitle}</h1>
                 <p className="mt-8 max-w-[34rem] text-lg leading-relaxed text-ink md:mt-10 md:text-xl">{p.lead}</p>
               </div>
@@ -246,6 +250,7 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
                 <Media id={p.heroWide} locale={locale} cover priority sizes="(min-width: 1480px) 460px, (min-width: 1024px) 31vw, (min-width: 640px) 448px, 100vw" />
               </div>
             </div>
+           </div>
           </div>
         )}
       </section>

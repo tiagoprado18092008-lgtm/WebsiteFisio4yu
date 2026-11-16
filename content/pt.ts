@@ -860,6 +860,7 @@ export const pt = {
         },
         lead: "Lesões desportivas, dor e reabilitação depois de uma cirurgia, com o fisioterapeuta Mário Barroso.",
         heroWide: "wide-msk",
+        heroBeside: true,
         areas: true,
         person: {
           bio: "é fisioterapeuta há 16 anos e dirige a Fisio4you. É o responsável pela fisioterapia musculoesquelética, das lesões desportivas à reabilitação depois de uma cirurgia.",

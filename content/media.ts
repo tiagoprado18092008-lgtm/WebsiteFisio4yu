@@ -257,11 +257,12 @@ const items: MediaItem[] = [
   {
     id: "wide-msk",
     type: "image",
-    src: photo.treatmentRoom,
+    // Topo ao lado do título, como na dermatofuncional (16/11/2026): foto vertical da sessão nova (IMG_8455)
+    src: "/media/tratamentos/mario-sala-tratamento.webp",
     ratio: "3/4",
-    alt: { pt: "Mário Barroso a fazer terapia manual a um utente deitado na marquesa", en: "Mário Barroso giving manual therapy to a patient lying on the couch" },
-    brief: "Foto larga do topo da musculoesquelética (as mãos do Mário no utente, na marquesa).",
-    position: "50% 46%",
+    alt: { pt: "Mário Barroso a tratar a perna de um utente deitado na marquesa, com o ecógrafo e o aparelho de eletroterapia ao lado", en: "Mário Barroso treating the leg of a patient lying on the couch, with the ultrasound and electrotherapy units beside him" },
+    brief: "Topo da musculoesquelética: o Mário na sala de tratamento.",
+    position: "50% 50%",
   },
   {
     // Painel da musculoesquelética na secção das duas áreas, no lugar da «Foto hero» (1672×941), que ficava mole no
