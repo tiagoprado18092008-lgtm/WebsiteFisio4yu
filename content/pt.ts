@@ -791,7 +791,7 @@ export const pt = {
                 uses: ["Tendão de Aquiles", "Tendinopatia rotuliana", "Cotovelo de tenista"],
               },
               {
-                id: "mesoterapia", name: "Mesoterapia",
+                id: "mesoterapia", name: "Mesoterapia", mediaId: "technique-epte", // sem foto de mesoterapia: fica a da EPTE até o cliente enviar uma
                 text: "Microinjeções de pequenas quantidades de substâncias terapêuticas na zona a tratar, para aliviar a dor, reduzir a inflamação e ajudar a recuperar os tecidos.",
                 uses: ["Dores musculares", "Tendinopatias", "Contraturas", "Inflamação"],
               },

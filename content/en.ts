@@ -564,7 +564,7 @@ export const en: Dict = {
                 uses: ["Achilles tendon", "Patellar tendinopathy", "Tennis elbow"],
               },
               {
-                id: "mesoterapia", name: "Mesotherapy",
+                id: "mesoterapia", name: "Mesotherapy", mediaId: "technique-epte", // sem foto de mesoterapia: fica a da EPTE até o cliente enviar uma
                 text: "Micro-injections of small amounts of therapeutic substances into the area being treated, to relieve pain, reduce inflammation and help tissue recover.",
                 uses: ["Muscle pain", "Tendinopathies", "Contractures", "Inflammation"],
               },

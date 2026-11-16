@@ -257,11 +257,11 @@ const items: MediaItem[] = [
   {
     id: "wide-msk",
     type: "image",
-    // Topo ao lado do título, como na dermatofuncional (16/11/2026): foto vertical da sessão nova (IMG_8455)
-    src: "/media/tratamentos/mario-sala-tratamento.webp",
+    // Topo ao lado do título: volta a foto inicial do serviço (IMG_7622), vertical, a pedido do utilizador (16/11/2026)
+    src: photo.treatmentRoom,
     ratio: "3/4",
-    alt: { pt: "Mário Barroso a tratar a perna de um utente deitado na marquesa, com o ecógrafo e o aparelho de eletroterapia ao lado", en: "Mário Barroso treating the leg of a patient lying on the couch, with the ultrasound and electrotherapy units beside him" },
-    brief: "Topo da musculoesquelética: o Mário na sala de tratamento.",
+    alt: { pt: "Mário Barroso a fazer terapia manual a um utente deitado na marquesa", en: "Mário Barroso giving manual therapy to a patient lying on the couch" },
+    brief: "Topo da musculoesquelética: as mãos do Mário no utente, na marquesa.",
     position: "50% 50%",
   },
   {
