@@ -983,7 +983,7 @@ export const pt = {
         heroBeside: true,
         areas: true,
         about: {
-          statement: ["A ", "fisioterapia dermatofuncional", " une saúde e estética: recupera a função do corpo e cuida também da sua aparência e bem-estar."],
+          statement: ["A ", "fisioterapia dermatofuncional", " une saúde e estética: recupera a função do corpo e cuida também da sua aparência e bem‑estar."],
           text: [
             "Cada corpo é único. Por isso, cada tratamento começa por uma avaliação individualizada, que identifica as necessidades e os objetivos de cada pessoa e define o plano mais adequado.",
             "Acreditamos que a estética deve caminhar lado a lado com a saúde e o bem-estar, do pós-parto ao pós-operatório, do lipedema à remodelação corporal.",
@@ -1003,7 +1003,7 @@ export const pt = {
             {
               id: "pos-parto",
               label: "Pós-parto",
-              title: "Reabilitação abdominal pós-parto",
+              title: "Reabilitação abdominal pós‑parto",
               tagline: "Saúde, recuperação e estética em harmonia.",
               summary: "Após o parto, a musculatura abdominal, a pele, a postura e o pavimento pélvico podem apresentar alterações que merecem cuidados especializados. A recuperação integra duas dimensões: a saúde e a estética.",
               groups: {

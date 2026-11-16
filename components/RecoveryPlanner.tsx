@@ -96,7 +96,7 @@ export function RecoveryPlanner({ plans, parts, plansTitle, partsTitle, labels, 
               className={cn(
                 "rounded-[18px] p-5 transition-[background-color,opacity,box-shadow]",
                 ease,
-                inPlan ? "bg-white/[0.1] ring-1 ring-inset ring-white/25" : "opacity-45 ring-1 ring-inset ring-white/10",
+                inPlan ? "bg-white/[0.1] ring-1 ring-inset ring-white/25" : "opacity-70 ring-1 ring-inset ring-white/10",
               )}
             >
               <dt className="flex items-center gap-2.5 font-medium">

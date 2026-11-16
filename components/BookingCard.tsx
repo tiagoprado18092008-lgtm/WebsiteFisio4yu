@@ -19,8 +19,8 @@ export function BookingCard({ locale, waMessage, location, className, withAddres
       <p className="font-display text-2xl tracking-tight">{b.title}</p>
       <p className="mt-1 text-[15px] text-white/85">{b.text}</p>
       <div className="mt-5 space-y-2">
-        <a href={site.phoneHref} data-track="phone" data-location={`${location}-cartao`} className={cn(row, "hover:bg-white/15")}>
-          <PhoneIcon className="size-4 shrink-0 text-ice" />
+        <a href={site.phoneHref} data-track="phone" data-location={`${location}-cartao`} className={cn(row, "group transition-[background-color,translate] duration-300 hover:translate-x-1 hover:bg-white/15 motion-reduce:hover:translate-x-0")}>
+          <PhoneIcon className="size-4 shrink-0 text-ice transition-transform duration-300 group-hover:scale-115" />
           <span className="leading-tight">
             {t.common.phoneDisplay}
             <span className="block text-xs text-white/80">{t.common.phoneNote}</span>
@@ -34,14 +34,14 @@ export function BookingCard({ locale, waMessage, location, className, withAddres
           </span>
         </p>
         {withAddress && (
-          <a href={mapsDirections} target="_blank" rel="noopener noreferrer" className={cn(row, "hover:bg-white/15")}>
-            <MapPin className="size-4 shrink-0 text-ice" aria-hidden />
+          <a href={mapsDirections} target="_blank" rel="noopener noreferrer" className={cn(row, "group transition-[background-color,translate] duration-300 hover:translate-x-1 hover:bg-white/15 motion-reduce:hover:translate-x-0")}>
+            <MapPin className="size-4 shrink-0 text-ice transition-transform duration-300 group-hover:scale-115" aria-hidden />
             <span>{fullAddress}</span>
           </a>
         )}
         {withEmail && (
-          <a href={`mailto:${site.email}`} className={cn(row, "hover:bg-white/15")}>
-            <Mail className="size-4 shrink-0 text-ice" aria-hidden />
+          <a href={`mailto:${site.email}`} className={cn(row, "group transition-[background-color,translate] duration-300 hover:translate-x-1 hover:bg-white/15 motion-reduce:hover:translate-x-0")}>
+            <Mail className="size-4 shrink-0 text-ice transition-transform duration-300 group-hover:scale-115" aria-hidden />
             <span className="break-all">{site.email}</span>
           </a>
         )}

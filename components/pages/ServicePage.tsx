@@ -402,13 +402,14 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
                   key={st.title}
                   data-reveal
                   style={{ "--d": i } as React.CSSProperties}
-                  className={cn("flex flex-col rounded-[24px] p-6 md:p-7", last ? "on-dark bg-teal-strong text-white" : "bg-white")}
+                  className="flex"
                 >
+                  <div className={cn("card-hover card-lift flex w-full flex-col rounded-[24px] p-6 md:p-7", last ? "on-dark bg-teal-strong text-white" : "bg-white")}>
                   <div className="flex items-center gap-3">
                     <span
                       aria-hidden
                       className={cn(
-                        "flex size-10 shrink-0 items-center justify-center rounded-full font-display text-lg font-medium tabular-nums",
+                        "card-icon flex size-10 shrink-0 items-center justify-center rounded-full font-display text-lg font-medium tabular-nums",
                         last ? "bg-white text-teal-strong" : "bg-ice text-teal-strong",
                       )}
                     >
@@ -416,7 +417,7 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
                     </span>
                     <span className={cn("text-[13px] font-semibold uppercase tracking-[0.08em]", last ? "text-white/80" : "text-muted")}>{st.title}</span>
                   </div>
-                  <h3 className={cn("mt-6 font-display text-[1.65rem] leading-[1.08] tracking-[-0.02em] md:text-[1.85rem] lg:min-h-[2.16em]", !last && "text-ink")}>{st.line}</h3>
+                  <h3 className={cn("mt-6 font-display text-[1.65rem] leading-[1.08] tracking-[-0.02em] md:text-[1.85rem] lg:min-h-[2.16em]", !last && "text-ink")}><span className="card-title">{st.line}</span></h3>
                   {st.details ? (
                     <ul className="mt-5 space-y-2.5">
                       {st.details.map((d) => (
@@ -429,12 +430,13 @@ export function ServicePage({ locale, service }: { locale: Locale; service: Serv
                   ) : (
                     <p className={cn("mt-4 leading-relaxed", last ? "text-white/90" : "text-ink")}>{st.text}</p>
                   )}
+                  </div>
                 </li>
               );
             })}
           </ol>
           {s.duration.text && (
-            <div data-reveal className="mt-4 flex flex-col gap-2 rounded-[24px] border border-line bg-white/60 p-6 md:mt-5 md:flex-row md:items-baseline md:gap-10 md:p-7">
+            <div data-reveal className="mt-4 flex flex-col gap-2 rounded-[24px] border border-line bg-white/60 p-6 transition-colors duration-300 hover:border-teal/40 hover:bg-white md:mt-5 md:flex-row md:items-baseline md:gap-10 md:p-7">
               <h3 className="t-h3 shrink-0">{s.duration.title}</h3>
               <p className="max-w-[70ch] leading-relaxed text-grey">{s.duration.text}</p>
             </div>

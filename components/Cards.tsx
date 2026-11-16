@@ -85,8 +85,8 @@ export function TeamMember({ locale, mediaId, name, role, focus }: {
 }) {
   return (
     <figure className="card-hover card-lift grid h-full gap-6 rounded-[30px] bg-white p-5 shadow-[0_18px_40px_-30px_rgba(14,76,87,.45)] ring-1 ring-line sm:grid-cols-[minmax(0,180px)_1fr] sm:items-center sm:p-6 xl:grid-cols-[minmax(0,210px)_1fr]">
-      <div className="card-photo w-full max-w-[260px] overflow-hidden rounded-[22px]">
-        <Media id={mediaId} locale={locale} compact sizes="(min-width: 640px) 210px, 260px" />
+      <div className="card-photo w-full overflow-hidden rounded-[22px]">
+        <Media id={mediaId} locale={locale} compact sizes="(min-width: 640px) 210px, calc(100vw - 4rem)" />
       </div>
       <figcaption>
         <p className="font-display text-2xl font-medium leading-tight tracking-tight md:text-[28px]">

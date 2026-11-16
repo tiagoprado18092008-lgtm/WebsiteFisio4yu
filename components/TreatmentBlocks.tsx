@@ -146,12 +146,13 @@ export function TreatmentBlocks({ data, locale, waLocation }: { data: Blocks; lo
           </div>
           <div className="mt-12 grid gap-6 md:mt-16 md:grid-cols-2">
             {sport.items.map((it, i) => (
-              <article key={it.id} id={it.id} data-reveal style={{ "--d": i } as React.CSSProperties} className="overflow-hidden rounded-[var(--radius-img)] bg-mist">
-                <div className="relative aspect-[3/2] overflow-hidden bg-ice">
+              <div key={it.id} data-reveal style={{ "--d": i } as React.CSSProperties} className="flex">
+              <article id={it.id} className="card-hover card-lift w-full overflow-hidden rounded-[var(--radius-img)] bg-mist">
+                <div className="card-photo relative aspect-[3/2] overflow-hidden bg-ice">
                   <Media id={it.mediaId} locale={locale} cover sizes="(min-width: 1480px) 690px, (min-width: 768px) 48vw, 100vw" />
                 </div>
                 <div className="p-6 md:p-8 lg:p-10">
-                  <h3 className="font-display text-[clamp(1.6rem,1.25rem+1vw,2.2rem)] leading-[1.08] tracking-[-0.02em] text-ink">{it.title}</h3>
+                  <h3 className="font-display text-[clamp(1.6rem,1.25rem+1vw,2.2rem)] leading-[1.08] tracking-[-0.02em] text-ink"><span className="card-title">{it.title}</span></h3>
                   <p className="mt-4 max-w-[46ch] leading-relaxed text-ink">{it.text}</p>
                   <ul className="mt-6 space-y-2.5">
                     {it.points.map((pt) => (
@@ -163,6 +164,7 @@ export function TreatmentBlocks({ data, locale, waLocation }: { data: Blocks; lo
                   </ul>
                 </div>
               </article>
+              </div>
             ))}
           </div>
         </div>
