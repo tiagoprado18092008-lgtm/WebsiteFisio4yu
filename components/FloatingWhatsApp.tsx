@@ -19,12 +19,15 @@ const now = () => new Date().toLocaleTimeString("pt-PT", { hour: "2-digit", minu
 /**
  * Botão flutuante (tablet/desktop) que abre uma janela de chat ao estilo WhatsApp: saudação, respostas rápidas e
  * campo livre. Ao enviar, mostra "a escrever…" e abre o WhatsApp com a mensagem. O botão aparece depois do hero e
- * esconde-se enquanto um bloco de marcação (`[data-hide-fab]`) está no ecrã, exceto com a janela aberta.
+ * esconde-se enquanto um bloco de marcação (`[data-hide-fab]`) está no ecrã — mas só até ao 1.º clique: a partir
+ * daí fica sempre visível nessa página.
  */
 export function FloatingWhatsApp({ waMessage, t }: { waMessage: string; t: Dict["chat"] }) {
   const [scrolled, setScrolled] = useState(false);
   const [covered, setCovered] = useState(false);
   const [open, setOpen] = useState(false);
+  // Depois do 1.º clique o botão fica sempre visível: fechar a janela nunca o pode fazer desaparecer.
+  const [engaged, setEngaged] = useState(false);
   const [rows, setRows] = useState<Row[]>([]);
   const [quick, setQuick] = useState(true);
   const [typing, setTyping] = useState(false);
@@ -52,7 +55,7 @@ export function FloatingWhatsApp({ waMessage, t }: { waMessage: string; t: Dict[
     };
   }, []);
 
-  const show = open || (scrolled && !covered);
+  const show = open || engaged || (scrolled && !covered);
 
   // Aviso "Tem alguma questão?" uma vez por sessão, pouco depois de o botão aparecer.
   useEffect(() => {
@@ -96,6 +99,7 @@ export function FloatingWhatsApp({ waMessage, t }: { waMessage: string; t: Dict[
 
   const toggle = () => {
     setTooltip(false);
+    setEngaged(true);
     if (!open) {
       setDot(false);
       if (rows.length === 0) add({ from: "in", text: t.greeting });
