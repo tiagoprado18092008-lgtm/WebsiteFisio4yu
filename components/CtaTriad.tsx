@@ -9,7 +9,7 @@ import { MapEmbed } from "./MapEmbed";
  * Bloco final: painel teal com título + cartão de marcação sobreposto.
  * O mapa (iframe do Google) só entra nos Contactos (`withMap`); nas outras páginas fica uma linha com a morada.
  * `photo={false}` (página de contactos): só cartão (com email) e mapa, lado a lado, sem repetir o título.
- * `data-hide-fab`: o botão flutuante de WhatsApp esconde-se enquanto este bloco está visível.
+ * `data-hide-fab`: já não tem efeito — o botão flutuante de WhatsApp está sempre visível.
  */
 export function CtaTriad({ locale, waMessage, location = "cta-final", withMap = false, photo = true }: {
   locale: Locale; waMessage: string; location?: string; withMap?: boolean; photo?: boolean;

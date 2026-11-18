@@ -18,16 +18,12 @@ const now = () => new Date().toLocaleTimeString("pt-PT", { hour: "2-digit", minu
 
 /**
  * Botão flutuante (tablet/desktop) que abre uma janela de chat ao estilo WhatsApp: saudação, respostas rápidas e
- * campo livre. Ao enviar, mostra "a escrever…" e abre o WhatsApp com a mensagem. O botão aparece depois do hero e
- * esconde-se enquanto um bloco de marcação (`[data-hide-fab]`) está no ecrã — mas só até ao 1.º clique: a partir
- * daí fica sempre visível nessa página.
+ * campo livre. Ao enviar, mostra "a escrever…" e abre o WhatsApp com a mensagem.
+ * O botão está SEMPRE visível (desde o topo, em todas as secções) — não voltar a escondê-lo por scroll nem por
+ * blocos no ecrã: isso fez o botão "desaparecer" várias vezes.
  */
 export function FloatingWhatsApp({ waMessage, t }: { waMessage: string; t: Dict["chat"] }) {
-  const [scrolled, setScrolled] = useState(false);
-  const [covered, setCovered] = useState(false);
   const [open, setOpen] = useState(false);
-  // Depois do 1.º clique o botão fica sempre visível: fechar a janela nunca o pode fazer desaparecer.
-  const [engaged, setEngaged] = useState(false);
   const [rows, setRows] = useState<Row[]>([]);
   const [quick, setQuick] = useState(true);
   const [typing, setTyping] = useState(false);
@@ -39,27 +35,9 @@ export function FloatingWhatsApp({ waMessage, t }: { waMessage: string; t: Dict[
   const body = useRef<HTMLDivElement>(null);
   const nextId = useRef(0);
 
+  // Aviso "Tem alguma questão?" uma vez por sessão, pouco depois de a página abrir.
   useEffect(() => {
-    const on = () => setScrolled(window.scrollY > window.innerHeight * 0.75);
-    on();
-    window.addEventListener("scroll", on, { passive: true });
-    const visible = new Set<Element>();
-    const io = new IntersectionObserver((entries) => {
-      for (const e of entries) (e.isIntersecting ? visible.add(e.target) : visible.delete(e.target));
-      setCovered(visible.size > 0);
-    });
-    document.querySelectorAll("[data-hide-fab]").forEach((el) => io.observe(el));
-    return () => {
-      window.removeEventListener("scroll", on);
-      io.disconnect();
-    };
-  }, []);
-
-  const show = open || engaged || (scrolled && !covered);
-
-  // Aviso "Tem alguma questão?" uma vez por sessão, pouco depois de o botão aparecer.
-  useEffect(() => {
-    if (!show || open) return;
+    if (open) return;
     let hide: number | undefined;
     const wait = window.setTimeout(() => {
       try {
@@ -74,7 +52,7 @@ export function FloatingWhatsApp({ waMessage, t }: { waMessage: string; t: Dict[
       window.clearTimeout(wait);
       window.clearTimeout(hide);
     };
-  }, [show, open]);
+  }, [open]);
 
   useEffect(() => {
     if (!open) return;
@@ -99,7 +77,6 @@ export function FloatingWhatsApp({ waMessage, t }: { waMessage: string; t: Dict[
 
   const toggle = () => {
     setTooltip(false);
-    setEngaged(true);
     if (!open) {
       setDot(false);
       if (rows.length === 0) add({ from: "in", text: t.greeting });
@@ -127,7 +104,7 @@ export function FloatingWhatsApp({ waMessage, t }: { waMessage: string; t: Dict[
   const replies = [{ label: t.book, msg: waMessage }, ...t.quick];
 
   return (
-    <div className="fixed bottom-6 right-6 z-40 hidden md:block">
+    <div className="fixed bottom-6 right-6 z-[65] hidden md:block">
       <div
         role="status"
         className={cn(
@@ -262,11 +239,7 @@ export function FloatingWhatsApp({ waMessage, t }: { waMessage: string; t: Dict[
         onClick={toggle}
         aria-label={open ? t.close : t.open}
         aria-expanded={open}
-        tabIndex={show ? 0 : -1}
-        className={cn(
-          "relative flex size-16 items-center justify-center rounded-full bg-[linear-gradient(135deg,#25d366,#128c7e)] text-white shadow-[0_10px_30px_-6px_rgba(18,140,126,.55)] transition-all duration-300 hover:-translate-y-0.5 hover:scale-105",
-          show ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0",
-        )}
+        className="relative flex size-16 items-center justify-center rounded-full bg-[linear-gradient(135deg,#25d366,#128c7e)] text-white shadow-[0_10px_30px_-6px_rgba(18,140,126,.55)] transition-all duration-300 hover:-translate-y-0.5 hover:scale-105"
       >
         {!open && <span className="wa-pulse absolute inset-0 rounded-full border-2 border-whatsapp" aria-hidden />}
         {open ? <X className="relative size-7" strokeWidth={2.4} aria-hidden /> : <WhatsAppIcon className="relative size-8" />}
