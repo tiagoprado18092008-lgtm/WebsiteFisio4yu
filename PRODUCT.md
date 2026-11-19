@@ -39,7 +39,7 @@ A proposta combina um lado **desportivo/de performance** com um lado **estético
 - **Serviços (só estes dois):**
   1. **Fisioterapia Musculoesquelética**, que inclui ecografia e técnicas ecoguiadas, ginásio de reabilitação e crioterapia/sauna;
   2. **Fisioterapia Dermatofuncional**.
-- **Consultas** (Pilates Clínico, Psicologia, Fisiatria, Osteopatia): cada uma com página genérica em `/consultas`, a pedido do cliente (09/11/2026). O menu tem «Fisioterapia» e «Consultas» em vez de «Serviços».
+- **Consultas** (Treino Personalizado, Psicologia, Fisiatria, Osteopatia): cada uma com página genérica em `/consultas`, a pedido do cliente (09/11/2026). O Pilates Clínico foi trocado por Treino Personalizado, com personal trainer, a pedido do Mário (19/11/2026). O menu tem «Fisioterapia» e «Consultas» em vez de «Serviços».
 - Stack existente: Next.js 15 (App Router, SSG), TypeScript, Tailwind CSS 4, deploy previsto na Vercel com o domínio `fisio4you.pt`.
 - Todo o texto vive em `content/pt.ts` e `content/en.ts`; fotos e vídeos em `content/media.ts` (placeholders até chegarem as fotos profissionais).
 - Requisitos legais em Portugal: Livro de Reclamações Eletrónico, registo ERS e licença no rodapé, RGPD (privacidade, cookies, consentimento antes de GTM e Google Maps), nota "(chamada para rede móvel nacional)" junto aos telefones.

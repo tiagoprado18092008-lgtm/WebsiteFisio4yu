@@ -292,11 +292,11 @@ export const pt = {
         "Fisioterapia musculoesquelética e dermatofuncional em Portimão: lesões desportivas, dor, reabilitação após cirurgia, pós-parto e diástase abdominal.",
     },
     consultations: {
-      title: "Consultas em Portimão: Pilates Clínico, Psicologia, Fisiatria e Osteopatia | Fisio4you",
-      description: "Consultas de Pilates Clínico, Psicologia, Fisiatria e Osteopatia na Fisio4you, em Portimão. Saiba o que trata cada uma e marque a sua consulta.",
+      title: "Consultas em Portimão: Treino Personalizado, Psicologia, Fisiatria e Osteopatia | Fisio4you",
+      description: "Consultas de Treino Personalizado, Psicologia, Fisiatria e Osteopatia na Fisio4you, em Portimão. Saiba o que trata cada uma e marque a sua consulta.",
     },
     comingSoon: {
-      title: "Em breve: Fisiatria, Osteopatia, Pilates Clínico e Psicologia | Fisio4you",
+      title: "Em breve: Fisiatria, Osteopatia, Treino Personalizado e Psicologia | Fisio4you",
       description: "Novas especialidades a chegar à Fisio4you em Portimão. Peça para ser avisado por WhatsApp.",
     },
     about: {
@@ -1383,21 +1383,21 @@ export const pt = {
   // preços nem técnicas específicas por confirmar.
   consultations: {
     title: "Consultas",
-    sub: "Pilates Clínico, Psicologia, Fisiatria e Osteopatia. Conheça o que trata cada consulta e escolha a que procura.",
+    sub: "Treino Personalizado, Psicologia, Fisiatria e Osteopatia. Conheça o que trata cada consulta e escolha a que procura.",
     available: "Consultas disponíveis",
     others: "Outras consultas",
     items: {
-      pilates: {
-        name: "Pilates Clínico",
-        short: "Exercício orientado por profissionais de saúde, para melhorar o controlo do movimento, a força e a postura.",
-        lead: "O Pilates Clínico adapta os princípios do método Pilates às necessidades de saúde de cada pessoa, para melhorar o controlo do movimento, a força e a postura.",
+      training: {
+        name: "Treino Personalizado",
+        short: "Treino individual orientado por um personal trainer, com um plano ajustado aos seus objetivos e à sua condição física.",
+        lead: "O Treino Personalizado é acompanhado por um personal trainer, com um plano feito à medida dos seus objetivos, da sua condição física e do seu ritmo.",
         sections: [
-          { title: "O que é o Pilates Clínico", text: ["É uma forma de exercício orientada por profissionais de saúde. Parte do método Pilates, mas os exercícios são escolhidos e ajustados em função do estado de saúde, dos objetivos e da evolução de cada pessoa.", "O trabalho incide sobre a respiração, o controlo do tronco, a mobilidade e a força, com atenção à qualidade de cada movimento."] },
-          { title: "Em que situações pode ajudar", list: ["Dor lombar e cervical", "Alterações da postura", "Falta de força, mobilidade ou equilíbrio", "Continuação do exercício após a reabilitação", "Gravidez e pós-parto, com a devida indicação"] },
-          { title: "Como funciona", text: ["O acompanhamento começa por perceber a sua história clínica, as suas limitações e o que pretende alcançar. A partir daí, são definidos os exercícios adequados, que evoluem à medida que ganha controlo e confiança no movimento."] },
-          { title: "Pilates Clínico e reabilitação", text: ["Pode complementar um processo de reabilitação ou ajudar a manter os ganhos depois de este terminar. Se tem uma lesão ou um problema de saúde, leve os exames ou relatórios médicos que tiver, para que o exercício seja ajustado à sua situação."] },
+          { title: "O que é o Treino Personalizado", text: ["É treino individual, acompanhado do início ao fim da sessão por um personal trainer. Os exercícios, as cargas e a progressão são definidos para si, e não a partir de um plano genérico.", "O treino decorre no ginásio da Fisio4you, com o acompanhamento necessário para cada exercício ser feito com boa técnica e em segurança."] },
+          { title: "Para quem é", list: ["Quem quer começar a treinar com acompanhamento", "Quem quer ganhar força, resistência ou mobilidade", "Quem quer melhorar a composição corporal", "Quem terminou a reabilitação e quer continuar a treinar", "Quem pratica desporto e quer melhorar a condição física"] },
+          { title: "Como funciona", text: ["A primeira sessão serve para conhecer os seus objetivos, o seu historial de treino e eventuais limitações. A partir daí, o personal trainer define o plano e ajusta-o à medida que evolui."] },
+          { title: "Treino e fisioterapia", text: ["Se está a recuperar de uma lesão ou terminou há pouco tempo a fisioterapia, o treino pode ser ajustado em articulação com a equipa da clínica. Se tiver exames ou relatórios médicos, leve-os consigo."] },
         ],
-        meta: { title: "Pilates Clínico em Portimão | Fisio4you", description: "Pilates Clínico em Portimão: exercício orientado por profissionais de saúde para melhorar o controlo do movimento, a força e a postura." },
+        meta: { title: "Treino Personalizado em Portimão | Fisio4you", description: "Treino Personalizado em Portimão: treino individual com personal trainer, plano à medida dos seus objetivos e acompanhamento em cada sessão." },
       },
       psychology: {
         name: "Psicologia",
@@ -1446,7 +1446,7 @@ export const pt = {
     items: [
       { icon: "stethoscope", name: "Fisiatria", text: "Consulta médica de medicina física e de reabilitação, para diagnóstico e orientação do plano de reabilitação." },
       { icon: "bone", name: "Osteopatia", text: "Abordagem manual centrada na mobilidade das articulações e tecidos." },
-      { icon: "flower", name: "Pilates Clínico", text: "Exercício orientado por profissionais de saúde para controlo, força e postura." },
+      { icon: "dumbbell", name: "Treino Personalizado", text: "Treino individual com personal trainer, ajustado aos seus objetivos." },
       { icon: "brain", name: "Psicologia", text: "Apoio psicológico, incluindo na gestão da dor e no regresso ao desporto após lesão." },
     ] as { icon: IconName; name: string; text: string }[],
   },

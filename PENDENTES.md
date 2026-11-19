@@ -88,7 +88,7 @@ Tudo o que no site aparece como `[[ ]]` (ou tem um comentário `[[ ]]` no códig
 
 ## ✅ Decisões registadas
 
-- **Consultas** (Pilates Clínico, Psicologia, Fisiatria, Osteopatia): páginas em `/consultas`, com texto genérico. A confirmar com o cliente: os nomes das quatro, se já se podem marcar, os profissionais e o texto clínico e as técnicas de cada consulta. São páginas só de texto, sem fotos, a pedido do cliente.
+- **Consultas** (Treino Personalizado, Psicologia, Fisiatria, Osteopatia; Pilates Clínico trocado a 19/11): páginas em `/consultas`, com texto genérico. A confirmar com o cliente: os nomes das quatro, se já se podem marcar, os profissionais (incluindo o nome do personal trainer) e o texto clínico e as técnicas de cada consulta. São páginas só de texto, sem fotos, a pedido do cliente.
 - **16 anos de experiência:** são do Mário.
 - **Hero sem vídeo** (pedido do cliente): foto de tratamento. Os vídeos (entrevistas do Mário e da Angela, testemunho do Pedro Senra, circuito de recuperação) estão na home, na página Sobre e nas páginas de serviço, e só tocam quando se carrega no play. Na home, a antiga secção de vídeos deu lugar à "A clínica no Instagram" (4 posts que abrem no Instagram); as entrevistas passaram para os cartões da equipa.
 - **Fotos com o mural de jogadores famosos em destaque** ficam de fora (direitos de imagem). Ver `MEDIA.md`.

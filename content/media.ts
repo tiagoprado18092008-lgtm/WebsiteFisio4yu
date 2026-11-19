@@ -352,8 +352,8 @@ const items: MediaItem[] = [
     { id: "care-pos-operatorio", file: "dermato-pos-operatorio", pos: "50% 55%", pt: "Técnica manual suave no abdómen de uma utente", en: "Gentle manual technique on a patient's abdomen" },
     { id: "care-lipedema", file: "dermato-manual", pos: "50% 50%", pt: "Manobras manuais com luvas na perna de uma utente", en: "Gloved manual techniques on a patient's leg" },
     { id: "care-remodelacao", file: "dermato-madeira", pos: "50% 55%", pt: "Terapeuta a usar um instrumento de madeira na perna de uma utente", en: "Therapist using a wooden tool on a patient's leg" },
-    { id: "care-gordura-celulite-flacidez", file: "dermato-aparelho", pos: "50% 55%", pt: "Aparelho de tratamento dermatofuncional aplicado na coxa de uma utente", en: "Dermatofunctional treatment device applied to a patient's thigh" },
-    { id: "care-massagem-terapeutica", file: "dermato-massagem", pos: "50% 50%", pt: "Massagem terapêutica nas costas de uma utente", en: "Therapeutic massage on a patient's back" },
+    { id: "care-gordura-celulite-flacidez", file: "dermato-gordura", pos: "50% 50%", pt: "Terapeuta a trabalhar manualmente a anca e o flanco de uma utente deitada", en: "Therapist working manually on the hip and flank of a patient lying down" }, // IMG_8393
+    { id: "care-massagem-terapeutica", file: "dermato-massagem-costas", pos: "50% 60%", pt: "Massagem terapêutica nas costas de uma utente deitada de barriga para baixo", en: "Therapeutic massage on the back of a patient lying face down" }, // IMG_8334
   ].map<MediaItem>((p) => ({
     id: p.id,
     type: "image",

@@ -81,11 +81,11 @@ export const en: Dict = {
         "Musculoskeletal and dermatofunctional physiotherapy in Portimão: sports injuries, pain, rehab after surgery, postnatal care and diastasis recti.",
     },
     consultations: {
-      title: "Consultations in Portimão: Clinical Pilates, Psychology, Physical Medicine and Osteopathy | Fisio4you",
-      description: "Clinical Pilates, Psychology, Physical Medicine and Osteopathy consultations at Fisio4you in Portimão. See what each one treats and book your appointment.",
+      title: "Consultations in Portimão: Personal Training, Psychology, Physical Medicine and Osteopathy | Fisio4you",
+      description: "Personal Training, Psychology, Physical Medicine and Osteopathy consultations at Fisio4you in Portimão. See what each one treats and book your appointment.",
     },
     comingSoon: {
-      title: "Coming soon: Physical Medicine, Osteopathy, Clinical Pilates and Psychology | Fisio4you",
+      title: "Coming soon: Physical Medicine, Osteopathy, Personal Training and Psychology | Fisio4you",
       description: "New specialities coming to Fisio4you in Portimão. Ask to be notified on WhatsApp.",
     },
     about: {
@@ -1149,21 +1149,21 @@ export const en: Dict = {
 
   consultations: {
     title: "Consultations",
-    sub: "Clinical Pilates, Psychology, Physical Medicine and Osteopathy. See what each consultation treats and choose the one you need.",
+    sub: "Personal Training, Psychology, Physical Medicine and Osteopathy. See what each consultation treats and choose the one you need.",
     available: "Available consultations",
     others: "Other consultations",
     items: {
-      pilates: {
-        name: "Clinical Pilates",
-        short: "Exercise led by health professionals to improve movement control, strength and posture.",
-        lead: "Clinical Pilates adapts the principles of the Pilates method to each person's health needs, to improve movement control, strength and posture.",
+      training: {
+        name: "Personal Training",
+        short: "One-to-one training with a personal trainer, with a plan adjusted to your goals and fitness level.",
+        lead: "Personal Training is led by a personal trainer, with a plan built around your goals, your fitness level and your pace.",
         sections: [
-          { title: "What Clinical Pilates is", text: ["It is a form of exercise led by health professionals. It starts from the Pilates method, but exercises are chosen and adjusted according to each person's health, goals and progress.", "The work focuses on breathing, trunk control, mobility and strength, with attention to the quality of each movement."] },
-          { title: "When it can help", list: ["Low back and neck pain", "Postural changes", "Reduced strength, mobility or balance", "Continuing exercise after rehabilitation", "Pregnancy and the postnatal period, where appropriate"] },
-          { title: "How it works", text: ["It starts by understanding your clinical history, your limitations and what you want to achieve. Suitable exercises are then set, and they progress as you gain control and confidence in your movement."] },
-          { title: "Clinical Pilates and rehabilitation", text: ["It can complement rehabilitation or help maintain your progress once it ends. If you have an injury or health condition, bring any tests or medical reports you have, so the exercise can be adjusted to your situation."] },
+          { title: "What Personal Training is", text: ["It is one-to-one training, supervised from start to finish by a personal trainer. Exercises, loads and progression are set for you, not taken from a generic plan.", "Sessions take place in the Fisio4you gym, with the guidance needed so that each exercise is done with good technique and safely."] },
+          { title: "Who it is for", list: ["People who want to start training with guidance", "People who want to build strength, endurance or mobility", "People who want to improve their body composition", "People who have finished rehabilitation and want to keep training", "Athletes who want to improve their fitness"] },
+          { title: "How it works", text: ["The first session is used to understand your goals, your training history and any limitations. The personal trainer then sets your plan and adjusts it as you progress."] },
+          { title: "Training and physiotherapy", text: ["If you are recovering from an injury or have recently finished physiotherapy, training can be adjusted together with the clinic's team. If you have tests or medical reports, bring them with you."] },
         ],
-        meta: { title: "Clinical Pilates in Portimão | Fisio4you", description: "Clinical Pilates in Portimão: exercise led by health professionals to improve movement control, strength and posture." },
+        meta: { title: "Personal Training in Portimão | Fisio4you", description: "Personal Training in Portimão: one-to-one sessions with a personal trainer, a plan built around your goals and guidance in every session." },
       },
       psychology: {
         name: "Psychology",
@@ -1212,7 +1212,7 @@ export const en: Dict = {
     items: [
       { icon: "stethoscope", name: "Physical Medicine & Rehabilitation", text: "Medical consultation for diagnosis and guidance of your rehabilitation plan." },
       { icon: "bone", name: "Osteopathy", text: "A hands-on approach focused on joint and tissue mobility." },
-      { icon: "flower", name: "Clinical Pilates", text: "Exercise led by health professionals for control, strength and posture." },
+      { icon: "dumbbell", name: "Personal Training", text: "One-to-one training with a personal trainer, adjusted to your goals." },
       { icon: "brain", name: "Psychology", text: "Psychological support, including pain management and returning to sport after injury." },
     ],
   },
